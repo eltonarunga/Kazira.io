@@ -1,0 +1,35 @@
+
+import React, { createContext, useState, ReactNode } from 'react';
+
+interface AuthContextType {
+  isAuthenticated: boolean;
+  login: () => void;
+  logout: () => void;
+}
+
+export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  // For this demo, auth state is not persisted.
+  // In a real app, you might use localStorage or sessionStorage.
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const login = () => {
+    // In a real app, this would involve API calls, token handling, etc.
+    setIsAuthenticated(true);
+  };
+
+  const logout = () => {
+    setIsAuthenticated(false);
+  };
+
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
