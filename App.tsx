@@ -41,7 +41,7 @@ const App: React.FC = () => {
               path="/automate" 
               element={
                 <div className="container mx-auto px-4 py-16 text-center">
-                  <h1 className="text-4xl font-bold text-indigo-600 mb-4">Kazira Automate</h1>
+                  <h1 className="text-4xl font-bold text-gray-800 mb-4">Kazira Automate</h1>
                   <p className="text-xl text-gray-700">Coming Soon! Stay tuned for AI-powered business process automation.</p>
                 </div>
               } 

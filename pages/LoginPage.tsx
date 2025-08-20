@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../hooks/useAuth';
 import Button from '../components/common/Button';
-import { KAZIRA_PRIMARY_COLOR } from '../constants';
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -38,7 +37,7 @@ const LoginPage: React.FC = () => {
         transition={{ duration: 0.5 }}
       >
         <div>
-          <h2 className={`mt-6 text-center text-3xl font-extrabold text-${KAZIRA_PRIMARY_COLOR}-700`}>
+          <h2 className={`mt-6 text-center text-3xl font-extrabold text-gray-800`}>
             Sign in to Kazira.io
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
@@ -60,7 +59,7 @@ const LoginPage: React.FC = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
                 placeholder="Email address (e.g., user@example.com)"
               />
             </div>
@@ -74,7 +73,7 @@ const LoginPage: React.FC = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
                 placeholder="Password (e.g., anything)"
               />
             </div>
@@ -106,7 +105,7 @@ const LoginPage: React.FC = () => {
         
          <p className="mt-8 text-center text-sm text-gray-500">
             Don't have an account?{' '}
-            <a href="#/waitlist" className={`font-medium text-${KAZIRA_PRIMARY_COLOR}-600 hover:text-${KAZIRA_PRIMARY_COLOR}-500`}>
+            <a href="#/waitlist" className={`font-medium text-gray-700 hover:text-black`}>
               Join the waitlist
             </a>
           </p>

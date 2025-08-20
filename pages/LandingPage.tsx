@@ -5,7 +5,6 @@ import { Link, useLocation } from 'react-router-dom';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Modal from '../components/common/Modal';
-import { KAZIRA_PRIMARY_COLOR } from '../constants';
 
 const Section: React.FC<{ id: string; children: React.ReactNode; className?: string }> = ({ id, children, className = "" }) => (
   <motion.section 
@@ -49,7 +48,7 @@ const LandingPage: React.FC = () => {
     <div className="bg-gray-50">
       {/* Hero Section */}
       <motion.div 
-        className={`bg-gradient-to-br from-${KAZIRA_PRIMARY_COLOR}-600 to-${KAZIRA_PRIMARY_COLOR}-800 text-white`}
+        className={`bg-gray-900 text-white`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -65,7 +64,7 @@ const LandingPage: React.FC = () => {
               Unlock Your Potential with <span className="block md:inline">Kazira.io</span>
             </motion.h1>
             <motion.p 
-              className="text-lg sm:text-xl md:text-2xl text-indigo-200 mb-10"
+              className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-10"
               initial={{ y: -30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
@@ -81,7 +80,7 @@ const LandingPage: React.FC = () => {
                 size="lg" 
                 variant="secondary" 
                 onClick={() => setIsWaitlistModalOpen(true)}
-                className={`bg-white text-${KAZIRA_PRIMARY_COLOR}-700 hover:bg-indigo-100`}
+                className={`bg-white text-gray-800 hover:bg-gray-200`}
               >
                 Get Early Access
               </Button>
@@ -112,9 +111,9 @@ const LandingPage: React.FC = () => {
               Kazira.io is a revolutionary platform designed to bridge the gap between current capabilities and future demands. We leverage cutting-edge AI to deliver:
             </p>
             <ul className="list-disc list-inside space-y-2 text-gray-700 text-lg">
-              <li><span className={`font-semibold text-${KAZIRA_PRIMARY_COLOR}-600`}>Personalized Learning Paths:</span> Master in-demand skills with AI-curated educational journeys.</li>
-              <li><span className={`font-semibold text-${KAZIRA_PRIMARY_COLOR}-600`}>Intelligent Automation Tools:</span> Streamline workflows and boost productivity with smart automation solutions.</li>
-              <li><span className={`font-semibold text-${KAZIRA_PRIMARY_COLOR}-600`}>A Community of Innovators:</span> Connect, collaborate, and grow with like-minded individuals and experts.</li>
+              <li><span className={`font-semibold text-gray-800`}>Personalized Learning Paths:</span> Master in-demand skills with AI-curated educational journeys.</li>
+              <li><span className={`font-semibold text-gray-800`}>Intelligent Automation Tools:</span> Streamline workflows and boost productivity with smart automation solutions.</li>
+              <li><span className={`font-semibold text-gray-800`}>A Community of Innovators:</span> Connect, collaborate, and grow with like-minded individuals and experts.</li>
             </ul>
             <p className="text-lg text-gray-700 mt-4">
               Whether you're looking to upskill, reskill, or transform your business operations, Kazira.io provides the tools and insights you need to succeed in an ever-evolving world.
@@ -165,7 +164,7 @@ const LandingPage: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <div className={`text-5xl mb-4 text-${KAZIRA_PRIMARY_COLOR}-600`}>{step.icon}</div>
+              <div className={`text-5xl mb-4`}>{step.icon}</div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">{step.title}</h3>
               <p className="text-gray-600">{step.description}</p>
             </motion.div>
@@ -174,13 +173,13 @@ const LandingPage: React.FC = () => {
       </Section>
 
       {/* Join the Waitlist Form */}
-      <Section id="waitlist" className="bg-gradient-to-r from-indigo-700 to-purple-700 text-white">
+      <Section id="waitlist" className="bg-gray-800 text-white">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Future?</h2>
-          <p className="text-lg text-indigo-200 mb-8">
+          <p className="text-lg text-gray-300 mb-8">
             Join our waitlist to get early access to Kazira.io, exclusive updates, and be among the first to experience the future of AI-powered learning and automation.
           </p>
-          <Button size="lg" variant="secondary" onClick={() => setIsWaitlistModalOpen(true)} className="bg-white text-indigo-700 hover:bg-indigo-100">
+          <Button size="lg" variant="secondary" onClick={() => setIsWaitlistModalOpen(true)} className="bg-white text-gray-800 hover:bg-gray-200">
             Join the Waitlist Now
           </Button>
         </div>
@@ -205,7 +204,7 @@ const LandingPage: React.FC = () => {
               onChange={(e) => setWaitlistEmail(e.target.value)}
               placeholder="your.email@example.com"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none mb-4"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none mb-4"
             />
             <Button type="submit" className="w-full">
               Sign Me Up!

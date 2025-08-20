@@ -23,5 +23,5 @@ export const LANDING_PAGE_NAV_ITEMS: NavItem[] = [
   { name: "Waitlist", href: "#waitlist" },
 ];
 
-export const KAZIRA_PRIMARY_COLOR = "indigo"; // Tailwind color name
-export const KAZIRA_SECONDARY_COLOR = "pink"; // Tailwind color name
+export const KAZIRA_PRIMARY_COLOR = "gray"; // Tailwind color name
+export const KAZIRA_SECONDARY_COLOR = "black"; // Tailwind color name

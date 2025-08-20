@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../hooks/useAuth';
-import { NAV_ITEMS_LOGGED_IN, NAV_ITEMS_LOGGED_OUT, KAZIRA_PRIMARY_COLOR, LANDING_PAGE_NAV_ITEMS } from '../../constants';
+import { NAV_ITEMS_LOGGED_IN, NAV_ITEMS_LOGGED_OUT, LANDING_PAGE_NAV_ITEMS } from '../../constants';
 import { NavItem } from '../../types';
 
 const KaziraLogo: React.FC = () => (
   <Link to="/" className="flex items-center space-x-2">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-8 h-8 text-${KAZIRA_PRIMARY_COLOR}-600`}>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-8 h-8 text-gray-800`}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.375a9.375 9.375 0 0 0 4.767-1.162M12 18.375a9.375 9.375 0 0 1-4.767-1.162M12 18.375v4.125M12 3.375A9.375 9.375 0 0 1 16.768 4.537M12 3.375A9.375 9.375 0 0 0 7.232 4.537M12 3.375V1.5M18.375 12a9.375 9.375 0 0 1-1.162 4.767M18.375 12a9.375 9.375 0 0 0-1.162-4.767M18.375 12H20.25M5.625 12a9.375 9.375 0 0 0 1.162 4.767M5.625 12a9.375 9.375 0 0 1 1.162-4.767M5.625 12H3.75m14.625-6.375C17.209 3.829 14.723 3 12 3s-5.209.829-6.375 2.625m12.75 0C19.171 6.791 20.25 9.277 20.25 12s-.829 5.209-2.625 6.375m-12.75 0C4.829 17.209 3.75 14.723 3.75 12s.829-5.209 2.625-6.375" />
     </svg>
     <span className="text-2xl font-bold text-gray-800">Kazira.io</span>
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
                   key={item.name}
                   to={item.href}
                   onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
-                  className={`text-gray-600 hover:text-${KAZIRA_PRIMARY_COLOR}-600 transition duration-150 ease-in-out`}
+                  className={`text-gray-600 hover:text-black transition duration-150 ease-in-out`}
                 >
                   {item.name}
                 </Link>
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
-                  className={`text-gray-600 hover:text-${KAZIRA_PRIMARY_COLOR}-600 transition duration-150 ease-in-out`}
+                  className={`text-gray-600 hover:text-black transition duration-150 ease-in-out`}
                 >
                   {item.name}
                 </a>
@@ -74,7 +74,7 @@ const Header: React.FC = () => {
             {isAuthenticated && (
               <button
                 onClick={handleLogout}
-                className={`ml-4 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-${KAZIRA_PRIMARY_COLOR}-600 hover:bg-${KAZIRA_PRIMARY_COLOR}-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-${KAZIRA_PRIMARY_COLOR}-500`}
+                className={`ml-4 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500`}
               >
                 Logout
               </button>
@@ -83,7 +83,7 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`text-gray-600 hover:text-${KAZIRA_PRIMARY_COLOR}-600 focus:outline-none`}
+              className={`text-gray-600 hover:text-black focus:outline-none`}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 {isMobileMenuOpen ? (
@@ -110,7 +110,7 @@ const Header: React.FC = () => {
                   key={item.name}
                   to={item.href}
                   onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-${KAZIRA_PRIMARY_COLOR}-600 hover:bg-gray-50`}
+                  className={`block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50`}
                 >
                   {item.name}
                 </Link>
@@ -119,7 +119,7 @@ const Header: React.FC = () => {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-${KAZIRA_PRIMARY_COLOR}-600 hover:bg-gray-50`}
+                  className={`block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50`}
                 >
                   {item.name}
                 </a>
@@ -128,7 +128,7 @@ const Header: React.FC = () => {
             {isAuthenticated && (
               <button
                 onClick={handleLogout}
-                className={`w-full mt-2 text-left block px-3 py-2 rounded-md text-base font-medium text-white bg-${KAZIRA_PRIMARY_COLOR}-600 hover:bg-${KAZIRA_PRIMARY_COLOR}-700`}
+                className={`w-full mt-2 text-left block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-800 hover:bg-gray-700`}
               >
                 Logout
               </button>

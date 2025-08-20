@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { GoogleGenAI } from "@google/genai";
 import { LearningPath, SkillLevel, WeeklyPlan, LearningTask } from '../types';
 import Button from '../components/common/Button';
-import { API_KEY_ERROR_MESSAGE, GEMINI_MODEL_TEXT, KAZIRA_PRIMARY_COLOR } from '../constants';
+import { API_KEY_ERROR_MESSAGE, GEMINI_MODEL_TEXT } from '../constants';
 
 const KaziraLearnMVP: React.FC = () => {
   const [interests, setInterests] = useState<string>('');
@@ -99,7 +99,7 @@ const KaziraLearnMVP: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-center mb-12"
       >
-        <h1 className={`text-4xl font-bold text-${KAZIRA_PRIMARY_COLOR}-700 mb-3`}>Personalized Learning Path Generator</h1>
+        <h1 className={`text-4xl font-bold text-gray-800 mb-3`}>Personalized Learning Path Generator</h1>
         <p className="text-lg text-gray-600">Enter your interests and skill level, and let our AI craft a unique learning journey for you!</p>
       </motion.div>
 
@@ -126,7 +126,7 @@ const KaziraLearnMVP: React.FC = () => {
             value={interests}
             onChange={(e) => setInterests(e.target.value)}
             placeholder="e.g., AI for sustainable agriculture"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
             required
             disabled={isLoading || !apiKey}
           />
@@ -140,7 +140,7 @@ const KaziraLearnMVP: React.FC = () => {
             id="skillLevel"
             value={skillLevel}
             onChange={(e) => setSkillLevel(e.target.value as SkillLevel)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 bg-white"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 bg-white"
             disabled={isLoading || !apiKey}
           >
             {Object.values(SkillLevel).map(level => (
@@ -175,7 +175,7 @@ const KaziraLearnMVP: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h2 className={`text-3xl font-bold text-${KAZIRA_PRIMARY_COLOR}-700 mb-2 text-center`}>{learningPath.title}</h2>
+            <h2 className={`text-3xl font-bold text-gray-800 mb-2 text-center`}>{learningPath.title}</h2>
             <p className="text-center text-gray-600 mb-1"><strong>Skill Level:</strong> <span className="capitalize">{learningPath.skillLevel}</span></p>
             <p className="text-center text-gray-600 mb-6"><strong>Focus:</strong> {learningPath.interests}</p>
             
@@ -187,7 +187,7 @@ const KaziraLearnMVP: React.FC = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: week.week * 0.1 }}
               >
-                <h3 className={`text-xl font-semibold text-${KAZIRA_PRIMARY_COLOR}-600 mb-3`}>Week {week.week}: {week.summary}</h3>
+                <h3 className={`text-xl font-semibold text-gray-800 mb-3`}>Week {week.week}: {week.summary}</h3>
                 <ul className="space-y-3">
                   {week.dailyTasks.map((task: LearningTask, taskIndex: number) => (
                     <li key={taskIndex} className="p-3 bg-gray-50 rounded-md border border-gray-100">
@@ -197,7 +197,7 @@ const KaziraLearnMVP: React.FC = () => {
                           <p className="text-xs text-gray-500 font-semibold">Resources:</p>
                           <ul className="list-disc list-inside ml-4">
                             {task.resources.map((resource, resIndex) => (
-                              <li key={resIndex} className="text-xs text-indigo-600 hover:underline">
+                              <li key={resIndex} className="text-xs text-gray-700 hover:underline">
                                 {resource.startsWith('http') ? <a href={resource} target="_blank" rel="noopener noreferrer">{resource}</a> : resource}
                               </li>
                             ))}

@@ -1,13 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { KAZIRA_PRIMARY_COLOR, KAZIRA_SECONDARY_COLOR } from '../../constants';
+import { motion, HTMLMotionProps } from 'framer-motion';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonProps = HTMLMotionProps<'button'> & {
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   isLoading?: boolean;
-}
+};
 
 const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
@@ -27,13 +26,10 @@ const Button: React.FC<ButtonProps> = ({
     lg: "px-6 py-3 text-lg",
   };
 
-  const primaryColor = KAZIRA_PRIMARY_COLOR;
-  const secondaryColor = KAZIRA_SECONDARY_COLOR;
-
   const variantStyles = {
-    primary: `bg-${primaryColor}-600 text-white hover:bg-${primaryColor}-700 focus:ring-${primaryColor}-500`,
-    secondary: `bg-${secondaryColor}-500 text-white hover:bg-${secondaryColor}-600 focus:ring-${secondaryColor}-400`,
-    outline: `border border-${primaryColor}-600 text-${primaryColor}-600 hover:bg-${primaryColor}-50 focus:ring-${primaryColor}-500`,
+    primary: `bg-gray-900 text-white hover:bg-gray-700 focus:ring-gray-500`,
+    secondary: `bg-gray-600 text-white hover:bg-gray-500 focus:ring-gray-400`,
+    outline: `border border-gray-800 text-gray-800 hover:bg-gray-100 focus:ring-gray-500`,
   };
   
   const disabledStyles = "disabled:opacity-50 disabled:cursor-not-allowed";
