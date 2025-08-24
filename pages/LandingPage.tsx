@@ -75,15 +75,25 @@ const LandingPage: React.FC = () => {
               initial={{ y: -30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.6 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
               <Button 
                 size="lg" 
-                variant="secondary" 
+                variant="outline" 
                 onClick={() => setIsWaitlistModalOpen(true)}
-                className={`bg-white text-gray-800 hover:bg-gray-200`}
+                className="border-white text-white hover:bg-white hover:text-gray-800"
               >
                 Get Early Access
               </Button>
+              <Link to="/kenya-ai-exam">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-gray-800"
+                >
+                  Kenya's Final AI Exam
+                </Button>
+              </Link>
             </motion.div>
           </div>
         </Section>
@@ -99,7 +109,24 @@ const LandingPage: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <img src="https://picsum.photos/seed/kazira-what/600/400" alt="Kazira Platform Showcase" className="rounded-lg shadow-xl" />
+            <div className="rounded-lg shadow-xl bg-gray-100 p-8 aspect-[3/2] w-full flex items-center justify-center">
+              <svg className="w-full h-full text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="2.5"></circle>
+                  <circle cx="5" cy="5" r="2"></circle>
+                  <circle cx="19" cy="5" r="2"></circle>
+                  <circle cx="5" cy="19" r="2"></circle>
+                  <circle cx="19" cy="19" r="2"></circle>
+                  <path d="M12 14.5v3"></path>
+                  <path d="M10.2 11.2l-3.4-3.4"></path>
+                  <path d="M13.8 11.2l3.4-3.4"></path>
+                  <path d="M10.2 12.8l-3.4 3.4"></path>
+                  <path d="M13.8 12.8l3.4 3.4"></path>
+                  <path d="M6.8 5h10.4"></path>
+                  <path d="M5 6.8v10.4"></path>
+                  <path d="M19 6.8v10.4"></path>
+                  <path d="M6.8 19h10.4"></path>
+              </svg>
+            </div>
           </motion.div>
           <motion.div
             initial={{ x: 50, opacity: 0 }}
@@ -129,7 +156,14 @@ const LandingPage: React.FC = () => {
           <Card
             title="Kazira Learn"
             description="Empower yourself with future-ready skills. AI-driven learning paths, interactive modules, and expert guidance to help you thrive in the new economy."
-            imageUrl="https://picsum.photos/seed/kazira-learn/600/350"
+            image={
+              <div className="w-full h-48 bg-gray-200 flex items-center justify-center p-8">
+                <svg className="w-full h-full text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c0 1.66 4 3 6 3s6-1.34 6-3v-5"></path>
+                </svg>
+              </div>
+            }
           >
             <Link to="/learn">
               <Button variant="outline" className="mt-4 w-full">Explore Kazira Learn</Button>
@@ -138,7 +172,22 @@ const LandingPage: React.FC = () => {
           <Card
             title="Kazira Automate"
             description="Transform your business with intelligent automation. Optimize processes, reduce manual effort, and unlock new levels of efficiency with our AI assistants."
-            imageUrl="https://picsum.photos/seed/kazira-automate/600/350"
+            image={
+              <div className="w-full h-48 bg-gray-200 flex items-center justify-center p-8">
+                 <svg className="w-full h-full text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                    <rect x="9" y="9" width="6" height="6"></rect>
+                    <line x1="9" y1="1" x2="9" y2="4"></line>
+                    <line x1="15" y1="1" x2="15" y2="4"></line>
+                    <line x1="9" y1="20" x2="9" y2="23"></line>
+                    <line x1="15" y1="20" x2="15" y2="23"></line>
+                    <line x1="20" y1="9" x2="23" y2="9"></line>
+                    <line x1="20" y1="14" x2="23" y2="14"></line>
+                    <line x1="1" y1="9" x2="4" y2="9"></line>
+                    <line x1="1" y1="14" x2="4" y2="14"></line>
+                </svg>
+              </div>
+            }
           >
              <Link to="/automate">
               <Button variant="outline" className="mt-4 w-full">Discover Kazira Automate</Button>
@@ -179,7 +228,12 @@ const LandingPage: React.FC = () => {
           <p className="text-lg text-gray-300 mb-8">
             Join our waitlist to get early access to Kazira.io, exclusive updates, and be among the first to experience the future of AI-powered learning and automation.
           </p>
-          <Button size="lg" variant="secondary" onClick={() => setIsWaitlistModalOpen(true)} className="bg-white text-gray-800 hover:bg-gray-200">
+          <Button 
+            size="lg" 
+            variant="outline" 
+            onClick={() => setIsWaitlistModalOpen(true)}
+            className="border-white text-white hover:bg-white hover:text-gray-800"
+          >
             Join the Waitlist Now
           </Button>
         </div>

@@ -7,6 +7,7 @@ export const NAV_ITEMS_LOGGED_OUT: NavItem[] = [
   { name: "Home", href: "/", isPageLink: true },
   { name: "Learn", href: "/learn", isPageLink: true },
   { name: "Automate", href: "/automate", isPageLink: true },
+  { name: "Kenya's AI Exam", href: "/kenya-ai-exam", isPageLink: true },
   { name: "Login", href: "/login", isPageLink: true },
 ];
 
@@ -14,6 +15,7 @@ export const NAV_ITEMS_LOGGED_IN: NavItem[] = [
   { name: "Home", href: "/", isPageLink: true },
   { name: "Learn", href: "/learn", isPageLink: true },
   { name: "Automate", href: "/automate", isPageLink: true },
+  { name: "Kenya's AI Exam", href: "/kenya-ai-exam", isPageLink: true },
 ];
 
 export const LANDING_PAGE_NAV_ITEMS: NavItem[] = [

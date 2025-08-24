@@ -7,6 +7,8 @@ import LoginPage from './pages/LoginPage';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import { useAuth } from './hooks/useAuth';
+import KenyaFinalAIExam from './pages/KenyaFinalAIExam';
+import AIModelResults from './pages/AIModelResults';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -29,6 +31,8 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/kenya-ai-exam" element={<KenyaFinalAIExam />} />
+            <Route path="/ai-model-results" element={<AIModelResults />} />
             <Route 
               path="/learn" 
               element={
