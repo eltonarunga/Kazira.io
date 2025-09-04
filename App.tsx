@@ -9,6 +9,7 @@ import Footer from './components/layout/Footer';
 import { useAuth } from './hooks/useAuth';
 import KenyaFinalAIExam from './pages/KenyaFinalAIExam';
 import AIModelResults from './pages/AIModelResults';
+import ErrorBoundary from './components/common/ErrorBoundary';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -28,30 +29,32 @@ const App: React.FC = () => {
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/kenya-ai-exam" element={<KenyaFinalAIExam />} />
-            <Route path="/ai-model-results" element={<AIModelResults />} />
-            <Route 
-              path="/learn" 
-              element={
-                <ProtectedRoute>
-                  <KaziraLearnMVP />
-                </ProtectedRoute>
-              } 
-            />
-            <Route 
-              path="/automate" 
-              element={
-                <div className="container mx-auto px-4 py-16 text-center">
-                  <h1 className="text-4xl font-bold text-gray-800 mb-4">Kazira Automate</h1>
-                  <p className="text-xl text-gray-700">Coming Soon! Stay tuned for AI-powered business process automation.</p>
-                </div>
-              } 
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <ErrorBoundary>
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/kenya-ai-exam" element={<KenyaFinalAIExam />} />
+              <Route path="/ai-model-results" element={<AIModelResults />} />
+              <Route 
+                path="/learn" 
+                element={
+                  <ProtectedRoute>
+                    <KaziraLearnMVP />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/automate" 
+                element={
+                  <div className="container mx-auto px-4 py-16 text-center">
+                    <h1 className="text-4xl font-bold text-gray-800 mb-4">Kazira Automate</h1>
+                    <p className="text-xl text-gray-700">Coming Soon! Stay tuned for AI-powered business process automation.</p>
+                  </div>
+                } 
+              />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </ErrorBoundary>
         </main>
         <Footer />
       </div>

@@ -2,8 +2,10 @@
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GoogleGenAI } from "@google/genai";
-import { LearningPath, SkillLevel, WeeklyPlan, LearningTask } from '../types';
+import { LearningPath, SkillLevel, WeeklyPlan, LearningTask, GroundingChunk } from '../types';
 import Button from '../components/common/Button';
+import Modal from '../components/common/Modal';
+import { getGroundedAnswer } from '../services/geminiService';
 import { API_KEY_ERROR_MESSAGE, GEMINI_MODEL_TEXT } from '../constants';
 
 const KaziraLearnMVP: React.FC = () => {
@@ -12,11 +14,18 @@ const KaziraLearnMVP: React.FC = () => {
   const [learningPath, setLearningPath] = useState<LearningPath | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [apiKey, setApiKey] = useState<string | null>(process.env.API_KEY || null);
+  const [apiKey] = useState<string | null>(process.env.API_KEY || null);
+
+  const [isResourceModalOpen, setIsResourceModalOpen] = useState<boolean>(false);
+  const [groundedSearchQuery, setGroundedSearchQuery] = useState<string>('');
+  const [isGroundedSearchLoading, setIsGroundedSearchLoading] = useState<boolean>(false);
+  const [groundedSearchResult, setGroundedSearchResult] = useState<{ text: string; sources: GroundingChunk[] } | null>(null);
+  const [groundedSearchError, setGroundedSearchError] = useState<string | null>(null);
+
 
   const parseGeminiResponse = (responseText: string): LearningPath | null => {
     let jsonStr = responseText.trim();
-    const fenceRegex = /^```(\w*)?\s*\n?(.*?)\n?\s*```$/s; // Matches ```json ... ``` or ``` ... ```
+    const fenceRegex = /^```(\w*)?\s*\n?(.*?)\n?\s*```$/s;
     const match = jsonStr.match(fenceRegex);
     if (match && match[2]) {
       jsonStr = match[2].trim();
@@ -24,7 +33,6 @@ const KaziraLearnMVP: React.FC = () => {
   
     try {
       const parsedData = JSON.parse(jsonStr);
-      // Basic validation of the parsed structure
       if (parsedData && parsedData.title && parsedData.weeklyPlan && Array.isArray(parsedData.weeklyPlan)) {
         return parsedData as LearningPath;
       }
@@ -45,12 +53,6 @@ const KaziraLearnMVP: React.FC = () => {
     }
     if (!apiKey) {
       setError(API_KEY_ERROR_MESSAGE);
-      console.error(API_KEY_ERROR_MESSAGE);
-      // In a real app, you might have a global handler or a more user-friendly way to manage API key issues.
-      // For this example, we'll just show an error.
-      // You could prompt the user or guide them if process.env.API_KEY is the *only* way to set it.
-      // However, the instructions state "Assume this variable is pre-configured".
-      // If it's missing, it's an environment setup issue.
       return;
     }
 
@@ -66,8 +68,8 @@ const KaziraLearnMVP: React.FC = () => {
         model: GEMINI_MODEL_TEXT,
         contents: prompt,
         config: {
-          responseMimeType: "application/json", // Request JSON output
-          temperature: 0.7, // Balance creativity and predictability
+          responseMimeType: "application/json",
+          temperature: 0.7,
         },
       });
 
@@ -75,9 +77,6 @@ const KaziraLearnMVP: React.FC = () => {
       if (parsedPath) {
         setLearningPath(parsedPath);
       }
-      // Firestore saving would happen here in a full-stack app
-      // console.log("Learning path generated and would be saved to Firestore:", parsedPath);
-
     } catch (err) {
       console.error("Error generating learning path:", err);
       setError("Sorry, an error occurred while generating your learning path. Please try again.");
@@ -85,6 +84,28 @@ const KaziraLearnMVP: React.FC = () => {
       setIsLoading(false);
     }
   }, [interests, skillLevel, apiKey]);
+  
+  const handleGroundedSearch = useCallback(async (query: string) => {
+    if (!apiKey) {
+        setGroundedSearchError(API_KEY_ERROR_MESSAGE);
+        return;
+    }
+    setGroundedSearchQuery(query);
+    setIsResourceModalOpen(true);
+    setIsGroundedSearchLoading(true);
+    setGroundedSearchResult(null);
+    setGroundedSearchError(null);
+
+    try {
+        const result = await getGroundedAnswer(query, apiKey);
+        setGroundedSearchResult(result);
+    } catch (err) {
+        console.error("Error during grounded search:", err);
+        setGroundedSearchError("Sorry, an error occurred while searching for resources. Please try again.");
+    } finally {
+        setIsGroundedSearchLoading(false);
+    }
+  }, [apiKey]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -193,12 +214,33 @@ const KaziraLearnMVP: React.FC = () => {
                     <li key={taskIndex} className="p-3 bg-gray-50 rounded-md border border-gray-100">
                       <p className="font-medium text-gray-800">{task.day}: <span className="font-normal text-gray-700">{task.task}</span></p>
                       {task.resources && task.resources.length > 0 && (
-                        <div className="mt-1">
-                          <p className="text-xs text-gray-500 font-semibold">Resources:</p>
-                          <ul className="list-disc list-inside ml-4">
+                        <div className="mt-2">
+                          <p className="text-sm text-gray-600 font-semibold">Resources:</p>
+                          <ul className="space-y-2 mt-1">
                             {task.resources.map((resource, resIndex) => (
-                              <li key={resIndex} className="text-xs text-gray-700 hover:underline">
-                                {resource.startsWith('http') ? <a href={resource} target="_blank" rel="noopener noreferrer">{resource}</a> : resource}
+                              <li key={resIndex} className="text-sm text-gray-700 flex justify-between items-center p-2 bg-white rounded-md border">
+                                {resource.startsWith('http') ? (
+                                    <a href={resource} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline break-all flex items-center min-w-0">
+                                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.536a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                      </svg>
+                                      <span className="truncate">{resource}</span>
+                                    </a>
+                                ) : (
+                                  <span className="flex-grow font-medium text-gray-800">{resource}</span>
+                                )}
+                                {!resource.startsWith('http') && (
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    onClick={() => handleGroundedSearch(resource)}
+                                    className="ml-4 text-xs px-2 py-1 flex-shrink-0"
+                                    isLoading={isGroundedSearchLoading && groundedSearchQuery === resource}
+                                    disabled={isGroundedSearchLoading}
+                                  >
+                                    Find Resources
+                                  </Button>
+                                )}
                               </li>
                             ))}
                           </ul>
@@ -212,6 +254,53 @@ const KaziraLearnMVP: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <Modal
+        isOpen={isResourceModalOpen}
+        onClose={() => setIsResourceModalOpen(false)}
+        title={`AI-Powered Search: "${groundedSearchQuery}"`}
+      >
+        {isGroundedSearchLoading && (
+            <div className="flex justify-center items-center py-8">
+                <svg className="animate-spin h-8 w-8 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p className="ml-4 text-gray-700">Searching the web for resources...</p>
+            </div>
+        )}
+        {groundedSearchError && (
+            <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+                {groundedSearchError}
+            </div>
+        )}
+        {groundedSearchResult && (
+            <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                <div className="p-4 bg-gray-50 rounded-md border">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">AI Summary</h3>
+                    <p className="text-gray-700 whitespace-pre-wrap">{groundedSearchResult.text}</p>
+                </div>
+                {groundedSearchResult.sources && groundedSearchResult.sources.length > 0 && (
+                    <div>
+                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Sources</h3>
+                        <ul className="list-disc list-inside space-y-2">
+                            {groundedSearchResult.sources.map((source, index) => (
+                                <li key={index} className="text-sm">
+                                    <a
+                                        href={source.web.uri}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-600 hover:underline break-all"
+                                    >
+                                        {source.web.title || source.web.uri}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </div>
+        )}
+    </Modal>
     </div>
   );
 };
