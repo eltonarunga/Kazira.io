@@ -152,7 +152,7 @@ const LandingPage: React.FC = () => {
       {/* Kazira Learn vs Kazira Automate */}
       <Section id="solutions" className="bg-gray-100">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Our Core Solutions</h2>
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card
             title="Kazira Learn"
             description="Empower yourself with future-ready skills. AI-driven learning paths, interactive modules, and expert guidance to help you thrive in the new economy."
@@ -192,6 +192,23 @@ const LandingPage: React.FC = () => {
              <Link to="/automate">
               <Button variant="outline" className="mt-4 w-full">Discover Kazira Automate</Button>
             </Link>
+          </Card>
+          <Card
+            title="Job Disruption Scanner"
+            description="Analyze how AI and automation will impact jobs in Kenya. A vital tool for career planning and policy making."
+            image={
+              <div className="w-full h-48 bg-gray-200 flex items-center justify-center p-8">
+                <svg className="w-full h-full text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    <path d="M7 14l2-2 2 2 3-3"></path>
+                </svg>
+              </div>
+            }
+          >
+            <a href="https://opal.withgoogle.com/?flow=drive:/1g5EsPt18QZYsNAcaE1f9KgmCnWOQEvin&shared&mode=app" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" className="mt-4 w-full">Launch Scanner</Button>
+            </a>
           </Card>
         </div>
       </Section>

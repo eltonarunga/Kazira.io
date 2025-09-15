@@ -28,6 +28,7 @@ export interface NavItem {
   name: string;
   href: string;
   isPageLink?: boolean; // To distinguish between page links and section scroll links
+  isExternal?: boolean;
 }
 
 export interface GroundingChunkWeb {

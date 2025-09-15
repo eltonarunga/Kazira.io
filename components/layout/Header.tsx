@@ -27,7 +27,7 @@ const Header: React.FC = () => {
   };
 
   const baseNavItems = isAuthenticated ? NAV_ITEMS_LOGGED_IN : NAV_ITEMS_LOGGED_OUT;
-  const currentNavItems = location.pathname === '/' ? [...baseNavItems.filter(item => item.isPageLink), ...LANDING_PAGE_NAV_ITEMS] : baseNavItems;
+  const currentNavItems = location.pathname === '/' ? [...baseNavItems.filter(item => item.isPageLink || item.isExternal), ...LANDING_PAGE_NAV_ITEMS] : baseNavItems;
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isPageLink?: boolean) => {
     setIsMobileMenuOpen(false);
@@ -44,33 +44,58 @@ const Header: React.FC = () => {
     }
   };
 
+  const renderNavItem = (item: NavItem, isMobile: boolean) => {
+    const desktopClass = `text-gray-600 hover:text-black transition duration-150 ease-in-out`;
+    const mobileClass = `block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50`;
+    const className = isMobile ? mobileClass : desktopClass;
+
+    if (item.isExternal) {
+      return (
+        <a
+          key={item.name}
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={className}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          {item.name}
+        </a>
+      );
+    }
+    
+    if (item.isPageLink) {
+      return (
+        <Link
+          key={item.name}
+          to={item.href}
+          onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
+          className={className}
+        >
+          {item.name}
+        </Link>
+      );
+    }
+
+    return (
+      <a
+        key={item.name}
+        href={item.href}
+        onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
+        className={className}
+      >
+        {item.name}
+      </a>
+    );
+  };
+
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <KaziraLogo />
           <nav className="hidden md:flex space-x-6 items-center">
-            {currentNavItems.map((item) => (
-              item.isPageLink ? (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
-                  className={`text-gray-600 hover:text-black transition duration-150 ease-in-out`}
-                >
-                  {item.name}
-                </Link>
-              ) : (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
-                  className={`text-gray-600 hover:text-black transition duration-150 ease-in-out`}
-                >
-                  {item.name}
-                </a>
-              )
-            ))}
+            {currentNavItems.map((item) => renderNavItem(item, false))}
             {isAuthenticated && (
               <button
                 onClick={handleLogout}
@@ -104,27 +129,7 @@ const Header: React.FC = () => {
           className="md:hidden bg-white shadow-lg absolute w-full"
         >
           <nav className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {currentNavItems.map((item) => (
-               item.isPageLink ? (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50`}
-                >
-                  {item.name}
-                </Link>
-              ) : (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50`}
-                >
-                  {item.name}
-                </a>
-              )
-            ))}
+            {currentNavItems.map((item) => renderNavItem(item, true))}
             {isAuthenticated && (
               <button
                 onClick={handleLogout}
