@@ -31,7 +31,10 @@ class ErrorBoundary extends Component<Props, State> {
   };
 
   public render() {
-    if (this.state.hasError) {
+    const { hasError, error } = this.state;
+    const { children } = this.props;
+
+    if (hasError) {
       // You can render any custom fallback UI
       return (
         <div className="container mx-auto px-4 py-16 text-center" role="alert">
@@ -42,7 +45,7 @@ class ErrorBoundary extends Component<Props, State> {
               <summary className="cursor-pointer font-semibold">Error Details</summary>
               <pre className="mt-2 whitespace-pre-wrap break-all font-mono text-xs">
                 <code>
-                  {this.state.error?.toString()}
+                  {error?.toString()}
                 </code>
               </pre>
             </details>
@@ -58,7 +61,8 @@ class ErrorBoundary extends Component<Props, State> {
       );
     }
 
-    return this.props.children;
+    // Fix: Destructuring `this.props` at the beginning of the render method to avoid direct access in the return statement.
+    return children;
   }
 }
 

@@ -14,9 +14,11 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Mock login: In a real app, you'd validate credentials
     if (email && password) {
-      login(); // This just sets isAuthenticated to true in context
+      // Mock login: In a real app, you'd validate credentials
+      // and get user data from a backend.
+      const userName = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      login({ name: userName, email });
       navigate('/learn'); // Redirect to a protected page
     } else {
       setError('Please enter email and password.');
@@ -24,7 +26,7 @@ const LoginPage: React.FC = () => {
   };
 
   const handleAnonymousLogin = () => {
-    login();
+    login({ name: 'Guest User', email: 'guest@kazira.io' });
     navigate('/learn');
   };
 

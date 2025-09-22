@@ -18,6 +18,7 @@ export const NAV_ITEMS_LOGGED_IN: NavItem[] = [
   { name: "Home", href: "/", isPageLink: true },
   { name: "Learn", href: "/learn", isPageLink: true },
   { name: "Automate", href: "/automate", isPageLink: true },
+  { name: "Profile", href: "/profile", isPageLink: true },
   { name: "Job Scanner", href: JOB_SCANNER_URL, isPageLink: false, isExternal: true },
   { name: "Kenya's AI Exam", href: "/kenya-ai-exam", isPageLink: true },
 ];

@@ -48,3 +48,9 @@ export interface GeminiResponse {
   text: string;
   candidates?: Candidate[];
 }
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+}

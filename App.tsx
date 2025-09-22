@@ -10,6 +10,7 @@ import { useAuth } from './hooks/useAuth';
 import KenyaFinalAIExam from './pages/KenyaFinalAIExam';
 import AIModelResults from './pages/AIModelResults';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import UserProfilePage from './pages/UserProfilePage';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -40,6 +41,14 @@ const App: React.FC = () => {
                 element={
                   <ProtectedRoute>
                     <KaziraLearnMVP />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile" 
+                element={
+                  <ProtectedRoute>
+                    <UserProfilePage />
                   </ProtectedRoute>
                 } 
               />
