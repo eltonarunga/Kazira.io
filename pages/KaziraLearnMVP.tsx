@@ -1,12 +1,11 @@
 
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GoogleGenAI } from "@google/genai";
 import { LearningPath, SkillLevel, WeeklyPlan, LearningTask, GroundingChunk } from '../types';
 import Button from '../components/common/Button';
 import Modal from '../components/common/Modal';
-import { getGroundedAnswer } from '../services/geminiService';
-import { API_KEY_ERROR_MESSAGE, GEMINI_MODEL_TEXT } from '../constants';
+import { getGroundedAnswer, generateLearningPath as generateLearningPathFromService } from '../services/geminiService';
+import { API_KEY_ERROR_MESSAGE } from '../constants';
 
 const KaziraLearnMVP: React.FC = () => {
   const [interests, setInterests] = useState<string>('');
@@ -21,30 +20,6 @@ const KaziraLearnMVP: React.FC = () => {
   const [isGroundedSearchLoading, setIsGroundedSearchLoading] = useState<boolean>(false);
   const [groundedSearchResult, setGroundedSearchResult] = useState<{ text: string; sources: GroundingChunk[] } | null>(null);
   const [groundedSearchError, setGroundedSearchError] = useState<string | null>(null);
-
-
-  const parseGeminiResponse = (responseText: string): LearningPath | null => {
-    let jsonStr = responseText.trim();
-    const fenceRegex = /^```(\w*)?\s*\n?(.*?)\n?\s*```$/s;
-    const match = jsonStr.match(fenceRegex);
-    if (match && match[2]) {
-      jsonStr = match[2].trim();
-    }
-  
-    try {
-      const parsedData = JSON.parse(jsonStr);
-      if (parsedData && parsedData.title && parsedData.weeklyPlan && Array.isArray(parsedData.weeklyPlan)) {
-        return parsedData as LearningPath;
-      }
-      console.error("Parsed JSON does not match LearningPath structure:", parsedData);
-      setError("Received an unexpected format from AI. Please try again.");
-      return null;
-    } catch (e) {
-      console.error("Failed to parse JSON response:", e, "Raw response:", jsonStr);
-      setError("Failed to understand AI's response. It might not be valid JSON.");
-      return null;
-    }
-  };
 
   const generateLearningPath = useCallback(async () => {
     if (!interests.trim()) {
@@ -61,21 +36,11 @@ const KaziraLearnMVP: React.FC = () => {
     setLearningPath(null);
 
     try {
-      const ai = new GoogleGenAI({ apiKey });
-      const prompt = `As an AI skills coach, generate a 4-week learning plan for someone interested in "${interests}" and sustainability innovation, tailored to their skill level: ${skillLevel}. The plan should be structured weekly, with daily actionable tasks or learning resources. Output the plan as a single, valid JSON object with keys: "title" (string), "skillLevel" (string, e.g., "beginner"), "interests" (string, reflecting the input), and "weeklyPlan" (array of objects). Each object in "weeklyPlan" should represent a week and have keys: "week" (number), "summary" (string), and "dailyTasks" (array of objects). Each "dailyTasks" object should have keys: "day" (string, e.g., "Monday"), "task" (string), and optionally "resources" (array of strings, for URLs or book titles). Ensure the entire output is strictly a single JSON object, without any surrounding text or markdown.`;
-      
-      const response = await ai.models.generateContent({
-        model: GEMINI_MODEL_TEXT,
-        contents: prompt,
-        config: {
-          responseMimeType: "application/json",
-          temperature: 0.7,
-        },
-      });
-
-      const parsedPath = parseGeminiResponse(response.text);
+      const parsedPath = await generateLearningPathFromService(interests, skillLevel, apiKey);
       if (parsedPath) {
         setLearningPath(parsedPath);
+      } else {
+        setError("Received an unexpected format from AI. Please try again.");
       }
     } catch (err) {
       console.error("Error generating learning path:", err);

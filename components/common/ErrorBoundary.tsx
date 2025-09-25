@@ -61,7 +61,6 @@ class ErrorBoundary extends Component<Props, State> {
       );
     }
 
-    // Fix: Destructuring `this.props` at the beginning of the render method to avoid direct access in the return statement.
     return children;
   }
 }

@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Modal from '../components/common/Modal';
+import { addToWaitlist } from '../services/databaseService';
 
 const Section: React.FC<{ id: string; children: React.ReactNode; className?: string }> = ({ id, children, className = "" }) => (
   <motion.section 
@@ -25,6 +26,7 @@ const LandingPage: React.FC = () => {
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
   const [waitlistEmail, setWaitlistEmail] = useState('');
   const [waitlistSubmitted, setWaitlistSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const location = useLocation();
 
@@ -37,12 +39,32 @@ const LandingPage: React.FC = () => {
     }
   }, [location.state]);
 
-  const handleWaitlistSubmit = (e: React.FormEvent) => {
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Waitlist email submitted:', waitlistEmail); // Mock submission
-    setWaitlistSubmitted(true);
-    // In a real app, you'd send this to a backend/Firebase.
+    setIsSubmitting(true);
+    try {
+      const result = await addToWaitlist(waitlistEmail);
+      if (result.success) {
+        setWaitlistSubmitted(true);
+      } else {
+        // Handle submission error, maybe show a message
+        console.error("Failed to add to waitlist");
+      }
+    } catch (error) {
+      console.error("Error submitting to waitlist:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+  
+  const closeWaitlistModal = () => {
+    setIsWaitlistModalOpen(false);
+    // Reset state after a short delay to allow for exit animation
+    setTimeout(() => {
+        setWaitlistSubmitted(false);
+        setWaitlistEmail('');
+    }, 300);
+  }
 
   return (
     <div className="bg-gray-50">
@@ -256,7 +278,7 @@ const LandingPage: React.FC = () => {
         </div>
       </Section>
 
-      <Modal isOpen={isWaitlistModalOpen} onClose={() => { setIsWaitlistModalOpen(false); setWaitlistSubmitted(false); setWaitlistEmail(''); }} title="Join Our Waitlist">
+      <Modal isOpen={isWaitlistModalOpen} onClose={closeWaitlistModal} title="Join Our Waitlist">
         {waitlistSubmitted ? (
           <div className="text-center">
             <svg xmlns="http://www.w3.org/2000/svg" className={`h-16 w-16 text-green-500 mx-auto mb-4`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -264,7 +286,7 @@ const LandingPage: React.FC = () => {
             </svg>
             <h3 className="text-xl font-semibold text-gray-800 mb-2">Thank You!</h3>
             <p className="text-gray-600">You've been added to our waitlist. We'll be in touch soon!</p>
-            <Button onClick={() => { setIsWaitlistModalOpen(false); setWaitlistSubmitted(false); setWaitlistEmail(''); }} className="mt-6 w-full">Close</Button>
+            <Button onClick={closeWaitlistModal} className="mt-6 w-full">Close</Button>
           </div>
         ) : (
           <form onSubmit={handleWaitlistSubmit}>
@@ -276,8 +298,9 @@ const LandingPage: React.FC = () => {
               placeholder="your.email@example.com"
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none mb-4"
+              disabled={isSubmitting}
             />
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" isLoading={isSubmitting} disabled={isSubmitting}>
               Sign Me Up!
             </Button>
           </form>

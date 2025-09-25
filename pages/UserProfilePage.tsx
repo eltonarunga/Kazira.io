@@ -12,6 +12,7 @@ const UserProfilePage: React.FC = () => {
   const [formData, setFormData] = useState<Partial<User>>({ name: '', email: '' });
   const [isSaving, setIsSaving] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (user) {
@@ -24,19 +25,27 @@ const UserProfilePage: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSaveChanges = (e: React.FormEvent) => {
+  const handleSaveChanges = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || !formData.name) return;
 
     setIsSaving(true);
-    // Simulate API call
-    setTimeout(() => {
-      updateUser({ name: formData.name });
+    setError('');
+    try {
+      const updatedUser = await updateUser({ name: formData.name });
+      if (updatedUser) {
+        setIsEditing(false);
+        setShowSuccess(true);
+        setTimeout(() => setShowSuccess(false), 3000);
+      } else {
+        setError("Failed to update profile. Please try again.");
+      }
+    } catch (err) {
+      console.error("Profile update error:", err);
+      setError("An unexpected error occurred while updating your profile.");
+    } finally {
       setIsSaving(false);
-      setIsEditing(false);
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 3000);
-    }, 1000);
+    }
   };
   
   const handleCancel = () => {
@@ -44,9 +53,11 @@ const UserProfilePage: React.FC = () => {
       setFormData({ name: user.name, email: user.email });
     }
     setIsEditing(false);
+    setError('');
   };
   
   if (!user) {
+    // This case is unlikely if the page is protected, but good for robustness
     return (
       <div className="container mx-auto px-4 py-16 text-center">
         <p>Loading user profile...</p>
@@ -73,6 +84,7 @@ const UserProfilePage: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
                     className="absolute top-0 left-1/2 -translate-x-1/2 -mt-4 bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded-md text-sm shadow-lg"
+                    role="alert"
                 >
                     Profile updated successfully!
                 </motion.div>
@@ -82,6 +94,7 @@ const UserProfilePage: React.FC = () => {
         <Card className="!shadow-2xl">
           <form onSubmit={handleSaveChanges}>
             <div className="space-y-6 p-4">
+              {error && <p className="text-sm text-red-600 bg-red-100 p-3 rounded-md">{error}</p>}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
                 <div className="mt-1">
@@ -92,7 +105,7 @@ const UserProfilePage: React.FC = () => {
                     className={`w-full px-4 py-2 border rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 ${!isEditing ? 'bg-gray-100 text-gray-500' : 'border-gray-300'}`}
                     value={formData.name || ''}
                     onChange={handleInputChange}
-                    disabled={!isEditing}
+                    disabled={!isEditing || isSaving}
                     aria-readonly={!isEditing}
                     required
                   />

@@ -29,7 +29,9 @@ The project follows a standard feature-based directory structure.
 *   `/context`: React context providers (e.g., `AuthContext.tsx`).
 *   `/hooks`: Custom React hooks (e.g., `useAuth.ts`).
 *   `/pages`: Top-level page components corresponding to routes.
-*   `/services`: Modules for interacting with external APIs (e.g., `geminiService.ts`).
+*   `/services`: Modules for interacting with external APIs or abstracting data layers.
+    *   `geminiService.ts`: Encapsulates all interactions with the Google Gemini API.
+    *   `databaseService.ts`: Provides a mock abstraction layer for a serverless backend, handling user authentication, profiles, and data persistence using `localStorage`. This makes it easier to swap in a real backend service (like Firebase) in the future.
 *   `/types.ts`: Shared TypeScript type definitions.
 *   `/constants.ts`: Shared application constants.
 

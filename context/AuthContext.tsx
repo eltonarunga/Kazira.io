@@ -1,13 +1,15 @@
 
 import React, { createContext, useState, ReactNode, useEffect, useCallback } from 'react';
 import { User } from '../types';
+import * as db from '../services/databaseService';
 
 interface AuthContextType {
   isAuthenticated: boolean;
   user: User | null;
-  login: (userData: Omit<User, 'id'>) => void;
-  logout: () => void;
-  updateUser: (updatedUserData: Partial<User>) => void;
+  isLoading: boolean;
+  login: (email: string, password: string) => Promise<User | null>;
+  logout: () => Promise<void>;
+  updateUser: (updatedUserData: Partial<User>) => Promise<User | null>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -16,46 +18,65 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-const USER_STORAGE_KEY = 'kazira_user';
-
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
+  // On initial load, check for an existing session.
   useEffect(() => {
-    try {
-      const storedUser = localStorage.getItem(USER_STORAGE_KEY);
-      if (storedUser) {
-        setUser(JSON.parse(storedUser));
+    const checkSession = async () => {
+      setIsLoading(true);
+      try {
+        const sessionUser = await db.getSessionUser();
+        setUser(sessionUser);
+      } catch (error) {
+        console.error("Failed to retrieve session", error);
+        setUser(null);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.error("Failed to parse user from localStorage", error);
-      localStorage.removeItem(USER_STORAGE_KEY);
+    };
+    checkSession();
+  }, []);
+
+  const login = useCallback(async (email: string, password: string): Promise<User | null> => {
+    // In a real app, you might set a loading state here.
+    const loggedInUser = await db.loginUser(email, password);
+    if (loggedInUser) {
+      setUser(loggedInUser);
     }
+    // In a real app with JWTs, you'd store the token here.
+    return loggedInUser;
   }, []);
 
-  const login = useCallback((userData: Omit<User, 'id'>) => {
-    // In a real app, this would involve API calls, token handling, etc.
-    const newUser: User = { ...userData, id: userData.email }; // Using email as a mock ID
-    setUser(newUser);
-    localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(newUser));
-  }, []);
-
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
+    await db.logoutUser();
     setUser(null);
-    localStorage.removeItem(USER_STORAGE_KEY);
   }, []);
 
-  const updateUser = useCallback((updatedUserData: Partial<User>) => {
-    setUser(currentUser => {
-      if (!currentUser) return null;
-      const newUser = { ...currentUser, ...updatedUserData };
-      localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(newUser));
-      return newUser;
-    });
-  }, []);
+  const updateUser = useCallback(async (updatedUserData: Partial<User>): Promise<User | null> => {
+    if (!user) {
+      console.error("Cannot update user: no user is currently logged in.");
+      return null;
+    }
+    const updatedUser = await db.updateUserProfile(user.id, updatedUserData);
+    if (updatedUser) {
+      setUser(updatedUser);
+    }
+    return updatedUser;
+  }, [user]);
 
+  // isLoading provides context for components that need to wait for auth state to be resolved.
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+      </div>
+    );
+  }
+  
   return (
-    <AuthContext.Provider value={{ isAuthenticated: !!user, user, login, logout, updateUser }}>
+    <AuthContext.Provider value={{ isAuthenticated: !!user, user, isLoading, login, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -11,23 +11,45 @@ const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email && password) {
-      // Mock login: In a real app, you'd validate credentials
-      // and get user data from a backend.
-      const userName = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-      login({ name: userName, email });
-      navigate('/learn'); // Redirect to a protected page
-    } else {
-      setError('Please enter email and password.');
+    setError('');
+    setIsLoading(true);
+
+    try {
+      const user = await login(email, password);
+      if (user) {
+        navigate('/learn'); // Redirect to a protected page
+      } else {
+        setError('Login failed. Please check your credentials.');
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleAnonymousLogin = () => {
-    login({ name: 'Guest User', email: 'guest@kazira.io' });
-    navigate('/learn');
+  const handleAnonymousLogin = async () => {
+    setError('');
+    setIsLoading(true);
+    try {
+      // Use a predefined guest account for the mock login
+      const user = await login('guest@kazira.io', 'guest');
+      if (user) {
+        navigate('/learn');
+      } else {
+        setError('Could not log in as guest.');
+      }
+    } catch (err) {
+      console.error("Guest login error:", err);
+      setError('An unexpected error occurred during guest login.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -45,7 +67,7 @@ const LoginPage: React.FC = () => {
           <p className="mt-2 text-center text-sm text-gray-600">
             Access your personalized learning and automation tools.
             <br/>
-            (This is a mock login: any email/password will work)
+            (This is a mock login: any email/password will create an account)
           </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>
@@ -62,7 +84,8 @@ const LoginPage: React.FC = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
-                placeholder="Email address (e.g., user@example.com)"
+                placeholder="Email address"
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -76,13 +99,14 @@ const LoginPage: React.FC = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
-                placeholder="Password (e.g., anything)"
+                placeholder="Password"
+                disabled={isLoading}
               />
             </div>
           </div>
 
           <div>
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" isLoading={isLoading} disabled={isLoading}>
               Sign in
             </Button>
           </div>
@@ -100,14 +124,14 @@ const LoginPage: React.FC = () => {
         </div>
 
         <div className="mt-6">
-            <Button type="button" variant="outline" className="w-full" onClick={handleAnonymousLogin}>
+            <Button type="button" variant="outline" className="w-full" onClick={handleAnonymousLogin} isLoading={isLoading} disabled={isLoading}>
               Continue as Guest
             </Button>
         </div>
         
          <p className="mt-8 text-center text-sm text-gray-500">
             Don't have an account?{' '}
-            <a href="#/waitlist" className={`font-medium text-gray-700 hover:text-black`}>
+            <a href="#/" className={`font-medium text-gray-700 hover:text-black`}>
               Join the waitlist
             </a>
           </p>

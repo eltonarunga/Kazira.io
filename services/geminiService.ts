@@ -1,15 +1,7 @@
 
-// This file is largely illustrative as the Gemini logic is integrated into KaziraLearnMVP.tsx for this example.
-// In a larger application, you would centralize Gemini API interactions here.
-// For now, KaziraLearnMVP.tsx contains the primary Gemini API call.
-// The instructions mention `process.env.API_KEY` must be used. This is handled in KaziraLearnMVP.tsx.
-
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
-import { LearningPath, SkillLevel, Candidate, GroundingChunk } from '../types'; // Assuming types.ts exists
+import { LearningPath, SkillLevel, Candidate, GroundingChunk } from '../types';
 import { GEMINI_MODEL_TEXT, API_KEY_ERROR_MESSAGE } from "../constants";
-
-// This is an example function. The actual implementation is in KaziraLearnMVP.tsx for this project.
-// It's kept here to demonstrate how a service file could be structured.
 
 /**
  * Parses the Gemini API response text to extract JSON content.
@@ -33,16 +25,18 @@ const parseJsonFromText = <T,>(responseText: string): T | null => {
   }
 };
 
-export const generateLearningPathWithGemini = async (
+/**
+ * Generates a personalized learning path using the Gemini API.
+ * @param interests The user's interests.
+ * @param skillLevel The user's skill level.
+ * @param apiKey The Google Gemini API key.
+ * @returns A LearningPath object or null if an error occurs.
+ */
+export const generateLearningPath = async (
   interests: string,
   skillLevel: SkillLevel,
-  apiKey: string | null
+  apiKey: string
 ): Promise<LearningPath | null> => {
-  if (!apiKey) {
-    console.error(API_KEY_ERROR_MESSAGE);
-    throw new Error(API_KEY_ERROR_MESSAGE);
-  }
-
   const ai = new GoogleGenAI({ apiKey });
 
   const prompt = `As an AI skills coach, generate a 4-week learning plan for someone interested in "${interests}" and sustainability innovation, tailored to their skill level: ${skillLevel}. The plan should be structured weekly, with daily actionable tasks or learning resources. Output the plan as a single, valid JSON object with keys: "title" (string), "skillLevel" (string, e.g., "beginner"), "interests" (string, reflecting the input), and "weeklyPlan" (array of objects). Each object in "weeklyPlan" should represent a week and have keys: "week" (number), "summary" (string), and "dailyTasks" (array of objects). Each "dailyTasks" object should have keys: "day" (string, e.g., "Monday"), "task" (string), and optionally "resources" (array of strings, for URLs or book titles). Ensure the entire output is strictly a single JSON object, without any surrounding text or markdown.`;
@@ -65,29 +59,29 @@ export const generateLearningPathWithGemini = async (
       console.error("Parsed data does not conform to LearningPath structure:", learningPathData);
       throw new Error("AI response format is invalid.");
     }
-
   } catch (error) {
-    console.error("Error calling Gemini API:", error);
+    console.error("Error calling Gemini API for learning path:", error);
     throw error; // Re-throw for the component to handle
   }
 };
 
 
+/**
+ * Fetches a grounded answer from the Gemini API using Google Search.
+ * @param query The query to search for.
+ * @param apiKey The Google Gemini API key.
+ * @returns An object containing the AI's text response and a list of sources.
+ */
 export const getGroundedAnswer = async (
   query: string,
-  apiKey: string | null
+  apiKey: string
 ): Promise<{ text: string; sources: GroundingChunk[] }> => {
-  if (!apiKey) {
-    console.error(API_KEY_ERROR_MESSAGE);
-    throw new Error(API_KEY_ERROR_MESSAGE);
-  }
-
   const ai = new GoogleGenAI({ apiKey });
   
   try {
     const response: GenerateContentResponse = await ai.models.generateContent({
-      model: GEMINI_MODEL_TEXT, // Ensure this model supports grounding if needed, or adjust. Gemini Flash is good.
-      contents: query,
+      model: GEMINI_MODEL_TEXT,
+      contents: `Provide a concise summary and explanation for the topic: "${query}".`,
       config: {
         tools: [{googleSearch: {}}], // Enable Google Search grounding
       },
@@ -108,6 +102,3 @@ export const getGroundedAnswer = async (
     throw error;
   }
 };
-
-// Note: The actual Gemini API calls for this project are primarily within KaziraLearnMVP.tsx.
-// This file serves as a structural example for service organization.
