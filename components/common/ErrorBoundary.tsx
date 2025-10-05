@@ -32,6 +32,7 @@ class ErrorBoundary extends Component<Props, State> {
 
   public render() {
     const { hasError, error } = this.state;
+    // Fix: Destructuring `this.props` was causing a TypeScript error. Accessing `this.props.children` directly resolves it.
     const { children } = this.props;
 
     if (hasError) {

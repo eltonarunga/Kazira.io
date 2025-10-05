@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LearningPath, SkillLevel, WeeklyPlan, LearningTask, GroundingChunk } from '../types';
@@ -27,7 +26,7 @@ const KaziraLearnMVP: React.FC = () => {
       return;
     }
     if (!apiKey) {
-      setError(API_KEY_ERROR_MESSAGE);
+      // Button is disabled, but this is a safeguard. The banner already shows the main error.
       return;
     }
 
@@ -40,11 +39,23 @@ const KaziraLearnMVP: React.FC = () => {
       if (parsedPath) {
         setLearningPath(parsedPath);
       } else {
-        setError("Received an unexpected format from AI. Please try again.");
+        setError("The AI generated a response in an unexpected format. Please try refining your request and generate again.");
       }
     } catch (err) {
       console.error("Error generating learning path:", err);
-      setError("Sorry, an error occurred while generating your learning path. Please try again.");
+      let friendlyError = "Sorry, an error occurred while generating your learning path. Please check your internet connection and try again.";
+      if (err instanceof Error) {
+          if (err.message.toLowerCase().includes('api key')) {
+              friendlyError = "The AI service is not configured correctly. The provided API key is invalid or missing.";
+          } else if (err.message.includes('429') || err.message.toLowerCase().includes('quota')) {
+              friendlyError = "You have exceeded the usage limit for the AI service. Please try again later.";
+          } else if (err.message.includes('500') || err.message.includes('503')) {
+              friendlyError = "The AI service is temporarily unavailable. Please try again in a few moments.";
+          } else if (err.message.includes("AI response format is invalid")) {
+              friendlyError = "The AI returned a response in an unexpected format. This can happen sometimes. Try modifying your interests slightly and generating again.";
+          }
+      }
+      setError(friendlyError);
     } finally {
       setIsLoading(false);
     }
@@ -53,6 +64,7 @@ const KaziraLearnMVP: React.FC = () => {
   const handleGroundedSearch = useCallback(async (query: string) => {
     if (!apiKey) {
         setGroundedSearchError(API_KEY_ERROR_MESSAGE);
+        setIsResourceModalOpen(true);
         return;
     }
     setGroundedSearchQuery(query);
@@ -66,7 +78,17 @@ const KaziraLearnMVP: React.FC = () => {
         setGroundedSearchResult(result);
     } catch (err) {
         console.error("Error during grounded search:", err);
-        setGroundedSearchError("Sorry, an error occurred while searching for resources. Please try again.");
+        let friendlyError = "Sorry, an error occurred while searching for resources. Please try again.";
+        if (err instanceof Error) {
+            if (err.message.toLowerCase().includes('api key')) {
+                friendlyError = "The AI service is not configured correctly. The provided API key is invalid or missing.";
+            } else if (err.message.includes('429') || err.message.toLowerCase().includes('quota')) {
+                friendlyError = "You have exceeded the usage limit for the AI service. Please try again later.";
+            } else if (err.message.includes('500') || err.message.includes('503')) {
+                friendlyError = "The AI service is temporarily unavailable. Please try again in a few moments.";
+            }
+        }
+        setGroundedSearchError(friendlyError);
     } finally {
         setIsGroundedSearchLoading(false);
     }
@@ -90,8 +112,9 @@ const KaziraLearnMVP: React.FC = () => {
       </motion.div>
 
       {!apiKey && (
-        <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md text-center">
-          {API_KEY_ERROR_MESSAGE} Please set up your API key to use this feature.
+        <div className="mb-8 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 rounded-md text-center shadow" role="alert">
+          <p className="font-bold">AI Features Disabled</p>
+          <p className="text-sm">{API_KEY_ERROR_MESSAGE}</p>
         </div>
       )}
 
@@ -201,7 +224,7 @@ const KaziraLearnMVP: React.FC = () => {
                                     onClick={() => handleGroundedSearch(resource)}
                                     className="ml-4 text-xs px-2 py-1 flex-shrink-0"
                                     isLoading={isGroundedSearchLoading && groundedSearchQuery === resource}
-                                    disabled={isGroundedSearchLoading}
+                                    disabled={isGroundedSearchLoading || !apiKey}
                                   >
                                     Find Resources
                                   </Button>
