@@ -1,7 +1,7 @@
 
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { LearningPath, SkillLevel, Candidate, GroundingChunk } from '../types';
-import { GEMINI_MODEL_TEXT, API_KEY_ERROR_MESSAGE } from "../constants";
+import { GEMINI_MODEL_TEXT, GEMINI_MODEL_PRO } from "../constants";
 
 /**
  * Parses the Gemini API response text to extract JSON content.
@@ -30,25 +30,35 @@ const parseJsonFromText = <T,>(responseText: string): T | null => {
  * @param interests The user's interests.
  * @param skillLevel The user's skill level.
  * @param apiKey The Google Gemini API key.
+ * @param useThinkingMode Whether to use the advanced model with a higher thinking budget.
  * @returns A LearningPath object or null if an error occurs.
  */
 export const generateLearningPath = async (
   interests: string,
   skillLevel: SkillLevel,
-  apiKey: string
+  apiKey: string,
+  useThinkingMode: boolean
 ): Promise<LearningPath | null> => {
   const ai = new GoogleGenAI({ apiKey });
 
+  const modelName = useThinkingMode ? GEMINI_MODEL_PRO : GEMINI_MODEL_TEXT;
+
   const prompt = `As an AI skills coach, generate a 4-week learning plan for someone interested in "${interests}" and sustainability innovation, tailored to their skill level: ${skillLevel}. The plan should be structured weekly, with daily actionable tasks or learning resources. Output the plan as a single, valid JSON object with keys: "title" (string), "skillLevel" (string, e.g., "beginner"), "interests" (string, reflecting the input), and "weeklyPlan" (array of objects). Each object in "weeklyPlan" should represent a week and have keys: "week" (number), "summary" (string), and "dailyTasks" (array of objects). Each "dailyTasks" object should have keys: "day" (string, e.g., "Monday"), "task" (string), and optionally "resources" (array of strings, for URLs or book titles). Ensure the entire output is strictly a single JSON object, without any surrounding text or markdown.`;
+  
+  const config: any = {
+    responseMimeType: "application/json",
+    temperature: 0.7,
+  };
+
+  if (useThinkingMode) {
+    config.thinkingConfig = { thinkingBudget: 32768 };
+  }
 
   try {
     const response: GenerateContentResponse = await ai.models.generateContent({
-      model: GEMINI_MODEL_TEXT,
+      model: modelName,
       contents: prompt,
-      config: {
-        responseMimeType: "application/json",
-        temperature: 0.7,
-      },
+      config: config,
     });
     
     const learningPathData = parseJsonFromText<LearningPath>(response.text);
@@ -99,6 +109,29 @@ export const getGroundedAnswer = async (
 
   } catch (error) {
     console.error("Error calling Gemini API with grounding:", error);
+    throw error;
+  }
+};
+
+
+/**
+ * Generates a professional bio for a user.
+ * @param name The user's name.
+ * @param apiKey The Google Gemini API key.
+ * @returns A string containing the generated bio.
+ */
+export const generateBio = async (name: string, apiKey: string): Promise<string> => {
+  const ai = new GoogleGenAI({ apiKey });
+  const prompt = `Write a short, professional, and slightly witty bio (around 40-60 words) for a person named ${name}. They are a forward-thinking professional interested in AI, technology, and future skills. Write it in the first person.`;
+
+  try {
+    const response = await ai.models.generateContent({
+        model: GEMINI_MODEL_TEXT, // Use flash for speed
+        contents: prompt
+    });
+    return response.text.trim();
+  } catch (error) {
+    console.error("Error generating bio:", error);
     throw error;
   }
 };

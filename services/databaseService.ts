@@ -1,3 +1,4 @@
+
 import { User } from '../types';
 
 // In a real serverless backend, these would be database collections (e.g., in Firestore or DynamoDB).
@@ -58,7 +59,7 @@ export const loginUser = async (email: string, password?: string): Promise<User 
     // User not found, simulate registration
     const id = `user_${Date.now()}`;
     const name = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    user = { id, name, email };
+    user = { id, name, email, bio: '' };
     db[id] = user;
     saveUsersDB(db);
   }
@@ -111,8 +112,12 @@ export const updateUserProfile = async (userId: string, updatedData: Partial<Use
     return simulate(null);
   }
 
-  // Only allow updating certain fields (e.g., name).
-  const newUserData = { ...user, name: updatedData.name || user.name };
+  // Allow updating name and bio.
+  const newUserData = { 
+    ...user,
+    name: updatedData.name !== undefined ? updatedData.name : user.name,
+    bio: updatedData.bio !== undefined ? updatedData.bio : user.bio,
+  };
   db[userId] = newUserData;
   saveUsersDB(db);
 

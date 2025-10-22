@@ -11,9 +11,16 @@ interface State {
 }
 
 class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false,
-  };
+  // Fix: Replaced public class field for state with a constructor.
+  // This is an alternative, more established syntax that can avoid potential
+  // issues with build toolchains that may not fully support class fields, which
+  // could lead to incorrect type inference on the component instance.
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      hasError: false,
+    };
+  }
 
   public static getDerivedStateFromError(error: Error): State {
     // Update state so the next render will show the fallback UI.
@@ -32,16 +39,14 @@ class ErrorBoundary extends Component<Props, State> {
 
   public render() {
     const { hasError, error } = this.state;
-    // Fix: Destructuring `this.props` was causing a TypeScript error. Accessing `this.props.children` directly resolves it.
-    const { children } = this.props;
 
     if (hasError) {
       // You can render any custom fallback UI
       return (
         <div className="container mx-auto px-4 py-16 text-center" role="alert">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-8 rounded-lg relative max-w-lg mx-auto shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">Oops! Something went wrong.</h2>
-            <p className="mb-6">We've encountered an unexpected error. Please try refreshing the page to continue.</p>
+            <h2 className="text-2xl font-bold mb-4">We've Hit a Snag!</h2>
+            <p className="mb-6">An unexpected error occurred. Our team has been notified, but a quick refresh of the page often fixes the issue.</p>
             <details className="text-left text-sm bg-red-50 p-3 rounded-md mb-6 max-w-full overflow-auto">
               <summary className="cursor-pointer font-semibold">Error Details</summary>
               <pre className="mt-2 whitespace-pre-wrap break-all font-mono text-xs">
@@ -55,14 +60,14 @@ class ErrorBoundary extends Component<Props, State> {
               variant="secondary"
               className="bg-red-600 hover:bg-red-700 focus:ring-red-500"
             >
-              Try Again
+              Refresh Page
             </Button>
           </div>
         </div>
       );
     }
 
-    return children;
+    return this.props.children;
   }
 }
 

@@ -1,7 +1,11 @@
+
 import { NavItem } from './types';
 
 export const API_KEY_ERROR_MESSAGE = "AI features are currently unavailable due to a configuration issue. Please contact support if you believe this is an error.";
 export const GEMINI_MODEL_TEXT = "gemini-2.5-flash";
+export const GEMINI_MODEL_PRO = "gemini-2.5-pro";
+export const GEMINI_MODEL_FLASH_LITE = "gemini-flash-lite-latest";
+
 
 const JOB_SCANNER_URL = "https://opal.withgoogle.com/?flow=drive:/1g5EsPt18QZYsNAcaE1f9KgmCnWOQEvin&shared&mode=app";
 

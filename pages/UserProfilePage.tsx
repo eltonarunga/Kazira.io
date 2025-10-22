@@ -5,24 +5,42 @@ import { useAuth } from '../hooks/useAuth';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import { User } from '../types';
+import { generateBio } from '../services/geminiService';
 
 const UserProfilePage: React.FC = () => {
   const { user, updateUser } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState<Partial<User>>({ name: '', email: '' });
+  const [formData, setFormData] = useState<Partial<User>>({ name: '', email: '', bio: '' });
   const [isSaving, setIsSaving] = useState(false);
+  const [isGeneratingBio, setIsGeneratingBio] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [apiKey] = useState<string | null>(process.env.API_KEY || null);
 
   useEffect(() => {
     if (user) {
-      setFormData({ name: user.name, email: user.email });
+      setFormData({ name: user.name, email: user.email, bio: user.bio || '' });
     }
   }, [user]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleGenerateBio = async () => {
+    if (!user || !apiKey) return;
+    setIsGeneratingBio(true);
+    setError('');
+    try {
+        const bio = await generateBio(user.name, apiKey);
+        setFormData(prev => ({ ...prev, bio }));
+    } catch (err) {
+        console.error("Bio generation error:", err);
+        setError("Could not generate bio at this time. Please try again.");
+    } finally {
+        setIsGeneratingBio(false);
+    }
   };
 
   const handleSaveChanges = async (e: React.FormEvent) => {
@@ -32,17 +50,17 @@ const UserProfilePage: React.FC = () => {
     setIsSaving(true);
     setError('');
     try {
-      const updatedUser = await updateUser({ name: formData.name });
+      const updatedUser = await updateUser({ name: formData.name, bio: formData.bio });
       if (updatedUser) {
         setIsEditing(false);
         setShowSuccess(true);
         setTimeout(() => setShowSuccess(false), 3000);
       } else {
-        setError("Failed to update profile. Please try again.");
+        setError("We couldn't save your changes. Please check your connection and try again.");
       }
     } catch (err) {
       console.error("Profile update error:", err);
-      setError("An unexpected error occurred while updating your profile.");
+      setError("An unexpected error occurred while saving. Please try again in a moment.");
     } finally {
       setIsSaving(false);
     }
@@ -50,7 +68,7 @@ const UserProfilePage: React.FC = () => {
   
   const handleCancel = () => {
     if (user) {
-      setFormData({ name: user.name, email: user.email });
+      setFormData({ name: user.name, email: user.email, bio: user.bio || '' });
     }
     setIsEditing(false);
     setError('');
@@ -126,6 +144,36 @@ const UserProfilePage: React.FC = () => {
                     title="Email address cannot be changed."
                   />
                 </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-center mb-1">
+                    <label htmlFor="bio" className="block text-sm font-medium text-gray-700">Bio</label>
+                    {isEditing && (
+                        <Button
+                            type="button"
+                            size="sm"
+                            variant="outline"
+                            onClick={handleGenerateBio}
+                            isLoading={isGeneratingBio}
+                            disabled={isSaving || isGeneratingBio || !apiKey}
+                            className="text-xs px-2 py-1"
+                        >
+                           {isGeneratingBio ? 'Generating...' : 'Generate with AI ✨'}
+                        </Button>
+                    )}
+                </div>
+                <textarea
+                    name="bio"
+                    id="bio"
+                    rows={4}
+                    className={`w-full px-4 py-2 border rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 ${!isEditing ? 'bg-gray-100 text-gray-500' : 'border-gray-300'}`}
+                    value={formData.bio || ''}
+                    onChange={handleInputChange}
+                    disabled={!isEditing || isSaving}
+                    aria-readonly={!isEditing}
+                    placeholder="Tell us a little about yourself..."
+                />
               </div>
             </div>
 

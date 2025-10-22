@@ -1,3 +1,4 @@
+
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LearningPath, SkillLevel, WeeklyPlan, LearningTask, GroundingChunk } from '../types';
@@ -9,6 +10,7 @@ import { API_KEY_ERROR_MESSAGE } from '../constants';
 const KaziraLearnMVP: React.FC = () => {
   const [interests, setInterests] = useState<string>('');
   const [skillLevel, setSkillLevel] = useState<SkillLevel>(SkillLevel.BEGINNER);
+  const [useThinkingMode, setUseThinkingMode] = useState<boolean>(false);
   const [learningPath, setLearningPath] = useState<LearningPath | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -35,7 +37,7 @@ const KaziraLearnMVP: React.FC = () => {
     setLearningPath(null);
 
     try {
-      const parsedPath = await generateLearningPathFromService(interests, skillLevel, apiKey);
+      const parsedPath = await generateLearningPathFromService(interests, skillLevel, apiKey, useThinkingMode);
       if (parsedPath) {
         setLearningPath(parsedPath);
       } else {
@@ -43,23 +45,24 @@ const KaziraLearnMVP: React.FC = () => {
       }
     } catch (err) {
       console.error("Error generating learning path:", err);
-      let friendlyError = "Sorry, an error occurred while generating your learning path. Please check your internet connection and try again.";
+      let friendlyError = "Oops! Something went wrong. Please check your internet connection and try again.";
       if (err instanceof Error) {
-          if (err.message.toLowerCase().includes('api key')) {
-              friendlyError = "The AI service is not configured correctly. The provided API key is invalid or missing.";
-          } else if (err.message.includes('429') || err.message.toLowerCase().includes('quota')) {
-              friendlyError = "You have exceeded the usage limit for the AI service. Please try again later.";
-          } else if (err.message.includes('500') || err.message.includes('503')) {
-              friendlyError = "The AI service is temporarily unavailable. Please try again in a few moments.";
-          } else if (err.message.includes("AI response format is invalid")) {
-              friendlyError = "The AI returned a response in an unexpected format. This can happen sometimes. Try modifying your interests slightly and generating again.";
+          const errorMessage = err.message.toLowerCase();
+          if (errorMessage.includes('api key')) {
+              friendlyError = "We're having trouble connecting to the AI service due to a configuration issue. Please try again later or contact support if the problem persists.";
+          } else if (errorMessage.includes('429') || errorMessage.includes('quota')) {
+              friendlyError = "It looks like the AI service is very popular right now! We've hit our request limit. Please try again in a little while.";
+          } else if (errorMessage.includes('500') || errorMessage.includes('503')) {
+              friendlyError = "The AI service is temporarily unavailable. We're on it! Please try again in a few moments.";
+          } else if (errorMessage.includes("ai response format is invalid")) {
+              friendlyError = "The AI gave a response we couldn't quite understand. Could you try rephrasing your interests? Being more specific often helps!";
           }
       }
       setError(friendlyError);
     } finally {
       setIsLoading(false);
     }
-  }, [interests, skillLevel, apiKey]);
+  }, [interests, skillLevel, apiKey, useThinkingMode]);
   
   const handleGroundedSearch = useCallback(async (query: string) => {
     if (!apiKey) {
@@ -78,14 +81,15 @@ const KaziraLearnMVP: React.FC = () => {
         setGroundedSearchResult(result);
     } catch (err) {
         console.error("Error during grounded search:", err);
-        let friendlyError = "Sorry, an error occurred while searching for resources. Please try again.";
+        let friendlyError = "Sorry, we couldn't search for resources at this time. Please check your internet connection and try again.";
         if (err instanceof Error) {
-            if (err.message.toLowerCase().includes('api key')) {
-                friendlyError = "The AI service is not configured correctly. The provided API key is invalid or missing.";
-            } else if (err.message.includes('429') || err.message.toLowerCase().includes('quota')) {
-                friendlyError = "You have exceeded the usage limit for the AI service. Please try again later.";
-            } else if (err.message.includes('500') || err.message.includes('503')) {
-                friendlyError = "The AI service is temporarily unavailable. Please try again in a few moments.";
+            const errorMessage = err.message.toLowerCase();
+            if (errorMessage.includes('api key')) {
+                friendlyError = "We're having trouble connecting to the AI search service due to a configuration issue. Please try again later.";
+            } else if (errorMessage.includes('429') || errorMessage.includes('quota')) {
+                friendlyError = "The AI search service is very busy right now. Please try again in a little while.";
+            } else if (errorMessage.includes('500') || errorMessage.includes('503')) {
+                friendlyError = "The AI search service is temporarily unavailable. Please try again in a few moments.";
             }
         }
         setGroundedSearchError(friendlyError);
@@ -141,7 +145,7 @@ const KaziraLearnMVP: React.FC = () => {
           />
         </div>
 
-        <div className="mb-8">
+        <div className="mb-6">
           <label htmlFor="skillLevel" className="block text-sm font-medium text-gray-700 mb-1">
             Your current skill level:
           </label>
@@ -156,6 +160,23 @@ const KaziraLearnMVP: React.FC = () => {
               <option key={level} value={level} className="capitalize">{level.charAt(0).toUpperCase() + level.slice(1)}</option>
             ))}
           </select>
+        </div>
+
+        <div className="mb-8 flex items-center justify-center space-x-3 bg-gray-50 p-3 rounded-md">
+          <input
+            type="checkbox"
+            id="thinkingMode"
+            checked={useThinkingMode}
+            onChange={(e) => setUseThinkingMode(e.target.checked)}
+            className="h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500"
+            disabled={isLoading || !apiKey}
+          />
+          <div>
+            <label htmlFor="thinkingMode" className="block text-sm font-medium text-gray-800">
+              Enable Advanced "Thinking Mode"
+            </label>
+            <p className="text-xs text-gray-500">Uses a more powerful model for complex topics. May take longer.</p>
+          </div>
         </div>
 
         <Button type="submit" isLoading={isLoading} disabled={isLoading || !interests.trim() || !apiKey} className="w-full">

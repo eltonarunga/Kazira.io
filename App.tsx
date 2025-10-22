@@ -11,6 +11,7 @@ import KenyaFinalAIExam from './pages/KenyaFinalAIExam';
 import AIModelResults from './pages/AIModelResults';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import UserProfilePage from './pages/UserProfilePage';
+import Chatbot from './components/common/Chatbot';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -66,6 +67,7 @@ const App: React.FC = () => {
           </ErrorBoundary>
         </main>
         <Footer />
+        <Chatbot />
       </div>
     </HashRouter>
   );

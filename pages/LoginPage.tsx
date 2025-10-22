@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -23,11 +22,11 @@ const LoginPage: React.FC = () => {
       if (user) {
         navigate('/learn'); // Redirect to a protected page
       } else {
-        setError('Login failed. Please check your credentials.');
+        setError('Login failed. Please check your credentials. (Hint: any valid email/password will create an account if one does not exist.)');
       }
     } catch (err) {
       console.error("Login error:", err);
-      setError('An unexpected error occurred. Please try again.');
+      setError('An unexpected server error occurred. Please try again in a moment.');
     } finally {
       setIsLoading(false);
     }
@@ -42,7 +41,7 @@ const LoginPage: React.FC = () => {
       if (user) {
         navigate('/learn');
       } else {
-        setError('Could not log in as guest.');
+        setError('Could not log in as guest. Please try again in a moment.');
       }
     } catch (err) {
       console.error("Guest login error:", err);
