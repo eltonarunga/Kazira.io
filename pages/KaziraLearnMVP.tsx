@@ -6,6 +6,7 @@ import Button from '../components/common/Button';
 import Modal from '../components/common/Modal';
 import { getGroundedAnswer, generateLearningPath as generateLearningPathFromService } from '../services/geminiService';
 import { API_KEY_ERROR_MESSAGE } from '../constants';
+import { getFriendlyErrorMessage } from '../services/errorService';
 
 const KaziraLearnMVP: React.FC = () => {
   const [interests, setInterests] = useState<string>('');
@@ -45,20 +46,7 @@ const KaziraLearnMVP: React.FC = () => {
       }
     } catch (err) {
       console.error("Error generating learning path:", err);
-      let friendlyError = "Oops! Something went wrong. Please check your internet connection and try again.";
-      if (err instanceof Error) {
-          const errorMessage = err.message.toLowerCase();
-          if (errorMessage.includes('api key')) {
-              friendlyError = "We're having trouble connecting to the AI service due to a configuration issue. Please try again later or contact support if the problem persists.";
-          } else if (errorMessage.includes('429') || errorMessage.includes('quota')) {
-              friendlyError = "It looks like the AI service is very popular right now! We've hit our request limit. Please try again in a little while.";
-          } else if (errorMessage.includes('500') || errorMessage.includes('503')) {
-              friendlyError = "The AI service is temporarily unavailable. We're on it! Please try again in a few moments.";
-          } else if (errorMessage.includes("ai response format is invalid")) {
-              friendlyError = "The AI gave a response we couldn't quite understand. Could you try rephrasing your interests? Being more specific often helps!";
-          }
-      }
-      setError(friendlyError);
+      setError(getFriendlyErrorMessage(err));
     } finally {
       setIsLoading(false);
     }
@@ -81,18 +69,7 @@ const KaziraLearnMVP: React.FC = () => {
         setGroundedSearchResult(result);
     } catch (err) {
         console.error("Error during grounded search:", err);
-        let friendlyError = "Sorry, we couldn't search for resources at this time. Please check your internet connection and try again.";
-        if (err instanceof Error) {
-            const errorMessage = err.message.toLowerCase();
-            if (errorMessage.includes('api key')) {
-                friendlyError = "We're having trouble connecting to the AI search service due to a configuration issue. Please try again later.";
-            } else if (errorMessage.includes('429') || errorMessage.includes('quota')) {
-                friendlyError = "The AI search service is very busy right now. Please try again in a little while.";
-            } else if (errorMessage.includes('500') || errorMessage.includes('503')) {
-                friendlyError = "The AI search service is temporarily unavailable. Please try again in a few moments.";
-            }
-        }
-        setGroundedSearchError(friendlyError);
+        setGroundedSearchError(getFriendlyErrorMessage(err));
     } finally {
         setIsGroundedSearchLoading(false);
     }

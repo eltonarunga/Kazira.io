@@ -6,6 +6,7 @@ import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import { User } from '../types';
 import { generateBio } from '../services/geminiService';
+import { getFriendlyErrorMessage } from '../services/errorService';
 
 const UserProfilePage: React.FC = () => {
   const { user, updateUser } = useAuth();
@@ -37,7 +38,7 @@ const UserProfilePage: React.FC = () => {
         setFormData(prev => ({ ...prev, bio }));
     } catch (err) {
         console.error("Bio generation error:", err);
-        setError("Could not generate bio at this time. Please try again.");
+        setError(getFriendlyErrorMessage(err));
     } finally {
         setIsGeneratingBio(false);
     }

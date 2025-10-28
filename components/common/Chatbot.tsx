@@ -5,6 +5,7 @@ import { GoogleGenAI, Chat } from "@google/genai";
 import { ChatMessage } from '../../types';
 import { GEMINI_MODEL_FLASH_LITE } from '../../constants';
 import Button from './Button';
+import { getFriendlyErrorMessage } from '../../services/errorService';
 
 const Chatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,8 +60,19 @@ const Chatbot: React.FC = () => {
         }
     } catch (err) {
         console.error("Chat error:", err);
-        setError("Sorry, I'm having trouble connecting right now. Please try again later.");
-        setMessages(prev => [...prev, { role: 'model', text: 'Oops! Something went wrong.' }]);
+        const friendlyError = getFriendlyErrorMessage(err);
+        setError(friendlyError);
+        setMessages(prev => {
+            const lastMessage = prev[prev.length - 1];
+            // If the last message is our streaming placeholder, update it with the error.
+            if (lastMessage && lastMessage.role === 'model' && lastMessage.text === '...') {
+                const newMessages = [...prev];
+                newMessages[newMessages.length - 1].text = `Oops! ${friendlyError}`;
+                return newMessages;
+            }
+            // Otherwise, add a new error message.
+            return [...prev, { role: 'model', text: `Oops! ${friendlyError}` }];
+        });
     } finally {
         setIsLoading(false);
     }
