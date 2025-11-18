@@ -8,7 +8,8 @@ import { getGroundedAnswer, generateLearningPath as generateLearningPathFromServ
 import { API_KEY_ERROR_MESSAGE } from '../constants';
 import { getFriendlyErrorMessage } from '../services/errorService';
 
-const Accordion: React.FC<{ title: React.ReactNode; children: React.ReactNode; defaultOpen?: boolean }> = ({ title, children, defaultOpen = false }) => {
+// FIX: Changed Accordion to a React.FC to correctly handle children and key props.
+const Accordion: React.FC<{ title: React.ReactNode; defaultOpen?: boolean }> = ({ title, children, defaultOpen = false }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
@@ -45,7 +46,7 @@ const Accordion: React.FC<{ title: React.ReactNode; children: React.ReactNode; d
 };
 
 
-const KaziraLearnMVP: React.FC = () => {
+const KaziraLearnMVP = () => {
   const [interests, setInterests] = useState<string>('');
   const [skillLevel, setSkillLevel] = useState<SkillLevel>(SkillLevel.BEGINNER);
   const [useThinkingMode, setUseThinkingMode] = useState<boolean>(false);

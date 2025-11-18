@@ -8,7 +8,7 @@ import { User } from '../types';
 import { generateBio } from '../services/geminiService';
 import { getFriendlyErrorMessage } from '../services/errorService';
 
-const UserProfilePage: React.FC = () => {
+const UserProfilePage = () => {
   const { user, updateUser } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<Partial<User>>({ name: '', email: '', bio: '' });

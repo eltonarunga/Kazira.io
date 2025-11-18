@@ -1147,7 +1147,7 @@ Metaphorically, learning as energy transfer: Ignorance (high entropy state) to m
 Over a decade (3.15 \\times 10^8 s), power \\( P = E / t \\approx 10^8 \\) W (100 MW), feasible via efficient AI (e.g., data centers powered by Kenya's renewables). Calculation: \\( \\Delta I \\) estimated from compressing education (e.g., 100 GB/person), but minimal via targeted learning paths.` },
       { q: 3, a: `**AI-Driven Precision Farming: Increasing Yields Without Collapsing Prices**
 
-Model as nonlinear dynamic system: Yield \\( y(t) = f(x, c, a) \\), where \\( x \\) is inputs (seeds, water), \\( c \\) climate chaos (stochastic), \\( a \\) AI optimization. Dynamics: \\( \\dot{y} = ry(1 - y/K) + a \\cdot g(c) - \\delta y \\), logistic growth with AI term \\( a = \\beta (data-driven precision, e.g., drone irrigation).
+Model as nonlinear dynamic system: Yield \\( y(t) = f(x, c, a) \\), where \\( x \\) is inputs (seeds, water), \\( c \\) climate chaos (stochastic), \\( a \\) is AI optimization. Dynamics: \\( \\dot{y} = ry(1 - y/K) + a \\cdot g(c) - \\delta y \\), logistic growth with AI term \\( a = \\beta (data-driven precision, e.g., drone irrigation).
 
 Price equilibrium: Supply \\( S = \\sum y_i \\), demand \\( D = p^{-\\eta} \\). AI increases \\( y \\) by 20-50% (e.g., via predictive analytics), but to avoid collapse, use feedback: If \\( S > D \\), AI shifts to value-add (e.g., export crops). Stability: Solve Lyapunov \\( V = (y - y^*)^2 \\), stable if AI damps chaos (eigenvalues <0). Under climate (e.g., AR(1) noise), AI reduces variance by 30%, maintaining \\( p^* = (S/D)^{1/\\eta} \\) via adaptive planting.
 
@@ -1317,7 +1317,7 @@ The death of a language might be seen as a loss of cultural heritage. Efforts to
 
 const sortedModels = [...modelResultsData].sort((a, b) => b.score - a.score);
 
-const Medal: React.FC<{ rank: number }> = ({ rank }) => {
+const Medal = ({ rank }: { rank: number }) => {
     const baseClasses = "mr-3 font-bold w-6 h-6 flex-shrink-0 flex items-center justify-center rounded-full text-xs";
     if (rank === 0) return <div className={`${baseClasses} bg-black text-white`} aria-label="Rank 1">1</div>;
     if (rank === 1) return <div className={`${baseClasses} bg-gray-700 text-white`} aria-label="Rank 2">2</div>;
@@ -1326,7 +1326,7 @@ const Medal: React.FC<{ rank: number }> = ({ rank }) => {
 };
 
 
-const AIModelResults: React.FC = () => {
+const AIModelResults = () => {
     const [openModel, setOpenModel] = useState<string | null>(sortedModels[0]?.name || null);
 
     const toggleModel = (name: string) => {

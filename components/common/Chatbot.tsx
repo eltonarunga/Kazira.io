@@ -7,7 +7,7 @@ import { GEMINI_MODEL_FLASH_LITE } from '../../constants';
 import Button from './Button';
 import { getFriendlyErrorMessage } from '../../services/errorService';
 
-const BotAvatar: React.FC = () => (
+const BotAvatar = () => (
     <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center flex-shrink-0 mr-3">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
             <path d="M10 3.5a1.5 1.5 0 011.5 1.5v.585a3.501 3.501 0 015.415 2.136A3.5 3.5 0 0115.5 13H14a1 1 0 01-1-1v-1a3.5 3.5 0 01-6.494-1.408A3.5 3.5 0 0110 3.5z"/>
@@ -16,7 +16,7 @@ const BotAvatar: React.FC = () => (
     </div>
 );
 
-const Chatbot: React.FC = () => {
+const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');

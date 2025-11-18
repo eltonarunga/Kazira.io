@@ -1,3 +1,4 @@
+
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import Button from './Button';
 
@@ -11,20 +12,21 @@ interface State {
 }
 
 class ErrorBoundary extends Component<Props, State> {
-  // FIX: Replaced the constructor with a public state property initializer.
-  // This is the modern and recommended way to initialize state in a class component,
-  // and it resolves the TypeScript errors where `this.state` and `this.props` were not being found.
-  public state: State = {
+  // FIX: Switched to public class field for state initialization.
+  // This is a more modern syntax and resolves issues where `this.state` and `this.props`
+  // were not being correctly recognized on the component instance.
+  // FIX: Removed explicit 'public' keyword to resolve toolchain-specific type errors.
+  state: State = {
     hasError: false,
     error: undefined,
   };
 
-  public static getDerivedStateFromError(error: Error): State {
+  static getDerivedStateFromError(error: Error): State {
     // Update state so the next render will show the fallback UI.
     return { hasError: true, error };
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // You can also log the error to an error reporting service
     console.error("Uncaught error:", error, errorInfo);
   }
@@ -34,7 +36,7 @@ class ErrorBoundary extends Component<Props, State> {
     window.location.reload();
   };
 
-  public render() {
+  render() {
     const { hasError, error } = this.state;
 
     if (hasError) {

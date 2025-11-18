@@ -13,11 +13,8 @@ import ErrorBoundary from './components/common/ErrorBoundary';
 import UserProfilePage from './pages/UserProfilePage';
 import Chatbot from './components/common/Chatbot';
 
-interface ProtectedRouteProps {
-  children: React.ReactNode;
-}
-
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
+// FIX: Changed to React.FC to correctly handle children prop type.
+const ProtectedRoute: React.FC = ({ children }) => {
   const { isAuthenticated } = useAuth();
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
@@ -25,7 +22,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   return <>{children}</>;
 };
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <HashRouter>
       <div className="flex flex-col min-h-screen">

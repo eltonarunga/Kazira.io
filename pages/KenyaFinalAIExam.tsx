@@ -53,6 +53,7 @@ interface ExamQuestionProps {
   content: string;
 }
 
+// FIX: Changed to React.FC to correctly handle key prop in .map().
 const ExamQuestion: React.FC<ExamQuestionProps> = ({ number, title, content }) => (
   <motion.div
     initial={{ opacity: 0, x: -30 }}
@@ -70,7 +71,7 @@ const ExamQuestion: React.FC<ExamQuestionProps> = ({ number, title, content }) =
   </motion.div>
 );
 
-const KenyaFinalAIExam: React.FC = () => {
+const KenyaFinalAIExam = () => {
   return (
     <div className="bg-gray-100 py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">

@@ -11,7 +11,7 @@ interface CardProps {
   onClick?: () => void;
 }
 
-const Card: React.FC<CardProps> = ({ title, description, image, children, className = '', onClick }) => {
+const Card = ({ title, description, image, children, className = '', onClick }: CardProps) => {
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }

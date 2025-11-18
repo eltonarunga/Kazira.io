@@ -1,4 +1,5 @@
-import React, { createContext, useState, ReactNode, useEffect, useCallback } from 'react';
+
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 import { User } from '../types';
 import * as db from '../services/databaseService';
 
@@ -13,11 +14,8 @@ interface AuthContextType {
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-interface AuthProviderProps {
-  children: ReactNode;
-}
-
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+// FIX: Changed to React.FC to correctly handle children prop type.
+export const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 

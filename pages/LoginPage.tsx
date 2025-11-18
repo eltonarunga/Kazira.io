@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../hooks/useAuth';
 import Button from '../components/common/Button';
 
-const LoginPage: React.FC = () => {
+const LoginPage = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
   const [email, setEmail] = useState('');

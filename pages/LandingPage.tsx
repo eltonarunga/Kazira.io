@@ -7,7 +7,8 @@ import Card from '../components/common/Card';
 import Modal from '../components/common/Modal';
 import { addToWaitlist } from '../services/databaseService';
 
-const Section: React.FC<{ id: string; children: React.ReactNode; className?: string }> = ({ id, children, className = "" }) => (
+// FIX: Changed Section to a React.FC to correctly handle children prop type.
+const Section: React.FC<{ id: string; className?: string }> = ({ id, children, className = "" }) => (
   <motion.section 
     id={id} 
     className={`py-16 md:py-24 ${className}`}
@@ -22,7 +23,7 @@ const Section: React.FC<{ id: string; children: React.ReactNode; className?: str
   </motion.section>
 );
 
-const LandingPage: React.FC = () => {
+const LandingPage = () => {
   const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
   const [waitlistEmail, setWaitlistEmail] = useState('');
   const [waitlistSubmitted, setWaitlistSubmitted] = useState(false);

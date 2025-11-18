@@ -6,9 +6,9 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title: string;
-  children: React.ReactNode;
 }
 
+// FIX: Changed to React.FC and updated ModalProps to correctly handle children.
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   const backdropVariants = {
     visible: { opacity: 1 },

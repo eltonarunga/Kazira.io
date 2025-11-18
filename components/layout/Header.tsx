@@ -6,7 +6,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { NAV_ITEMS_LOGGED_IN, NAV_ITEMS_LOGGED_OUT, LANDING_PAGE_NAV_ITEMS } from '../../constants';
 import { NavItem } from '../../types';
 
-const KaziraLogo: React.FC = () => (
+const KaziraLogo = () => (
   <Link to="/" className="flex items-center space-x-2">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-8 h-8 text-black`}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.375a9.375 9.375 0 0 0 4.767-1.162M12 18.375a9.375 9.375 0 0 1-4.767-1.162M12 18.375v4.125M12 3.375A9.375 9.375 0 0 1 16.768 4.537M12 3.375A9.375 9.375 0 0 0 7.232 4.537M12 3.375V1.5M18.375 12a9.375 9.375 0 0 1-1.162 4.767M18.375 12a9.375 9.375 0 0 0-1.162-4.767M18.375 12H20.25M5.625 12a9.375 9.375 0 0 0 1.162 4.767M5.625 12a9.375 9.375 0 0 1 1.162-4.767M5.625 12H3.75m14.625-6.375C17.209 3.829 14.723 3 12 3s-5.209.829-6.375 2.625m12.75 0C19.171 6.791 20.25 9.277 20.25 12s-.829 5.209-2.625 6.375m-12.75 0C4.829 17.209 3.75 14.723 3.75 12s.829-5.209 2.625-6.375" />
@@ -15,7 +15,7 @@ const KaziraLogo: React.FC = () => (
   </Link>
 );
 
-const Header: React.FC = () => {
+const Header = () => {
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
