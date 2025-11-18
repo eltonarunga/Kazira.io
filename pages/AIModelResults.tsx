@@ -1318,10 +1318,11 @@ The death of a language might be seen as a loss of cultural heritage. Efforts to
 const sortedModels = [...modelResultsData].sort((a, b) => b.score - a.score);
 
 const Medal: React.FC<{ rank: number }> = ({ rank }) => {
-  if (rank === 0) return <span className="mr-2" role="img" aria-label="gold medal">🥇</span>;
-  if (rank === 1) return <span className="mr-2" role="img" aria-label="silver medal">🥈</span>;
-  if (rank === 2) return <span className="mr-2" role="img" aria-label="bronze medal">🥉</span>;
-  return <span className="mr-3 font-mono text-slate-400 w-6 text-center">{rank + 1}.</span>;
+    const baseClasses = "mr-3 font-bold w-6 h-6 flex-shrink-0 flex items-center justify-center rounded-full text-xs";
+    if (rank === 0) return <div className={`${baseClasses} bg-black text-white`} aria-label="Rank 1">1</div>;
+    if (rank === 1) return <div className={`${baseClasses} bg-gray-700 text-white`} aria-label="Rank 2">2</div>;
+    if (rank === 2) return <div className={`${baseClasses} bg-gray-500 text-white`} aria-label="Rank 3">3</div>;
+    return <div className={`mr-3 font-mono text-gray-400 w-6 text-center flex-shrink-0`}>{rank + 1}.</div>;
 };
 
 
@@ -1333,7 +1334,7 @@ const AIModelResults: React.FC = () => {
     };
 
     return (
-        <div className="bg-slate-50 py-16">
+        <div className="bg-gray-50 py-16">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
@@ -1341,10 +1342,10 @@ const AIModelResults: React.FC = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-12"
                 >
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-2">
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
                         AI Model Results on Kenya's Final AI Exam
                     </h1>
-                    <p className="text-lg text-slate-600">Comparing how different AI models tackled Kenya's Final Exam.</p>
+                    <p className="text-lg text-gray-600">Comparing how different AI models tackled Kenya's Final Exam.</p>
                 </motion.div>
 
                 {/* Leaderboard Section */}
@@ -1352,23 +1353,23 @@ const AIModelResults: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.5 }}
-                    className="bg-white p-6 sm:p-8 rounded-lg shadow-xl mb-12 border border-slate-200/80"
+                    className="bg-white p-6 sm:p-8 rounded-lg shadow-xl mb-12 border border-gray-200"
                 >
-                    <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">Leaderboard</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Leaderboard</h2>
                     <ol className="space-y-3">
                         {sortedModels.map((model, index) => {
                              const rankStyles = {
-                                0: 'bg-yellow-100 border-yellow-300',
-                                1: 'bg-slate-200 border-slate-300',
-                                2: 'bg-amber-200/50 border-amber-400/60',
+                                0: 'bg-gray-100 border-gray-300',
+                                1: 'bg-white border-gray-200',
+                                2: 'bg-white border-gray-200',
                             };
-                            const liClass = `flex justify-between items-center p-4 rounded-lg border ${rankStyles[index] || 'bg-slate-50 border-slate-200'}`;
+                            const liClass = `flex justify-between items-center p-4 rounded-lg border ${rankStyles[index] || 'bg-white border-gray-200'}`;
                             return (
                                 <li key={model.name} className={liClass}>
-                                    <span className="text-lg font-semibold text-slate-700 flex items-center">
+                                    <span className="text-lg font-semibold text-gray-800 flex items-center">
                                         <Medal rank={index} /> {model.name}
                                     </span>
-                                    <span className="text-lg font-bold text-slate-800 bg-white/60 px-3 py-1 rounded-full">{model.score}%</span>
+                                    <span className="text-lg font-bold text-gray-900 bg-white/60 px-3 py-1 rounded-full">{model.score}%</span>
                                 </li>
                             );
                         })}
@@ -1377,24 +1378,24 @@ const AIModelResults: React.FC = () => {
 
                 {/* See Results Section */}
                 <div>
-                    <h2 className="text-3xl font-bold text-slate-800 mb-8 text-center">See Full Results</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">See Full Results</h2>
                     <div className="space-y-4">
                         {modelResultsData.map((model) => (
-                            <div key={model.name} className="bg-white rounded-lg shadow-md overflow-hidden border border-slate-200/60">
+                            <div key={model.name} className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200/60">
                                 <button
                                     onClick={() => toggleModel(model.name)}
-                                    className="w-full flex justify-between items-center p-5 text-left focus:outline-none hover:bg-slate-50 transition-colors"
+                                    className="w-full flex justify-between items-center p-5 text-left focus:outline-none hover:bg-gray-50 transition-colors"
                                     aria-expanded={openModel === model.name}
                                     aria-controls={`answers-${model.name}`}
                                 >
-                                    <h3 className="text-xl font-semibold text-slate-800">{model.name}</h3>
+                                    <h3 className="text-xl font-semibold text-gray-900">{model.name}</h3>
                                     <div className="flex items-center">
-                                      <span className="text-lg font-bold text-slate-700 mr-4">{model.score}%</span>
+                                      <span className="text-lg font-bold text-gray-800 mr-4">{model.score}%</span>
                                       <motion.div
                                           animate={{ rotate: openModel === model.name ? -180 : 0 }}
                                           transition={{ duration: 0.3 }}
                                       >
-                                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                           </svg>
                                       </motion.div>
@@ -1410,15 +1411,15 @@ const AIModelResults: React.FC = () => {
                                             transition={{ duration: 0.4, ease: "easeInOut" }}
                                             className="overflow-hidden"
                                         >
-                                            <div className="p-5 border-t border-slate-200 bg-slate-50/50">
+                                            <div className="p-5 border-t border-gray-200 bg-gray-50/50">
                                                 <div className="space-y-6">
                                                     {model.answers.map(ans => (
                                                         <div key={ans.q}>
-                                                          <p className="font-semibold text-slate-700">Question {ans.q > 0 ? ans.q : 'N/A'}:</p>
-                                                          <div className="text-slate-600 mt-1 whitespace-pre-wrap prose prose-slate max-w-none">{ans.a}</div>
+                                                          <p className="font-semibold text-gray-800">Question {ans.q > 0 ? ans.q : 'N/A'}:</p>
+                                                          <div className="text-gray-700 mt-1 whitespace-pre-wrap prose prose-gray max-w-none">{ans.a}</div>
                                                         </div>
                                                     ))}
-                                                     {model.answers.length > 1 && model.answers.length < 8 && <p className="text-xs text-center text-slate-400 pt-4">Note: The model did not provide answers for all questions in this simulation.</p>}
+                                                     {model.answers.length > 1 && model.answers.length < 8 && <p className="text-xs text-center text-gray-400 pt-4">Note: The model did not provide answers for all questions in this simulation.</p>}
                                                 </div>
                                             </div>
                                         </motion.div>

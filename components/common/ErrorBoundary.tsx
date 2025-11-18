@@ -11,8 +11,9 @@ interface State {
 }
 
 class ErrorBoundary extends Component<Props, State> {
-  // FIX: The previous constructor-based state initialization was causing a type error where `this.props` was not recognized.
-  // Using a class field initializer for state resolves this issue.
+  // FIX: Replaced the constructor with a public state property initializer.
+  // This is the modern and recommended way to initialize state in a class component,
+  // and it resolves the TypeScript errors where `this.state` and `this.props` were not being found.
   public state: State = {
     hasError: false,
     error: undefined,
@@ -40,10 +41,10 @@ class ErrorBoundary extends Component<Props, State> {
       // You can render any custom fallback UI
       return (
         <div className="container mx-auto px-4 py-16 text-center" role="alert">
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-8 rounded-lg relative max-w-lg mx-auto shadow-lg">
+          <div className="bg-gray-100 border border-gray-400 text-gray-700 px-4 py-8 rounded-lg relative max-w-lg mx-auto shadow-lg">
             <h2 className="text-2xl font-bold mb-4">We've Hit a Snag!</h2>
             <p className="mb-6">An unexpected error occurred. Our team has been notified, but a quick refresh of the page often fixes the issue.</p>
-            <details className="text-left text-sm bg-red-50 p-3 rounded-md mb-6 max-w-full overflow-auto">
+            <details className="text-left text-sm bg-gray-200 p-3 rounded-md mb-6 max-w-full overflow-auto">
               <summary className="cursor-pointer font-semibold">Error Details</summary>
               <pre className="mt-2 whitespace-pre-wrap break-all font-mono text-xs">
                 <code>
@@ -53,8 +54,7 @@ class ErrorBoundary extends Component<Props, State> {
             </details>
             <Button
               onClick={this.handleRefresh}
-              variant="secondary"
-              className="bg-red-600 hover:bg-red-700 focus:ring-red-500"
+              variant="primary"
             >
               Refresh Page
             </Button>

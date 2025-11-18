@@ -1,10 +1,9 @@
 
 import React from 'react';
-import { KAZIRA_PRIMARY_COLOR } from '../../constants';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-900 text-slate-300">
+    <footer className="bg-black text-gray-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -29,13 +28,13 @@ const Footer: React.FC = () => {
             <div className="mt-6">
               <h4 className="text-md font-semibold text-white mb-2">Newsletter</h4>
               <form className="flex">
-                <input type="email" placeholder="Your email" className="w-full px-3 py-2 text-slate-800 rounded-l-md focus:outline-none focus:ring-2 focus:ring-sky-500 border-0" />
-                <button type="submit" className={`px-4 py-2 bg-sky-600 text-white rounded-r-md hover:bg-sky-700`}>Subscribe</button>
+                <input type="email" placeholder="Your email" className="w-full px-3 py-2 text-gray-900 rounded-l-md focus:outline-none focus:ring-2 focus:ring-gray-500 border-0" />
+                <button type="submit" className={`px-4 py-2 bg-gray-800 text-white rounded-r-md hover:bg-gray-700`}>Subscribe</button>
               </form>
             </div>
           </div>
         </div>
-        <div className="mt-8 border-t border-slate-700 pt-8 text-center text-sm">
+        <div className="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
           <p>&copy; {new Date().getFullYear()} Kazira.io. All rights reserved.</p>
         </div>
       </div>

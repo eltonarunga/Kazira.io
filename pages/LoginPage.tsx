@@ -53,25 +53,25 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center bg-slate-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
       <motion.div 
-        className="max-w-md w-full bg-white p-10 rounded-xl shadow-2xl border border-slate-200/80"
+        className="max-w-md w-full bg-white p-10 rounded-xl shadow-2xl border border-gray-200"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
         <div>
-          <h2 className={`mt-6 text-center text-3xl font-extrabold text-slate-800`}>
+          <h2 className={`mt-6 text-center text-3xl font-extrabold text-gray-900`}>
             Sign in to Kazira.io
           </h2>
-          <p className="mt-2 text-center text-sm text-slate-600">
+          <p className="mt-2 text-center text-sm text-gray-600">
             Access your personalized learning and automation tools.
             <br/>
             (This is a mock login: any email/password will create an account)
           </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-          {error && <p className="text-sm text-red-600 bg-red-100 p-3 rounded-md">{error}</p>}
+          {error && <p className="text-sm text-gray-800 bg-gray-100 p-3 rounded-md">{error}</p>}
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="email-address" className="sr-only">Email address</label>
@@ -83,7 +83,7 @@ const LoginPage: React.FC = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-slate-300 placeholder-slate-500 text-slate-900 rounded-t-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
                 disabled={isLoading}
               />
@@ -98,7 +98,7 @@ const LoginPage: React.FC = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-slate-300 placeholder-slate-500 text-slate-900 rounded-b-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
                 disabled={isLoading}
               />
@@ -115,10 +115,10 @@ const LoginPage: React.FC = () => {
         <div className="mt-6">
             <div className="relative">
                 <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div className="w-full border-t border-slate-300" />
+                    <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-slate-500">Or</span>
+                    <span className="px-2 bg-white text-gray-500">Or</span>
                 </div>
             </div>
         </div>
@@ -129,9 +129,9 @@ const LoginPage: React.FC = () => {
             </Button>
         </div>
         
-         <p className="mt-8 text-center text-sm text-slate-500">
+         <p className="mt-8 text-center text-sm text-gray-500">
             Don't have an account?{' '}
-            <a href="#/" className={`font-medium text-sky-700 hover:text-sky-600`}>
+            <a href="#/" className={`font-medium text-black hover:text-gray-700`}>
               Join the waitlist
             </a>
           </p>

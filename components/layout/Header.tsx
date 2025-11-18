@@ -8,10 +8,10 @@ import { NavItem } from '../../types';
 
 const KaziraLogo: React.FC = () => (
   <Link to="/" className="flex items-center space-x-2">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-8 h-8 text-slate-800`}>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-8 h-8 text-black`}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.375a9.375 9.375 0 0 0 4.767-1.162M12 18.375a9.375 9.375 0 0 1-4.767-1.162M12 18.375v4.125M12 3.375A9.375 9.375 0 0 1 16.768 4.537M12 3.375A9.375 9.375 0 0 0 7.232 4.537M12 3.375V1.5M18.375 12a9.375 9.375 0 0 1-1.162 4.767M18.375 12a9.375 9.375 0 0 0-1.162-4.767M18.375 12H20.25M5.625 12a9.375 9.375 0 0 0 1.162 4.767M5.625 12a9.375 9.375 0 0 1 1.162-4.767M5.625 12H3.75m14.625-6.375C17.209 3.829 14.723 3 12 3s-5.209.829-6.375 2.625m12.75 0C19.171 6.791 20.25 9.277 20.25 12s-.829 5.209-2.625 6.375m-12.75 0C4.829 17.209 3.75 14.723 3.75 12s.829-5.209 2.625-6.375" />
     </svg>
-    <span className="text-2xl font-bold text-slate-800">Kazira.io</span>
+    <span className="text-2xl font-bold text-black">Kazira.io</span>
   </Link>
 );
 
@@ -45,8 +45,8 @@ const Header: React.FC = () => {
   };
 
   const renderNavItem = (item: NavItem, isMobile: boolean) => {
-    const desktopClass = `text-slate-600 hover:text-slate-900 transition duration-150 ease-in-out font-medium`;
-    const mobileClass = `block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50`;
+    const desktopClass = `text-gray-600 hover:text-black transition duration-150 ease-in-out font-medium`;
+    const mobileClass = `block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-50`;
     const className = isMobile ? mobileClass : desktopClass;
 
     if (item.isExternal) {
@@ -90,7 +90,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50 border-b border-slate-200/60">
+    <header className="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50 border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <KaziraLogo />
@@ -99,7 +99,7 @@ const Header: React.FC = () => {
             {isAuthenticated && (
               <button
                 onClick={handleLogout}
-                className={`ml-4 px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-slate-800 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-500`}
+                className={`ml-4 px-4 py-2 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500`}
               >
                 Logout
               </button>
@@ -108,7 +108,7 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`text-slate-600 hover:text-slate-900 focus:outline-none`}
+              className={`text-gray-600 hover:text-black focus:outline-none`}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 {isMobileMenuOpen ? (
@@ -126,14 +126,14 @@ const Header: React.FC = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-white shadow-lg absolute w-full border-t border-slate-200"
+          className="md:hidden bg-white shadow-lg absolute w-full border-t border-gray-200"
         >
           <nav className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {currentNavItems.map((item) => renderNavItem(item, true))}
             {isAuthenticated && (
               <button
                 onClick={handleLogout}
-                className={`w-full mt-2 text-left block px-3 py-2 rounded-md text-base font-medium text-white bg-slate-800 hover:bg-slate-700`}
+                className={`w-full mt-2 text-left block px-3 py-2 rounded-md text-base font-medium text-white bg-black hover:bg-gray-800`}
               >
                 Logout
               </button>

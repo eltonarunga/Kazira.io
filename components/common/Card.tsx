@@ -21,13 +21,13 @@ const Card: React.FC<CardProps> = ({ title, description, image, children, classN
     <motion.div
       variants={cardVariants}
       whileHover={{ y: -5 }}
-      className={`bg-white shadow-lg rounded-lg overflow-hidden border border-slate-200/80 ${onClick ? 'cursor-pointer' : ''} ${className}`}
+      className={`bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 ${onClick ? 'cursor-pointer' : ''} ${className}`}
       onClick={onClick}
     >
       {image}
       <div className="p-6">
-        {title && <h3 className="text-xl font-semibold text-slate-800 mb-2">{title}</h3>}
-        {description && <p className="text-slate-600 text-sm mb-4">{description}</p>}
+        {title && <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>}
+        {description && <p className="text-gray-700 text-sm mb-4">{description}</p>}
         {children}
       </div>
     </motion.div>
