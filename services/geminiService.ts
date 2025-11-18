@@ -1,4 +1,15 @@
-
+/********************************************************************************
+ * SECURITY WARNING: PROTOTYPE ONLY
+ *
+ * This service communicates directly with the Google Gemini API from the client-side.
+ * This is done for demonstration purposes in a sandboxed environment.
+ *
+ * In a production application, you MUST NOT expose your API key in the frontend.
+ * Doing so would allow anyone to steal your key and use it at your expense.
+ *
+ * All API calls should be proxied through a secure backend server that holds the
+ * API key and manages requests.
+ ********************************************************************************/
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { LearningPath, SkillLevel, Candidate, GroundingChunk } from '../types';
 import { GEMINI_MODEL_TEXT, GEMINI_MODEL_PRO } from "../constants";

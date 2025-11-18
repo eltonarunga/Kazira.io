@@ -11,9 +11,8 @@ interface State {
 }
 
 class ErrorBoundary extends Component<Props, State> {
-  // Fix: Replaced the constructor with a public class field for state initialization.
-  // This is a more modern and concise syntax that resolves type inference issues
-  // which were causing errors about missing 'state' and 'props' properties.
+  // FIX: The previous constructor-based state initialization was causing a type error where `this.props` was not recognized.
+  // Using a class field initializer for state resolves this issue.
   public state: State = {
     hasError: false,
     error: undefined,

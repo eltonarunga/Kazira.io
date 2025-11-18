@@ -91,8 +91,8 @@ const UserProfilePage: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-8"
       >
-        <h1 className="text-4xl font-bold text-gray-800 mb-3">My Profile</h1>
-        <p className="text-lg text-gray-600">View and manage your personal information.</p>
+        <h1 className="text-4xl font-bold text-slate-800 mb-3">My Profile</h1>
+        <p className="text-lg text-slate-600">View and manage your personal information.</p>
       </motion.div>
       
       <div className="max-w-2xl mx-auto relative">
@@ -115,13 +115,13 @@ const UserProfilePage: React.FC = () => {
             <div className="space-y-6 p-4">
               {error && <p className="text-sm text-red-600 bg-red-100 p-3 rounded-md">{error}</p>}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
+                <label htmlFor="name" className="block text-sm font-medium text-slate-700">Full Name</label>
                 <div className="mt-1">
                   <input
                     type="text"
                     name="name"
                     id="name"
-                    className={`w-full px-4 py-2 border rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 ${!isEditing ? 'bg-gray-100 text-gray-500' : 'border-gray-300'}`}
+                    className={`w-full px-4 py-2 border rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500 ${!isEditing ? 'bg-slate-100 text-slate-500' : 'border-slate-300'}`}
                     value={formData.name || ''}
                     onChange={handleInputChange}
                     disabled={!isEditing || isSaving}
@@ -132,13 +132,13 @@ const UserProfilePage: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
+                <label htmlFor="email" className="block text-sm font-medium text-slate-700">Email Address</label>
                 <div className="mt-1">
                   <input
                     type="email"
                     name="email"
                     id="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-100 text-gray-500 cursor-not-allowed"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-md shadow-sm bg-slate-100 text-slate-500 cursor-not-allowed"
                     value={formData.email || ''}
                     disabled
                     aria-readonly="true"
@@ -149,7 +149,7 @@ const UserProfilePage: React.FC = () => {
 
               <div>
                 <div className="flex justify-between items-center mb-1">
-                    <label htmlFor="bio" className="block text-sm font-medium text-gray-700">Bio</label>
+                    <label htmlFor="bio" className="block text-sm font-medium text-slate-700">Bio</label>
                     {isEditing && (
                         <Button
                             type="button"
@@ -168,7 +168,7 @@ const UserProfilePage: React.FC = () => {
                     name="bio"
                     id="bio"
                     rows={4}
-                    className={`w-full px-4 py-2 border rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 ${!isEditing ? 'bg-gray-100 text-gray-500' : 'border-gray-300'}`}
+                    className={`w-full px-4 py-2 border rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500 ${!isEditing ? 'bg-slate-100 text-slate-500' : 'border-slate-300'}`}
                     value={formData.bio || ''}
                     onChange={handleInputChange}
                     disabled={!isEditing || isSaving}
@@ -178,18 +178,18 @@ const UserProfilePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-gray-50 px-6 py-4 flex justify-end items-center space-x-4 rounded-b-lg">
+            <div className="bg-slate-50 px-6 py-4 flex justify-end items-center space-x-4 rounded-b-lg">
               {isEditing ? (
                 <>
                   <Button type="button" variant="outline" onClick={handleCancel} disabled={isSaving}>
                     Cancel
                   </Button>
-                  <Button type="submit" isLoading={isSaving} disabled={isSaving}>
+                  <Button type="submit" variant="primary" isLoading={isSaving} disabled={isSaving}>
                     Save Changes
                   </Button>
                 </>
               ) : (
-                <Button type="button" onClick={() => setIsEditing(true)}>
+                <Button type="button" variant="secondary" onClick={() => setIsEditing(true)}>
                   Edit Profile
                 </Button>
               )}

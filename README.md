@@ -104,10 +104,17 @@ All development should adhere to the standards and conventions outlined in the [
 
 ---
 
-## Security Note
+## Security Note: Prototype Only - Not For Production Use
 
--   **API Key Handling:** This application is a prototype and uses a client-side API key (`process.env.API_KEY`) as per its execution environment's constraints. In a production environment, all API calls to services like Google Gemini should be proxied through a secure backend server to protect the API key.
--   **Authentication:** The current authentication system is a mock implementation using `localStorage`. A production application should use a secure, token-based (e.g., JWT) authentication system with a proper backend.
+This project is a **prototype** and contains intentional simplifications for demonstration purposes. It is **not secure** for a production environment. Deploying this code as-is would expose critical vulnerabilities.
+
+-   **CRITICAL: API Key Exposure:** The Google Gemini API key is used directly on the client side. In a real application, this key would be immediately stolen by malicious users, leading to significant financial loss and service disruption.
+    -   **Production Fix:** All API calls to external services like Gemini **must** be proxied through a secure backend server that you control. The frontend should never have direct access to the API key.
+
+-   **HIGH: Insecure Session Management:** The application uses `localStorage` for session management. `localStorage` is vulnerable to Cross-Site Scripting (XSS) attacks, which could allow an attacker to steal a user's session and impersonate them.
+    -   **Production Fix:** Use secure, `HttpOnly` cookies for session tokens. These cookies can only be set and read by the server, making them inaccessible to client-side scripts.
+
+-   **Client-Side Logic:** All data validation and business logic currently reside on the client. This was partially mitigated by removing the ability for a user to edit another user's profile. However, a production application must have authoritative server-side validation for all operations to prevent unauthorized data manipulation.
 
 ---
 

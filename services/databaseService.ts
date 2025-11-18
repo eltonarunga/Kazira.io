@@ -1,4 +1,16 @@
-
+/********************************************************************************
+ * SECURITY WARNING: MOCK DATABASE - PROTOTYPE ONLY
+ *
+ * This service uses `localStorage` to simulate a persistent database and user
+ * sessions. This is for demonstration purposes only and is NOT SECURE.
+ *
+ * `localStorage` is vulnerable to Cross-Site Scripting (XSS) attacks, which
+ * could allow an attacker to steal user session data and impersonate users.
+ *
+ * In a production application, you MUST use a secure backend service for
+ * authentication and data storage, using secure methods like HttpOnly cookies
+ * for session management.
+ ********************************************************************************/
 import { User } from '../types';
 
 // In a real serverless backend, these would be database collections (e.g., in Firestore or DynamoDB).
@@ -99,16 +111,24 @@ export const getSessionUser = async (): Promise<User | null> => {
 };
 
 /**
- * Simulates updating a user's profile information.
- * @param userId The ID of the user to update.
+ * Simulates updating a user's profile information for the currently logged-in user.
  * @param updatedData Partial user data to update.
- * @returns The updated user object, or null if user not found.
+ * @returns The updated user object, or null if session or user is not found.
  */
-export const updateUserProfile = async (userId: string, updatedData: Partial<User>): Promise<User | null> => {
+export const updateUserProfile = async (updatedData: Partial<User>): Promise<User | null> => {
+  const userId = localStorage.getItem(SESSION_KEY);
+  if (!userId) {
+    console.error("Update failed: No active session found.");
+    return simulate(null);
+  }
+
   const db = getUsersDB();
   const user = db[userId];
 
   if (!user) {
+    console.warn(`Update failed: Session user with ID ${userId} not found in database.`);
+    // Clean up orphan session key
+    localStorage.removeItem(SESSION_KEY);
     return simulate(null);
   }
 

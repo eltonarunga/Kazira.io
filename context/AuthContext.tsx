@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, ReactNode, useEffect, useCallback } from 'react';
 import { User } from '../types';
 import * as db from '../services/databaseService';
@@ -59,7 +58,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.error("Cannot update user: no user is currently logged in.");
       return null;
     }
-    const updatedUser = await db.updateUserProfile(user.id, updatedUserData);
+    // The database service now infers the user from the session, so we don't pass the ID.
+    // This prevents a user from maliciously trying to update another user's profile.
+    const updatedUser = await db.updateUserProfile(updatedUserData);
     if (updatedUser) {
       setUser(updatedUser);
     }
