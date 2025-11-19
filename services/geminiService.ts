@@ -1,3 +1,4 @@
+
 /********************************************************************************
  * SECURITY WARNING: PROTOTYPE ONLY
  *
@@ -10,34 +11,12 @@
  * All API calls should be proxied through a secure backend server that holds the
  * API key and manages requests.
  ********************************************************************************/
-import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
-import { LearningPath, SkillLevel, Candidate, GroundingChunk } from '../types';
+import { GoogleGenAI, GenerateContentResponse, Type } from "@google/genai";
+import { LearningPath, SkillLevel, Candidate, GroundingChunk, ExamFeedback } from '../types';
 import { GEMINI_MODEL_TEXT, GEMINI_MODEL_PRO } from "../constants";
 
 /**
- * Parses the Gemini API response text to extract JSON content.
- * Handles potential markdown code fences.
- * @param responseText The raw text from Gemini API.
- * @returns Parsed JSON object or null if parsing fails.
- */
-const parseJsonFromText = <T,>(responseText: string): T | null => {
-  let jsonStr = responseText.trim();
-  const fenceRegex = /^```(\w*)?\s*\n?(.*?)\n?\s*```$/s;
-  const match = jsonStr.match(fenceRegex);
-  if (match && match[2]) {
-    jsonStr = match[2].trim();
-  }
-
-  try {
-    return JSON.parse(jsonStr) as T;
-  } catch (e) {
-    console.error("Failed to parse JSON from response:", e, "Raw text:", jsonStr);
-    return null;
-  }
-};
-
-/**
- * Generates a personalized learning path using the Gemini API.
+ * Generates a personalized learning path using the Gemini API with Structured Outputs.
  * @param interests The user's interests.
  * @param skillLevel The user's skill level.
  * @param apiKey The Google Gemini API key.
@@ -54,11 +33,42 @@ export const generateLearningPath = async (
 
   const modelName = useThinkingMode ? GEMINI_MODEL_PRO : GEMINI_MODEL_TEXT;
 
-  const prompt = `As an AI skills coach, generate a 4-week learning plan for someone interested in "${interests}" and sustainability innovation, tailored to their skill level: ${skillLevel}. The plan should be structured weekly, with daily actionable tasks or learning resources. Output the plan as a single, valid JSON object with keys: "title" (string), "skillLevel" (string, e.g., "beginner"), "interests" (string, reflecting the input), and "weeklyPlan" (array of objects). Each object in "weeklyPlan" should represent a week and have keys: "week" (number), "summary" (string), and "dailyTasks" (array of objects). Each "dailyTasks" object should have keys: "day" (string, e.g., "Monday"), "task" (string), and optionally "resources" (array of strings, for URLs or book titles). Ensure the entire output is strictly a single JSON object, without any surrounding text or markdown.`;
+  const prompt = `As an AI skills coach, generate a 4-week learning plan for someone interested in "${interests}" and sustainability innovation, tailored to their skill level: ${skillLevel}. The plan should be structured weekly, with daily actionable tasks or learning resources.`;
   
   const config: any = {
     responseMimeType: "application/json",
-    temperature: 0.7,
+    responseSchema: {
+      type: Type.OBJECT,
+      properties: {
+        title: { type: Type.STRING },
+        skillLevel: { type: Type.STRING },
+        interests: { type: Type.STRING },
+        weeklyPlan: {
+          type: Type.ARRAY,
+          items: {
+            type: Type.OBJECT,
+            properties: {
+              week: { type: Type.INTEGER },
+              summary: { type: Type.STRING },
+              dailyTasks: {
+                type: Type.ARRAY,
+                items: {
+                  type: Type.OBJECT,
+                  properties: {
+                    day: { type: Type.STRING },
+                    task: { type: Type.STRING },
+                    resources: {
+                      type: Type.ARRAY,
+                      items: { type: Type.STRING }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   };
 
   if (useThinkingMode) {
@@ -72,17 +82,18 @@ export const generateLearningPath = async (
       config: config,
     });
     
-    const learningPathData = parseJsonFromText<LearningPath>(response.text);
+    // With responseSchema, response.text is guaranteed to be valid JSON matching the schema
+    const learningPathData = JSON.parse(response.text || "{}") as LearningPath;
     
     if (learningPathData && learningPathData.title && learningPathData.weeklyPlan) {
       return learningPathData;
     } else {
-      console.error("Parsed data does not conform to LearningPath structure:", learningPathData);
-      throw new Error("AI response format is invalid.");
+      console.error("Data missing required fields:", learningPathData);
+      throw new Error("AI response incomplete.");
     }
   } catch (error) {
     console.error("Error calling Gemini API for learning path:", error);
-    throw error; // Re-throw for the component to handle
+    throw error; 
   }
 };
 
@@ -144,5 +155,59 @@ export const generateBio = async (name: string, apiKey: string): Promise<string>
   } catch (error) {
     console.error("Error generating bio:", error);
     throw error;
+  }
+};
+
+/**
+ * Grades a user's answer to the Kenya AI Exam.
+ * @param question The exam question title and content.
+ * @param userAnswer The user's submitted answer.
+ * @param apiKey The Google Gemini API key.
+ */
+export const gradeExamAnswer = async (
+  question: { title: string; content: string },
+  userAnswer: string,
+  apiKey: string
+): Promise<ExamFeedback | null> => {
+  const ai = new GoogleGenAI({ apiKey });
+
+  const prompt = `You are a strict but fair professor grading "Kenya's Final AI Exam". 
+  The Question was: "${question.title}": "${question.content}".
+  The Student Answered: "${userAnswer}".
+
+  Grade this answer on a scale of 0-100. 
+  The criteria are: 
+  1. Does it address the specific Kenyan context (Utu, Harambee, local economics)? 
+  2. Does it handle the paradox (Math vs Philosophy)? 
+  3. Is it creative?
+
+  Return JSON with:
+  - score (number)
+  - feedback (string, concise critique)
+  - perspectiveAnalysis (string, which philosopher/school of thought does this answer resemble?)`;
+
+  const config: any = {
+    responseMimeType: "application/json",
+    responseSchema: {
+      type: Type.OBJECT,
+      properties: {
+        score: { type: Type.NUMBER },
+        feedback: { type: Type.STRING },
+        perspectiveAnalysis: { type: Type.STRING },
+      }
+    }
+  };
+
+  try {
+    const response = await ai.models.generateContent({
+      model: GEMINI_MODEL_TEXT,
+      contents: prompt,
+      config: config
+    });
+    
+    return JSON.parse(response.text || "{}") as ExamFeedback;
+  } catch (error) {
+    console.error("Error grading exam:", error);
+    return null;
   }
 };

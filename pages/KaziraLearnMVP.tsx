@@ -9,38 +9,48 @@ import { API_KEY_ERROR_MESSAGE } from '../constants';
 import { getFriendlyErrorMessage } from '../services/errorService';
 
 // FIX: Changed Accordion to a React.FC to correctly handle children and key props.
-const Accordion: React.FC<{ title: React.ReactNode; defaultOpen?: boolean }> = ({ title, children, defaultOpen = false }) => {
+const Accordion: React.FC<{ title: React.ReactNode; defaultOpen?: boolean; weekNumber: number }> = ({ title, children, defaultOpen = false, weekNumber }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="border border-gray-200 rounded-lg bg-white overflow-hidden">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-900 hover:bg-gray-50 transition-colors"
-        aria-expanded={isOpen}
-      >
-        <span className="flex-1">{title}</span>
-        <motion.div animate={{ rotate: isOpen ? 180 : 0 }} className="ml-4">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-          </svg>
-        </motion.div>
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden"
-          >
-            <div className="p-4 border-t border-gray-200">
-              {children}
-            </div>
+    <div className="relative pl-8 md:pl-12 pb-8">
+      {/* Timeline Connector */}
+      <div className="absolute left-3 md:left-5 top-8 bottom-0 w-0.5 bg-gray-200 last:hidden"></div>
+      
+      {/* Timeline Dot */}
+      <div className={`absolute left-0 md:left-2 top-0 w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-xs md:text-sm z-10 transition-colors duration-300 ${isOpen ? 'bg-black text-white ring-4 ring-gray-100' : 'bg-white border-2 border-gray-300 text-gray-500'}`}>
+        {weekNumber}
+      </div>
+
+      <div className={`border rounded-lg overflow-hidden transition-all duration-200 ${isOpen ? 'border-gray-400 shadow-md' : 'border-gray-200 bg-white'}`}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full flex justify-between items-center p-4 text-left font-semibold text-gray-900 hover:bg-gray-50 transition-colors"
+          aria-expanded={isOpen}
+        >
+          <span className="flex-1">{title}</span>
+          <motion.div animate={{ rotate: isOpen ? 180 : 0 }} className="ml-4">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </button>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="overflow-hidden"
+            >
+              <div className="p-4 border-t border-gray-200 bg-gray-50/50">
+                {children}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
@@ -138,7 +148,7 @@ const KaziraLearnMVP = () => {
 
       <motion.form 
         onSubmit={handleSubmit} 
-        className="max-w-xl mx-auto bg-white p-8 shadow-xl rounded-lg border border-gray-200"
+        className="max-w-xl mx-auto bg-white p-8 shadow-xl rounded-lg border border-gray-200 relative z-20"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -219,27 +229,27 @@ const KaziraLearnMVP = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="text-center mb-8 bg-white p-6 rounded-lg shadow-lg border border-gray-200">
+            <div className="text-center mb-12 bg-white p-6 rounded-lg shadow-lg border border-gray-200">
                 <h2 className={`text-3xl font-bold text-gray-900 mb-2`}>{learningPath.title}</h2>
                 <p className="text-gray-700"><strong>Skill Level:</strong> <span className="capitalize">{learningPath.skillLevel}</span></p>
                 <p className="text-gray-700"><strong>Focus:</strong> {learningPath.interests}</p>
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-0">
             {learningPath.weeklyPlan.map((week: WeeklyPlan, index: number) => (
                 <Accordion 
                     key={week.week}
+                    weekNumber={week.week}
                     defaultOpen={index === 0}
                     title={
                         <div className="flex items-center">
-                            <span className={`text-black font-bold mr-3`}>Week {week.week}</span>
-                            <span className="text-gray-700 font-medium">{week.summary}</span>
+                            <span className="text-gray-900 font-bold text-lg">{week.summary}</span>
                         </div>
                     }
                 >
                     <ul className="space-y-4">
                         {week.dailyTasks.map((task: LearningTask, taskIndex: number) => (
-                        <li key={taskIndex} className="p-4 bg-gray-50 rounded-md border border-gray-200">
+                        <li key={taskIndex} className="p-4 bg-white rounded-md border border-gray-200 shadow-sm">
                             <p className="font-semibold text-gray-800 flex items-start">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -251,7 +261,7 @@ const KaziraLearnMVP = () => {
                                 <p className="text-sm text-gray-600 font-semibold mb-2">Suggested Resources:</p>
                                 <ul className="space-y-2">
                                 {task.resources.map((resource, resIndex) => (
-                                    <li key={resIndex} className="text-sm text-gray-700 flex justify-between items-center p-2 bg-white rounded-md border border-gray-200">
+                                    <li key={resIndex} className="text-sm text-gray-700 flex justify-between items-center p-2 bg-gray-50 rounded-md border border-gray-100">
                                     {resource.startsWith('http') ? (
                                         <a href={resource} target="_blank" rel="noopener noreferrer" className="text-black hover:underline break-all flex items-center min-w-0 font-medium">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline-block mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -267,11 +277,11 @@ const KaziraLearnMVP = () => {
                                         size="sm"
                                         variant="outline"
                                         onClick={() => handleGroundedSearch(resource)}
-                                        className="ml-4 text-xs px-2 py-1 flex-shrink-0"
+                                        className="ml-4 text-xs px-2 py-1 flex-shrink-0 bg-white hover:bg-gray-100"
                                         isLoading={isGroundedSearchLoading && groundedSearchQuery === resource}
                                         disabled={isGroundedSearchLoading || !apiKey}
                                     >
-                                        Find Resources
+                                        Find
                                     </Button>
                                     )}
                                     </li>

@@ -112,7 +112,7 @@ const LandingPage = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-gray-400 text-white hover:bg-white hover:text-black"
+                  className="bg-white text-black border-transparent hover:bg-gray-200"
                 >
                   Kenya's Final AI Exam
                 </Button>

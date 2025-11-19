@@ -1,4 +1,3 @@
-
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import Button from './Button';
 
@@ -12,14 +11,15 @@ interface State {
 }
 
 class ErrorBoundary extends Component<Props, State> {
-  // FIX: Switched to public class field for state initialization.
-  // This is a more modern syntax and resolves issues where `this.state` and `this.props`
-  // were not being correctly recognized on the component instance.
-  // FIX: Removed explicit 'public' keyword to resolve toolchain-specific type errors.
-  state: State = {
-    hasError: false,
-    error: undefined,
-  };
+  public state: State;
+
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      error: undefined,
+    };
+  }
 
   static getDerivedStateFromError(error: Error): State {
     // Update state so the next render will show the fallback UI.

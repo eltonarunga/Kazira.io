@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
@@ -14,7 +13,7 @@ import UserProfilePage from './pages/UserProfilePage';
 import Chatbot from './components/common/Chatbot';
 
 // FIX: Changed to React.FC to correctly handle children prop type.
-const ProtectedRoute: React.FC = ({ children }) => {
+const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth();
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;

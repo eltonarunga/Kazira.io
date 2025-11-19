@@ -1,8 +1,11 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Button from '../components/common/Button';
+import { gradeExamAnswer } from '../services/geminiService';
+import { ExamFeedback } from '../types';
+import { getFriendlyErrorMessage } from '../services/errorService';
 
 const examContent = [
   {
@@ -38,7 +41,7 @@ const examContent = [
   {
     number: 7,
     title: "Climate & Energy Systems",
-    content: "Kenya is both climate-vulnerable and a leader in renewables. Design an energy distribution system where AI balances drought-driven hydro collapse with geothermal, wind, and solar fluctuations. Model this under thermodynamic limits: can you prove sustainability without violating the 2nd Law of Thermodynamics? Ethically: is it just to build AI data centers that consume megawatts while pastoralists in Garissa lack drinking water?"
+    content: "Kenya is both climate-vulnerable and a leader in renewables. Design an energy distribution system where AI balances drought-driven hydro collapse with geothermal, wind, and solar fluctuations. Model this as a thermodynamic limits: can you prove sustainability without violating the 2nd Law of Thermodynamics? Ethically: is it just to build AI data centers that consume megawatts while pastoralists in Garissa lack drinking water?"
   },
   {
     number: 8,
@@ -51,27 +54,121 @@ interface ExamQuestionProps {
   number: number;
   title: string;
   content: string;
+  apiKey: string | null;
 }
 
-// FIX: Changed to React.FC to correctly handle key prop in .map().
-const ExamQuestion: React.FC<ExamQuestionProps> = ({ number, title, content }) => (
-  <motion.div
-    initial={{ opacity: 0, x: -30 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.6 }}
-    className="bg-white p-6 sm:p-8 rounded-lg shadow-md border-l-4 border-black"
-  >
-    <h3 className="text-2xl font-bold text-gray-900 mb-4">
-      {number}. {title}
-    </h3>
-    <blockquote className="border-l-4 border-gray-200 pl-4 py-2 text-gray-700 italic">
-      {content}
-    </blockquote>
-  </motion.div>
-);
+const ExamQuestion: React.FC<ExamQuestionProps> = ({ number, title, content, apiKey }) => {
+  const [isAnswering, setIsAnswering] = useState(false);
+  const [answer, setAnswer] = useState('');
+  const [feedback, setFeedback] = useState<ExamFeedback | null>(null);
+  const [isGrading, setIsGrading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleGrade = async () => {
+    if (!answer.trim() || !apiKey) return;
+    setIsGrading(true);
+    setError(null);
+    
+    try {
+      const result = await gradeExamAnswer({ title, content }, answer, apiKey);
+      if (result) {
+        setFeedback(result);
+      } else {
+        setError("Could not grade the answer. Please try again.");
+      }
+    } catch (err) {
+      setError(getFriendlyErrorMessage(err));
+    } finally {
+      setIsGrading(false);
+    }
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+      className="bg-white p-6 sm:p-8 rounded-lg shadow-md border-l-4 border-black"
+    >
+      <h3 className="text-2xl font-bold text-gray-900 mb-4">
+        {number}. {title}
+      </h3>
+      <blockquote className="border-l-4 border-gray-200 pl-4 py-2 text-gray-700 italic mb-6">
+        {content}
+      </blockquote>
+
+      {!isAnswering && !feedback && (
+        <Button variant="outline" size="sm" onClick={() => setIsAnswering(true)} disabled={!apiKey} className="text-black border-black">
+          {apiKey ? "Attempt this Question" : "AI Grading Disabled (No API Key)"}
+        </Button>
+      )}
+
+      <AnimatePresence>
+        {isAnswering && !feedback && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <textarea
+              className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-black focus:border-transparent mt-4"
+              rows={4}
+              placeholder="Enter your answer here. Be brave..."
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              disabled={isGrading}
+            />
+            {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+            <div className="flex space-x-3 mt-3">
+              <Button variant="primary" size="sm" onClick={handleGrade} isLoading={isGrading} disabled={isGrading || !answer.trim()}>
+                Submit for AI Grading
+              </Button>
+              <Button variant="secondary" size="sm" onClick={() => setIsAnswering(false)} disabled={isGrading}>
+                Cancel
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {feedback && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-6 bg-gray-50 rounded-md border border-gray-200 overflow-hidden"
+          >
+            <div className="bg-black text-white px-4 py-2 flex justify-between items-center">
+              <span className="font-bold">AI Professor's Grade</span>
+              <span className={`text-lg font-bold ${feedback.score > 80 ? 'text-green-400' : feedback.score > 50 ? 'text-yellow-400' : 'text-red-400'}`}>
+                {feedback.score}/100
+              </span>
+            </div>
+            <div className="p-4">
+              <div className="mb-3">
+                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Feedback</h4>
+                <p className="text-gray-800">{feedback.feedback}</p>
+              </div>
+              <div>
+                <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-1">Philosophical Lens</h4>
+                <p className="text-gray-600 text-sm italic">{feedback.perspectiveAnalysis}</p>
+              </div>
+              <Button variant="outline" size="sm" className="mt-4" onClick={() => { setFeedback(null); setIsAnswering(false); setAnswer(''); }}>
+                Try Again
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+};
 
 const KenyaFinalAIExam = () => {
+  const apiKey = process.env.API_KEY || null;
+
   return (
     <div className="bg-gray-100 py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
@@ -95,17 +192,19 @@ const KenyaFinalAIExam = () => {
           <h2 className="text-xl font-semibold text-gray-800 mb-2">Instructions:</h2>
           <p className="text-gray-700 mb-6">
             Each question is a paradox. Each requires navigating Kenya’s realities across economics, physics, mathematics, culture, spirituality, and human dignity. Partial answers earn zero marks.
+            <br/><br/>
+            <strong>New:</strong> You can now attempt these questions yourself! Click "Attempt this Question" to receive an AI evaluation of your philosophical and technical reasoning.
           </p>
            <Link to="/ai-model-results">
             <Button variant="primary" size="md" className="w-full sm:w-auto">
-              See AI Model Results
+              See Top LLM Results
             </Button>
           </Link>
         </motion.div>
 
         <div className="space-y-12">
           {examContent.map((question) => (
-            <ExamQuestion key={question.number} {...question} />
+            <ExamQuestion key={question.number} {...question} apiKey={apiKey} />
           ))}
         </div>
       </div>
