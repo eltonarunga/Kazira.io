@@ -72,6 +72,8 @@ export const generateLearningPath = async (
   };
 
   if (useThinkingMode) {
+    // Only Gemini 2.5 and 3 series support thinkingConfig. 
+    // Setting maximum budget for pro model as per guidelines.
     config.thinkingConfig = { thinkingBudget: 32768 };
   }
 
@@ -82,7 +84,7 @@ export const generateLearningPath = async (
       config: config,
     });
     
-    // With responseSchema, response.text is guaranteed to be valid JSON matching the schema
+    // Using .text property directly as per latest SDK guidelines
     const learningPathData = JSON.parse(response.text || "{}") as LearningPath;
     
     if (learningPathData && learningPathData.title && learningPathData.weeklyPlan) {
@@ -119,10 +121,12 @@ export const getGroundedAnswer = async (
       },
     });
 
+    // Extracting text output via property
     const text = response.text;
     const candidates = response.candidates as Candidate[] | undefined;
     let sources: GroundingChunk[] = [];
 
+    // Extract URLs from groundingChunks as required by grounding rules
     if (candidates && candidates.length > 0 && candidates[0].groundingMetadata?.groundingChunks) {
       sources = candidates[0].groundingMetadata.groundingChunks;
     }
@@ -148,7 +152,7 @@ export const generateBio = async (name: string, apiKey: string): Promise<string>
 
   try {
     const response = await ai.models.generateContent({
-        model: GEMINI_MODEL_TEXT, // Use flash for speed
+        model: GEMINI_MODEL_TEXT,
         contents: prompt
     });
     return response.text.trim();
@@ -200,7 +204,8 @@ export const gradeExamAnswer = async (
 
   try {
     const response = await ai.models.generateContent({
-      model: GEMINI_MODEL_TEXT,
+      // Use the Pro model for complex reasoning and evaluation tasks
+      model: GEMINI_MODEL_PRO,
       contents: prompt,
       config: config
     });

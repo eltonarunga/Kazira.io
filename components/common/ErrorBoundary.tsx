@@ -11,11 +11,15 @@ interface State {
   error?: Error;
 }
 
+// Ensure the class correctly extends React Component with generic Props and State
 class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false,
-    error: undefined,
-  };
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      error: undefined,
+    };
+  }
 
   static getDerivedStateFromError(error: Error): State {
     // Update state so the next render will show the fallback UI.
@@ -23,12 +27,12 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // You can also log the error to an error reporting service
-    console.error("Uncaught error:", error, errorInfo);
+    // Standard error logging for debugging purposes
+    console.error("Uncaught error captured by boundary:", error, errorInfo);
   }
 
   private handleRefresh = () => {
-    // Attempt to recover by reloading the page
+    // Attempt to recover by reloading the application context
     window.location.reload();
   };
 
@@ -36,7 +40,7 @@ class ErrorBoundary extends Component<Props, State> {
     const { hasError, error } = this.state;
 
     if (hasError) {
-      // You can render any custom fallback UI
+      // Graceful fallback UI for production reliability
       return (
         <div className="container mx-auto px-4 py-16 text-center" role="alert">
           <div className="bg-gray-100 border border-gray-400 text-gray-700 px-4 py-8 rounded-lg relative max-w-lg mx-auto shadow-lg">
@@ -61,6 +65,7 @@ class ErrorBoundary extends Component<Props, State> {
       );
     }
 
+    // Access to this.props is guaranteed for children defined in the generic type
     return this.props.children;
   }
 }

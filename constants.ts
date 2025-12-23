@@ -2,8 +2,9 @@
 import { NavItem } from './types';
 
 export const API_KEY_ERROR_MESSAGE = "AI features are currently unavailable due to a configuration issue. Please contact support if you believe this is an error.";
-export const GEMINI_MODEL_TEXT = "gemini-2.5-flash";
-export const GEMINI_MODEL_PRO = "gemini-2.5-pro";
+// Updated model names to follow latest Gemini API guidelines
+export const GEMINI_MODEL_TEXT = "gemini-3-flash-preview";
+export const GEMINI_MODEL_PRO = "gemini-3-pro-preview";
 export const GEMINI_MODEL_FLASH_LITE = "gemini-flash-lite-latest";
 
 

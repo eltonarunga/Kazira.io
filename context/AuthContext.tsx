@@ -7,19 +7,17 @@ interface AuthContextType {
   isAuthenticated: boolean;
   user: User | null;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<User | null>;
+  login: (email: string, isExplorer?: boolean) => Promise<User | null>;
   logout: () => Promise<void>;
   updateUser: (updatedUserData: Partial<User>) => Promise<User | null>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// FIX: Changed to React.FC to correctly handle children prop type.
-export const AuthProvider: React.FC = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // On initial load, check for an existing session.
   useEffect(() => {
     const checkSession = async () => {
       setIsLoading(true);
@@ -27,7 +25,6 @@ export const AuthProvider: React.FC = ({ children }) => {
         const sessionUser = await db.getSessionUser();
         setUser(sessionUser);
       } catch (error) {
-        console.error("Failed to retrieve session", error);
         setUser(null);
       } finally {
         setIsLoading(false);
@@ -36,13 +33,11 @@ export const AuthProvider: React.FC = ({ children }) => {
     checkSession();
   }, []);
 
-  const login = useCallback(async (email: string, password: string): Promise<User | null> => {
-    // In a real app, you might set a loading state here.
-    const loggedInUser = await db.loginUser(email, password);
+  const login = useCallback(async (email: string, isExplorer: boolean = false): Promise<User | null> => {
+    const loggedInUser = await db.loginUser(email, isExplorer);
     if (loggedInUser) {
       setUser(loggedInUser);
     }
-    // In a real app with JWTs, you'd store the token here.
     return loggedInUser;
   }, []);
 
@@ -52,12 +47,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   const updateUser = useCallback(async (updatedUserData: Partial<User>): Promise<User | null> => {
-    if (!user) {
-      console.error("Cannot update user: no user is currently logged in.");
-      return null;
-    }
-    // The database service now infers the user from the session, so we don't pass the ID.
-    // This prevents a user from maliciously trying to update another user's profile.
+    if (!user) return null;
     const updatedUser = await db.updateUserProfile(updatedUserData);
     if (updatedUser) {
       setUser(updatedUser);
@@ -65,11 +55,10 @@ export const AuthProvider: React.FC = ({ children }) => {
     return updatedUser;
   }, [user]);
 
-  // isLoading provides context for components that need to wait for auth state to be resolved.
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-black"></div>
       </div>
     );
   }
