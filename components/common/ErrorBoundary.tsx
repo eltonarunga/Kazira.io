@@ -11,14 +11,19 @@ interface State {
   error?: Error;
 }
 
-// Ensure the class correctly extends React Component with generic Props and State
+/**
+ * FIX: Inherit from Component directly. 
+ * This ensures that TypeScript correctly identifies inherited properties like 'props' and 'state'
+ * within the class component.
+ */
 class ErrorBoundary extends Component<Props, State> {
+  public state: State = {
+    hasError: false,
+    error: undefined,
+  };
+
   constructor(props: Props) {
     super(props);
-    this.state = {
-      hasError: false,
-      error: undefined,
-    };
   }
 
   static getDerivedStateFromError(error: Error): State {
@@ -65,7 +70,7 @@ class ErrorBoundary extends Component<Props, State> {
       );
     }
 
-    // Access to this.props is guaranteed for children defined in the generic type
+    // FIX: Using this.props.children is now correctly typed due to inheritance from Component<Props, State>.
     return this.props.children;
   }
 }

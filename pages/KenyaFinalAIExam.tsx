@@ -54,10 +54,10 @@ interface ExamQuestionProps {
   number: number;
   title: string;
   content: string;
-  apiKey: string | null;
+  isAvailable: boolean;
 }
 
-const ExamQuestion: React.FC<ExamQuestionProps> = ({ number, title, content, apiKey }) => {
+const ExamQuestion: React.FC<ExamQuestionProps> = ({ number, title, content, isAvailable }) => {
   const [isAnswering, setIsAnswering] = useState(false);
   const [answer, setAnswer] = useState('');
   const [feedback, setFeedback] = useState<ExamFeedback | null>(null);
@@ -65,12 +65,13 @@ const ExamQuestion: React.FC<ExamQuestionProps> = ({ number, title, content, api
   const [error, setError] = useState<string | null>(null);
 
   const handleGrade = async () => {
-    if (!answer.trim() || !apiKey) return;
+    if (!answer.trim() || !isAvailable) return;
     setIsGrading(true);
     setError(null);
     
     try {
-      const result = await gradeExamAnswer({ title, content }, answer, apiKey);
+      // FIX: Service now pulls process.env.API_KEY directly.
+      const result = await gradeExamAnswer({ title, content }, answer);
       if (result) {
         setFeedback(result);
       } else {
@@ -99,8 +100,8 @@ const ExamQuestion: React.FC<ExamQuestionProps> = ({ number, title, content, api
       </blockquote>
 
       {!isAnswering && !feedback && (
-        <Button variant="outline" size="sm" onClick={() => setIsAnswering(true)} disabled={!apiKey} className="text-black border-black">
-          {apiKey ? "Attempt this Question" : "AI Grading Disabled (No API Key)"}
+        <Button variant="outline" size="sm" onClick={() => setIsAnswering(true)} disabled={!isAvailable} className="text-black border-black">
+          {isAvailable ? "Attempt this Question" : "AI Grading Disabled (No API Key)"}
         </Button>
       )}
 
@@ -167,7 +168,8 @@ const ExamQuestion: React.FC<ExamQuestionProps> = ({ number, title, content, api
 };
 
 const KenyaFinalAIExam = () => {
-  const apiKey = process.env.API_KEY || null;
+  // FIX: Centralized environment check.
+  const isAvailable = !!process.env.API_KEY;
 
   return (
     <div className="bg-gray-100 py-16">
@@ -204,7 +206,7 @@ const KenyaFinalAIExam = () => {
 
         <div className="space-y-12">
           {examContent.map((question) => (
-            <ExamQuestion key={question.number} {...question} apiKey={apiKey} />
+            <ExamQuestion key={question.number} {...question} isAvailable={isAvailable} />
           ))}
         </div>
       </div>

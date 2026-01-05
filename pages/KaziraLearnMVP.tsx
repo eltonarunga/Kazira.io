@@ -8,8 +8,29 @@ import { getGroundedAnswer, generateLearningPath as generateLearningPathFromServ
 import { API_KEY_ERROR_MESSAGE } from '../constants';
 import { getFriendlyErrorMessage } from '../services/errorService';
 
+// Animation variants for the task list items
+const listContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" }
+  }
+};
+
 // FIX: Changed Accordion to a React.FC to correctly handle children and key props.
-const Accordion: React.FC<{ title: React.ReactNode; defaultOpen?: boolean; weekNumber: number }> = ({ title, children, defaultOpen = false, weekNumber }) => {
+const Accordion: React.FC<{ title: React.ReactNode; defaultOpen?: boolean; weekNumber: number; children: React.ReactNode }> = ({ title, children, defaultOpen = false, weekNumber }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
@@ -63,7 +84,8 @@ const KaziraLearnMVP = () => {
   const [learningPath, setLearningPath] = useState<LearningPath | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [apiKey] = useState<string | null>(process.env.API_KEY || null);
+  // FIX: Using process.env.API_KEY directly for conditional rendering.
+  const hasApiKey = !!process.env.API_KEY;
 
   const [isResourceModalOpen, setIsResourceModalOpen] = useState<boolean>(false);
   const [groundedSearchQuery, setGroundedSearchQuery] = useState<string>('');
@@ -76,7 +98,7 @@ const KaziraLearnMVP = () => {
       setError("Please enter your interests.");
       return;
     }
-    if (!apiKey) {
+    if (!hasApiKey) {
       return;
     }
 
@@ -85,7 +107,8 @@ const KaziraLearnMVP = () => {
     setLearningPath(null);
 
     try {
-      const parsedPath = await generateLearningPathFromService(interests, skillLevel, apiKey, useThinkingMode);
+      // FIX: Removed apiKey parameter as geminiService now uses it directly from process.env.
+      const parsedPath = await generateLearningPathFromService(interests, skillLevel, useThinkingMode);
       if (parsedPath) {
         setLearningPath(parsedPath);
       } else {
@@ -97,10 +120,10 @@ const KaziraLearnMVP = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [interests, skillLevel, apiKey, useThinkingMode]);
+  }, [interests, skillLevel, hasApiKey, useThinkingMode]);
   
   const handleGroundedSearch = useCallback(async (query: string) => {
-    if (!apiKey) {
+    if (!hasApiKey) {
         setGroundedSearchError(API_KEY_ERROR_MESSAGE);
         setIsResourceModalOpen(true);
         return;
@@ -112,7 +135,8 @@ const KaziraLearnMVP = () => {
     setGroundedSearchError(null);
 
     try {
-        const result = await getGroundedAnswer(query, apiKey);
+        // FIX: Simplified service call.
+        const result = await getGroundedAnswer(query);
         setGroundedSearchResult(result);
     } catch (err) {
         console.error("Error during grounded search:", err);
@@ -120,7 +144,7 @@ const KaziraLearnMVP = () => {
     } finally {
         setIsGroundedSearchLoading(false);
     }
-  }, [apiKey]);
+  }, [hasApiKey]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -139,7 +163,7 @@ const KaziraLearnMVP = () => {
         <p className="text-lg text-gray-700">Enter your interests and skill level, and let our AI craft a unique learning journey for you!</p>
       </motion.div>
 
-      {!apiKey && (
+      {!hasApiKey && (
         <div className="mb-8 p-4 bg-gray-100 border-l-4 border-gray-500 text-gray-800 rounded-md text-center shadow" role="alert">
           <p className="font-bold">AI Features Disabled</p>
           <p className="text-sm">{API_KEY_ERROR_MESSAGE}</p>
@@ -165,7 +189,7 @@ const KaziraLearnMVP = () => {
             placeholder="e.g., AI for sustainable agriculture"
             className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500"
             required
-            disabled={isLoading || !apiKey}
+            disabled={isLoading || !hasApiKey}
           />
         </div>
 
@@ -178,7 +202,7 @@ const KaziraLearnMVP = () => {
             value={skillLevel}
             onChange={(e) => setSkillLevel(e.target.value as SkillLevel)}
             className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-gray-500 focus:border-gray-500 bg-white"
-            disabled={isLoading || !apiKey}
+            disabled={isLoading || !hasApiKey}
           >
             {Object.values(SkillLevel).map(level => (
               <option key={level} value={level} className="capitalize">{level.charAt(0).toUpperCase() + level.slice(1)}</option>
@@ -193,7 +217,7 @@ const KaziraLearnMVP = () => {
             checked={useThinkingMode}
             onChange={(e) => setUseThinkingMode(e.target.checked)}
             className="h-4 w-4 rounded border-gray-300 text-gray-800 focus:ring-gray-500"
-            disabled={isLoading || !apiKey}
+            disabled={isLoading || !hasApiKey}
           />
           <div>
             <label htmlFor="thinkingMode" className="block text-sm font-medium text-gray-800">
@@ -203,7 +227,7 @@ const KaziraLearnMVP = () => {
           </div>
         </div>
 
-        <Button type="submit" variant="primary" isLoading={isLoading} disabled={isLoading || !interests.trim() || !apiKey} className="w-full">
+        <Button type="submit" variant="primary" isLoading={isLoading} disabled={isLoading || !interests.trim() || !hasApiKey} className="w-full">
           {isLoading ? 'Generating Your Path...' : 'Generate Learning Path'}
         </Button>
       </motion.form>
@@ -247,9 +271,18 @@ const KaziraLearnMVP = () => {
                         </div>
                     }
                 >
-                    <ul className="space-y-4">
+                    <motion.ul 
+                      className="space-y-4"
+                      variants={listContainerVariants}
+                      initial="hidden"
+                      animate="visible"
+                    >
                         {week.dailyTasks.map((task: LearningTask, taskIndex: number) => (
-                        <li key={taskIndex} className="p-4 bg-white rounded-md border border-gray-200 shadow-sm">
+                        <motion.li 
+                          key={taskIndex} 
+                          className="p-4 bg-white rounded-md border border-gray-200 shadow-sm"
+                          variants={itemVariants}
+                        >
                             <p className="font-semibold text-gray-800 flex items-start">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 mr-3 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
@@ -279,7 +312,7 @@ const KaziraLearnMVP = () => {
                                         onClick={() => handleGroundedSearch(resource)}
                                         className="ml-4 text-xs px-2 py-1 flex-shrink-0 bg-white hover:bg-gray-100"
                                         isLoading={isGroundedSearchLoading && groundedSearchQuery === resource}
-                                        disabled={isGroundedSearchLoading || !apiKey}
+                                        disabled={isGroundedSearchLoading || !hasApiKey}
                                     >
                                         Find
                                     </Button>
@@ -289,9 +322,9 @@ const KaziraLearnMVP = () => {
                                 </ul>
                             </div>
                             )}
-                        </li>
+                        </motion.li>
                         ))}
-                    </ul>
+                    </motion.ul>
                 </Accordion>
             ))}
             </div>

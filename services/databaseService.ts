@@ -1,8 +1,11 @@
 
 /********************************************************************************
  * SECURITY WARNING: MOCK DATABASE - PROTOTYPE ONLY
+ * This layer simulates a backend. In production, these checks must occur 
+ * on a secure server (Node.js/Python/Go).
  ********************************************************************************/
 import { User } from '../types';
+import { generateSecureId, isValidEmail } from './securityService';
 
 const USERS_KEY = 'kazira_users_db';
 const SESSION_KEY = 'kazira_session_user_id';
@@ -30,7 +33,10 @@ const saveUsersDB = (db: Record<string, User>): void => {
  * Handles login via email or as an anonymous explorer.
  */
 export const loginUser = async (email: string, isExplorer: boolean = false): Promise<User | null> => {
-  if (!isExplorer && !email) return simulate(null);
+  if (!isExplorer && (!email || !isValidEmail(email))) {
+    console.error("Security Alert: Invalid email login attempt.");
+    return simulate(null);
+  }
 
   const db = getUsersDB();
   const targetEmail = isExplorer ? 'explorer@kazira.io' : email.toLowerCase();
@@ -38,7 +44,8 @@ export const loginUser = async (email: string, isExplorer: boolean = false): Pro
   let user = Object.values(db).find(u => u.email.toLowerCase() === targetEmail);
 
   if (!user) {
-    const id = isExplorer ? 'explorer_id' : `user_${Date.now()}`;
+    // SECURITY: Use generateSecureId instead of predictable timestamp
+    const id = isExplorer ? 'explorer_id' : generateSecureId();
     const name = isExplorer ? 'Explorer' : targetEmail.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     user = { 
       id, 
@@ -85,10 +92,11 @@ export const updateUserProfile = async (updatedData: Partial<User>): Promise<Use
     return simulate(null);
   }
 
+  // SECURITY: Strictly allow only specific fields to be updated
   const newUserData = { 
     ...user,
-    name: updatedData.name !== undefined ? updatedData.name : user.name,
-    bio: updatedData.bio !== undefined ? updatedData.bio : user.bio,
+    name: updatedData.name ? updatedData.name.slice(0, 100) : user.name,
+    bio: updatedData.bio !== undefined ? updatedData.bio.slice(0, 500) : user.bio,
   };
   db[userId] = newUserData;
   saveUsersDB(db);
@@ -97,7 +105,7 @@ export const updateUserProfile = async (updatedData: Partial<User>): Promise<Use
 };
 
 export const addToWaitlist = async (email: string): Promise<{ success: boolean }> => {
-  if (!email || !email.includes('@')) return simulate({ success: false });
+  if (!email || !isValidEmail(email)) return simulate({ success: false });
   try {
     const waitlist = JSON.parse(localStorage.getItem(WAITLIST_KEY) || '[]');
     if (!waitlist.includes(email)) {

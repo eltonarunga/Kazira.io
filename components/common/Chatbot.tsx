@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GoogleGenAI, Chat } from "@google/genai";
+import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 import { ChatMessage } from '../../types';
 import { GEMINI_MODEL_FLASH_LITE } from '../../constants';
 import Button from './Button';
@@ -22,13 +22,15 @@ const Chatbot = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [apiKey] = useState<string | null>(process.env.API_KEY || null);
+  // FIX: Using process.env.API_KEY directly for environment compliance.
+  const hasApiKey = !!process.env.API_KEY;
   const chatRef = useRef<Chat | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isOpen && !chatRef.current && apiKey) {
-      const ai = new GoogleGenAI({ apiKey });
+    if (isOpen && !chatRef.current && hasApiKey) {
+      // FIX: Instantiating GoogleGenAI with process.env.API_KEY as a named parameter.
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       chatRef.current = ai.chats.create({
         model: GEMINI_MODEL_FLASH_LITE,
         config: {
@@ -37,7 +39,7 @@ const Chatbot = () => {
       });
       setMessages([{ role: 'model', text: 'Hello! How can I help you today?' }]);
     }
-  }, [isOpen, apiKey]);
+  }, [isOpen, hasApiKey]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -60,7 +62,9 @@ const Chatbot = () => {
         setMessages(prev => [...prev, { role: 'model', text: '...' }]);
 
         for await (const chunk of stream) {
-            modelResponse += chunk.text;
+            // FIX: Using .text property instead of method call as per SDK rules.
+            const c = chunk as GenerateContentResponse;
+            modelResponse += c.text;
             setMessages(prev => {
                 const newMessages = [...prev];
                 newMessages[newMessages.length - 1].text = modelResponse;
@@ -87,7 +91,7 @@ const Chatbot = () => {
     }
   };
 
-  if (!apiKey) {
+  if (!hasApiKey) {
     return null; // Don't render the chatbot if no API key is available
   }
 

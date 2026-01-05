@@ -16,7 +16,8 @@ const UserProfilePage = () => {
   const [isGeneratingBio, setIsGeneratingBio] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState('');
-  const [apiKey] = useState<string | null>(process.env.API_KEY || null);
+  // FIX: Centralized environment check.
+  const isAvailable = !!process.env.API_KEY;
 
   useEffect(() => {
     if (user) {
@@ -30,11 +31,12 @@ const UserProfilePage = () => {
   };
 
   const handleGenerateBio = async () => {
-    if (!user || !apiKey) return;
+    if (!user || !isAvailable) return;
     setIsGeneratingBio(true);
     setError('');
     try {
-        const bio = await generateBio(user.name, apiKey);
+        // FIX: Removed apiKey parameter from service call as it now uses process.env directly.
+        const bio = await generateBio(user.name);
         setFormData(prev => ({ ...prev, bio }));
     } catch (err) {
         console.error("Bio generation error:", err);
@@ -157,7 +159,7 @@ const UserProfilePage = () => {
                             variant="outline"
                             onClick={handleGenerateBio}
                             isLoading={isGeneratingBio}
-                            disabled={isSaving || isGeneratingBio || !apiKey}
+                            disabled={isSaving || isGeneratingBio || !isAvailable}
                             className="text-xs px-2 py-1"
                         >
                            {isGeneratingBio ? 'Generating...' : 'Generate with AI ✨'}
