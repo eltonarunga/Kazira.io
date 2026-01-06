@@ -1,4 +1,3 @@
-
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import Button from './Button';
 
@@ -12,9 +11,9 @@ interface State {
 }
 
 /**
- * FIX: Inherit from Component directly. 
- * This ensures that TypeScript correctly identifies inherited properties like 'props' and 'state'
- * within the class component.
+ * ErrorBoundary component to catch rendering errors in the component tree.
+ * Inheriting from Component with specified generic types (Props, State) 
+ * ensures that 'this.props' and 'this.state' are correctly recognized by the TypeScript compiler.
  */
 class ErrorBoundary extends Component<Props, State> {
   public state: State = {
@@ -26,22 +25,25 @@ class ErrorBoundary extends Component<Props, State> {
     super(props);
   }
 
+  // Static method used to update state after an error has been thrown by a descendant component.
   static getDerivedStateFromError(error: Error): State {
     // Update state so the next render will show the fallback UI.
     return { hasError: true, error };
   }
 
+  // Lifecycle method for logging error information and performing side effects.
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // Standard error logging for debugging purposes
     console.error("Uncaught error captured by boundary:", error, errorInfo);
   }
 
+  // Helper method to refresh the application state by reloading the page.
   private handleRefresh = () => {
     // Attempt to recover by reloading the application context
     window.location.reload();
   };
 
-  render() {
+  public render(): ReactNode {
     const { hasError, error } = this.state;
 
     if (hasError) {
@@ -70,8 +72,8 @@ class ErrorBoundary extends Component<Props, State> {
       );
     }
 
-    // FIX: Using this.props.children is now correctly typed due to inheritance from Component<Props, State>.
-    return this.props.children;
+    // FIX: Using explicit inheritance from Component and returning null as a fallback ensures that this.props.children is safely handled.
+    return this.props.children || null;
   }
 }
 

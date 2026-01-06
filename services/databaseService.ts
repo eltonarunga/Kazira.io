@@ -9,7 +9,6 @@ import { generateSecureId, isValidEmail } from './securityService';
 
 const USERS_KEY = 'kazira_users_db';
 const SESSION_KEY = 'kazira_session_user_id';
-const WAITLIST_KEY = 'kazira_waitlist_db';
 const MOCK_LATENCY = 300; 
 
 const simulate = <T>(data: T): Promise<T> => {
@@ -31,20 +30,23 @@ const saveUsersDB = (db: Record<string, User>): void => {
 
 /**
  * Handles login via email or as an anonymous explorer.
+ * Guest email logins are deprecated in favor of Explorer access and Update collection.
  */
 export const loginUser = async (email: string, isExplorer: boolean = false): Promise<User | null> => {
-  if (!isExplorer && (!email || !isValidEmail(email))) {
-    console.error("Security Alert: Invalid email login attempt.");
-    return simulate(null);
-  }
-
   const db = getUsersDB();
+  
+  // For prototype purposes, explorer is the primary entry point.
+  // We keep the architecture for typed users for future integration.
   const targetEmail = isExplorer ? 'explorer@kazira.io' : email.toLowerCase();
   
+  // Basic validation if email is provided
+  if (!isExplorer && !isValidEmail(targetEmail)) {
+     return simulate(null);
+  }
+
   let user = Object.values(db).find(u => u.email.toLowerCase() === targetEmail);
 
   if (!user) {
-    // SECURITY: Use generateSecureId instead of predictable timestamp
     const id = isExplorer ? 'explorer_id' : generateSecureId();
     const name = isExplorer ? 'Explorer' : targetEmail.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     user = { 
@@ -102,18 +104,4 @@ export const updateUserProfile = async (updatedData: Partial<User>): Promise<Use
   saveUsersDB(db);
 
   return simulate(newUserData);
-};
-
-export const addToWaitlist = async (email: string): Promise<{ success: boolean }> => {
-  if (!email || !isValidEmail(email)) return simulate({ success: false });
-  try {
-    const waitlist = JSON.parse(localStorage.getItem(WAITLIST_KEY) || '[]');
-    if (!waitlist.includes(email)) {
-      waitlist.push(email);
-      localStorage.setItem(WAITLIST_KEY, JSON.stringify(waitlist));
-    }
-    return simulate({ success: true });
-  } catch (e) {
-    return simulate({ success: false });
-  }
 };

@@ -5,7 +5,6 @@ import { Link, useLocation } from 'react-router-dom';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 import Modal from '../components/common/Modal';
-import { addToWaitlist } from '../services/databaseService';
 
 // FIX: Changed Section to a React.FC to correctly handle children prop type.
 const Section: React.FC<{ id: string; className?: string }> = ({ id, children, className = "" }) => (
@@ -24,11 +23,7 @@ const Section: React.FC<{ id: string; className?: string }> = ({ id, children, c
 );
 
 const LandingPage = () => {
-  const [isWaitlistModalOpen, setIsWaitlistModalOpen] = useState(false);
-  const [waitlistEmail, setWaitlistEmail] = useState('');
-  const [waitlistSubmitted, setWaitlistSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -39,33 +34,6 @@ const LandingPage = () => {
       }
     }
   }, [location.state]);
-
-  const handleWaitlistSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      const result = await addToWaitlist(waitlistEmail);
-      if (result.success) {
-        setWaitlistSubmitted(true);
-      } else {
-        // Handle submission error, maybe show a message
-        console.error("Failed to add to waitlist");
-      }
-    } catch (error) {
-      console.error("Error submitting to waitlist:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-  
-  const closeWaitlistModal = () => {
-    setIsWaitlistModalOpen(false);
-    // Reset state after a short delay to allow for exit animation
-    setTimeout(() => {
-        setWaitlistSubmitted(false);
-        setWaitlistEmail('');
-    }, 300);
-  }
 
   return (
     <div className="bg-white">
@@ -103,10 +71,10 @@ const LandingPage = () => {
               <Button 
                 size="lg" 
                 variant="primary"
-                onClick={() => setIsWaitlistModalOpen(true)}
+                onClick={() => setIsUpdateModalOpen(true)}
                 className="bg-white text-black hover:bg-gray-200"
               >
-                Get Early Access
+                Get App Updates
               </Button>
               <Link to="/kenya-ai-exam">
                 <Button
@@ -281,46 +249,28 @@ const LandingPage = () => {
         <div className="max-w-xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Future?</h2>
           <p className="text-lg text-gray-300 mb-8">
-            Join our waitlist to get early access to Kazira.io, exclusive updates, and be among the first to experience the future of AI-powered learning and automation.
+            Get early access to Kazira.io, exclusive updates, and be among the first to experience the future of AI-powered learning and automation.
           </p>
           <Button 
             size="lg" 
             variant="primary"
-            onClick={() => setIsWaitlistModalOpen(true)}
+            onClick={() => setIsUpdateModalOpen(true)}
             className="bg-white text-black hover:bg-gray-200"
           >
-            Join the Waitlist Now
+            Get App Updates
           </Button>
         </div>
       </Section>
 
-      <Modal isOpen={isWaitlistModalOpen} onClose={closeWaitlistModal} title="Join Our Waitlist">
-        {waitlistSubmitted ? (
-          <div className="text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className={`h-16 w-16 text-gray-800 mx-auto mb-4`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Thank You!</h3>
-            <p className="text-gray-700">You've been added to our waitlist. We'll be in touch soon!</p>
-            <Button onClick={closeWaitlistModal} variant="secondary" className="mt-6 w-full">Close</Button>
-          </div>
-        ) : (
-          <form onSubmit={handleWaitlistSubmit}>
-            <p className="text-gray-700 mb-4">Be the first to know when Kazira.io launches. Enter your email below.</p>
-            <input
-              type="email"
-              value={waitlistEmail}
-              onChange={(e) => setWaitlistEmail(e.target.value)}
-              placeholder="your.email@example.com"
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-gray-500 outline-none mb-4"
-              disabled={isSubmitting}
-            />
-            <Button type="submit" variant="primary" className="w-full" isLoading={isSubmitting} disabled={isSubmitting}>
-              Sign Me Up!
-            </Button>
-          </form>
-        )}
+      <Modal isOpen={isUpdateModalOpen} onClose={() => setIsUpdateModalOpen(false)} title="Stay Updated">
+        <div className="w-full min-h-[450px] overflow-hidden rounded-lg">
+          <iframe
+            src="https://form.jotform.com/260052273727050"
+            title="App Updates"
+            className="w-full h-[500px] border-none"
+            allow="geolocation; microphone; camera"
+          />
+        </div>
       </Modal>
     </div>
   );
