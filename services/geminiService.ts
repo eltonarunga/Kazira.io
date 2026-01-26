@@ -5,7 +5,7 @@
  * Client-side API key usage is highly insecure.
  ********************************************************************************/
 import { GoogleGenAI, GenerateContentResponse, Type } from "@google/genai";
-import { LearningPath, SkillLevel, Candidate, GroundingChunk, ExamFeedback } from '../types';
+import { LearningPath, SkillLevel, Candidate, GroundingChunk } from '../types';
 import { GEMINI_MODEL_TEXT, GEMINI_MODEL_PRO } from "../constants";
 import { sanitizeInput } from "./securityService";
 
@@ -138,58 +138,5 @@ export const generateBio = async (name: string): Promise<string> => {
   } catch (error) {
     console.error("Error generating bio:", error);
     throw error;
-  }
-};
-
-/**
- * Grades a user's answer to the Kenya AI Exam.
- */
-export const gradeExamAnswer = async (
-  question: { title: string; content: string },
-  userAnswer: string
-): Promise<ExamFeedback | null> => {
-  // SECURITY: Strict sanitization of user-provided long-form answer
-  const cleanAnswer = sanitizeInput(userAnswer, 1000);
-  
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
-  const prompt = `You are a strict but fair professor grading "Kenya's Final AI Exam". 
-  The Question was: "${question.title}": "${question.content}".
-  The Student Answered: "${cleanAnswer}".
-
-  Grade this answer on a scale of 0-100. 
-  The criteria are: 
-  1. Does it address the specific Kenyan context (Utu, Harambee, local economics)? 
-  2. Does it handle the paradox (Math vs Philosophy)? 
-  3. Is it creative?
-
-  Return JSON with:
-  - score (number)
-  - feedback (string, concise critique)
-  - perspectiveAnalysis (string, which philosopher/school of thought does this answer resemble?)`;
-
-  const config: any = {
-    responseMimeType: "application/json",
-    responseSchema: {
-      type: Type.OBJECT,
-      properties: {
-        score: { type: Type.NUMBER },
-        feedback: { type: Type.STRING },
-        perspectiveAnalysis: { type: Type.STRING },
-      }
-    }
-  };
-
-  try {
-    const response = await ai.models.generateContent({
-      model: GEMINI_MODEL_PRO,
-      contents: prompt,
-      config: config
-    });
-    
-    return JSON.parse(response.text || "{}") as ExamFeedback;
-  } catch (error) {
-    console.error("Error grading exam:", error);
-    return null;
   }
 };

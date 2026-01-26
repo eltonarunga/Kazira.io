@@ -60,9 +60,3 @@ export interface ChatMessage {
   role: 'user' | 'model';
   text: string;
 }
-
-export interface ExamFeedback {
-  score: number;
-  feedback: string;
-  perspectiveAnalysis: string;
-}

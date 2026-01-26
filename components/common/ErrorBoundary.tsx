@@ -1,3 +1,4 @@
+
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import Button from './Button';
 
@@ -12,18 +13,13 @@ interface State {
 
 /**
  * ErrorBoundary component to catch rendering errors in the component tree.
- * Inheriting from Component with specified generic types (Props, State) 
- * ensures that 'this.props' and 'this.state' are correctly recognized by the TypeScript compiler.
  */
+// Explicitly extending Component with Props and State generics to ensure inherited properties like this.props are recognized.
 class ErrorBoundary extends Component<Props, State> {
   public state: State = {
     hasError: false,
     error: undefined,
   };
-
-  constructor(props: Props) {
-    super(props);
-  }
 
   // Static method used to update state after an error has been thrown by a descendant component.
   static getDerivedStateFromError(error: Error): State {
@@ -44,7 +40,9 @@ class ErrorBoundary extends Component<Props, State> {
   };
 
   public render(): ReactNode {
+    // Accessing 'this.state' and 'this.props' which are inherited from the Component base class.
     const { hasError, error } = this.state;
+    const { children } = this.props;
 
     if (hasError) {
       // Graceful fallback UI for production reliability
@@ -72,8 +70,8 @@ class ErrorBoundary extends Component<Props, State> {
       );
     }
 
-    // FIX: Using explicit inheritance from Component and returning null as a fallback ensures that this.props.children is safely handled.
-    return this.props.children || null;
+    // Accessing children through destructuring from this.props
+    return children || null;
   }
 }
 

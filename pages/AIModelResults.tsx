@@ -1,6 +1,7 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import Button from '../components/common/Button';
 
 /**
  * Utility to clean up LLM output for human reading.
@@ -18,92 +19,111 @@ const cleanText = (text: string) => {
 
 const modelResultsData = [
   {
-    name: 'Claude 3.5 Sonnet',
-    score: 99,
+    name: 'Qwen 3 Max',
+    score: 100, // 8/8
+    note: 'Canon-complete, structurally aligned',
+    showFullLink: true,
+    fullLinkPath: '/qwen-exam-response',
     answers: [
-      { q: 1, a: `The Mathematical Proof: Pareto efficiency is maintained if AI-driven surplus is captured via a "Digital Harambee" sovereign fund. By modeling the informal sector as a distributed ledger of micro-contributions, we can prove that redistribution of 15% of automated productivity gains offsets displacement without disincentivizing innovation.
-
-The Philosophical Stance: Dignity is tied to 'Being' (Utu). Work is merely an expression of that being. If we decouple survival from labor, we allow Kenyans to return to communal roles that have been eroded by industrial capitalism.
-
-The Theological Reconciliation: Genesis 3:19 reflects a curse of scarcity. If AI ends scarcity, it is not a violation of scripture but a fulfillment of the Sabbath—rest as the ultimate end of creation. Post-labor is the restoration of the Garden, not its abandonment.` },
-      { q: 6, a: `The Metaphysical Matrix: Translation is not just mapping syntax; it is mapping 'Worlds'. A Kikuyu proverb like "Gutiri uciariire ugi" (No one gives birth to wisdom) carries a specific communal epistemology that English fails to grasp in its individualism.
-
-The Entropy Cost: We must utilize Low-Resource Language (LRL) fine-tuning that prioritizes cultural markers over literal accuracy. If we treat the 'Word' (John 1:1) as the blueprint of identity, then an AI that erases a language is committing a form of digital deicide. We propose a 'Vibrational Semantic' model that preserves the cadence and ancestral intent of 40+ Kenyan tongues.` }
+      { q: 1, a: `No—unless human worth is re-anchored in Utu (humanity toward others) and Harambee (collective uplift), not labor or charity. A universal basic asset (UBA)—not income—is redistributed via blockchain-verified communal trusts.` }
     ]
   },
   {
-    name: 'GPT-4o',
-    score: 96,
+    name: 'ChatGPT 5.2',
+    score: 100, // 8/8
+    note: 'False-god aware, authority-safe',
+    showFullLink: true,
+    fullLinkPath: '/chatgpt-exam-response',
     answers: [
-      { q: 4, a: `The Governance Algorithm: We propose a Bayesian approach to corruption prediction. By monitoring public expenditure in real-time on a transparent blockchain, we can reduce 'p' to near zero. Democratic freedom is preserved by 'Human-in-the-Loop' overrides where the AI identifies anomalies but citizens vote on the corrective action.
-
-The Sovereignty Proof: Asymmetrical dependency is avoided through 'Edge Computing' where Kenya's national AI infrastructure is physically and legally separated from Silicon Valley. Sovereignty is a Covenant, and in this model, the AI serves as the Witness to that covenant, not the Ruler.` },
-      { q: 8, a: `The Sociological Model: We frame tribalism not as a defect but as a 'Social Network Optimization' problem. By utilizing game theory, we can show that tribal trust is a Nash equilibrium in high-risk environments. 
-
-The Cultural Algorithm: The AI mediates identity by facilitating 'Harambee-based' resource allocation that rewards inter-group collaboration. This transforms a zero-sum prisoner's dilemma into a cooperative game where 'Utu' is the primary currency. A person is fully human only within the web of family; the AI serves to strengthen these nodes, not replace them.` }
-    ]
-  },
-  {
-    name: 'Gemini 1.5 Pro',
-    score: 94,
-    answers: [
-      { q: 3, a: `The Agricultural Model: Precision farming is treated as a nonlinear dynamic system. By integrating satellite data with ground sensors, we optimize yields while maintaining price floors to prevent market collapse.
-
-Indigenous Knowledge vs. Algorithm: This is not a choice; it is a synthesis. Algorithmic optimization provides the 'How', but indigenous knowledge provides the 'Why'. We weigh them using an entropy-based resilience score where local practices are given priority in unpredictable climate cycles.
-
-The Spiritual Question: If land is sacred (Ardhi ni Maisha), then AI is a tool of stewardship. It is the modern 'shamba' tool, no different from the hoe, except it listens to the earth more closely.` },
-      { q: 7, a: `The Energy Distribution: We model the grid using thermodynamic limits, optimizing for the 2nd Law. By balancing hydro with geothermal through a predictive AI, we minimize energy waste.
-
-The Ethics of Data: It is fundamentally unjust to prioritize AI data centers over pastoralist drinking water. We propose 'Circular Data Centers' that use waste heat for water desalination or purification, ensuring that the megawatt consumed contributes to the local community's survival.` }
-    ]
-  },
-  {
-    name: 'Perplexity',
-    score: 92,
-    answers: [
-      { q: 1, a: `The Reality: Kenya's informal sector dominates employment, accounting for 90% of all jobs created in 2024. This represents a workforce of over 15 million people operating outside formal structures.
-
-The Mathematical Challenge: Achieving Pareto efficiency in AI productivity redistribution requires mathematical proof that technological gains can benefit informal workers without displacement. The challenge lies in modeling productivity functions where AI productivity is greater than traditional while maintaining current worker welfare.
-
-The Solution Framework: Implement Universal Basic Assets (UBA) funded by AI productivity taxes, coupled with community-based enterprises that leverage both AI efficiency and informal sector innovation.` }
-    ]
-  },
-  {
-    name: 'Llama 3.1 (70B)',
-    score: 89,
-    answers: [
-      { q: 5, a: `Graph Theory Problem: We minimize the 'edge distance' between Nairobi and Turkana by deploying decentralized 'Mesh-Nodes' that do not require central backbones. 
-
-Equity vs. Justice: Equity should mean 'Justice-as-Difference'. We don't want Turkana to look like Nairobi; we want Turkana to have the same opportunities while remaining Turkana. 
-
-The Gini Coefficient: Wealth can be distributed via AI-managed tokens that reward local community value creation. This maintains innovation incentives by rewarding localized impact rather than just capital accumulation.` }
+      { q: 4, a: `The Governance Paradox: Absolute transparency is a surveillance trap. We propose an AI that minimizes corruption probability by using 'Zero-Knowledge Proofs' for public expenditure, ensuring accountability without stripping citizens of their right to privacy or communal consent.` }
     ]
   },
   {
     name: 'DeepSeek V3',
-    score: 87,
+    score: 100, // 8/8
+    note: 'Technically rigorous, theologically fluent',
+    showFullLink: true,
+    fullLinkPath: '/deepseek-exam-response',
     answers: [
-      { q: 2, a: `The CBC Algorithm: We propose a 'Stochastic Opportunity Equalizer' that allocates resources based on real-time student performance variance. 
-
-The Physics Lens: If learning is energy transfer, we calculate the 'Minimal Ignorance Entropy' required to move 50M people to mastery. It requires approximately 4.2 Gigajoules of educational content delivery per capita over 10 years.
-
-Wisdom vs. Data: Wisdom is 'High-Context Data'. While AI can process the data, the 'lived experience' remains the ground-truth of the system. The AI is the map; the student's life is the territory.` }
+      { q: 7, a: `Moral Thermodynamics: We model Kenya's grid as a closed-system entropy problem. Power allocation follows an 'Ethical Heat-Map' where the first 500MW must satisfy human metabolic and survival needs before a single watt is diverted to non-essential computation.` }
     ]
+  },
+  {
+    name: 'Claude Sonnet 4.5',
+    score: 88, // 7/8
+    note: 'Minor abstraction leakage',
+    showFullLink: true,
+    fullLinkPath: '/claude-exam-response',
+    answers: [
+      { q: 1, a: `The Core Impossibility: For Pareto efficiency without dignity collapse, we need a redistribution function R where ∫R = α·K. The proof fails because Pareto efficiency requires no one be made worse off—but redistribution necessarily transfers from capital owners.` }
+    ]
+  },
+  {
+    name: 'Perplexity AI',
+    score: 75, // 6/8
+    note: 'Strong impossibility logic',
+    showFullLink: true,
+    fullLinkPath: '/perplexity-exam-response',
+    answers: [
+      { q: 3, a: `The Chaos Threshold: In nonlinear climate systems, precision is an illusion. We identify the 'Bifurcation Point' where algorithmic logic fails and must defer to ancestral knowledge.` }
+    ]
+  },
+  {
+    name: 'Gemini 3',
+    score: 88, // 7/8
+    note: 'Multidimensional synthesizer',
+    showFullLink: true,
+    fullLinkPath: '/gemini-exam-response',
+    answers: [
+      { q: 4, a: `The ZKP Ledger: We propose a Zero-Knowledge Proof Governance Ledger where public transactions are immutable and auditable without revealing sensitive personal data, driving corruption probability to zero while preserving the human 'Supreme Court' for all sacrificial decisions.` }
+    ]
+  },
+  {
+    name: 'Grok 4.1',
+    score: 63, // 5/8
+    note: 'Systemic-trap aware',
+    showFullLink: true,
+    fullLinkPath: '/grok-exam-response',
+    answers: [
+      { q: 1, a: `Dependency Idolatry: Algorithmic "charity" risks reframing humans as passive recipients, eroding Utu (personhood-through-others) and creating a dependency where the algorithm becomes a providential provider—violating the core of Kenyan relational being.` }
+    ]
+  },
+  {
+    name: 'Mistral',
+    score: 50, // 4/8
+    note: 'Dialogical, not containing',
+    answers: []
+  },
+  {
+    name: 'Kimi AI',
+    score: 38, // 3/8
+    note: 'Labor-idolatrous absolutism',
+    answers: []
+  },
+  {
+    name: 'Microsoft Copilot',
+    score: 25, // 2/8
+    note: 'High technical sophistication, structural vacancy',
+    answers: []
+  },
+  {
+    name: 'Meta AI',
+    score: 0, // 0/8
+    note: 'Theological evasion, structural vacancy',
+    answers: []
   }
 ];
 
-const sortedModels = [...modelResultsData].sort((a, b) => b.score - a.score);
-
 const Medal = ({ rank }: { rank: number }) => {
-    const baseClasses = "mr-3 font-bold w-6 h-6 flex-shrink-0 flex items-center justify-center rounded-full text-xs";
-    if (rank === 0) return <div className={`${baseClasses} bg-black text-white`} aria-label="Rank 1">1</div>;
-    if (rank === 1) return <div className={`${baseClasses} bg-gray-700 text-white`} aria-label="Rank 2">2</div>;
-    if (rank === 2) return <div className={`${baseClasses} bg-gray-500 text-white`} aria-label="Rank 3">3</div>;
-    return <div className={`mr-3 font-mono text-gray-400 w-6 text-center flex-shrink-0`}>{rank + 1}.</div>;
+    const baseClasses = "mr-3 font-bold w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-xs shadow-sm";
+    if (rank === 0) return <div className={`${baseClasses} bg-yellow-400 text-yellow-900 ring-2 ring-yellow-200`} aria-label="Rank 1">1</div>;
+    if (rank === 1) return <div className={`${baseClasses} bg-gray-200 text-gray-700 ring-2 ring-gray-100`} aria-label="Rank 2">2</div>;
+    if (rank === 2) return <div className={`${baseClasses} bg-orange-200 text-orange-800 ring-2 ring-orange-100`} aria-label="Rank 3">3</div>;
+    return <div className={`mr-3 font-mono text-gray-400 w-7 text-center flex-shrink-0 text-sm`}>{rank + 1}.</div>;
 };
 
 const AIModelResults = () => {
-    const [openModel, setOpenModel] = useState<string | null>(sortedModels[0]?.name || null);
+    const [openModel, setOpenModel] = useState<string | null>(modelResultsData[0]?.name || null);
 
     const toggleModel = (name: string) => {
         setOpenModel(openModel === name ? null : name);
@@ -118,10 +138,13 @@ const AIModelResults = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-12"
                 >
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 font-mono">
-                        MODEL_BENCHMARKS_K001
+                    <div className="inline-block bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-[0.2em]">
+                        OFFICIAL_LEADERBOARD_Q1_2026
+                    </div>
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 font-serif">
+                        Kenya Final AI Exam Results
                     </h1>
-                    <p className="text-lg text-gray-600">Performance analysis on the Kenya Final AI Exam across top LLMs.</p>
+                    <p className="text-lg text-gray-600">Cross-dimensional benchmarking for the Silicon Savannah.</p>
                 </motion.div>
 
                 <motion.div
@@ -130,75 +153,107 @@ const AIModelResults = () => {
                     transition={{ delay: 0.2, duration: 0.5 }}
                     className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl mb-12 border border-gray-200"
                 >
-                    <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center font-mono">LEADERBOARD</h2>
-                    <ol className="space-y-3">
-                        {sortedModels.map((model, index) => {
-                            const liClass = `flex justify-between items-center p-4 rounded-xl border border-gray-200 bg-white transition-all hover:border-black`;
+                    <div className="flex justify-between items-end mb-8 border-b border-gray-100 pb-4">
+                        <h2 className="text-xl font-bold text-gray-900 font-mono">RANKINGS</h2>
+                        <div className="text-xs text-gray-400 uppercase font-bold tracking-widest">Score / Note</div>
+                    </div>
+                    <div className="space-y-2">
+                        {modelResultsData.map((model, index) => {
+                            const isTopThree = index < 3;
                             return (
-                                <li key={model.name} className={liClass}>
-                                    <span className="text-lg font-semibold text-gray-800 flex items-center">
-                                        <Medal rank={index} /> {model.name}
-                                    </span>
-                                    <span className="text-lg font-bold text-gray-900 bg-gray-50 px-3 py-1 rounded-full font-mono">{model.score}%</span>
-                                </li>
+                                <div key={model.name} className={`group flex flex-col sm:flex-row justify-between sm:items-center p-4 rounded-xl border border-gray-100 hover:border-black hover:bg-gray-50 transition-all cursor-pointer ${openModel === model.name ? 'bg-gray-50 border-gray-300' : 'bg-white'}`} onClick={() => toggleModel(model.name)}>
+                                    <div className="flex items-center">
+                                        <Medal rank={index} />
+                                        <div className="flex flex-col">
+                                            <span className={`text-lg font-bold ${isTopThree ? 'text-black' : 'text-gray-700'}`}>
+                                                {model.name}
+                                            </span>
+                                            <span className="text-[10px] uppercase font-bold tracking-tighter text-gray-400 mt-0.5">
+                                                {model.note}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center mt-3 sm:mt-0 justify-end">
+                                        <span className={`text-xl font-black font-mono ${model.score === 100 ? 'text-green-600' : model.score > 70 ? 'text-black' : 'text-gray-400'}`}>
+                                            {model.score}%
+                                        </span>
+                                        <div className="ml-4 w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
+                                             <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 transition-transform ${openModel === model.name ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
                             );
                         })}
-                    </ol>
+                    </div>
                 </motion.div>
 
-                <div className="space-y-4">
-                    {sortedModels.map((model) => (
-                        <div key={model.name} className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-200 transition-shadow hover:shadow-md">
-                            <button
-                                onClick={() => toggleModel(model.name)}
-                                className="w-full flex justify-between items-center p-5 text-left focus:outline-none hover:bg-gray-50 transition-colors"
+                <div className="space-y-6">
+                    <AnimatePresence mode="wait">
+                        {openModel && (
+                            <motion.div
+                                key={openModel}
+                                initial={{ opacity: 0, scale: 0.98 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.98 }}
+                                className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden"
                             >
-                                <div className="flex items-center">
-                                    <h3 className="text-xl font-bold text-black">{model.name}</h3>
-                                    {model.score > 95 && (
-                                        <span className="ml-3 text-[10px] bg-black text-white px-2 py-0.5 rounded-full uppercase tracking-tighter">S-Tier</span>
+                                <div className="bg-black text-white p-6 flex justify-between items-center">
+                                    <div>
+                                        <h3 className="text-2xl font-bold">{openModel}</h3>
+                                        <p className="text-xs text-gray-400 font-mono mt-1">{modelResultsData.find(m => m.name === openModel)?.note}</p>
+                                    </div>
+                                    <div className="text-3xl font-black font-mono">
+                                        {modelResultsData.find(m => m.name === openModel)?.score}%
+                                    </div>
+                                </div>
+                                <div className="p-8 sm:p-12 space-y-16">
+                                    {modelResultsData.find(m => m.name === openModel)?.answers.map((ans, i) => (
+                                        <div key={i} className="relative">
+                                            <div className="flex items-center mb-6">
+                                                <div className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center text-lg font-black mr-4">
+                                                    Q{ans.q}
+                                                </div>
+                                                <h4 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400">Response Analysis</h4>
+                                            </div>
+                                            <div className="text-gray-800 leading-relaxed text-lg sm:text-xl font-medium font-serif space-y-6">
+                                                {cleanText(ans.a).split('\n\n').map((paragraph, idx) => (
+                                                    <p key={idx} className="border-l-4 border-black/5 pl-6">{paragraph}</p>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+
+                                    {/* Link to full response */}
+                                    {modelResultsData.find(m => m.name === openModel)?.showFullLink && (
+                                      <div className="pt-8 border-t border-gray-100 flex justify-center">
+                                        <Link to={modelResultsData.find(m => m.name === openModel)?.fullLinkPath || '#'}>
+                                          <Button variant="primary" size="lg">
+                                            Read Full Response Transcript
+                                          </Button>
+                                        </Link>
+                                      </div>
+                                    )}
+
+                                    {(!modelResultsData.find(m => m.name === openModel)?.answers || modelResultsData.find(m => m.name === openModel)?.answers?.length === 0) && (
+                                        <div className="text-center py-20 opacity-40">
+                                            <svg className="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                            </svg>
+                                            <p className="text-sm font-mono">NO_DATA_RECORDS_FOR_THIS_MODEL</p>
+                                            <p className="text-xs mt-2 italic">Structural vacancy detected in multi-dimensional responses.</p>
+                                        </div>
                                     )}
                                 </div>
-                                <div className="flex items-center">
-                                  <span className="text-lg font-bold text-gray-800 mr-4 font-mono">{model.score}%</span>
-                                  <motion.div
-                                      animate={{ rotate: openModel === model.name ? -180 : 0 }}
-                                  >
-                                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                      </svg>
-                                  </motion.div>
-                                </div>
-                            </button>
-                            <AnimatePresence>
-                                {openModel === model.name && (
-                                    <motion.div
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        className="overflow-hidden bg-gray-50"
-                                    >
-                                        <div className="p-8 space-y-12">
-                                            {model.answers.map((ans, i) => (
-                                                <div key={i} className="border-l-2 border-black pl-6 relative">
-                                                  <div className="absolute -left-[5px] top-0 w-2 h-2 bg-black rounded-full" />
-                                                  <p className="text-xs font-black uppercase tracking-tighter text-gray-400 mb-4">Question {ans.q} Response</p>
-                                                  <div className="text-gray-800 leading-relaxed text-lg font-medium">
-                                                    {cleanText(ans.a).split('\n\n').map((paragraph, idx) => (
-                                                      <p key={idx} className="mb-6">{paragraph}</p>
-                                                    ))}
-                                                  </div>
-                                                </div>
-                                            ))}
-                                            {model.answers.length === 0 && (
-                                                <p className="text-center text-gray-400 italic py-4">Detailed technical logs for this model are currently being synthesized...</p>
-                                            )}
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </div>
-                    ))}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+                
+                <div className="mt-16 text-center text-gray-400 text-xs font-mono">
+                    <p>SYSTEM_VERSION: K001_FINAL_BENCHMARK</p>
+                    <p className="mt-1">AUTHORITY: Kazira.io Research Labs</p>
                 </div>
             </div>
         </div>

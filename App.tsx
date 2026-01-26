@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
@@ -8,6 +9,13 @@ import Footer from './components/layout/Footer';
 import { useAuth } from './hooks/useAuth';
 import KenyaFinalAIExam from './pages/KenyaFinalAIExam';
 import AIModelResults from './pages/AIModelResults';
+import ClaudeExamResponse from './pages/ClaudeExamResponse';
+import QwenExamResponse from './pages/QwenExamResponse';
+import ChatGPTExamResponse from './pages/ChatGPTExamResponse';
+import DeepSeekExamResponse from './pages/DeepSeekExamResponse';
+import PerplexityExamResponse from './pages/PerplexityExamResponse';
+import GeminiExamResponse from './pages/GeminiExamResponse';
+import GrokExamResponse from './pages/GrokExamResponse';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import UserProfilePage from './pages/UserProfilePage';
 import Chatbot from './components/common/Chatbot';
@@ -33,6 +41,13 @@ const App = () => {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/kenya-ai-exam" element={<KenyaFinalAIExam />} />
               <Route path="/ai-model-results" element={<AIModelResults />} />
+              <Route path="/claude-exam-response" element={<ClaudeExamResponse />} />
+              <Route path="/qwen-exam-response" element={<QwenExamResponse />} />
+              <Route path="/chatgpt-exam-response" element={<ChatGPTExamResponse />} />
+              <Route path="/deepseek-exam-response" element={<DeepSeekExamResponse />} />
+              <Route path="/perplexity-exam-response" element={<PerplexityExamResponse />} />
+              <Route path="/gemini-exam-response" element={<GeminiExamResponse />} />
+              <Route path="/grok-exam-response" element={<GrokExamResponse />} />
               <Route 
                 path="/learn" 
                 element={
