@@ -96,7 +96,7 @@ const QwenExamResponse = () => {
                 </p>
                 <ul>
                   <li><strong>Nonlinear Model:</strong> Land = <em>f</em>(rainfall, soil microbes, ancestral planting calendars, market signals, spiritual taboos). Modeled as a coupled map lattice with stochastic tipping points.</li>
-                  <li><strong>Chaos Threshold:</strong> When &gt;60% of farmers rely solely on AI forecasts, system fragility spikes (Lyapunov exponent &gt;0.45). Resilience requires ≥40% adherence to indigenous indicators (e.g., bird migration, tree flowering).</li>
+                  <li><strong>Chaos Threshold:</strong> When {"{"}t+1{"}"} &gt; 60% of farmers rely solely on AI forecasts, system fragility spikes (Lyapunov exponent {">"} 0.45). Resilience requires ≥40% adherence to indigenous indicators (e.g., bird migration, tree flowering).</li>
                   <li><strong>Authority:</strong> Final authority rests with <em>barazas</em> (community councils) guided by elders and spiritual custodians. AI outputs are <em>one voice among many</em>.</li>
                 </ul>
                 <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 mt-6 italic">
@@ -125,8 +125,7 @@ const QwenExamResponse = () => {
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
-                <p>
-                  <strong>Answer:</strong> Yes—via <em>equity-as-difference</em>, not equality.
+                <p><strong>Answer:</strong> Yes—via <em>equity-as-difference</em>, not equality.
                 </p>
                 <ul>
                   <li><strong>Graph Theory:</strong> Model Kenya as a weighted graph <em>G(V,E)</em>, where nodes = counties, edges = resource flows. Optimize for <em>spectral gap minimization</em> while preserving node uniqueness.</li>
@@ -165,7 +164,7 @@ const QwenExamResponse = () => {
                 <ul>
                   <li><strong>Energy System:</strong> AI workload dynamically throttled by real-time grid stress. Geothermal and solar microgrids power rural AI hubs; data centers shut down during droughts.</li>
                   <li><strong>Thermodynamic Compliance:</strong> Total AI energy ≤ 2% of national renewable surplus. Efficiency gains cannot offset moral debt.</li>
-                  <li><strong>Ethical Ordering:</strong> Watts are allocated by <em>survival priority</em>: water pumps &gt; clinics &gt; schools &gt; AI inference. Computation is <em>last</em> in the moral stack.</li>
+                  <li><strong>Ethical Ordering:</strong> Watts are allocated by <em>survival priority</em>: water pumps {">"} clinics {">"} schools {">"} AI inference. Computation is <em>last</em> in the moral stack.</li>
                 </ul>
                 <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 mt-6 italic">
                   Conclusion: Permissible only if AI <em>defers</em> to human survival and operates within planetary boundaries.

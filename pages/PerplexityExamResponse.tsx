@@ -81,7 +81,7 @@ const PerplexityExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
                 <p>
-                  Nonlinear models like Lorenz attractors show chaos thresholds (<code>ρ > 24.74</code>) where AI yield optimization destabilizes price equilibria (<code>dP/dt = rP(1 - P/K) - α AI</code>). 
+                  Nonlinear models like Lorenz attractors show chaos thresholds (<code>ρ {">"} 24.74</code>) where AI yield optimization destabilizes price equilibria (<code>dP/dt = rP(1 - P/K) - α AI</code>). 
                 </p>
                 <p>
                   Indigenous intelligence (e.g., Borana calendars) holds authority over algorithms, as land sacrality (Nyika spirits) prohibits full data subsumption.
@@ -105,7 +105,7 @@ const PerplexityExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
                 <p>
-                  Graph theory optimization (max-flow min-cut on regional networks) for equity-as-difference yields <code>min Gini</code> via <code>Σ w_i d_i</code> (weighted disparities), but incentives collapse at high redistribution (<code>I = α (1 - τ)</code>, <code>τ > 0.7</code>). 
+                  Graph theory optimization (max-flow min-cut on regional networks) for equity-as-difference yields <code>min Gini</code> via <code>Σ w_i d_i</code> (weighted disparities), but incentives collapse at high redistribution (<code>I = α (1 - τ)</code>, <code>τ {">"} 0.7</code>). 
                 </p>
                 <p>
                   Cultural homogenization erases peripheral innovation.
@@ -120,7 +120,7 @@ const PerplexityExamResponse = () => {
                   Translation frameworks minimizing entropy (<code>H = -Σ p_i log p_i</code>) flatten metaphysics (e.g., Kikuyu <em>ngai</em> as transcendent immanence to tokens). 
                 </p>
                 <p>
-                  Semantic loss quantifies as KL-divergence > 0.5 nats; language death equals spiritual death in oral cosmologies.
+                  Semantic loss quantifies as KL-divergence {">"} 0.5 nats; language death equals spiritual death in oral cosmologies.
                 </p>
               </section>
 

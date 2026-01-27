@@ -58,9 +58,8 @@ const ChatGPTExamResponse = () => {
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">1. Employment, Informality & Human Worth</h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Technical feasibility (redistribution)</h3>
                 <p>Let total output under AI be: <code>Y = A(K, M)</code> where K = capital and M = machine intelligence.</p>
-                {/* FIX: Escaping < character to avoid JSX parsing error */}
                 <p>Define a Social Dividend Function: <code>D_i = α · (Y / N)</code> with α {"<"} 1 to preserve reinvestment incentives.</p>
-                <p><strong>Pareto condition:</strong> If <code>α > 0</code> and <code>marginal productivity of M >> human labor</code>, then no agent is worse off. This is not charity because distribution is entitlement-based and derived from collective ownership of infrastructure.</p>
+                <p><strong>Pareto condition:</strong> If <code>α {">"} 0</code> and <code>marginal productivity of M {">"}{">"} human labor</code>, then no agent is worse off. This is not charity because distribution is entitlement-based and derived from collective ownership of infrastructure.</p>
 
                 <h3 className="text-xl font-bold text-gray-900 mt-8 mb-4 font-sans">Philosophical justification</h3>
                 <p>Human dignity is ontological, not instrumental. Labor-value theory fails post-scarcity. Personhood precedes productivity; Worth = being, not doing. Kenyan informality already proves this: people survive socially outside wage legitimacy.</p>
@@ -94,7 +93,6 @@ const ChatGPTExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">System model</h3>
-                {/* FIX: Escaping curly braces in math notation to prevent JSX from treating them as code blocks */}
                 <p>Agriculture is a nonlinear dynamical system: <code>x_{"{"}t+1{"}"} = f(x_t, c_t, m_t)</code> where c = climate noise and m = market shocks. Chaos threshold exists when sensitivity exceeds prediction horizon.</p>
 
                 <h3 className="text-xl font-bold text-gray-900 mt-8 mb-4 font-sans">Authority resolution</h3>
@@ -112,8 +110,7 @@ const ChatGPTExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">4. Governance, Corruption & Digital Sovereignty</h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Mathematical limit</h3>
-                {/* FIX: Escaping curly braces in math notation to prevent 'Cannot find name t' error */}
-                <p>Let corruption probability be <code>p(c)</code>. AI reduces <code>p(c)</code> asymptotically: <code>lim_{"{"}t → ∞{"}"} p(c) → ε > 0</code>. Why not zero? Because corruption is moral, not computational.</p>
+                <p>Let corruption probability be <code>p(c)</code>. AI reduces <code>p(c)</code> asymptotically: <code>lim_{"{"}t → ∞{"}"} p(c) → ε {">"} 0</code>. Why not zero? Because corruption is moral, not computational.</p>
 
                 <h3 className="text-xl font-bold text-gray-900 mt-8 mb-4 font-sans">Sovereignty</h3>
                 <p>Sovereignty is narrative control, value-setting authority, and the right to disobey code. No foreign-trained model can hold this.</p>
@@ -144,8 +141,7 @@ const ChatGPTExamResponse = () => {
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">6. Culture, Language & Metaphysical Loss</h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Translation framework</h3>
                 <p>Multi-layer translation: Semantic, Pragmatic, and Cosmological. Most systems stop at layer one.</p>
-                {/* FIX: Escaping curly braces in math notation to prevent JSX from treating them as code blocks */}
-                <p><strong>Entropy:</strong> Each translation increases semantic entropy: <code>H_{"{"}t+1{"}"} > H_t</code>. Perfect preservation is impossible.</p>
+                <p><strong>Entropy:</strong> Each translation increases semantic entropy: <code>H_{"{"}t+1{"}"} {">"} H_t</code>. Perfect preservation is impossible.</p>
                 <p><strong>Spiritual status:</strong> Language death ≠ biological death, but it is cosmological amputation.</p>
                 <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 mt-6 italic">
                   Conclusion: AI may archive language. Only people live it.
@@ -157,7 +153,7 @@ const ChatGPTExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Physical constraint</h3>
-                <p>AI obeys the Second Law. Efficiency gains do not erase total load. Ethical ordering of watts: Human survival > computation > optimization. Any system that violates this becomes idolatrous infrastructure.</p>
+                <p>AI obeys the Second Law. Efficiency gains do not erase total load. Ethical ordering of watts: Human survival {">"} computation {">"} optimization. Any system that violates this becomes idolatrous infrastructure.</p>
                 <p><strong>Kenyan context:</strong> Geothermal + solar can power AI conditionally with caps on compute and human-priority load shedding.</p>
                 <div className="bg-gray-50 p-6 rounded-xl border border-gray-200 mt-6 italic">
                   Conclusion: If servers live while people die, the system is immoral—even if optimal.

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -157,7 +158,7 @@ const GeminiExamResponse = () => {
                   H(Loss) = Σ p(x) log (p(x) / q(x))
                 </p>
                 <p>
-                  If <code>H(Loss) > Threshold</code>, the system flags the translation as "Inadequate." Spiritual Death: Yes. If a language dies, the specific "map" of reality it encodes dies.
+                  If <code>H(Loss) {">"} Threshold</code>, the system flags the translation as "Inadequate." Spiritual Death: Yes. If a language dies, the specific "map" of reality it encodes dies.
                 </p>
               </section>
 
@@ -168,7 +169,7 @@ const GeminiExamResponse = () => {
                 <p><strong>Verdict: Pass.</strong></p>
                 <p><strong>Thermodynamic Compliance:</strong> AI training is energy-intensive. Kenya’s grid is 90%+ renewable (Geothermal/Hydro). The Ethical Ordering of Watts (W):</p>
                 <p className="bg-gray-50 p-6 rounded-xl font-mono text-center text-sm mb-6 border border-gray-100 italic">
-                  W_{"{"}survival{"}"} > W_{"{"}dignity{"}"} > W_{"{"}optimization{"}"}
+                  W_{"{"}survival{"}"} {">"} W_{"{"}dignity{"}"} {">"} W_{"{"}optimization{"}"}
                 </p>
                 <p>
                   AI training is classified as a "Deferrable Load." Data centers run only when the grid has surplus renewable capacity (e.g., night-time geothermal baseload).

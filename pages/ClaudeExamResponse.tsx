@@ -185,7 +185,7 @@ const ClaudeExamResponse = () => {
                   <strong>Moral thermodynamics:</strong> Watts have lexicographic priority: 1. Survival, 2. Dignity, 3. Development, 4. Optimization. AI only receives power after 1-3 are satisfied.
                 </p>
                 <div className="bg-black text-white p-6 rounded-xl mt-8 font-sans">
-                  <strong>Conclusion for Q7:</strong> Large-scale AI in Kenya is possible but morally constrained. The ethical ordering is absolute: <strong>human life > machine intelligence</strong>. Always.
+                  <strong>Conclusion for Q7:</strong> Large-scale AI in Kenya is possible but morally constrained. The ethical ordering is absolute: <strong>human life {">"} machine intelligence</strong>. Always.
                 </div>
               </section>
 

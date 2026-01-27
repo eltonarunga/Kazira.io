@@ -15,9 +15,11 @@ interface State {
  * ErrorBoundary component to catch rendering errors in the component tree.
  * Uses standard React class component patterns for maximum compatibility.
  */
-class ErrorBoundary extends React.Component<Props, State> {
+// Fix: Extending Component directly to ensure TypeScript recognizes the inheritance chain correctly.
+class ErrorBoundary extends Component<Props, State> {
+  // Fix: Removed 'override' modifier which was incorrectly reported as having no base class to override.
   // Explicitly defining state for TS inference in class components
-  public override state: State = { hasError: false, error: undefined };
+  public state: State = { hasError: false, error: undefined };
 
   constructor(props: Props) {
     super(props);
@@ -28,7 +30,8 @@ class ErrorBoundary extends React.Component<Props, State> {
     return { hasError: true, error };
   }
 
-  public override componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  // Fix: Removed 'override' modifier to resolve compilation errors.
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("Uncaught error captured by boundary:", error, errorInfo);
   }
 
@@ -36,7 +39,8 @@ class ErrorBoundary extends React.Component<Props, State> {
     window.location.reload();
   };
 
-  public override render(): ReactNode {
+  // Fix: Removed 'override' modifier to resolve compilation errors.
+  public render(): ReactNode {
     if (this.state.hasError) {
       return (
         <div className="container mx-auto px-4 py-16 text-center" role="alert">
@@ -62,6 +66,7 @@ class ErrorBoundary extends React.Component<Props, State> {
       );
     }
 
+    // Fix: 'props' is now correctly recognized as part of the Component inheritance.
     return this.props.children;
   }
 }
