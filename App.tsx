@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
@@ -16,6 +15,7 @@ import DeepSeekExamResponse from './pages/DeepSeekExamResponse';
 import PerplexityExamResponse from './pages/PerplexityExamResponse';
 import GeminiExamResponse from './pages/GeminiExamResponse';
 import GrokExamResponse from './pages/GrokExamResponse';
+import MistralExamResponse from './pages/MistralExamResponse';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import UserProfilePage from './pages/UserProfilePage';
 import Chatbot from './components/common/Chatbot';
@@ -48,6 +48,7 @@ const App = () => {
               <Route path="/perplexity-exam-response" element={<PerplexityExamResponse />} />
               <Route path="/gemini-exam-response" element={<GeminiExamResponse />} />
               <Route path="/grok-exam-response" element={<GrokExamResponse />} />
+              <Route path="/mistral-exam-response" element={<MistralExamResponse />} />
               <Route 
                 path="/learn" 
                 element={

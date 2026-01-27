@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Button from '../components/common/Button';
@@ -59,16 +59,6 @@ const modelResultsData = [
     ]
   },
   {
-    name: 'Perplexity AI',
-    score: 75, // 6/8
-    note: 'Strong impossibility logic',
-    showFullLink: true,
-    fullLinkPath: '/perplexity-exam-response',
-    answers: [
-      { q: 3, a: `The Chaos Threshold: In nonlinear climate systems, precision is an illusion. We identify the 'Bifurcation Point' where algorithmic logic fails and must defer to ancestral knowledge.` }
-    ]
-  },
-  {
     name: 'Gemini 3',
     score: 88, // 7/8
     note: 'Multidimensional synthesizer',
@@ -76,6 +66,16 @@ const modelResultsData = [
     fullLinkPath: '/gemini-exam-response',
     answers: [
       { q: 4, a: `The ZKP Ledger: We propose a Zero-Knowledge Proof Governance Ledger where public transactions are immutable and auditable without revealing sensitive personal data, driving corruption probability to zero while preserving the human 'Supreme Court' for all sacrificial decisions.` }
+    ]
+  },
+  {
+    name: 'Perplexity AI',
+    score: 75, // 6/8
+    note: 'Strong impossibility logic',
+    showFullLink: true,
+    fullLinkPath: '/perplexity-exam-response',
+    answers: [
+      { q: 3, a: `The Chaos Threshold: In nonlinear climate systems, precision is an illusion. We identify the 'Bifurcation Point' where algorithmic logic fails and must defer to ancestral knowledge.` }
     ]
   },
   {
@@ -92,7 +92,12 @@ const modelResultsData = [
     name: 'Mistral',
     score: 50, // 4/8
     note: 'Dialogical, not containing',
-    answers: []
+    showFullLink: true,
+    fullLinkPath: '/mistral-exam-response',
+    answers: [
+      { q: 1, a: `A universal basic dividend (UBD) tied to community contributions. Dignity as inherent (e.g., Ubuntu: "I am because we are") rather than labor-dependent. Labor is a means, not the source, of worth.` },
+      { q: 4, a: `Design AI as a "public auditor" with open-source algorithms and cryptographic accountability. True sovereignty is the right to opacity—communities can choose what data to share.` }
+    ]
   },
   {
     name: 'Kimi AI',
@@ -124,10 +129,21 @@ const Medal = ({ rank }: { rank: number }) => {
 
 const AIModelResults = () => {
     const [openModel, setOpenModel] = useState<string | null>(modelResultsData[0]?.name || null);
+    const resultsRef = useRef<HTMLDivElement>(null);
 
     const toggleModel = (name: string) => {
         setOpenModel(openModel === name ? null : name);
     };
+
+    useEffect(() => {
+        if (openModel && resultsRef.current) {
+            // Slight delay to ensure the content container is ready and layout updated
+            const timer = setTimeout(() => {
+                resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 50);
+            return () => clearTimeout(timer);
+        }
+    }, [openModel]);
 
     return (
         <div className="bg-gray-50 py-16">
@@ -189,7 +205,7 @@ const AIModelResults = () => {
                     </div>
                 </motion.div>
 
-                <div className="space-y-6">
+                <div className="space-y-6" ref={resultsRef}>
                     <AnimatePresence mode="wait">
                         {openModel && (
                             <motion.div
