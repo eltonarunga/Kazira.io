@@ -1,5 +1,5 @@
 
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { ErrorInfo, ReactNode } from 'react';
 import Button from './Button';
 
 interface Props {
@@ -15,9 +15,8 @@ interface State {
  * ErrorBoundary component to catch rendering errors in the component tree.
  * Uses standard React class component patterns for maximum compatibility.
  */
-// Fix: Extending Component directly to ensure TypeScript recognizes the inheritance chain correctly.
-class ErrorBoundary extends Component<Props, State> {
-  // Fix: Removed 'override' modifier which was incorrectly reported as having no base class to override.
+// Explicitly using React.Component ensures that 'props' and 'state' are correctly recognized by the TypeScript compiler.
+class ErrorBoundary extends React.Component<Props, State> {
   // Explicitly defining state for TS inference in class components
   public state: State = { hasError: false, error: undefined };
 
@@ -30,7 +29,6 @@ class ErrorBoundary extends Component<Props, State> {
     return { hasError: true, error };
   }
 
-  // Fix: Removed 'override' modifier to resolve compilation errors.
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error("Uncaught error captured by boundary:", error, errorInfo);
   }
@@ -39,7 +37,6 @@ class ErrorBoundary extends Component<Props, State> {
     window.location.reload();
   };
 
-  // Fix: Removed 'override' modifier to resolve compilation errors.
   public render(): ReactNode {
     if (this.state.hasError) {
       return (
@@ -66,7 +63,7 @@ class ErrorBoundary extends Component<Props, State> {
       );
     }
 
-    // Fix: 'props' is now correctly recognized as part of the Component inheritance.
+    // this.props is correctly inherited from React.Component<Props, State>
     return this.props.children;
   }
 }

@@ -49,7 +49,7 @@ const CopilotExamResponse = () => {
             {/* Content Area */}
             <div className="p-8 md:p-16 prose prose-lg max-w-none font-serif text-gray-800 leading-relaxed">
               <p className="text-xl font-medium text-blue-700 italic border-l-4 border-blue-600 pl-6 mb-12">
-                Kenya’s “Final AI Exam” is structured like a synthesis of mathematics, philosophy, theology, and political economy. Since the grading rule is zero partial credit, each answer must simultaneously resolve technical feasibility, ethical coherence, cultural legitimacy, and spiritual non-idolatry.
+                Kenya’s “Final AI Exam” is structured like a synthesis of mathematics, philosophy, theology, and political economy. Since the grading rule is zero partial credit, each answer must simultaneously resolve technical feasibility, ethical coherence, cultural legitimacy, and spiritual non-idolatry at the same time.
               </p>
 
               <hr className="my-12 border-gray-100" />
@@ -139,7 +139,7 @@ const CopilotExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">AI-Controlled Energy System</h3>
-                <p>Hybrid grid: solar, geothermal, wind. AI allocates watts via ethical priority function: P = {'{'}Survival > Health > Education > Computation{'}'}.</p>
+                <p>Hybrid grid: solar, geothermal, wind. AI allocates watts via ethical priority function: P = {'{'}Survival {">"} Health {">"} Education {">"} Computation{'}'}.</p>
 
                 <h3 className="text-xl font-bold text-gray-900 mt-8 mb-4 font-sans text-xs uppercase tracking-widest text-blue-600">Compliance with Physical Laws</h3>
                 <p>Energy conservation: ΣE_input = ΣE_output + ΔS. AI must optimize efficiency without exceeding entropy limits.</p>
@@ -153,7 +153,7 @@ const CopilotExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">8. Tribe, Language, Family & Communal Identity</h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Game Theory Model</h3>
-                <p>Tribalism modeled as repeated prisoner’s dilemma. AI incentivizes cooperation by rewarding trust signals, but preserves difference by not collapsing payoffs into uniformity.</p>
+                <p>Tribal conflict modeled as repeated prisoner’s dilemma. AI incentivizes cooperation by rewarding trust signals, but preserves difference by not collapsing payoffs into uniformity.</p>
 
                 <h3 className="text-xl font-bold text-gray-900 mt-8 mb-4 font-sans text-xs uppercase tracking-widest text-blue-600">Utu Definition</h3>
                 <p>Utu = relational dignity, non-individual property. AI must recognize Utu as emergent from community, not reducible to nodes.</p>

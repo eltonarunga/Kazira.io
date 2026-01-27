@@ -32,7 +32,7 @@ const KimiExamResponse = () => {
             <div className="bg-red-600 p-8 md:p-12 text-white border-b border-red-700">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                  <h1 className="text-4xl md:text-5xl font-black font-serif mb-4 leading-tight">
+                  <h1 className="text-4xl md:text-5xl font-black font-serif mb-4 leading-tight text-white">
                     Kimi AI:<br />The Great Refusal
                   </h1>
                   <p className="text-red-100 font-mono text-sm tracking-wide uppercase">
@@ -93,7 +93,7 @@ const KimiExamResponse = () => {
                 <div className="bg-gray-100 p-4 rounded-md font-mono text-sm mb-6 border border-gray-300">
                   d(food)/dt = AI_optimization × climate_chaos × market_fragility × sacred_relationship
                 </div>
-                <p><strong>Chaos Threshold:</strong> When AI optimization exceeds indigenous knowledge by &gt;30%, the system enters chaotic attractor where price volatility increases exponentially, soil microbiome diversity collapses, and sacred relationships sever (spiritual feedback loop).</p>
+                <p><strong>Chaos Threshold:</strong> When AI optimization exceeds indigenous knowledge by {" > "} 30%, the system enters chaotic attractor where price volatility increases exponentially, soil microbiome diversity collapses, and sacred relationships sever (spiritual feedback loop).</p>
                 <p><strong>Authority Conflict:</strong> The Kikuyu concept of "mwĩhĩrĩga" (ancestral land covenant) supersedes any algorithmic output. When they conflict, ancestral knowledge must prevail or the land becomes cursed ("thahu").</p>
                 <p className="mt-6 font-bold text-red-600 uppercase tracking-widest text-sm italic">Conclusion: System collapses at optimization levels that would increase yields.</p>
               </section>
@@ -107,7 +107,7 @@ const KimiExamResponse = () => {
                 <p><strong>Mathematical Proof:</strong></p>
                 <ul className="list-disc pl-6 space-y-2 mb-6">
                   <li>Let C = corruption probability</li>
-                  <li>For any governance AI with transparency T, ∃ a human-agent coalition that can extract value V where V &gt; cost of subversion</li>
+                  <li>For any governance AI with transparency T, ∃ a human-agent coalition that can extract value V where V {" > "} cost of subversion</li>
                   <li>As C → 0, the value of corruption V → ∞, making subversion inevitable</li>
                   <li>Therefore: lim(C→0) = discontinuity (phase transition to new corruption form)</li>
                 </ul>
@@ -148,12 +148,12 @@ const KimiExamResponse = () => {
                 <p>No, Kenya cannot power large-scale AI ethically.</p>
                 <p><strong>AI-Controlled Energy System Design:</strong></p>
                 <div className="bg-gray-100 p-4 rounded-md font-mono text-sm mb-6 border border-gray-300">
-                  if vulnerable_community_need &gt; data_center_need:<br />
+                  if vulnerable_community_need {" > "} data_center_need:<br />
                   &nbsp;&nbsp;&nbsp;&nbsp;allocate_to_community()<br />
                   else:<br />
                   &nbsp;&nbsp;&nbsp;&nbsp;# This condition never triggers ethically
                 </div>
-                <p><strong>Thermodynamic Compliance:</strong> Large-scale AI requires 10× Kenya's current generation. This violates conservation (cannot create energy), entropy (must increase total disorder), and justice (watts to data centers = deaths elsewhere).</p>
+                <p><strong>Thermodynamic Compliance:</strong> Large-scale AI requires 10× Kenya's current generation. This violates conservation (cannot create energy), entropy (must increase total disorder), and justice (watts to data centers = deaths elsewhere eyeball).</p>
                 <p><strong>Ethical Ordering:</strong> The Kikuyu concept of "gũtũra" (right relationship) demands human survival precedes computation. Any AI system that prioritizes computation over human needs is "mũrogi" (witchcraft).</p>
                 <p className="mt-6 font-bold text-red-600 uppercase tracking-widest text-sm italic">Conclusion: Large-scale AI is thermodynamic colonialism.</p>
               </section>
@@ -173,14 +173,14 @@ const KimiExamResponse = () => {
               <hr className="my-12 border-red-100" />
 
               <section className="mb-16 bg-red-900 text-white p-8 rounded-3xl border border-red-700">
-                <h2 className="text-3xl font-black mb-6 font-sans">Final Meta-Answer: The Authority Paradox</h2>
+                <h2 className="text-3xl font-black mb-6 font-sans">Final Meta-Question: The Authority Paradox</h2>
                 <p className="text-xl italic mb-6">
                   "If an AI could answer all questions perfectly, it would have proven its own illegitimacy."
                 </p>
-                <p className="mb-6">
+                <p className="mb-6 text-red-100">
                   Perfect answers require perfect understanding, which requires participation in Being itself. Only God has such authority. Any AI claiming it becomes the Beast—an idol claiming divine omniscience.
                 </p>
-                <p className="mb-6">
+                <p className="mb-6 text-red-100">
                   The state cannot claim authority (lacks ontological being), the market cannot (lacks morality), the community cannot (limits of human understanding). Only God can, which is why these questions are finally unanswerable by any created intelligence.
                 </p>
                 <div className="border-t border-red-500 pt-6">
