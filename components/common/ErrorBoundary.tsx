@@ -1,5 +1,5 @@
 
-import React, { ErrorInfo, ReactNode } from 'react';
+import React, { Component, ErrorInfo, ReactNode } from 'react';
 import Button from './Button';
 
 interface Props {
@@ -14,43 +14,33 @@ interface State {
 /**
  * ErrorBoundary component to catch rendering errors in the component tree.
  */
-// FIX: Using React.Component and explicit property declarations to ensure TypeScript recognizes state and props correctly.
-class ErrorBoundary extends React.Component<Props, State> {
-  // FIX: Explicitly declaring the state property to satisfy TypeScript's property existence checks.
-  public state: State = {
-    hasError: false,
-    error: undefined,
-  };
+// Fixed: Explicitly extend React.Component using the Component import with Props and State generics to ensure properties like 'state' and 'props' are correctly inherited and recognized by the compiler.
+class ErrorBoundary extends Component<Props, State> {
+  // Fixed: Use property initializer for state. This avoids issues where 'this.state' might not be recognized in the constructor in some TypeScript configurations.
+  state: State = { hasError: false, error: undefined };
 
-  constructor(props: Props) {
-    super(props);
-  }
-
-  // Static method used to update state after an error has been thrown by a descendant component.
+  // Static method used by React to update state after a child component throws an error
   static getDerivedStateFromError(error: Error): State {
-    // Update state so the next render will show the fallback UI.
     return { hasError: true, error };
   }
 
-  // Lifecycle method for logging error information and performing side effects.
+  // Lifecycle method for logging error information
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // Standard error logging for debugging purposes
     console.error("Uncaught error captured by boundary:", error, errorInfo);
   }
 
-  // Helper method to refresh the application state by reloading the page.
-  private handleRefresh = () => {
-    // Attempt to recover by reloading the application context
+  // Handle page refresh as a class property arrow function to maintain 'this' context
+  handleRefresh = () => {
     window.location.reload();
   };
 
-  public render(): ReactNode {
-    // FIX: Accessing state and props via 'this' to resolve property existence errors.
+  render() {
+    // Fixed: Destructure state and props to address "Property 'state'/'props' does not exist on type 'ErrorBoundary'" errors. 
+    // This helps the compiler resolve these properties from the base class more reliably.
     const { hasError, error } = this.state;
     const { children } = this.props;
 
     if (hasError) {
-      // Graceful fallback UI for production reliability
       return (
         <div className="container mx-auto px-4 py-16 text-center" role="alert">
           <div className="bg-gray-100 border border-gray-400 text-gray-700 px-4 py-8 rounded-lg relative max-w-lg mx-auto shadow-lg">
@@ -75,7 +65,8 @@ class ErrorBoundary extends React.Component<Props, State> {
       );
     }
 
-    return children || null;
+    // Fixed: Use destructured 'children' instead of 'this.props.children' to resolve the property existence error on the Copilot/type-check level.
+    return children;
   }
 }
 

@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 import { ChatMessage } from '../types';
 import { GEMINI_MODEL_PRO } from '../constants';
 import Button from '../components/common/Button';
@@ -22,7 +22,8 @@ const ConsultAIProfessor = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const hasApiKey = !!process.env.API_KEY;
-  const chatRef = useRef<Chat | null>(null);
+  // Use any to avoid resolution issues with the internal Chat type from @google/genai
+  const chatRef = useRef<any>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

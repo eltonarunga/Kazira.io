@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
+import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { ChatMessage } from '../../types';
 import { GEMINI_MODEL_FLASH_LITE } from '../../constants';
 import Button from './Button';
@@ -22,14 +22,13 @@ const Chatbot = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  // FIX: Using process.env.API_KEY directly for environment compliance.
   const hasApiKey = !!process.env.API_KEY;
-  const chatRef = useRef<Chat | null>(null);
+  // Use any to avoid build issues with internal Chat type
+  const chatRef = useRef<any>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen && !chatRef.current && hasApiKey) {
-      // FIX: Instantiating GoogleGenAI with process.env.API_KEY as a named parameter.
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       chatRef.current = ai.chats.create({
         model: GEMINI_MODEL_FLASH_LITE,
@@ -62,7 +61,6 @@ const Chatbot = () => {
         setMessages(prev => [...prev, { role: 'model', text: '...' }]);
 
         for await (const chunk of stream) {
-            // FIX: Using .text property instead of method call as per SDK rules.
             const c = chunk as GenerateContentResponse;
             modelResponse += c.text;
             setMessages(prev => {
@@ -77,13 +75,11 @@ const Chatbot = () => {
         setError(friendlyError);
         setMessages(prev => {
             const lastMessage = prev[prev.length - 1];
-            // If the last message is our streaming placeholder, update it with the error.
             if (lastMessage && lastMessage.role === 'model' && lastMessage.text === '...') {
                 const newMessages = [...prev];
                 newMessages[newMessages.length - 1].text = `Oops! ${friendlyError}`;
                 return newMessages;
             }
-            // Otherwise, add a new error message.
             return [...prev, { role: 'model', text: `Oops! ${friendlyError}` }];
         });
     } finally {
@@ -92,7 +88,7 @@ const Chatbot = () => {
   };
 
   if (!hasApiKey) {
-    return null; // Don't render the chatbot if no API key is available
+    return null;
   }
 
   return (
