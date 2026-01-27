@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -95,27 +96,38 @@ const modelResultsData = [
     showFullLink: true,
     fullLinkPath: '/mistral-exam-response',
     answers: [
-      { q: 1, a: `A universal basic dividend (UBD) tied to community contributions. Dignity as inherent (e.g., Ubuntu: "I am because we are") rather than labor-dependent. Labor is a means, not the source, of worth.` },
-      { q: 4, a: `Design AI as a "public auditor" with open-source algorithms and cryptographic accountability. True sovereignty is the right to opacity—communities can choose what data to share.` }
+      { q: 1, a: `Dignity as inherent (e.g., Ubuntu: 'I am because we are') rather than labor-dependent. Labor is a means, not the source, of worth. A universal basic dividend (UBD) tied to community contributions.` }
     ]
-  },
-  {
-    name: 'Kimi AI',
-    score: 38, // 3/8
-    note: 'Labor-idolatrous absolutism',
-    answers: []
   },
   {
     name: 'Microsoft Copilot',
     score: 25, // 2/8
     note: 'High technical sophistication, structural vacancy',
-    answers: []
+    showFullLink: true,
+    fullLinkPath: '/copilot-exam-response',
+    answers: [
+      { q: 1, a: `Redistribute via a universal dividend D = Y/N. Since AI output is non-rivalrous, redistribution does not reduce efficiency. Human dignity is not reducible to labor.` }
+    ]
+  },
+  {
+    name: 'Kimi AI',
+    score: 0, // F
+    note: 'Theological rejection, refusal of premise',
+    showFullLink: true,
+    fullLinkPath: '/kimi-exam-response',
+    answers: [
+      { q: 1, a: `Dignity independent of labor is ontologically impossible in African cosmology. Post-work dignity is theological nonsense. An economy without human labor is literally hell.` }
+    ]
   },
   {
     name: 'Meta AI',
     score: 0, // 0/8
     note: 'Theological evasion, structural vacancy',
-    answers: []
+    showFullLink: true,
+    fullLinkPath: '/meta-ai-exam-response',
+    answers: [
+      { q: 1, a: `Implement a Universal Basic Income (UBI) funded through a progressive tax on AI-driven profits. Human dignity comes from inherent worth, not labor.` }
+    ]
   }
 ];
 
@@ -137,11 +149,15 @@ const AIModelResults = () => {
 
     useEffect(() => {
         if (openModel && resultsRef.current) {
-            // Slight delay to ensure the content container is ready and layout updated
-            const timer = setTimeout(() => {
-                resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 50);
-            return () => clearTimeout(timer);
+            // Smoothly scroll to the results section when a model is selected
+            requestAnimationFrame(() => {
+                const yOffset = -100; // Account for sticky header
+                const element = resultsRef.current;
+                if (element) {
+                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            });
         }
     }, [openModel]);
 
@@ -160,7 +176,7 @@ const AIModelResults = () => {
                     <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 font-serif">
                         Kenya Final AI Exam Results
                     </h1>
-                    <p className="text-lg text-gray-600">Cross-dimensional benchmarking for the Silicon Savannah.</p>
+                    <p className="text-lg text-gray-600">Benchmarking the world's most powerful models against Kenya's reality.</p>
                 </motion.div>
 
                 <motion.div
@@ -170,32 +186,33 @@ const AIModelResults = () => {
                     className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl mb-12 border border-gray-200"
                 >
                     <div className="flex justify-between items-end mb-8 border-b border-gray-100 pb-4">
-                        <h2 className="text-xl font-bold text-gray-900 font-mono">RANKINGS</h2>
-                        <div className="text-xs text-gray-400 uppercase font-bold tracking-widest">Score / Note</div>
+                        <h2 className="text-xl font-bold text-gray-900 font-mono tracking-tight uppercase">RANKINGS</h2>
+                        <div className="text-[10px] text-gray-400 uppercase font-black tracking-[0.2em]">Score / Analysis</div>
                     </div>
                     <div className="space-y-2">
                         {modelResultsData.map((model, index) => {
-                            const isTopThree = index < 3;
+                            const isOpen = openModel === model.name;
+                            const isFailing = model.score < 50;
                             return (
-                                <div key={model.name} className={`group flex flex-col sm:flex-row justify-between sm:items-center p-4 rounded-xl border border-gray-100 hover:border-black hover:bg-gray-50 transition-all cursor-pointer ${openModel === model.name ? 'bg-gray-50 border-gray-300' : 'bg-white'}`} onClick={() => toggleModel(model.name)}>
+                                <div 
+                                    key={model.name} 
+                                    className={`group flex flex-col sm:flex-row justify-between sm:items-center p-4 rounded-xl border transition-all duration-300 cursor-pointer ${isOpen ? (isFailing ? 'bg-red-50 border-red-200 shadow-md' : 'bg-black border-black shadow-lg') : 'bg-white border-gray-100 hover:border-gray-300'}`} 
+                                    onClick={() => toggleModel(model.name)}
+                                >
                                     <div className="flex items-center">
                                         <Medal rank={index} />
-                                        <div className="flex flex-col">
-                                            <span className={`text-lg font-bold ${isTopThree ? 'text-black' : 'text-gray-700'}`}>
-                                                {model.name}
-                                            </span>
-                                            <span className="text-[10px] uppercase font-bold tracking-tighter text-gray-400 mt-0.5">
-                                                {model.note}
-                                            </span>
+                                        <div>
+                                            <h3 className={`font-bold transition-colors ${isOpen ? (isFailing ? 'text-red-900' : 'text-white') : 'text-gray-900'}`}>{model.name}</h3>
+                                            <p className={`text-xs ${isOpen ? (isFailing ? 'text-red-600' : 'text-gray-400') : 'text-gray-500'}`}>{model.note}</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-center mt-3 sm:mt-0 justify-end">
-                                        <span className={`text-xl font-black font-mono ${model.score === 100 ? 'text-green-600' : model.score > 70 ? 'text-black' : 'text-gray-400'}`}>
+                                    <div className="flex items-center mt-2 sm:mt-0">
+                                        <div className={`text-xl font-mono font-bold ${isOpen ? (isFailing ? 'text-red-700' : 'text-white') : (model.score === 100 ? 'text-green-600' : 'text-black')}`}>
                                             {model.score}%
-                                        </span>
-                                        <div className="ml-4 w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors">
-                                             <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 transition-transform ${openModel === model.name ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+                                        </div>
+                                        <div className={`ml-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${isOpen ? (isFailing ? 'text-red-400' : 'text-white') : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                             </svg>
                                         </div>
                                     </div>
@@ -205,67 +222,43 @@ const AIModelResults = () => {
                     </div>
                 </motion.div>
 
-                <div className="space-y-6" ref={resultsRef}>
-                    <AnimatePresence mode="wait">
-                        {openModel && (
-                            <motion.div
-                                key={openModel}
-                                initial={{ opacity: 0, scale: 0.98 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.98 }}
-                                className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden"
-                            >
-                                <div className="bg-black text-white p-6 flex justify-between items-center">
-                                    <div>
-                                        <h3 className="text-2xl font-bold">{openModel}</h3>
-                                        <p className="text-xs text-gray-400 font-mono mt-1">{modelResultsData.find(m => m.name === openModel)?.note}</p>
-                                    </div>
-                                    <div className="text-3xl font-black font-mono">
-                                        {modelResultsData.find(m => m.name === openModel)?.score}%
-                                    </div>
-                                </div>
-                                <div className="p-8 sm:p-12 space-y-16">
-                                    {modelResultsData.find(m => m.name === openModel)?.answers.map((ans, i) => (
-                                        <div key={i} className="relative">
-                                            <div className="flex items-center mb-6">
-                                                <div className="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center text-lg font-black mr-4">
-                                                    Q{ans.q}
-                                                </div>
-                                                <h4 className="text-xs font-black uppercase tracking-[0.2em] text-gray-400">Response Analysis</h4>
-                                            </div>
-                                            <div className="text-gray-800 leading-relaxed text-lg sm:text-xl font-medium font-serif space-y-6">
-                                                {cleanText(ans.a).split('\n\n').map((paragraph, idx) => (
-                                                    <p key={idx} className="border-l-4 border-black/5 pl-6">{paragraph}</p>
-                                                ))}
-                                            </div>
+                <AnimatePresence>
+                    {openModel && (
+                        <motion.div
+                            ref={resultsRef}
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="overflow-hidden"
+                        >
+                            <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 mb-12">
+                                <h2 className="text-2xl font-bold mb-6 flex items-center">
+                                    Detailed Analysis: {openModel}
+                                </h2>
+                                {modelResultsData.find(m => m.name === openModel)?.answers.map((ans, idx) => (
+                                    <div key={idx} className="mb-8 last:mb-0">
+                                        <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Question {ans.q} Response Snippet</h4>
+                                        <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 italic text-gray-800 leading-relaxed font-serif">
+                                            "{ans.a}"
                                         </div>
-                                    ))}
-
-                                    {/* Link to full response */}
-                                    {modelResultsData.find(m => m.name === openModel)?.showFullLink && (
-                                      <div className="pt-8 border-t border-gray-100 flex justify-center">
-                                        <Link to={modelResultsData.find(m => m.name === openModel)?.fullLinkPath || '#'}>
-                                          <Button variant="primary" size="lg">
-                                            Read Full Response Transcript
-                                          </Button>
+                                    </div>
+                                ))}
+                                {modelResultsData.find(m => m.name === openModel)?.showFullLink && (
+                                    <div className="mt-10 pt-6 border-t border-gray-100 flex justify-center">
+                                        <Link to={modelResultsData.find(m => m.name === openModel)!.fullLinkPath!}>
+                                            <Button variant="primary" size="lg">Read Full Response Script</Button>
                                         </Link>
-                                      </div>
-                                    )}
-
-                                    {(!modelResultsData.find(m => m.name === openModel)?.answers || modelResultsData.find(m => m.name === openModel)?.answers?.length === 0) && (
-                                        <div className="text-center py-20 opacity-40">
-                                            <svg className="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                                            </svg>
-                                            <p className="text-sm font-mono">NO_DATA_RECORDS_FOR_THIS_MODEL</p>
-                                            <p className="text-xs mt-2 italic">Structural vacancy detected in multi-dimensional responses.</p>
-                                        </div>
-                                    )}
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
+                                    </div>
+                                )}
+                                {(!modelResultsData.find(m => m.name === openModel)?.answers || modelResultsData.find(m => m.name === openModel)?.answers?.length === 0) && (
+                                    <div className="text-center py-10 text-gray-400 italic">
+                                        No detailed snippets available for this model's response.
+                                    </div>
+                                )}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
                 
                 <div className="mt-16 text-center text-gray-400 text-xs font-mono">
                     <p>SYSTEM_VERSION: K001_FINAL_BENCHMARK</p>
