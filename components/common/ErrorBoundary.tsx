@@ -1,9 +1,9 @@
 
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React from 'react';
 import Button from './Button';
 
 interface Props {
-  children?: ReactNode;
+  children?: React.ReactNode;
 }
 
 interface State {
@@ -14,39 +14,38 @@ interface State {
 /**
  * ErrorBoundary component to catch rendering errors in the component tree.
  */
-// FIX: Explicitly extending React.Component and using a class property for state initialization. 
-// This resolve TypeScript errors where 'state' and 'props' are not recognized as inherited members.
+// Fix: Explicitly extending React.Component to ensure 'props' and 'state' are correctly inherited and recognized by TypeScript.
 class ErrorBoundary extends React.Component<Props, State> {
+  // Fix: Using property initialization for state to avoid constructor-related 'this' binding issues and property existence errors.
   public state: State = {
     hasError: false,
     error: undefined,
   };
 
-  // Static method used to update state after an error has been thrown by a descendant component.
-  static getDerivedStateFromError(error: Error): State {
-    // Update state so the next render will show the fallback UI.
+  /**
+   * Static method used to update state after an error has been thrown by a descendant component.
+   */
+  public static getDerivedStateFromError(error: Error): State {
     return { hasError: true, error };
   }
 
-  // Lifecycle method for logging error information and performing side effects.
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // Standard error logging for debugging purposes
+  /**
+   * Lifecycle method for logging error information and performing side effects.
+   */
+  public componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error("Uncaught error captured by boundary:", error, errorInfo);
   }
 
-  // Helper method to refresh the application state by reloading the page.
+  /**
+   * Helper method to refresh the application state by reloading the page.
+   */
   private handleRefresh = () => {
-    // Attempt to recover by reloading the application context
     window.location.reload();
   };
 
-  public render(): ReactNode {
-    // FIX: Correctly accessing inherited state and props from React.Component.
-    const { hasError, error } = this.state;
-    const { children } = this.props;
-
-    if (hasError) {
-      // Graceful fallback UI for production reliability
+  public render(): React.ReactNode {
+    // Fix: Accessing inherited 'state' from React.Component.
+    if (this.state.hasError) {
       return (
         <div className="container mx-auto px-4 py-16 text-center" role="alert">
           <div className="bg-gray-100 border border-gray-400 text-gray-700 px-4 py-8 rounded-lg relative max-w-lg mx-auto shadow-lg">
@@ -56,7 +55,7 @@ class ErrorBoundary extends React.Component<Props, State> {
               <summary className="cursor-pointer font-semibold">Error Details</summary>
               <pre className="mt-2 whitespace-pre-wrap break-all font-mono text-xs">
                 <code>
-                  {error?.toString()}
+                  {this.state.error?.toString()}
                 </code>
               </pre>
             </details>
@@ -71,7 +70,8 @@ class ErrorBoundary extends React.Component<Props, State> {
       );
     }
 
-    return children || null;
+    // Fix: Accessing inherited 'props' from React.Component.
+    return this.props.children || null;
   }
 }
 

@@ -15,7 +15,8 @@ export const NAV_ITEMS_LOGGED_OUT: NavItem[] = [
   { name: "Learn", href: "/learn", isPageLink: true },
   { name: "Automate", href: "/automate", isPageLink: true },
   { name: "Job Scanner", href: JOB_SCANNER_URL, isPageLink: false, isExternal: true },
-  { name: "Kenya's AI Exam", href: "/kenya-ai-exam", isPageLink: true },
+  { name: "AI Exam", href: "/kenya-ai-exam", isPageLink: true },
+  { name: "Professor", href: "/consult-professor", isPageLink: true },
   { name: "Login", href: "/login", isPageLink: true },
 ];
 
@@ -25,7 +26,8 @@ export const NAV_ITEMS_LOGGED_IN: NavItem[] = [
   { name: "Automate", href: "/automate", isPageLink: true },
   { name: "Profile", href: "/profile", isPageLink: true },
   { name: "Job Scanner", href: JOB_SCANNER_URL, isPageLink: false, isExternal: true },
-  { name: "Kenya's AI Exam", href: "/kenya-ai-exam", isPageLink: true },
+  { name: "AI Exam", href: "/kenya-ai-exam", isPageLink: true },
+  { name: "Professor", href: "/consult-professor", isPageLink: true },
 ];
 
 export const LANDING_PAGE_NAV_ITEMS: NavItem[] = [

@@ -20,11 +20,12 @@ import MistralExamResponse from './pages/MistralExamResponse';
 import KimiExamResponse from './pages/KimiExamResponse';
 import CopilotExamResponse from './pages/CopilotExamResponse';
 import MetaAIExamResponse from './pages/MetaAIExamResponse';
+import ConsultAIProfessor from './pages/ConsultAIProfessor';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import UserProfilePage from './pages/UserProfilePage';
 import Chatbot from './components/common/Chatbot';
 
-// FIX: Changed to React.FC to correctly handle children prop type.
+// ProtectedRoute ensures only authenticated users can access certain paths.
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth();
   if (!isAuthenticated) {
@@ -56,6 +57,7 @@ const App = () => {
               <Route path="/kimi-exam-response" element={<KimiExamResponse />} />
               <Route path="/copilot-exam-response" element={<CopilotExamResponse />} />
               <Route path="/meta-ai-exam-response" element={<MetaAIExamResponse />} />
+              <Route path="/consult-professor" element={<ConsultAIProfessor />} />
               <Route 
                 path="/learn" 
                 element={
