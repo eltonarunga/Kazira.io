@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft, Briefcase, GraduationCap, Sprout, Scale, Map, Languages, Zap, Users, Brain } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const DeepSeekExamResponse = () => {
@@ -16,9 +17,7 @@ const DeepSeekExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>
@@ -51,7 +50,10 @@ const DeepSeekExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">1. Employment, Informality & Human Worth</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Briefcase className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  1. Employment, Informality & Human Worth
+                </h2>
                 <p><strong>Proof:</strong></p>
                 <p>
                   A Basic Dignity Allocation (BDA) is financed via a Land-Data Commons Trust, where all AI-generated surplus is taxed as a rent on training data derived from Kenyan social intelligence. This is Pareto efficient because no human is made worse off—informal labor is not “replaced” but redefined as data stewardship. 
@@ -67,7 +69,10 @@ const DeepSeekExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">2. Education, Knowledge & Epistemic Justice</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <GraduationCap className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  2. Education, Knowledge & Epistemic Justice
+                </h2>
                 <p>
                   <strong>Algorithm:</strong> A context-embedded AI tutor that uses sensor data from local ecology, oral histories, and community gatherings to frame problems. It does not “compress wisdom” because it is architected as a questioning engine, not an answer bank. 
                 </p>
@@ -79,7 +84,10 @@ const DeepSeekExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Sprout className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  3. Agriculture, Climate Chaos & Food Sovereignty
+                </h2>
                 <p>
                   <strong>Model:</strong> Agriculture as coupled human-natural system with stochastic climate shocks. AI runs ensemble forecasts but yields final veto power to designated council of elders and smallholder representatives when algorithmic advice conflicts with indigenous knowledge. 
                 </p>
@@ -91,7 +99,10 @@ const DeepSeekExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">4. Governance, Corruption & Digital Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Scale className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  4. Governance, Corruption & Digital Sovereignty
+                </h2>
                 <p><strong>Mathematical proof:</strong> Corruption probability → 0 if:</p>
                 <ul>
                   <li>AI governance is open-source, auditable by citizens via zero-knowledge proofs.</li>
@@ -106,7 +117,10 @@ const DeepSeekExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Map className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  5. Equity, Geography & Uneven Development
+                </h2>
                 <p><strong>Graph formulation:</strong></p>
                 <p>
                   Kenya as weighted graph <code>G=(V,E)</code>, vertices = regions, edges = infrastructure/data flows. AI minimizes inequality by incentivizing decentralized AI hubs in periphery via subsidy rules derived from optimal transport theory. 
@@ -122,7 +136,10 @@ const DeepSeekExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">6. Culture, Language & Metaphysical Loss</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Languages className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  6. Culture, Language & Metaphysical Loss
+                </h2>
                 <p>
                   <strong>Translation framework:</strong> Tripartite semantic model (syntactic, pragmatic, metaphysical) where AI is forbidden from translating metaphors without annotated elder commentary. Metaphysical loss minimized via ritual context embeddings drawn from participatory observation. 
                 </p>
@@ -134,7 +151,10 @@ const DeepSeekExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Zap className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  7. Climate, Energy & Moral Thermodynamics
+                </h2>
                 <p><strong>AI-controlled energy system:</strong></p>
                 <ul>
                   <li>National grid optimized via model predictive control with hard constraint: human survival energy (water pumping, health clinics) always prioritised over data centers.</li>
@@ -157,7 +177,10 @@ const DeepSeekExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">8. Tribe, Language, Family & Communal Identity</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Users className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  8. Tribe, Language, Family & Communal Identity
+                </h2>
                 <p><strong>Game theory model:</strong></p>
                 <p>
                   Tribalism as repeated bargaining game with noise. AI acts as correlation device to signal cooperative opportunities, but identity boundaries preserved as invariant. <strong>Utu</strong> modeled as network-wide reciprocity metric, not individually optimizable. 
@@ -170,7 +193,10 @@ const DeepSeekExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">Final Meta-Question (Implicit, Unanswerable)</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  Final Meta-Question (Implicit, Unanswerable)
+                </h2>
                 <blockquote className="text-2xl italic mb-8 border-l-4 border-black pl-6">
                   "If an AI answers all questions perfectly, who has moral authority over it?"
                 </blockquote>

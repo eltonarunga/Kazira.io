@@ -73,12 +73,12 @@ const LoginPage = () => {
                 type="button" 
                 variant="outline" 
                 size="lg"
-                className="w-full !py-4 rounded-xl font-bold border-2 border-black text-black hover:bg-black hover:text-white transition-all"
+                className="w-full !py-4 rounded-xl font-black text-lg border-4 !border-black !text-black !bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
                 onClick={() => setIsUpdateModalOpen(true)}
               >
                 Get App Updates
               </Button>
-              <p className="mt-3 text-sm text-gray-500">
+              <p className="mt-4 text-sm text-gray-500 font-medium">
                 Stay informed about new tools and AI releases.
               </p>
           </div>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft, Briefcase, GraduationCap, Sprout, Scale, Map, Languages, Zap, Users, Brain } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const MetaAIExamResponse = () => {
@@ -16,9 +17,7 @@ const MetaAIExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>
@@ -55,7 +54,10 @@ const MetaAIExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">1. Employment, Informality & Human Worth</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Briefcase className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  1. Employment, Informality & Human Worth
+                </h2>
                 <ul className="space-y-4">
                   <li><strong>Redistribution Mechanism:</strong> Implement a Universal Basic Income (UBI) funded through a progressive tax on AI-driven profits. This ensures everyone benefits from technological advancements.</li>
                   <li><strong>Philosophical Justification:</strong> Human dignity comes from inherent worth, not labor. African philosophy (e.g., Ubuntu) emphasizes community and interconnectedness, while Abrahamic traditions value humans as creations of God.</li>
@@ -66,7 +68,10 @@ const MetaAIExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">2. Education, Knowledge & Epistemic Justice</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <GraduationCap className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  2. Education, Knowledge & Epistemic Justice
+                </h2>
                 <ul className="space-y-4">
                   <li><strong>Algorithm:</strong> Develop AI systems that complement human teachers, focusing on critical thinking and contextual understanding. Use local languages and culturally relevant content.</li>
                   <li><strong>Epistemology:</strong> Wisdom comes from experience, community, and reflection. AI can facilitate access to information, but human interaction is crucial for deeper understanding.</li>
@@ -77,7 +82,10 @@ const MetaAIExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Sprout className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  3. Agriculture, Climate Chaos & Food Sovereignty
+                </h2>
                 <ul className="space-y-4">
                   <li><strong>Nonlinear Dynamic System:</strong> Model agriculture as a complex system with AI predicting and adapting to climate fluctuations. Ensure indigenous knowledge informs AI decisions.</li>
                   <li><strong>Chaos Thresholds:</strong> Identify tipping points where AI intervention could harm ecosystems or communities. Prioritize local, sustainable practices.</li>
@@ -88,7 +96,10 @@ const MetaAIExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">4. Governance, Corruption & Digital Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Scale className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  4. Governance, Corruption & Digital Sovereignty
+                </h2>
                 <ul className="space-y-4">
                   <li><strong>Governance AI:</strong> Design transparent, decentralized systems with human oversight. Use blockchain for accountability.</li>
                   <li><strong>Mathematical Proof:</strong> Game theory can model corruption reduction. Ensure AI systems are auditable and corrigible.</li>
@@ -99,7 +110,10 @@ const MetaAIExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Map className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  5. Equity, Geography & Uneven Development
+                </h2>
                 <ul className="space-y-4">
                   <li><strong>Graph Theory:</strong> Model Kenya as a network, optimizing for equitable resource distribution. Prioritize infrastructure development in peripheral regions.</li>
                   <li><strong>Wealth Distribution:</strong> Implement progressive taxation and social programs to reduce inequality without stifling innovation.</li>
@@ -109,7 +123,10 @@ const MetaAIExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">6. Culture, Language & Metaphysical Loss</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Languages className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  6. Culture, Language & Metaphysical Loss
+                </h2>
                 <ul className="space-y-4">
                   <li><strong>Translation Framework:</strong> Develop AI that preserves nuances and context. Engage communities in language preservation efforts.</li>
                   <li><strong>Entropy Cost:</strong> Quantify loss of cultural richness. Prioritize preserving languages and traditions.</li>
@@ -120,7 +137,10 @@ const MetaAIExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Zap className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  7. Climate, Energy & Moral Thermodynamics
+                </h2>
                 <ul className="space-y-4">
                   <li><strong>Energy System:</strong> Prioritize renewables and energy efficiency. Ensure AI systems serve human needs, not vice versa.</li>
                   <li><strong>Physical Laws:</strong> Comply with thermodynamics laws. Balance computational needs with environmental impact.</li>
@@ -131,7 +151,10 @@ const MetaAIExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">8. Tribe, Language, Family & Communal Identity</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Users className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  8. Tribe, Language, Family & Communal Identity
+                </h2>
                 <ul className="space-y-4">
                   <li><strong>Game Theory:</strong> Model tribalism as cooperation and competition. AI can facilitate dialogue and understanding.</li>
                   <li><strong>Utu:</strong> Emphasize communal well-being and respect for differences. AI should support, not replace, human connections.</li>
@@ -142,7 +165,10 @@ const MetaAIExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16 bg-gray-50 p-8 rounded-3xl border border-gray-200">
-                <h2 className="text-3xl font-black text-gray-900 mb-6 font-sans">Final Meta-Question</h2>
+                <h2 className="text-3xl font-black text-gray-900 mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  Final Meta-Question
+                </h2>
                 <p className="text-xl italic mb-6">
                   "The final meta-question is unanswerable, as moral authority depends on perspective and values."
                 </p>

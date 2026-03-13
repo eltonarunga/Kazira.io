@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { GoogleGenAI } from "@google/genai";
+import { GraduationCap, Send, Loader2, AlertCircle } from 'lucide-react';
 import { ChatMessage } from '../types';
 import { GEMINI_MODEL_PRO } from '../constants';
 import Button from '../components/common/Button';
@@ -10,9 +11,7 @@ import { getFriendlyErrorMessage } from '../services/errorService';
 
 const ProfessorAvatar = () => (
     <div className="w-12 h-12 rounded-full bg-black flex items-center justify-center flex-shrink-0 mr-4 border-2 border-gray-200 shadow-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 text-white">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.25c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-        </svg>
+        <GraduationCap className="w-7 h-7 text-white" />
     </div>
 );
 
@@ -170,8 +169,11 @@ const ConsultAIProfessor = () => {
                 </div>
               )}
               {error && (
-                <div className="bg-red-50 text-red-600 p-4 rounded-md text-sm border border-red-100">
-                  <strong>System Disruption:</strong> {error}
+                <div className="bg-red-50 text-red-600 p-4 rounded-md text-sm border border-red-100 flex items-start">
+                  <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong>System Disruption:</strong> {error}
+                  </div>
                 </div>
               )}
               <div ref={messagesEndRef} />
@@ -191,9 +193,9 @@ const ConsultAIProfessor = () => {
                   type="submit" 
                   variant="primary" 
                   disabled={isLoading || !input.trim()}
-                  className="px-8 !rounded-xl"
+                  className="px-8 !rounded-xl flex items-center"
                 >
-                  Discuss
+                  {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <><Send className="w-4 h-4 mr-2" /> Discuss</>}
                 </Button>
               </form>
             </footer>

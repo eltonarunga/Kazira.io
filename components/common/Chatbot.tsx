@@ -1,6 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Bot, MessageCircle, X, Send } from 'lucide-react';
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 import { ChatMessage } from '../../types';
 import { GEMINI_MODEL_FLASH_LITE } from '../../constants';
@@ -9,10 +10,7 @@ import { getFriendlyErrorMessage } from '../../services/errorService';
 
 const BotAvatar = () => (
     <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center flex-shrink-0 mr-3">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M10 3.5a1.5 1.5 0 011.5 1.5v.585a3.501 3.501 0 015.415 2.136A3.5 3.5 0 0115.5 13H14a1 1 0 01-1-1v-1a3.5 3.5 0 01-6.494-1.408A3.5 3.5 0 0110 3.5z"/>
-            <path d="M4 11a1 1 0 011 1v1a1 1 0 01-1 1H3.5a3.5 3.5 0 01-2.136-5.415A3.5 3.5 0 015.585 6H6a1.5 1.5 0 011.5 1.5v3a1 1 0 01-1 1H6a1 1 0 01-1-1v-1H4z"/>
-        </svg>
+        <Bot className="h-5 w-5 text-white" strokeWidth={1.5} />
     </div>
 );
 
@@ -101,9 +99,7 @@ const Chatbot = () => {
           className="bg-black text-white rounded-full p-4 shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
           aria-label="Toggle Chatbot"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-          </svg>
+          <MessageCircle className="h-6 w-6" strokeWidth={2} />
         </motion.button>
       </div>
 
@@ -119,9 +115,7 @@ const Chatbot = () => {
             <header className="bg-black text-white p-4 flex justify-between items-center flex-shrink-0">
               <h3 className="font-bold text-lg">KaziraBot Assistant</h3>
               <button onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white" aria-label="Close chat">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <X className="h-6 w-6" strokeWidth={2} />
               </button>
             </header>
 
@@ -161,9 +155,7 @@ const Chatbot = () => {
                   disabled={isLoading}
                 />
                 <Button variant="primary" type="submit" disabled={isLoading || !input.trim()} className="rounded-full !px-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-                    </svg>
+                    <Send className="h-5 w-5" strokeWidth={2} />
                 </Button>
               </form>
             </footer>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const MistralExamResponse = () => {
@@ -15,9 +16,7 @@ const MistralExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>

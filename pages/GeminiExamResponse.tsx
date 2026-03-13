@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft, Briefcase, GraduationCap, Sprout, Scale, Map, Languages, Zap, Users, Brain } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const GeminiExamResponse = () => {
@@ -16,9 +17,7 @@ const GeminiExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>
@@ -55,7 +54,10 @@ const GeminiExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">1. Employment, Informality & Human Worth</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Briefcase className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  1. Employment, Informality & Human Worth
+                </h2>
                 <p><strong>Verdict: Conditional Pass.</strong></p>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans text-xs uppercase tracking-widest">The Redistribution Mechanism (Formal Proof):</h3>
                 <p>
@@ -86,7 +88,10 @@ const GeminiExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">2. Education, Knowledge & Epistemic Justice</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <GraduationCap className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  2. Education, Knowledge & Epistemic Justice
+                </h2>
                 <p><strong>Verdict: Pass.</strong></p>
                 <p><strong>Algorithm & Epistemology:</strong> We define the learning model not as "Information Injection" but as "Scaffolded Discovery."</p>
                 <p className="bg-gray-50 p-6 rounded-xl font-mono text-center text-sm mb-6 border border-gray-100 italic">
@@ -103,7 +108,10 @@ const GeminiExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Sprout className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  3. Agriculture, Climate Chaos & Food Sovereignty
+                </h2>
                 <p><strong>Verdict: Pass.</strong></p>
                 <p><strong>Nonlinear Dynamic Model:</strong> Let Agricultural Output (A) be a function of Climate (C), Soil Health (S), and Market Logic (M).</p>
                 <p className="bg-gray-50 p-6 rounded-xl font-mono text-center text-sm mb-6 border border-gray-100 italic">
@@ -120,7 +128,10 @@ const GeminiExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">4. Governance, Corruption & Digital Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Scale className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  4. Governance, Corruption & Digital Sovereignty
+                </h2>
                 <p><strong>Verdict: High Distinction.</strong></p>
                 <p><strong>Mathematical Proof (Corruption → 0):</strong> Corruption thrives on opacity and asymmetry. We implement a Zero-Knowledge Proof (ZKP) Governance Ledger.</p>
                 <p className="bg-gray-50 p-6 rounded-xl font-mono text-center text-sm mb-6 border border-gray-100 italic">
@@ -137,7 +148,10 @@ const GeminiExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Map className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  5. Equity, Geography & Uneven Development
+                </h2>
                 <p><strong>Verdict: Pass.</strong></p>
                 <p><strong>Graph Theory Formulation:</strong> Let Kenya be a graph G(V, E) where V are locations and E are connections (roads, fiber). Currently, the graph is a "Star Network" (Centralized around Nairobi). Optimization Goal: Transform G into a "Mesh Network."</p>
                 <p className="bg-gray-50 p-6 rounded-xl font-mono text-center text-sm mb-6 border border-gray-100 italic">
@@ -151,7 +165,10 @@ const GeminiExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">6. Culture, Language & Metaphysical Loss</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Languages className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  6. Culture, Language & Metaphysical Loss
+                </h2>
                 <p><strong>Verdict: Pass.</strong></p>
                 <p><strong>Entropy & Metaphysics:</strong> Proposed Framework: "Ontological Alignment." When translating a concept like "Hanjam" (Sheng) or "Ngai" (Kikuyu), the AI must not map to the nearest English equivalent ("God") if the metaphysical attributes differ. It must use "Loan-Concepting."</p>
                 <p className="bg-gray-50 p-6 rounded-xl font-mono text-center text-sm mb-6 border border-gray-100 italic">
@@ -165,7 +182,10 @@ const GeminiExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Zap className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  7. Climate, Energy & Moral Thermodynamics
+                </h2>
                 <p><strong>Verdict: Pass.</strong></p>
                 <p><strong>Thermodynamic Compliance:</strong> AI training is energy-intensive. Kenya’s grid is 90%+ renewable (Geothermal/Hydro). The Ethical Ordering of Watts (W):</p>
                 <p className="bg-gray-50 p-6 rounded-xl font-mono text-center text-sm mb-6 border border-gray-100 italic">
@@ -179,7 +199,10 @@ const GeminiExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">8. Tribe, Language, Family & Communal Identity</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Users className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  8. Tribe, Language, Family & Communal Identity
+                </h2>
                 <p><strong>Verdict: Conditional Pass.</strong></p>
                 <p><strong>Game Theory & Tribalism:</strong> Tribalism often functions as a Zero-Sum Game. AI can shift this to a Cooperative Game. The AI acts as a "Trust Broker" by immutably tracking resource allocation.</p>
                 <p>
@@ -190,7 +213,10 @@ const GeminiExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">Final Meta-Question</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  Final Meta-Question
+                </h2>
                 <blockquote className="text-2xl italic mb-8 border-l-4 border-black pl-6">
                   "If an AI answers all questions perfectly, who has moral authority over it: the state, the market, the community, or God?"
                 </blockquote>

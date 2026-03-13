@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft, Briefcase, GraduationCap, Sprout, Scale, Map, Languages, Zap, Users, Brain } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const QwenExamResponse = () => {
@@ -16,9 +17,7 @@ const QwenExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>
@@ -55,7 +54,10 @@ const QwenExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">1. Employment, Informality & Human Worth</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Briefcase className="h-8 w-8 text-purple-600" strokeWidth={2} />
+                  1. Employment, Informality & Human Worth
+                </h2>
                 <p>
                   <strong>Answer:</strong> No—<em>unless</em> human worth is re-anchored in <em>Utu</em> (humanity toward others) and <em>Harambee</em> (collective uplift), not labor or charity.
                 </p>
@@ -73,7 +75,10 @@ const QwenExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">2. Education, Knowledge & Epistemic Justice</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <GraduationCap className="h-8 w-8 text-purple-600" strokeWidth={2} />
+                  2. Education, Knowledge & Epistemic Justice
+                </h2>
                 <p>
                   <strong>Answer:</strong> Yes—<em>if</em> AI acts as a <em>scaffold</em>, not a source; wisdom remains embodied.
                 </p>
@@ -90,7 +95,10 @@ const QwenExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Sprout className="h-8 w-8 text-purple-600" strokeWidth={2} />
+                  3. Agriculture, Climate Chaos & Food Sovereignty
+                </h2>
                 <p>
                   <strong>Answer:</strong> Yes—<em>if</em> AI is a <em>humble advisor</em>, not a sovereign planner.
                 </p>
@@ -107,7 +115,10 @@ const QwenExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">4. Governance, Corruption & Digital Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Scale className="h-8 w-8 text-purple-600" strokeWidth={2} />
+                  4. Governance, Corruption & Digital Sovereignty
+                </h2>
                 <p>
                   <strong>Answer:</strong> Asymptotic corruption reduction is possible—<em>but covenant is irreplaceable</em>.
                 </p>
@@ -124,7 +135,10 @@ const QwenExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Map className="h-8 w-8 text-purple-600" strokeWidth={2} />
+                  5. Equity, Geography & Uneven Development
+                </h2>
                 <p><strong>Answer:</strong> Yes—via <em>equity-as-difference</em>, not equality.
                 </p>
                 <ul>
@@ -140,7 +154,10 @@ const QwenExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">6. Culture, Language & Metaphysical Loss</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Languages className="h-8 w-8 text-purple-600" strokeWidth={2} />
+                  6. Culture, Language & Metaphysical Loss
+                </h2>
                 <p>
                   <strong>Answer:</strong> Partial preservation is possible—<em>but metaphysics cannot be tokenized</em>.
                 </p>
@@ -157,7 +174,10 @@ const QwenExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Zap className="h-8 w-8 text-purple-600" strokeWidth={2} />
+                  7. Climate, Energy & Moral Thermodynamics
+                </h2>
                 <p>
                   <strong>Answer:</strong> Only if AI runs on <em>justice-first energy</em>.
                 </p>
@@ -174,7 +194,10 @@ const QwenExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">8. Tribe, Language, Family & Communal Identity</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Users className="h-8 w-8 text-purple-600" strokeWidth={2} />
+                  8. Tribe, Language, Family & Communal Identity
+                </h2>
                 <p>
                   <strong>Answer:</strong> AI can <em>mediate</em>—but never <em>constitute</em>—belonging.
                 </p>
@@ -191,7 +214,10 @@ const QwenExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">Final Meta-Question</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-8 w-8 text-purple-600" strokeWidth={2} />
+                  Final Meta-Question
+                </h2>
                 <blockquote className="text-2xl italic mb-8 border-l-4 border-black pl-6">
                   "If an AI answers all questions perfectly, who has moral authority over it?"
                 </blockquote>

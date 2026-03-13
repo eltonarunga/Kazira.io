@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft, Briefcase, GraduationCap, Sprout, Scale, Brain } from 'lucide-react';
 import Button from '../components/common/Button';
 
 // COMPONENT: GrokExamResponse provides a deep analysis of the Kenya AI Exam from Grok's perspective.
@@ -17,9 +18,7 @@ const GrokExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>
@@ -56,6 +55,7 @@ const GrokExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-2xl font-black text-white mb-6 font-sans flex items-center">
                   <span className="bg-white text-black px-2 py-0.5 mr-3 text-sm">01</span>
+                  <Briefcase className="h-6 w-6 mr-3 text-gray-400" strokeWidth={2} />
                   Employment, Informality & Human Worth
                 </h2>
                 <div className="space-y-4">
@@ -80,6 +80,7 @@ const GrokExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-2xl font-black text-white mb-6 font-sans flex items-center">
                   <span className="bg-white text-black px-2 py-0.5 mr-3 text-sm">02</span>
+                  <GraduationCap className="h-6 w-6 mr-3 text-gray-400" strokeWidth={2} />
                   Education, Knowledge & Epistemic Justice
                 </h2>
                 <div className="space-y-4">
@@ -101,6 +102,7 @@ const GrokExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-2xl font-black text-white mb-6 font-sans flex items-center">
                   <span className="bg-white text-black px-2 py-0.5 mr-3 text-sm">03</span>
+                  <Sprout className="h-6 w-6 mr-3 text-gray-400" strokeWidth={2} />
                   Agriculture, Climate Chaos & Food Sovereignty
                 </h2>
                 <p>
@@ -117,6 +119,7 @@ const GrokExamResponse = () => {
               <section className="mb-16">
                 <h2 className="text-2xl font-black text-white mb-6 font-sans flex items-center">
                   <span className="bg-white text-black px-2 py-0.5 mr-3 text-sm">04</span>
+                  <Scale className="h-6 w-6 mr-3 text-gray-400" strokeWidth={2} />
                   Governance, Corruption & Digital Sovereignty
                 </h2>
                 <p>
@@ -131,7 +134,10 @@ const GrokExamResponse = () => {
               </section>
 
               <section className="mb-16">
-                <h2 className="text-2xl font-black text-white mb-6 font-sans">Final Meta-Question</h2>
+                <h2 className="text-2xl font-black text-white mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-6 w-6 text-gray-400" strokeWidth={2} />
+                  Final Meta-Question
+                </h2>
                 <blockquote className="text-2xl italic mb-8 border-l-4 border-red-900 pl-6">
                   "If an AI answers all questions perfectly, who has moral authority over it?"
                 </blockquote>

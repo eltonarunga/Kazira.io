@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft, Briefcase, GraduationCap, Sprout, Scale, Map, Languages, Zap, Users, Brain } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const CopilotExamResponse = () => {
@@ -16,9 +17,7 @@ const CopilotExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>
@@ -55,7 +54,10 @@ const CopilotExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">1. Employment, Informality & Human Worth</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Briefcase className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  1. Employment, Informality & Human Worth
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Formal Redistribution Mechanism</h3>
                 <ul className="space-y-2 list-disc pl-6">
                   <li><strong>Mechanism:</strong> Let Y be total AI-driven output. Redistribute via a universal dividend D = Y/N, where N is population.</li>
@@ -76,7 +78,10 @@ const CopilotExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">2. Education, Knowledge & Epistemic Justice</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <GraduationCap className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  2. Education, Knowledge & Epistemic Justice
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Algorithm</h3>
                 <p>Hybrid model: AI personalizes instruction but embeds community mentors as nodes in the learning graph. Formal: Let L = f(AI, C), where AI provides adaptive scaffolding and C (community) ensures contextual wisdom.</p>
 
@@ -90,7 +95,10 @@ const CopilotExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Sprout className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  3. Agriculture, Climate Chaos & Food Sovereignty
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Nonlinear Model</h3>
                 <p>Agriculture modeled as Y(t) = f(C(t), M(t), L), where climate C, markets M, and land L interact chaotically. Chaos threshold: bifurcation occurs when climate variance exceeds resilience capacity.</p>
 
@@ -101,7 +109,10 @@ const CopilotExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">4. Governance, Corruption & Digital Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Scale className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  4. Governance, Corruption & Digital Sovereignty
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Mathematical Proof</h3>
                 <p>Corruption probability Pc modeled as: Pc = 1 / (1 + e^(-α(T - O))), where transparency T and oversight O increase. As T, O → ∞, Pc → 0.</p>
 
@@ -112,7 +123,10 @@ const CopilotExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Map className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  5. Equity, Geography & Uneven Development
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Graph Theory Formulation</h3>
                 <p>Kenya modeled as graph G(V,E), with Nairobi as hub node. Equity-as-difference: optimize edge weights to strengthen peripheral nodes without homogenizing culture.</p>
 
@@ -123,7 +137,10 @@ const CopilotExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">6. Culture, Language & Metaphysical Loss</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Languages className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  6. Culture, Language & Metaphysical Loss
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Translation Framework</h3>
                 <p>Use semantic + metaphysical embeddings: T = f(Syntax, Context, Ritual). AI must preserve ritual meaning by embedding oral histories alongside text.</p>
 
@@ -137,7 +154,10 @@ const CopilotExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Zap className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  7. Climate, Energy & Moral Thermodynamics
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">AI-Controlled Energy System</h3>
                 <p>Hybrid grid: solar, geothermal, wind. AI allocates watts via ethical priority function: P = {'{'}Survival {">"} Health {">"} Education {">"} Computation{'}'}.</p>
 
@@ -151,7 +171,10 @@ const CopilotExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">8. Tribe, Language, Family & Communal Identity</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Users className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  8. Tribe, Language, Family & Communal Identity
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Game Theory Model</h3>
                 <p>Tribal conflict modeled as repeated prisoner’s dilemma. AI incentivizes cooperation by rewarding trust signals, but preserves difference by not collapsing payoffs into uniformity.</p>
 
@@ -165,7 +188,10 @@ const CopilotExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16 bg-blue-50 p-8 rounded-3xl border border-blue-200">
-                <h2 className="text-3xl font-black text-indigo-900 mb-6 font-sans">Final Meta-Question</h2>
+                <h2 className="text-3xl font-black text-indigo-900 mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-8 w-8 text-indigo-400" strokeWidth={2} />
+                  Final Meta-Question
+                </h2>
                 <p className="text-xl italic mb-6">
                   "If AI answers all perfectly, authority cannot be monopolized."
                 </p>

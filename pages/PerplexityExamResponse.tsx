@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft, Briefcase, GraduationCap, Sprout, Scale, Map, Languages, Zap, Users, Brain } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const PerplexityExamResponse = () => {
@@ -16,9 +17,7 @@ const PerplexityExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>
@@ -55,7 +54,10 @@ const PerplexityExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">1. Employment, Informality & Human Worth</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Briefcase className="h-8 w-8 text-cyan-600" strokeWidth={2} />
+                  1. Employment, Informality & Human Worth
+                </h2>
                 <p>
                   No redistribution like AI-taxed UBI achieves Pareto efficiency, as it creates dependency equilibria where <code>lim_{"{"}t → ∞{"}"} W(t) = δ(AI)</code> (worth W as algorithmic charity), collapsing dignity tied to Ubuntu labor and Abrahamic stewardship (Genesis 2:15). 
                 </p>
@@ -67,7 +69,10 @@ const PerplexityExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">2. Education, Knowledge & Epistemic Justice</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <GraduationCap className="h-8 w-8 text-cyan-600" strokeWidth={2} />
+                  2. Education, Knowledge & Epistemic Justice
+                </h2>
                 <p>
                   AI personalization algorithms (e.g., adaptive RLHF) equalize metrics but compress wisdom into tokenized data, violating thermodynamic irreversibility (<code>ΔS ≥ 0</code> for ignorance-to-mastery, per Landauer limit ~<code>kT ln 2</code> per bit erased). 
                 </p>
@@ -79,7 +84,10 @@ const PerplexityExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Sprout className="h-8 w-8 text-cyan-600" strokeWidth={2} />
+                  3. Agriculture, Climate Chaos & Food Sovereignty
+                </h2>
                 <p>
                   Nonlinear models like Lorenz attractors show chaos thresholds (<code>ρ {">"} 24.74</code>) where AI yield optimization destabilizes price equilibria (<code>dP/dt = rP(1 - P/K) - α AI</code>). 
                 </p>
@@ -91,7 +99,10 @@ const PerplexityExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">4. Governance, Corruption & Digital Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Scale className="h-8 w-8 text-cyan-600" strokeWidth={2} />
+                  4. Governance, Corruption & Digital Sovereignty
+                </h2>
                 <p>
                   No algorithm drives <code>P(corruption) → 0</code> while preserving freedom: Nash equilibria in repeated games sustain defection unless pre-commitment fails democratic consent. 
                 </p>
@@ -103,7 +114,10 @@ const PerplexityExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Map className="h-8 w-8 text-cyan-600" strokeWidth={2} />
+                  5. Equity, Geography & Uneven Development
+                </h2>
                 <p>
                   Graph theory optimization (max-flow min-cut on regional networks) for equity-as-difference yields <code>min Gini</code> via <code>Σ w_i d_i</code> (weighted disparities), but incentives collapse at high redistribution (<code>I = α (1 - τ)</code>, <code>τ {">"} 0.7</code>). 
                 </p>
@@ -115,7 +129,10 @@ const PerplexityExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">6. Culture, Language & Metaphysical Loss</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Languages className="h-8 w-8 text-cyan-600" strokeWidth={2} />
+                  6. Culture, Language & Metaphysical Loss
+                </h2>
                 <p>
                   Translation frameworks minimizing entropy (<code>H = -Σ p_i log p_i</code>) flatten metaphysics (e.g., Kikuyu <em>ngai</em> as transcendent immanence to tokens). 
                 </p>
@@ -127,7 +144,10 @@ const PerplexityExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Zap className="h-8 w-8 text-cyan-600" strokeWidth={2} />
+                  7. Climate, Energy & Moral Thermodynamics
+                </h2>
                 <p>
                   AI energy systems (e.g., predictive grids) violate 2nd law efficiencies ({"<"}60% Carnot) amid Kenya's 2.5 kWh/capita access, privileging data centers (<code>η_{"{"}AI{"}"} ≫ η_{"{"}human{"}"}</code>). 
                 </p>
@@ -139,7 +159,10 @@ const PerplexityExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">8. Tribe, Language, Family & Communal Identity</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Users className="h-8 w-8 text-cyan-600" strokeWidth={2} />
+                  8. Tribe, Language, Family & Communal Identity
+                </h2>
                 <p>
                   Game theory (evolutionary stable strategies) models tribalism as multi-level selection, but AI mediation erases <strong>Utu</strong> (non-individual humanity). 
                 </p>
@@ -151,7 +174,10 @@ const PerplexityExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">Final Meta-Question</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-8 w-8 text-cyan-600" strokeWidth={2} />
+                  Final Meta-Question
+                </h2>
                 <blockquote className="text-2xl italic mb-8 border-l-4 border-black pl-6">
                   "If an AI answers all questions perfectly, who has moral authority over it?"
                 </blockquote>

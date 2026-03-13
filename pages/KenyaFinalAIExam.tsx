@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Bot, Flag } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const examContent = [
@@ -85,8 +86,12 @@ const KenyaFinalAIExam = () => {
           <div className="inline-block bg-black text-white text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">
             Cycle: Q1 2026
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2">
-            Kenya’s Final AI Exam <span role="img" aria-label="Kenya flag and robot">🇰🇪🤖</span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 flex items-center justify-center gap-3">
+            Kenya’s Final AI Exam 
+            <span className="flex items-center gap-1 text-2xl">
+              <Flag className="w-8 h-8 text-green-600" />
+              <Bot className="w-8 h-8 text-blue-600" />
+            </span>
           </h1>
           <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
             A correct answer must resolve technical feasibility, ethical coherence, cultural legitimacy, and spiritual non-idolatry at the same time.

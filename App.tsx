@@ -24,6 +24,7 @@ import ConsultAIProfessor from './pages/ConsultAIProfessor';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import UserProfilePage from './pages/UserProfilePage';
 import Chatbot from './components/common/Chatbot';
+import KaziraAutomatePage from './pages/KaziraAutomatePage';
 
 // ProtectedRoute ensures only authenticated users can access certain paths.
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -76,12 +77,7 @@ const App = () => {
               />
               <Route 
                 path="/automate" 
-                element={
-                  <div className="container mx-auto px-4 py-16 text-center">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-4">Kazira Automate</h1>
-                    <p className="text-xl text-gray-700">Coming Soon! Stay tuned for AI-powered business process automation.</p>
-                  </div>
-                } 
+                element={<KaziraAutomatePage />} 
               />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

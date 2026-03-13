@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
 import Button from '../components/common/Button';
 
 /**
@@ -211,9 +212,7 @@ const AIModelResults = () => {
                                             {model.score}%
                                         </div>
                                         <div className={`ml-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${isOpen ? (isFailing ? 'text-red-400' : 'text-white') : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                            </svg>
+                                            <ChevronDown className={`h-5 w-5 ${isOpen ? (isFailing ? 'text-red-400' : 'text-white') : 'text-gray-400'}`} strokeWidth={2} />
                                         </div>
                                     </div>
                                 </div>

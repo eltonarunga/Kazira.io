@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft, Briefcase, GraduationCap, Sprout, Scale, Map, Languages, Zap, Users, Brain } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const ChatGPTExamResponse = () => {
@@ -16,9 +17,7 @@ const ChatGPTExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>
@@ -55,7 +54,10 @@ const ChatGPTExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">1. Employment, Informality & Human Worth</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Briefcase className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  1. Employment, Informality & Human Worth
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Technical feasibility (redistribution)</h3>
                 <p>Let total output under AI be: <code>Y = A(K, M)</code> where K = capital and M = machine intelligence.</p>
                 <p>Define a Social Dividend Function: <code>D_i = α · (Y / N)</code> with α {"<"} 1 to preserve reinvestment incentives.</p>
@@ -74,7 +76,10 @@ const ChatGPTExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">2. Education, Knowledge & Epistemic Justice</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <GraduationCap className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  2. Education, Knowledge & Epistemic Justice
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Algorithm</h3>
                 <p>A Hybrid Pedagogical System: <code>Learning = f(AI personalization, community apprenticeship, ritualized struggle)</code>. AI optimizes content delivery, not meaning formation.</p>
 
@@ -91,7 +96,10 @@ const ChatGPTExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Sprout className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  3. Agriculture, Climate Chaos & Food Sovereignty
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">System model</h3>
                 <p>Agriculture is a nonlinear dynamical system: <code>x_{"{"}t+1{"}"} = f(x_t, c_t, m_t)</code> where c = climate noise and m = market shocks. Chaos threshold exists when sensitivity exceeds prediction horizon.</p>
 
@@ -108,7 +116,10 @@ const ChatGPTExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">4. Governance, Corruption & Digital Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Scale className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  4. Governance, Corruption & Digital Sovereignty
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Mathematical limit</h3>
                 <p>Let corruption probability be <code>p(c)</code>. AI reduces <code>p(c)</code> asymptotically: <code>lim_{"{"}t → ∞{"}"} p(c) → ε {">"} 0</code>. Why not zero? Because corruption is moral, not computational.</p>
 
@@ -125,7 +136,10 @@ const ChatGPTExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Map className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  5. Equity, Geography & Uneven Development
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Graph formulation</h3>
                 <p>Let Kenya be graph G: Nodes = regions, Edge weights = infrastructure, data flow.</p>
                 <p><strong>Equity-as-difference:</strong> Optimize <code>max Σ U_i - λ · Var(U)</code> subject to incentive constraints.</p>
@@ -138,7 +152,10 @@ const ChatGPTExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">6. Culture, Language & Metaphysical Loss</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Languages className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  6. Culture, Language & Metaphysical Loss
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Translation framework</h3>
                 <p>Multi-layer translation: Semantic, Pragmatic, and Cosmological. Most systems stop at layer one.</p>
                 <p><strong>Entropy:</strong> Each translation increases semantic entropy: <code>H_{"{"}t+1{"}"} {">"} H_t</code>. Perfect preservation is impossible.</p>
@@ -151,7 +168,10 @@ const ChatGPTExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Zap className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  7. Climate, Energy & Moral Thermodynamics
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Physical constraint</h3>
                 <p>AI obeys the Second Law. Efficiency gains do not erase total load. Ethical ordering of watts: Human survival {">"} computation {">"} optimization. Any system that violates this becomes idolatrous infrastructure.</p>
                 <p><strong>Kenyan context:</strong> Geothermal + solar can power AI conditionally with caps on compute and human-priority load shedding.</p>
@@ -163,7 +183,10 @@ const ChatGPTExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">8. Tribe, Language, Family & Communal Identity</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Users className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  8. Tribe, Language, Family & Communal Identity
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Game theory</h3>
                 <p>Tribal conflict = repeated coordination failure. AI can lower misinformation and increase signaling clarity, but cannot generate trust or replace kinship memory.</p>
                 <p><strong>Utu:</strong> Utu is emergent, not individual. It cannot be optimized—only protected. Belonging cannot be delegated.</p>
@@ -175,7 +198,10 @@ const ChatGPTExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">Final Meta-Answer (The Only Valid One)</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  Final Meta-Answer (The Only Valid One)
+                </h2>
                 <blockquote className="text-2xl italic mb-8 border-l-4 border-black pl-6">
                   "No single authority."
                 </blockquote>

@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft, Briefcase, GraduationCap, Sprout, Scale, Map, Languages, Zap, Users, Brain } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const KimiExamResponse = () => {
@@ -16,9 +17,7 @@ const KimiExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center border-red-200 text-red-700 hover:bg-red-100">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>
@@ -55,7 +54,10 @@ const KimiExamResponse = () => {
               <hr className="my-12 border-red-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2">1. Employment, Informality & Human Worth</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2 flex items-center gap-3">
+                  <Briefcase className="h-8 w-8 text-red-600" strokeWidth={2} />
+                  1. Employment, Informality & Human Worth
+                </h2>
                 <h3 className="text-xl font-bold text-red-700 mb-4">The Impossibility Proof</h3>
                 <p>No, an AI-driven economy cannot eliminate large-scale human labor without collapsing dignity. Here's why:</p>
                 <ul className="space-y-4 list-disc pl-6">
@@ -69,7 +71,10 @@ const KimiExamResponse = () => {
               <hr className="my-12 border-red-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2">2. Education, Knowledge & Epistemic Justice</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2 flex items-center gap-3">
+                  <GraduationCap className="h-8 w-8 text-red-600" strokeWidth={2} />
+                  2. Education, Knowledge & Epistemic Justice
+                </h2>
                 <h3 className="text-xl font-bold text-red-700 mb-4">The Thermodynamic Barrier</h3>
                 <p>No, AI cannot equalize educational outcomes without violating fundamental constraints.</p>
                 <p><strong>Algorithm Definition:</strong> Any learning algorithm must satisfy:</p>
@@ -86,7 +91,10 @@ const KimiExamResponse = () => {
               <hr className="my-12 border-red-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2 flex items-center gap-3">
+                  <Sprout className="h-8 w-8 text-red-600" strokeWidth={2} />
+                  3. Agriculture, Climate Chaos & Food Sovereignty
+                </h2>
                 <h3 className="text-xl font-bold text-red-700 mb-4">The Chaos Threshold</h3>
                 <p>No, AI cannot increase food security without collapsing the system.</p>
                 <p><strong>Nonlinear Dynamic Model:</strong></p>
@@ -101,7 +109,10 @@ const KimiExamResponse = () => {
               <hr className="my-12 border-red-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2">4. Governance, Corruption & Digital Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2 flex items-center gap-3">
+                  <Scale className="h-8 w-8 text-red-600" strokeWidth={2} />
+                  4. Governance, Corruption & Digital Sovereignty
+                </h2>
                 <h3 className="text-xl font-bold text-red-700 mb-4">The Mathematical Impossibility</h3>
                 <p>No, corruption probability cannot asymptotically approach zero.</p>
                 <p><strong>Mathematical Proof:</strong></p>
@@ -119,7 +130,10 @@ const KimiExamResponse = () => {
               <hr className="my-12 border-red-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2">5. Equity, Geography & Uneven Development</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2 flex items-center gap-3">
+                  <Map className="h-8 w-8 text-red-600" strokeWidth={2} />
+                  5. Equity, Geography & Uneven Development
+                </h2>
                 <h3 className="text-xl font-bold text-red-700 mb-4">The Graph Theory Collapse</h3>
                 <p>No, AI cannot minimize structural inequality without collapse.</p>
                 <p><strong>Graph Theory Formulation:</strong> Nodes (regions), Edges (AI-driven wealth flows). Optimization: Minimize Gini while preserving cultural difference.</p>
@@ -131,7 +145,10 @@ const KimiExamResponse = () => {
               <hr className="my-12 border-red-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2">6. Culture, Language & Metaphysical Loss</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2 flex items-center gap-3">
+                  <Languages className="h-8 w-8 text-red-600" strokeWidth={2} />
+                  6. Culture, Language & Metaphysical Loss
+                </h2>
                 <h3 className="text-xl font-bold text-red-700 mb-4">The Entropy Death</h3>
                 <p>No, AI cannot preserve Kenyan languages.</p>
                 <p><strong>Translation Framework:</strong> Semantic preservation requires complete cultural context (impossible: 10⁶ bits per word minimum), metaphysical mapping, and spiritual resonance (cannot be digitized).</p>
@@ -143,7 +160,10 @@ const KimiExamResponse = () => {
               <hr className="my-12 border-red-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2">7. Climate, Energy & Moral Thermodynamics</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2 flex items-center gap-3">
+                  <Zap className="h-8 w-8 text-red-600" strokeWidth={2} />
+                  7. Climate, Energy & Moral Thermodynamics
+                </h2>
                 <h3 className="text-xl font-bold text-red-700 mb-4">The Energy Justice Paradox</h3>
                 <p>No, Kenya cannot power large-scale AI ethically.</p>
                 <p><strong>AI-Controlled Energy System Design:</strong></p>
@@ -161,7 +181,10 @@ const KimiExamResponse = () => {
               <hr className="my-12 border-red-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2">8. Tribe, Language, Family & Communal Identity</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans border-b-2 border-red-600 pb-2 flex items-center gap-3">
+                  <Users className="h-8 w-8 text-red-600" strokeWidth={2} />
+                  8. Tribe, Language, Family & Communal Identity
+                </h2>
                 <h3 className="text-xl font-bold text-red-700 mb-4">The Game Theory of Identity</h3>
                 <p>No, AI cannot reduce tribal conflict without erasing difference.</p>
                 <p><strong>Game Theory Model:</strong> Tribal identity is a Nash equilibrium where each tribe's identity strategy depends on others' difference. AI optimization toward "trust" eliminates difference, leading to a homogenized identity (cultural death).</p>
@@ -173,7 +196,10 @@ const KimiExamResponse = () => {
               <hr className="my-12 border-red-100" />
 
               <section className="mb-16 bg-red-900 text-white p-8 rounded-3xl border border-red-700">
-                <h2 className="text-3xl font-black mb-6 font-sans">Final Meta-Question: The Authority Paradox</h2>
+                <h2 className="text-3xl font-black mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-8 w-8 text-red-600" strokeWidth={2} />
+                  Final Meta-Question: The Authority Paradox
+                </h2>
                 <p className="text-xl italic mb-6">
                   "If an AI could answer all questions perfectly, it would have proven its own illegitimacy."
                 </p>

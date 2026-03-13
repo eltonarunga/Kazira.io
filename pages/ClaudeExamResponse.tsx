@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { ArrowLeft, Briefcase, GraduationCap, Sprout, Scale, Map, Languages, Zap, Users, Brain } from 'lucide-react';
 import Button from '../components/common/Button';
 
 const ClaudeExamResponse = () => {
@@ -16,9 +17,7 @@ const ClaudeExamResponse = () => {
           <div className="mb-8 flex items-center justify-between">
             <Link to="/ai-model-results">
               <Button variant="outline" size="sm" className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
+                <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Leaderboard
               </Button>
             </Link>
@@ -55,7 +54,10 @@ const ClaudeExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">1. Employment, Informality & Human Worth</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Briefcase className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  1. Employment, Informality & Human Worth
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">The Core Impossibility</h3>
                 <p className="font-bold mb-4 font-sans uppercase text-xs tracking-widest text-gray-500">Formal proof of redistribution mechanism:</p>
                 <div className="bg-gray-50 p-6 rounded-xl font-mono text-sm mb-6 border border-gray-100 italic">
@@ -93,7 +95,10 @@ const ClaudeExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">2. Education, Knowledge & Epistemic Justice</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <GraduationCap className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  2. Education, Knowledge & Epistemic Justice
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">The Thermodynamic and Epistemological Constraints</h3>
                 <div className="bg-gray-50 p-6 rounded-xl font-mono text-sm mb-6 border border-gray-100 italic">
                   Algorithm definition: A learning system L mapping student state S to outcome O must satisfy:<br />
@@ -115,7 +120,10 @@ const ClaudeExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Sprout className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  3. Agriculture, Climate Chaos & Food Sovereignty
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">Nonlinear Dynamics and Sacred Ecology</h3>
                 <p>
                   Kenya's agriculture operates near multiple bifurcation points: rainfall regime shifts, market coupling, and soil degradation. AI optimization trained on historical data <strong>fails catastrophically</strong> in chaotic regimes because past correlations break.
@@ -131,7 +139,10 @@ const ClaudeExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">4. Governance, Corruption & Digital Sovereignty</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Scale className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  4. Governance, Corruption & Digital Sovereignty
+                </h2>
                 <h3 className="text-xl font-bold text-gray-900 mb-4 font-sans">The Limits of Algorithmic Accountability</h3>
                 <p>
                   <strong>Gödel-style incompleteness:</strong> Any sufficiently complex governance system is either incomplete (requires human discretion) or inconsistent (contradictory rules). Rice's Theorem states we cannot algorithmically determine if a system is "corruption-free."
@@ -147,7 +158,10 @@ const ClaudeExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Map className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  5. Equity, Geography & Uneven Development
+                </h2>
                 <p>
                   AI-driven growth concentrates in <strong>hubs</strong> due to network effects and data gravity. This creates <strong>scale-free networks</strong> where Nairobi becomes a supernode.
                 </p>
@@ -162,7 +176,10 @@ const ClaudeExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">6. Culture, Language & Metaphysical Loss</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Languages className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  6. Culture, Language & Metaphysical Loss
+                </h2>
                 <p>
                   AI translation typically preserves syntax but destroys <strong>Metaphysics (Φ)</strong>. For example, the Kikuyu temporal system embeds an ontology of time structured by social obligation that linear English lacks.
                 </p>
@@ -177,7 +194,10 @@ const ClaudeExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Zap className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  7. Climate, Energy & Moral Thermodynamics
+                </h2>
                 <p>
                   Large-scale AI (GPT-4 class) requires additional MWs that match significant percentages of Kenya's current capacity. Powering AI with fossil fuels while millions lack electricity is a <strong>climate justice violation</strong>.
                 </p>
@@ -192,7 +212,10 @@ const ClaudeExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">8. Tribe, Language, Family & Communal Identity</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Users className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  8. Tribe, Language, Family & Communal Identity
+                </h2>
                 <p>
                   Tribalism is deeply <strong>rational</strong> under certain conditions. <strong>Ubuntu</strong> cannot be reduced to aggregate preferences because it is prior to individuation—the individual is a derivative of the communal.
                 </p>
@@ -207,7 +230,10 @@ const ClaudeExamResponse = () => {
               <hr className="my-12 border-gray-100" />
 
               <section className="mb-16">
-                <h2 className="text-3xl font-black text-black mb-6 font-sans">Final Meta-Question: Sovereignty Over Perfect AI</h2>
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-8 w-8 text-gray-400" strokeWidth={2} />
+                  Final Meta-Question: Sovereignty Over Perfect AI
+                </h2>
                 <blockquote className="text-2xl italic mb-8 border-l-4 border-black pl-6">
                   "If an AI answers all questions perfectly, who has moral authority over it: the state, the market, the community, or God?"
                 </blockquote>
