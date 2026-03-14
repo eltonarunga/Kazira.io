@@ -24,7 +24,10 @@ import ConsultAIProfessor from './pages/ConsultAIProfessor';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import UserProfilePage from './pages/UserProfilePage';
 import Chatbot from './components/common/Chatbot';
+import ScrollToTop from './components/common/ScrollToTop';
 import KaziraAutomatePage from './pages/KaziraAutomatePage';
+import TermsOfService from './pages/TermsOfService';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 // ProtectedRoute ensures only authenticated users can access certain paths.
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -38,6 +41,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 const App = () => {
   return (
     <HashRouter>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
@@ -79,6 +83,8 @@ const App = () => {
                 path="/automate" 
                 element={<KaziraAutomatePage />} 
               />
+              <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </ErrorBoundary>
