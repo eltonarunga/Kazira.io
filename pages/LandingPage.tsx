@@ -148,9 +148,9 @@ const LandingPage = () => {
               </div>
             }
           >
-            <Link to="/learn">
+            <a href="https://opal.google/app/1RS_gONM_N73fAQy3u_mtelYIjJHNtfN8" target="_blank" rel="noopener noreferrer">
               <Button variant="secondary" className="mt-4 w-full">Explore Kazira Learn</Button>
-            </Link>
+            </a>
           </Card>
           <Card
             title="Kazira Automate"

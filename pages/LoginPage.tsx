@@ -16,7 +16,7 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       const user = await login('', true);
-      if (user) navigate('/learn');
+      if (user) navigate('/automate');
     } catch (err) {
       console.error('Explorer login error:', err);
     } finally {

@@ -17,7 +17,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="#/learn" className={`hover:text-white`}>Kazira Learn</a></li>
+              <li><a href="https://opal.google/app/1RS_gONM_N73fAQy3u_mtelYIjJHNtfN8" target="_blank" rel="noopener noreferrer" className={`hover:text-white`}>Kazira Learn</a></li>
               <li><a href="#/automate" className={`hover:text-white`}>Kazira Automate</a></li>
               <li><a href="#/" className={`hover:text-white`}>Home</a></li>
             </ul>
