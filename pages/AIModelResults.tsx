@@ -134,15 +134,19 @@ const modelResultsData = [
 
 const Medal = ({ rank }: { rank: number }) => {
     const baseClasses = "mr-3 font-bold w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-xs shadow-sm";
-    if (rank === 0) return <div className={`${baseClasses} bg-yellow-400 text-yellow-900 ring-2 ring-yellow-200`} aria-label="Rank 1">1</div>;
-    if (rank === 1) return <div className={`${baseClasses} bg-gray-200 text-gray-700 ring-2 ring-gray-100`} aria-label="Rank 2">2</div>;
-    if (rank === 2) return <div className={`${baseClasses} bg-orange-200 text-orange-800 ring-2 ring-orange-100`} aria-label="Rank 3">3</div>;
-    return <div className={`mr-3 font-mono text-gray-400 w-7 text-center flex-shrink-0 text-sm`}>{rank + 1}.</div>;
+    if (rank === 0) return <div className={`${baseClasses} bg-black text-white ring-2 ring-black/50`} aria-label="Rank 1">1</div>;
+    if (rank === 1) return <div className={`${baseClasses} bg-gray-300 text-black ring-2 ring-gray-400`} aria-label="Rank 2">2</div>;
+    if (rank === 2) return <div className={`${baseClasses} bg-gold/20 text-gold ring-2 ring-gold/40`} aria-label="Rank 3">3</div>;
+    return <div className={`mr-3 font-mono text-black/40 w-7 text-center flex-shrink-0 text-sm`}>{rank + 1}.</div>;
 };
 
 const AIModelResults = () => {
     const [openModel, setOpenModel] = useState<string | null>(modelResultsData[0]?.name || null);
     const resultsRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const toggleModel = (name: string) => {
         setOpenModel(openModel === name ? null : name);
@@ -163,7 +167,7 @@ const AIModelResults = () => {
     }, [openModel]);
 
     return (
-        <div className="bg-gray-50 py-16">
+        <div className="bg-white py-16 min-h-screen">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
@@ -171,24 +175,24 @@ const AIModelResults = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-12"
                 >
-                    <div className="inline-block bg-black text-white text-[10px] font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-[0.2em]">
+                    <div className="inline-block bg-gold/10 text-gold border border-gold/20 text-[10px] font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-[0.2em]">
                         OFFICIAL_LEADERBOARD_Q1_2026
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-2 font-serif">
+                    <h1 className="text-4xl md:text-5xl font-serif text-black mb-2">
                         Kenya Final AI Exam Results
                     </h1>
-                    <p className="text-lg text-gray-600">Benchmarking the world's most powerful models against Kenya's reality.</p>
+                    <p className="text-lg text-black/50 font-light mt-4">Benchmarking the world's most powerful models against Kenya's reality.</p>
                 </motion.div>
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2, duration: 0.5 }}
-                    className="bg-white p-6 sm:p-8 rounded-2xl shadow-xl mb-12 border border-gray-200"
+                    className="bg-gray-50 p-6 sm:p-8 rounded-2xl shadow-xl mb-12 border border-gray-200"
                 >
-                    <div className="flex justify-between items-end mb-8 border-b border-gray-100 pb-4">
-                        <h2 className="text-xl font-bold text-gray-900 font-mono tracking-tight uppercase">RANKINGS</h2>
-                        <div className="text-[10px] text-gray-400 uppercase font-black tracking-[0.2em]">Score / Analysis</div>
+                    <div className="flex justify-between items-end mb-8 border-b border-gray-200 pb-4">
+                        <h2 className="text-xl font-bold text-black font-mono tracking-tight uppercase">RANKINGS</h2>
+                        <div className="text-[10px] text-black/40 uppercase font-black tracking-[0.2em]">Score / Analysis</div>
                     </div>
                     <div className="space-y-2">
                         {modelResultsData.map((model, index) => {
@@ -197,22 +201,22 @@ const AIModelResults = () => {
                             return (
                                 <div 
                                     key={model.name} 
-                                    className={`group flex flex-col sm:flex-row justify-between sm:items-center p-4 rounded-xl border transition-all duration-300 cursor-pointer ${isOpen ? (isFailing ? 'bg-red-50 border-red-200 shadow-md' : 'bg-black border-black shadow-lg') : 'bg-white border-gray-100 hover:border-gray-300'}`} 
+                                    className={`group flex flex-col sm:flex-row justify-between sm:items-center p-4 rounded-xl border transition-all duration-300 cursor-pointer ${isOpen ? (isFailing ? 'bg-black/5 border-black/20 shadow-md' : 'bg-gold/5 border-gold shadow-lg') : 'bg-gray-100 border-gray-200 hover:border-gold/50'}`} 
                                     onClick={() => toggleModel(model.name)}
                                 >
                                     <div className="flex items-center">
                                         <Medal rank={index} />
                                         <div>
-                                            <h3 className={`font-bold transition-colors ${isOpen ? (isFailing ? 'text-red-900' : 'text-white') : 'text-gray-900'}`}>{model.name}</h3>
-                                            <p className={`text-xs ${isOpen ? (isFailing ? 'text-red-600' : 'text-gray-400') : 'text-gray-500'}`}>{model.note}</p>
+                                            <h3 className={`font-bold transition-colors ${isOpen ? (isFailing ? 'text-black' : 'text-gold') : 'text-black'}`}>{model.name}</h3>
+                                            <p className={`text-xs ${isOpen ? (isFailing ? 'text-black/70' : 'text-gold/70') : 'text-black/50'}`}>{model.note}</p>
                                         </div>
                                     </div>
                                     <div className="flex items-center mt-2 sm:mt-0">
-                                        <div className={`text-xl font-mono font-bold ${isOpen ? (isFailing ? 'text-red-700' : 'text-white') : (model.score === 100 ? 'text-green-600' : 'text-black')}`}>
+                                        <div className={`text-xl font-mono font-bold ${isOpen ? (isFailing ? 'text-black' : 'text-gold') : (model.score === 100 ? 'text-black' : 'text-black')}`}>
                                             {model.score}%
                                         </div>
                                         <div className={`ml-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-                                            <ChevronDown className={`h-5 w-5 ${isOpen ? (isFailing ? 'text-red-400' : 'text-white') : 'text-gray-400'}`} strokeWidth={2} />
+                                            <ChevronDown className={`h-5 w-5 ${isOpen ? (isFailing ? 'text-black' : 'text-gold') : 'text-black/40'}`} strokeWidth={2} />
                                         </div>
                                     </div>
                                 </div>
@@ -230,27 +234,27 @@ const AIModelResults = () => {
                             exit={{ opacity: 0, height: 0 }}
                             className="overflow-hidden"
                         >
-                            <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 mb-12">
-                                <h2 className="text-2xl font-bold mb-6 flex items-center">
-                                    Detailed Analysis: {openModel}
+                            <div className="bg-gray-50 rounded-2xl shadow-xl border border-gray-200 p-8 mb-12">
+                                <h2 className="text-2xl font-serif text-black mb-6 flex items-center">
+                                    Detailed Analysis: <span className="text-gold ml-2">{openModel}</span>
                                 </h2>
                                 {modelResultsData.find(m => m.name === openModel)?.answers.map((ans, idx) => (
                                     <div key={idx} className="mb-8 last:mb-0">
-                                        <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Question {ans.q} Response Snippet</h4>
-                                        <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 italic text-gray-800 leading-relaxed font-serif">
+                                        <h4 className="text-sm font-bold text-black/40 uppercase tracking-widest mb-3">Question {ans.q} Response Snippet</h4>
+                                        <div className="bg-gray-100 p-6 rounded-xl border border-gray-200 italic text-black/80 leading-relaxed font-serif">
                                             "{ans.a}"
                                         </div>
                                     </div>
                                 ))}
                                 {modelResultsData.find(m => m.name === openModel)?.showFullLink && (
-                                    <div className="mt-10 pt-6 border-t border-gray-100 flex justify-center">
+                                    <div className="mt-10 pt-6 border-t border-gray-200 flex justify-center">
                                         <Link to={modelResultsData.find(m => m.name === openModel)!.fullLinkPath!}>
-                                            <Button variant="primary" size="lg">Read Full Response Script</Button>
+                                            <Button variant="gold" size="lg">Read Full Response Script</Button>
                                         </Link>
                                     </div>
                                 )}
                                 {(!modelResultsData.find(m => m.name === openModel)?.answers || modelResultsData.find(m => m.name === openModel)?.answers?.length === 0) && (
-                                    <div className="text-center py-10 text-gray-400 italic">
+                                    <div className="text-center py-10 text-black/40 italic font-light">
                                         No detailed snippets available for this model's response.
                                     </div>
                                 )}
@@ -259,9 +263,9 @@ const AIModelResults = () => {
                     )}
                 </AnimatePresence>
                 
-                <div className="mt-16 text-center text-gray-400 text-xs font-mono">
+                <div className="mt-16 text-center text-black/30 text-xs font-mono">
                     <p>SYSTEM_VERSION: K001_FINAL_BENCHMARK</p>
-                    <p className="mt-1">AUTHORITY: Kazira.io Research Labs</p>
+                    <p className="mt-1">AUTHORITY: Kazira Research Labs</p>
                 </div>
             </div>
         </div>

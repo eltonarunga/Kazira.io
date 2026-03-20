@@ -25,7 +25,6 @@ Kazira.io is a revolutionary platform designed to bridge the gap between current
 -   **Kazira Automate (Flagship Product):** Featuring *Kazira.io Clinical Intelligence*, an advanced AI-powered platform for clinical data analysis designed to streamline healthcare decision-making through synthesized insights.
 -   **Kazira Learn:** Master in-demand skills with personalized, AI-curated educational journeys.
 -   **AI Model Comparisons:** Deep-dive analyses of how top-tier AI models (ChatGPT, Claude, Gemini, DeepSeek, Grok, Mistral, Qwen, Perplexity, Meta AI, Kimi, Copilot) perform on complex, context-heavy exams.
--   **Consult AI Professor:** An interactive AI assistant to help users navigate complex topics and learning materials.
 
 ---
 

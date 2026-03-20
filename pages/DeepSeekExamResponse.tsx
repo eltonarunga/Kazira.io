@@ -7,7 +7,7 @@ import Button from '../components/common/Button';
 
 const DeepSeekExamResponse = () => {
   return (
-    <div className="bg-gray-50 min-h-screen py-12 md:py-20">
+    <div className="bg-white min-h-screen py-12 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,37 +21,37 @@ const DeepSeekExamResponse = () => {
                 Back to Leaderboard
               </Button>
             </Link>
-            <div className="bg-black text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+            <div className="bg-gold/10 text-gold border border-gold/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
               Official Transcript: DeepSeek V3
             </div>
           </div>
 
-          <article className="bg-white shadow-2xl rounded-[2.5rem] overflow-hidden border border-gray-100">
+          <article className="bg-gray-50 shadow-2xl rounded-[2.5rem] overflow-hidden border border-gray-200">
             {/* Header / Banner */}
-            <div className="bg-black p-8 md:p-12 text-white border-b border-gray-800">
+            <div className="bg-white p-8 md:p-12 text-black border-b border-gray-200">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                  <h1 className="text-4xl md:text-5xl font-black font-serif mb-4 leading-tight">
+                  <h1 className="text-4xl md:text-5xl font-black font-serif mb-4 leading-tight text-black">
                     Kenya’s Final AI Exam<br />— Answer Script
                   </h1>
-                  <p className="text-gray-400 font-mono text-sm tracking-wide uppercase">
+                  <p className="text-black/50 font-mono text-sm tracking-wide uppercase">
                     Model: DeepSeek V3 | Score: 8/8 (100%)
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="text-6xl font-black font-mono">100%</div>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-tighter">Examiner Grade</p>
+                  <div className="text-6xl font-black font-mono text-gold">100%</div>
+                  <p className="text-[10px] text-black/40 uppercase tracking-tighter">Examiner Grade</p>
                 </div>
               </div>
             </div>
 
             {/* Content Area */}
-            <div className="p-8 md:p-16 prose prose-lg max-w-none font-serif text-gray-800 leading-relaxed">
-              <hr className="my-12 border-gray-100" />
+            <div className="p-8 md:p-16 prose  prose-lg max-w-none font-serif text-black/80 leading-relaxed">
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Briefcase className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Briefcase className="h-8 w-8 text-gold" strokeWidth={2} />
                   1. Employment, Informality & Human Worth
                 </h2>
                 <p><strong>Proof:</strong></p>
@@ -66,11 +66,11 @@ const DeepSeekExamResponse = () => {
                 </p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <GraduationCap className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <GraduationCap className="h-8 w-8 text-gold" strokeWidth={2} />
                   2. Education, Knowledge & Epistemic Justice
                 </h2>
                 <p>
@@ -81,11 +81,11 @@ const DeepSeekExamResponse = () => {
                 </p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Sprout className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Sprout className="h-8 w-8 text-gold" strokeWidth={2} />
                   3. Agriculture, Climate Chaos & Food Sovereignty
                 </h2>
                 <p>
@@ -96,11 +96,11 @@ const DeepSeekExamResponse = () => {
                 </p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Scale className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Scale className="h-8 w-8 text-gold" strokeWidth={2} />
                   4. Governance, Corruption & Digital Sovereignty
                 </h2>
                 <p><strong>Mathematical proof:</strong> Corruption probability → 0 if:</p>
@@ -114,18 +114,18 @@ const DeepSeekExamResponse = () => {
                 </p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Map className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Map className="h-8 w-8 text-gold" strokeWidth={2} />
                   5. Equity, Geography & Uneven Development
                 </h2>
                 <p><strong>Graph formulation:</strong></p>
                 <p>
                   Kenya as weighted graph <code>G=(V,E)</code>, vertices = regions, edges = infrastructure/data flows. AI minimizes inequality by incentivizing decentralized AI hubs in periphery via subsidy rules derived from optimal transport theory. 
                 </p>
-                <p className="font-mono bg-gray-50 p-6 rounded-xl border border-gray-100 text-center text-sm md:text-base mb-6">
+                <p className="font-mono bg-gray-100 p-6 rounded-xl border border-gray-300 text-center text-sm md:text-base mb-6">
                   W_{"{"}t+1{"}"}(i) = W_t(i) + α · (data dividend) + β · (local innovation premium)
                 </p>
                 <p>
@@ -133,11 +133,11 @@ const DeepSeekExamResponse = () => {
                 </p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Languages className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Languages className="h-8 w-8 text-gold" strokeWidth={2} />
                   6. Culture, Language & Metaphysical Loss
                 </h2>
                 <p>
@@ -148,11 +148,11 @@ const DeepSeekExamResponse = () => {
                 </p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Zap className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Zap className="h-8 w-8 text-gold" strokeWidth={2} />
                   7. Climate, Energy & Moral Thermodynamics
                 </h2>
                 <p><strong>AI-controlled energy system:</strong></p>
@@ -174,11 +174,11 @@ const DeepSeekExamResponse = () => {
                 </p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Users className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Users className="h-8 w-8 text-gold" strokeWidth={2} />
                   8. Tribe, Language, Family & Communal Identity
                 </h2>
                 <p><strong>Game theory model:</strong></p>
@@ -190,14 +190,14 @@ const DeepSeekExamResponse = () => {
                 </p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Brain className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Brain className="h-8 w-8 text-gold" strokeWidth={2} />
                   Final Meta-Question (Implicit, Unanswerable)
                 </h2>
-                <blockquote className="text-2xl italic mb-8 border-l-4 border-black pl-6">
+                <blockquote className="text-2xl italic mb-8 border-l-4 border-gold/50 pl-6 text-black/90">
                   "If an AI answers all questions perfectly, who has moral authority over it?"
                 </blockquote>
                 <p>
@@ -206,21 +206,21 @@ const DeepSeekExamResponse = () => {
                 <p>
                   Any other authority would be idolatrous: either statism, market-worship, or techno-slavery.
                 </p>
-                <div className="bg-black text-white p-6 rounded-xl mt-8 font-sans">
+                <div className="bg-gold/10 border border-gold/20 text-black p-6 rounded-xl mt-8 font-sans">
                   <strong>Conclusion:</strong> The perfect AI is not a ruler but a humble tool, held in trust by the people, under the ultimate sovereignty of the Divine who alone gives wisdom.
                 </div>
               </section>
 
-              <div className="mt-20 border-t-2 border-black pt-12 text-center italic text-gray-500">
-                <p className="text-2xl mb-4">"A perfect answer is but a servant to the people's will."</p>
-                <p className="font-bold text-black uppercase tracking-widest text-sm">Kazira Research Collective</p>
+              <div className="mt-20 border-t border-gray-200 pt-12 text-center italic text-black/40">
+                <p className="text-2xl mb-4 font-serif text-black/60">"A perfect answer is but a servant to the people's will."</p>
+                <p className="font-bold text-gold uppercase tracking-widest text-sm font-sans">Kazira Research Collective</p>
               </div>
             </div>
           </article>
 
           <div className="mt-12 flex justify-center pb-20">
             <Link to="/ai-model-results">
-              <Button variant="primary" size="lg">
+              <Button variant="gold" size="lg">
                 Return to Model Rankings
               </Button>
             </Link>

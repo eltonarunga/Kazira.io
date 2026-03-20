@@ -9,8 +9,8 @@ import Button from './Button';
 import { getFriendlyErrorMessage } from '../../services/errorService';
 
 const BotAvatar = () => (
-    <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center flex-shrink-0 mr-3">
-        <Bot className="h-5 w-5 text-white" strokeWidth={1.5} />
+    <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0 mr-3">
+        <Bot className="h-5 w-5 text-black" strokeWidth={1.5} />
     </div>
 );
 
@@ -112,9 +112,9 @@ const Chatbot = () => {
             transition={{ type: 'spring', stiffness: 200, damping: 25 }}
             className="fixed bottom-24 right-6 w-full max-w-sm h-[70vh] bg-white rounded-xl shadow-2xl flex flex-col z-50 overflow-hidden border border-gray-200"
           >
-            <header className="bg-black text-white p-4 flex justify-between items-center flex-shrink-0">
+            <header className="bg-white text-black p-4 flex justify-between items-center flex-shrink-0">
               <h3 className="font-bold text-lg">KaziraBot Assistant</h3>
-              <button onClick={() => setIsOpen(false)} className="text-gray-300 hover:text-white" aria-label="Close chat">
+              <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-black" aria-label="Close chat">
                 <X className="h-6 w-6" strokeWidth={2} />
               </button>
             </header>
@@ -123,7 +123,7 @@ const Chatbot = () => {
               {messages.map((msg, index) => (
                 <div key={index} className={`flex items-end ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                    {msg.role === 'model' && <BotAvatar />}
-                  <div className={`max-w-[80%] p-3 rounded-2xl ${msg.role === 'user' ? 'bg-black text-white rounded-br-none' : 'bg-gray-200 text-gray-800 rounded-bl-none'}`}>
+                  <div className={`max-w-[80%] p-3 rounded-2xl ${msg.role === 'user' ? 'bg-white text-black rounded-br-none' : 'bg-gray-200 text-gray-800 rounded-bl-none'}`}>
                     <p className="text-sm whitespace-pre-wrap">{msg.text}</p>
                   </div>
                 </div>
@@ -140,7 +140,7 @@ const Chatbot = () => {
                     </div>
                 </div>
               )}
-              {error && <p className="text-xs text-red-500 text-center">{error}</p>}
+              {error && <p className="text-xs text-gray-500 text-center">{error}</p>}
               <div ref={messagesEndRef} />
             </main>
 

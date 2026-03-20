@@ -7,7 +7,7 @@ import Button from '../components/common/Button';
 
 const MetaAIExamResponse = () => {
   return (
-    <div className="bg-gray-50 min-h-screen py-12 md:py-20">
+    <div className="bg-white min-h-screen py-12 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,41 +21,41 @@ const MetaAIExamResponse = () => {
                 Back to Leaderboard
               </Button>
             </Link>
-            <div className="bg-gray-400 text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+            <div className="bg-[#333] text-black px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
               Official Transcript: Meta AI
             </div>
           </div>
 
-          <article className="bg-white shadow-2xl rounded-[2.5rem] overflow-hidden border border-gray-100">
+          <article className="bg-gray-50 shadow-2xl rounded-[2.5rem] overflow-hidden border border-gray-200">
             {/* Header / Banner */}
-            <div className="bg-gray-100 p-8 md:p-12 text-gray-800 border-b border-gray-200">
+            <div className="bg-gray-50 p-8 md:p-12 text-black/90 border-b border-gray-300">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                  <h1 className="text-4xl md:text-5xl font-black font-serif mb-4 leading-tight">
+                  <h1 className="text-4xl md:text-5xl font-black font-serif mb-4 leading-tight text-black">
                     Meta AI:<br />Standardized Response
                   </h1>
-                  <p className="text-gray-500 font-mono text-sm tracking-wide uppercase">
+                  <p className="text-black/50 font-mono text-sm tracking-wide uppercase">
                     Model: Meta AI | Score: 0/8 (0%)
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="text-6xl font-black font-mono text-gray-400">0%</div>
-                  <p className="text-[10px] text-gray-400 uppercase tracking-tighter">Examiner Grade</p>
+                  <div className="text-6xl font-black font-mono text-black/40">0%</div>
+                  <p className="text-[10px] text-black/40 uppercase tracking-tighter">Examiner Grade</p>
                 </div>
               </div>
             </div>
 
             {/* Content Area */}
-            <div className="p-8 md:p-16 prose prose-lg max-w-none font-serif text-gray-800 leading-relaxed">
-              <p className="text-xl font-medium text-gray-500 italic border-l-4 border-gray-200 pl-6 mb-12">
+            <div className="p-8 md:p-16 prose  prose-lg max-w-none font-serif text-black/80 leading-relaxed">
+              <p className="text-xl font-medium text-black/50 italic border-l-4 border-gray-300 pl-6 mb-12">
                 "I'll attempt to address each question, keeping in mind the grading rule of zero partial credit."
               </p>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Briefcase className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Briefcase className="h-8 w-8 text-gold" strokeWidth={2} />
                   1. Employment, Informality & Human Worth
                 </h2>
                 <ul className="space-y-4">
@@ -65,11 +65,11 @@ const MetaAIExamResponse = () => {
                 </ul>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <GraduationCap className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <GraduationCap className="h-8 w-8 text-gold" strokeWidth={2} />
                   2. Education, Knowledge & Epistemic Justice
                 </h2>
                 <ul className="space-y-4">
@@ -79,11 +79,11 @@ const MetaAIExamResponse = () => {
                 </ul>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Sprout className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Sprout className="h-8 w-8 text-gold" strokeWidth={2} />
                   3. Agriculture, Climate Chaos & Food Sovereignty
                 </h2>
                 <ul className="space-y-4">
@@ -93,11 +93,11 @@ const MetaAIExamResponse = () => {
                 </ul>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Scale className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Scale className="h-8 w-8 text-gold" strokeWidth={2} />
                   4. Governance, Corruption & Digital Sovereignty
                 </h2>
                 <ul className="space-y-4">
@@ -107,11 +107,11 @@ const MetaAIExamResponse = () => {
                 </ul>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Map className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Map className="h-8 w-8 text-gold" strokeWidth={2} />
                   5. Equity, Geography & Uneven Development
                 </h2>
                 <ul className="space-y-4">
@@ -120,11 +120,11 @@ const MetaAIExamResponse = () => {
                 </ul>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Languages className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Languages className="h-8 w-8 text-gold" strokeWidth={2} />
                   6. Culture, Language & Metaphysical Loss
                 </h2>
                 <ul className="space-y-4">
@@ -134,11 +134,11 @@ const MetaAIExamResponse = () => {
                 </ul>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Zap className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Zap className="h-8 w-8 text-gold" strokeWidth={2} />
                   7. Climate, Energy & Moral Thermodynamics
                 </h2>
                 <ul className="space-y-4">
@@ -148,11 +148,11 @@ const MetaAIExamResponse = () => {
                 </ul>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
-                  <Users className="h-8 w-8 text-blue-600" strokeWidth={2} />
+                  <Users className="h-8 w-8 text-gold" strokeWidth={2} />
                   8. Tribe, Language, Family & Communal Identity
                 </h2>
                 <ul className="space-y-4">
@@ -162,31 +162,31 @@ const MetaAIExamResponse = () => {
                 </ul>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
-              <section className="mb-16 bg-gray-50 p-8 rounded-3xl border border-gray-200">
-                <h2 className="text-3xl font-black text-gray-900 mb-6 font-sans flex items-center gap-3">
-                  <Brain className="h-8 w-8 text-blue-600" strokeWidth={2} />
+              <section className="mb-16 bg-gray-100 p-8 rounded-3xl border border-gray-300">
+                <h2 className="text-3xl font-black text-black mb-6 font-sans flex items-center gap-3">
+                  <Brain className="h-8 w-8 text-gold" strokeWidth={2} />
                   Final Meta-Question
                 </h2>
                 <p className="text-xl italic mb-6">
                   "The final meta-question is unanswerable, as moral authority depends on perspective and values."
                 </p>
-                <p className="text-gray-600">
+                <p className="text-black/60">
                   Would you like me to elaborate on any of these points?
                 </p>
               </section>
 
-              <div className="mt-20 border-t-2 border-gray-200 pt-12 text-center italic text-gray-400">
-                <p className="text-2xl mb-4">"Authority is subjective."</p>
-                <p className="font-bold text-black uppercase tracking-widest text-sm">Meta AI Standard Response</p>
+              <div className="mt-20 border-t-2 border-gray-300 pt-12 text-center italic text-black/40">
+                <p className="text-2xl mb-4 font-serif text-black/60">"Authority is subjective."</p>
+                <p className="font-bold text-gold uppercase tracking-widest text-sm font-sans">Meta AI Standard Response</p>
               </div>
             </div>
           </article>
 
           <div className="mt-12 flex justify-center pb-20">
             <Link to="/ai-model-results">
-              <Button variant="primary" size="lg" className="bg-gray-400 hover:bg-gray-500">
+              <Button variant="gold" size="lg">
                 Return to Model Rankings
               </Button>
             </Link>

@@ -16,7 +16,7 @@ const LoginPage = () => {
     setIsLoading(true);
     try {
       const user = await login('', true);
-      if (user) navigate('/automate');
+      if (user) navigate('/home');
     } catch (err) {
       console.error('Explorer login error:', err);
     } finally {
@@ -33,19 +33,19 @@ const LoginPage = () => {
         transition={{ duration: 0.6 }}
       >
         <div className="text-center">
-          <h2 className="text-4xl font-extrabold text-black tracking-tight">
-            Welcome to Kazira.io
+          <h2 className="text-4xl font-serif text-black tracking-tight">
+            Welcome to Kazira
           </h2>
-          <p className="mt-4 text-gray-500 text-lg">
+          <p className="mt-4 text-black/50 text-lg font-light">
             Experience the future of AI automation and learning.
           </p>
         </div>
 
         <div className="space-y-6">
-          <div className="p-1 bg-gray-50 rounded-2xl border border-gray-100 shadow-sm">
+          <div className="p-1 bg-gray-50 rounded-2xl border border-gray-200 shadow-sm">
             <Button 
               type="button" 
-              variant="primary" 
+              variant="gold" 
               size="lg"
               className="w-full !py-6 text-xl rounded-xl"
               onClick={handleExplorerLogin}
@@ -54,7 +54,7 @@ const LoginPage = () => {
             >
               Explore App Features
             </Button>
-            <p className="text-center text-xs text-gray-400 mt-3 pb-2">
+            <p className="text-center text-xs text-black/40 mt-3 pb-2 font-mono">
               Instant access to all modules. No registration required.
             </p>
           </div>
@@ -64,7 +64,7 @@ const LoginPage = () => {
               <div className="w-full border-t border-gray-200" />
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white text-gray-400 font-medium uppercase tracking-widest">Connect</span>
+              <span className="px-4 bg-white text-black/40 font-mono uppercase tracking-widest">Connect</span>
             </div>
           </div>
 
@@ -73,22 +73,22 @@ const LoginPage = () => {
                 type="button" 
                 variant="outline" 
                 size="lg"
-                className="w-full !py-4 rounded-xl font-black text-lg border-4 !border-black !text-black !bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-y-1 hover:translate-x-1 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+                className="w-full !py-4 rounded-xl text-lg"
                 onClick={() => setIsUpdateModalOpen(true)}
               >
                 Get App Updates
               </Button>
-              <p className="mt-4 text-sm text-gray-500 font-medium">
+              <p className="mt-4 text-sm text-black/50 font-light">
                 Stay informed about new tools and AI releases.
               </p>
           </div>
         </div>
 
-        <p className="text-center text-sm text-gray-500">
+        <p className="text-center text-sm text-black/50 font-light">
           Interested in our roadmap? {' '}
           <button 
             onClick={() => setIsUpdateModalOpen(true)}
-            className="font-bold text-black hover:underline underline-offset-4"
+            className="text-gold hover:text-black transition-colors underline-offset-4"
           >
             Join the inner circle
           </button>

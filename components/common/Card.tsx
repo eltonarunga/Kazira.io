@@ -19,13 +19,13 @@ const Card = ({ title, description, image, children, className = '', onClick }: 
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5 }}
       whileHover={{ y: -5 }}
-      className={`bg-white shadow-lg rounded-2xl overflow-hidden border border-gray-100 flex flex-col h-full ${onClick ? 'cursor-pointer' : ''} ${className}`}
+      className={`bg-gray-50 border border-gray-200 flex flex-col h-full hover:border-gold/50 transition-colors duration-300 ${onClick ? 'cursor-pointer' : ''} ${className}`}
       onClick={onClick}
     >
       {image}
-      <div className="p-6 flex flex-col flex-grow">
-        {title && <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>}
-        {description && <p className="text-gray-600 text-sm mb-6 flex-grow">{description}</p>}
+      <div className="p-8 flex flex-col flex-grow">
+        {title && <h3 className="text-2xl font-serif mb-4 text-black">{title}</h3>}
+        {description && <p className="text-black/50 font-light leading-relaxed mb-8 flex-grow">{description}</p>}
         <div className="mt-auto">
           {children}
         </div>

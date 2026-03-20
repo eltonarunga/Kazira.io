@@ -20,7 +20,6 @@ import MistralExamResponse from './pages/MistralExamResponse';
 import KimiExamResponse from './pages/KimiExamResponse';
 import CopilotExamResponse from './pages/CopilotExamResponse';
 import MetaAIExamResponse from './pages/MetaAIExamResponse';
-import ConsultAIProfessor from './pages/ConsultAIProfessor';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import UserProfilePage from './pages/UserProfilePage';
 import Chatbot from './components/common/Chatbot';
@@ -47,7 +46,8 @@ const App = () => {
         <main className="flex-grow">
           <ErrorBoundary>
             <Routes>
-              <Route path="/" element={<LandingPage />} />
+              <Route path="/" element={<Navigate to="/login" replace />} />
+              <Route path="/home" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/kenya-ai-exam" element={<KenyaFinalAIExam />} />
               <Route path="/ai-model-results" element={<AIModelResults />} />
@@ -62,7 +62,6 @@ const App = () => {
               <Route path="/kimi-exam-response" element={<KimiExamResponse />} />
               <Route path="/copilot-exam-response" element={<CopilotExamResponse />} />
               <Route path="/meta-ai-exam-response" element={<MetaAIExamResponse />} />
-              <Route path="/consult-professor" element={<ConsultAIProfessor />} />
               <Route 
                 path="/learn" 
                 element={

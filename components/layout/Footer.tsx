@@ -1,68 +1,59 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Twitter } from 'lucide-react';
-import Modal from '../common/Modal';
+import { Cpu } from 'lucide-react';
 
 const Footer = () => {
-  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
-
   return (
-    <footer className="bg-black text-gray-300">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <h3 className={`text-lg font-semibold text-white mb-4`}>Kazira.io</h3>
-            <p className="text-sm">AI-Powered Automation & Learning for a brighter future.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="https://opal.google/app/1RS_gONM_N73fAQy3u_mtelYIjJHNtfN8" target="_blank" rel="noopener noreferrer" className={`hover:text-white`}>Kazira Learn</a></li>
-              <li><a href="#/automate" className={`hover:text-white`}>Kazira Automate</a></li>
-              <li><a href="#/" className={`hover:text-white`}>Home</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Legal</h3>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#/terms" className={`hover:text-white`}>Terms of Service</a></li>
-              <li><a href="#/privacy" className={`hover:text-white`}>Privacy Policy</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Connect</h3>
-            <div className="flex space-x-4 mb-6">
-              <a href="https://twitter.com/kazira_io" target="_blank" rel="noopener noreferrer" className={`hover:text-white`} aria-label="Kazira.io on Twitter">
-                <Twitter className="w-6 h-6" strokeWidth={1.5} />
+    <footer className="bg-white text-black/60 border-t border-gray-200">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
+          
+          {/* Column 1: Brand, Address, Social */}
+          <div className="space-y-6">
+            <div className="flex items-center space-x-3 group mb-8">
+              <div className="bg-gold/10 p-2 rounded-none border border-gold/30">
+                <Cpu className="w-5 h-5 text-gold" strokeWidth={1.5} />
+              </div>
+              <span className="text-xl font-serif font-semibold text-black tracking-wide uppercase">Kazira</span>
+            </div>
+            
+            <div className="pt-4 flex space-x-4">
+              <a href="https://twitter.com/kazira_io" target="_blank" rel="noopener noreferrer" className="w-10 h-10 border border-gray-200 flex items-center justify-center hover:border-gold hover:text-gold transition-colors" aria-label="Kazira.io on Twitter">
+                <Twitter className="w-4 h-4" strokeWidth={1.5} />
               </a>
             </div>
-            <div>
-              <h4 className="text-md font-semibold text-white mb-2">Platform Updates</h4>
-              <p className="text-xs text-gray-400 mb-3">Get the latest on AI tools and features.</p>
-              <button 
-                onClick={() => setIsUpdateModalOpen(true)}
-                className="px-6 py-3 !bg-white !text-black rounded-md hover:!bg-gray-100 transition-all text-sm font-black border-2 !border-white shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:scale-105"
-              >
-                Join Update List
-              </button>
-            </div>
           </div>
+
+          {/* Column 2: Solutions */}
+          <div>
+            <h3 className="font-mono text-xs text-black uppercase tracking-widest mb-8">Solutions</h3>
+            <ul className="space-y-4 text-sm font-light">
+              <li><a href="https://x.com/nanostrategyke" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">NanostrategyKE</a></li>
+              <li><a href="https://opal.google/app/1RS_gONM_N73fAQy3u_mtelYIjJHNtfN8" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Kazira Learn</a></li>
+              <li><a href="#/automate" className="hover:text-gold transition-colors">Kazira Automate</a></li>
+              <li><a href="https://opal.withgoogle.com/?flow=drive:/1g5EsPt18QZYsNAcaE1f9KgmCnWOQEvin&shared&mode=app" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Job Disruption Scanner</a></li>
+              <li><a href="#/kenya-ai-exam" className="hover:text-gold transition-colors">Kenya's Final AI Exam</a></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Company */}
+          <div>
+            <h3 className="font-mono text-xs text-black uppercase tracking-widest mb-8">Company</h3>
+            <ul className="space-y-4 text-sm font-light">
+              <li><a href="#/home" className="hover:text-gold transition-colors">Home</a></li>
+              <li><a href="#/terms" className="hover:text-gold transition-colors">Terms of Service</a></li>
+              <li><a href="#/privacy" className="hover:text-gold transition-colors">Privacy Policy</a></li>
+            </ul>
+          </div>
+          
         </div>
-        <div className="mt-8 border-t border-gray-700 pt-8 text-center text-sm">
+        
+        <div className="mt-16 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-mono tracking-widest uppercase text-black/40">
           <p>&copy; {new Date().getFullYear()} Kazira.io. All rights reserved.</p>
+          <p className="mt-4 md:mt-0">Designed for the Future</p>
         </div>
       </div>
-
-      <Modal isOpen={isUpdateModalOpen} onClose={() => setIsUpdateModalOpen(false)} title="Stay Updated">
-        <div className="w-full min-h-[450px] overflow-hidden rounded-lg">
-          <iframe
-            src="https://form.jotform.com/260052273727050"
-            title="App Updates"
-            className="w-full h-[500px] border-none"
-            allow="geolocation; microphone; camera"
-          />
-        </div>
-      </Modal>
     </footer>
   );
 };

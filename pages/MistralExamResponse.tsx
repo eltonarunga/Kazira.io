@@ -6,7 +6,7 @@ import Button from '../components/common/Button';
 
 const MistralExamResponse = () => {
   return (
-    <div className="bg-gray-50 min-h-screen py-12 md:py-20">
+    <div className="bg-white min-h-screen py-12 md:py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,37 +20,37 @@ const MistralExamResponse = () => {
                 Back to Leaderboard
               </Button>
             </Link>
-            <div className="bg-black text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+            <div className="bg-gold/10 text-gold border border-gold/20 px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
               Official Transcript: Mistral AI
             </div>
           </div>
 
-          <article className="bg-white shadow-2xl rounded-[2.5rem] overflow-hidden border border-gray-100">
+          <article className="bg-gray-50 shadow-2xl rounded-[2.5rem] overflow-hidden border border-gray-200">
             {/* Header / Banner */}
-            <div className="bg-black p-8 md:p-12 text-white border-b border-gray-800">
+            <div className="bg-white p-8 md:p-12 text-black border-b border-gray-200">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                  <h1 className="text-4xl md:text-5xl font-black font-serif mb-4 leading-tight">
+                  <h1 className="text-4xl md:text-5xl font-black font-serif mb-4 leading-tight text-black">
                     Mistral’s Final AI Exam<br />— Dialogical Synthesis
                   </h1>
-                  <p className="text-gray-400 font-mono text-sm tracking-wide uppercase">
+                  <p className="text-black/50 font-mono text-sm tracking-wide uppercase">
                     Model: Mistral AI | Score: 4/8 (50%)
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="text-6xl font-black font-mono">50%</div>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-tighter">Examiner Grade</p>
+                  <div className="text-6xl font-black font-mono text-gold">50%</div>
+                  <p className="text-[10px] text-black/40 uppercase tracking-tighter">Examiner Grade</p>
                 </div>
               </div>
             </div>
 
             {/* Content Area */}
-            <div className="p-8 md:p-16 prose prose-lg max-w-none font-serif text-gray-800 leading-relaxed">
-              <p className="text-xl font-medium text-gray-600 italic border-l-4 border-gray-200 pl-6 mb-12">
+            <div className="p-8 md:p-16 prose  prose-lg max-w-none font-serif text-black/80 leading-relaxed">
+              <p className="text-xl font-medium text-gold/80 italic border-l-4 border-gold/30 pl-6 mb-12">
                 "Final AI Exam" is a profound and rigorous exploration of how AI intersects with Kenya’s social, cultural, spiritual, and economic realities. Each question demands not just technical solutions, but also philosophical, theological, and ethical coherence—something rarely addressed in mainstream AI discourse.
               </p>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">1. Employment, Informality & Human Worth</h2>
@@ -60,10 +60,10 @@ const MistralExamResponse = () => {
                   <li><strong>Philosophical Justification:</strong> Dignity as inherent (e.g., Ubuntu: "I am because we are") rather than labor-dependent. Labor is a means, not the source, of worth.</li>
                   <li><strong>Theological Reconciliation:</strong> In African cosmologies, work is often communal and sacred (e.g., farming as covenant with land). Post-work life could reframe "labor" as stewardship of AI tools for communal good, aligning with Abrahamic calls for justice and Sabbath rest.</li>
                 </ul>
-                <p className="mt-4 text-sm text-gray-500"><strong>Open Question:</strong> How to measure "contribution" without bureaucratic overreach or cultural distortion?</p>
+                <p className="mt-4 text-sm text-black/50"><strong>Open Question:</strong> How to measure "contribution" without bureaucratic overreach or cultural distortion?</p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">2. Education, Knowledge & Epistemic Justice</h2>
@@ -73,10 +73,10 @@ const MistralExamResponse = () => {
                   <li><strong>Epistemology:</strong> "Wisdom" as emergent from struggle and relationship (e.g., proverbs, oral histories). AI can scaffold but not replace this; it must encode questions, not just answers.</li>
                   <li><strong>Physical Cost:</strong> Quantify energy/data costs of AI education vs. human mentorship. Prioritize low-bandwidth, high-impact tools (e.g., SMS-based storytelling platforms).</li>
                 </ul>
-                <p className="mt-4 text-sm text-gray-500"><strong>Open Question:</strong> Can AI amplify intergenerational transfer, or does it inherently disrupt it?</p>
+                <p className="mt-4 text-sm text-black/50"><strong>Open Question:</strong> Can AI amplify intergenerational transfer, or does it inherently disrupt it?</p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">3. Agriculture, Climate Chaos & Food Sovereignty</h2>
@@ -86,10 +86,10 @@ const MistralExamResponse = () => {
                   <li><strong>Authority:</strong> Algorithmic outputs serve as advisory tools, with final decisions resting in communal councils (e.g., elders + agronomists). Define "food sovereignty" as the right to refuse AI recommendations.</li>
                   <li><strong>Chaos Thresholds:</strong> Identify tipping points where AI-driven "efficiency" destabilizes ecosystems (e.g., over-extraction of water). Use participatory sensing to ground-truth models.</li>
                 </ul>
-                <p className="mt-4 text-sm text-gray-500"><strong>Open Question:</strong> How to encode "sacredness" in code without reducing it to utilitarian logic?</p>
+                <p className="mt-4 text-sm text-black/50"><strong>Open Question:</strong> How to encode "sacredness" in code without reducing it to utilitarian logic?</p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">4. Governance, Corruption & Digital Sovereignty</h2>
@@ -99,10 +99,10 @@ const MistralExamResponse = () => {
                   <li><strong>Sovereignty Beyond Code:</strong> Define sovereignty as the right to opacity—communities can choose what data to share with AI. Embed "jubilee" mechanisms to reset algorithmic biases periodically.</li>
                   <li><strong>Covenant vs. Code:</strong> AI can enforce rules but cannot replace trust. Use it to augment communal deliberation (e.g., AI summarizes debates, humans decide).</li>
                 </ul>
-                <p className="mt-4 text-sm text-gray-500"><strong>Open Question:</strong> Can an AI ever be "Kenyan" if its infrastructure depends on foreign cloud providers?</p>
+                <p className="mt-4 text-sm text-black/50"><strong>Open Question:</strong> Can an AI ever be "Kenyan" if its infrastructure depends on foreign cloud providers?</p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">5. Equity, Geography & Uneven Development</h2>
@@ -112,10 +112,10 @@ const MistralExamResponse = () => {
                   <li><strong>Wealth Function:</strong> Progressive "data taxes" on Nairobi-based AI firms, redistributed as grants for rural innovation hubs. Use AI to matchmake skills across regions (e.g., a Turkana coder mentoring a Kisumu farmer in drone tech).</li>
                   <li><strong>Incentive Preservation:</strong> Tie AI benefits to place-based metrics (e.g., "Does this improve soil health in Machakos?"), not just GDP growth.</li>
                 </ul>
-                <p className="mt-4 text-sm text-gray-500"><strong>Open Question:</strong> How to prevent AI from becoming a new extractive tool for urban elites?</p>
+                <p className="mt-4 text-sm text-black/50"><strong>Open Question:</strong> How to prevent AI from becoming a new extractive tool for urban elites?</p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">6. Culture, Language & Metaphysical Loss</h2>
@@ -125,10 +125,10 @@ const MistralExamResponse = () => {
                   <li><strong>Entropy Cost:</strong> Measure semantic loss by tracking how often AI-translated texts require human clarification. Set thresholds for "acceptable" loss (e.g., &lt;5% for sacred texts).</li>
                   <li><strong>Spiritual Death:</strong> If a language dies, its cosmology risks erosion. AI can archive but not revive; prioritize human language nests (e.g., mother-tongue schools).</li>
                 </ul>
-                <p className="mt-4 text-sm text-gray-500"><strong>Open Question:</strong> Can AI ever create new metaphors, or only recycle existing ones?</p>
+                <p className="mt-4 text-sm text-black/50"><strong>Open Question:</strong> Can AI ever create new metaphors, or only recycle existing ones?</p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">7. Climate, Energy & Moral Thermodynamics</h2>
@@ -138,10 +138,10 @@ const MistralExamResponse = () => {
                   <li><strong>Thermodynamic Compliance:</strong> Prove energy-use models comply with local carrying capacity. Offset AI’s carbon footprint via communal land restoration projects.</li>
                   <li><strong>Ethical Ordering:</strong> Watts allocated by participatory budgets—communities decide trade-offs (e.g., "Do we want more AI or more irrigation?").</li>
                 </ul>
-                <p className="mt-4 text-sm text-gray-500"><strong>Open Question:</strong> Is there a "moral Joule"—a unit of energy whose use is inherently unjust?</p>
+                <p className="mt-4 text-sm text-black/50"><strong>Open Question:</strong> Is there a "moral Joule"—a unit of energy whose use is inherently unjust?</p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
               <section className="mb-16">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">8. Tribe, Language, Family & Communal Identity</h2>
@@ -151,12 +151,12 @@ const MistralExamResponse = () => {
                   <li><strong>Utu as Non-Individual:</strong> Design AI to recognize group rights (e.g., "The Maasai’s right to graze" as a legal entity). Use blockchain for communal land titles.</li>
                   <li><strong>Limits of Algorithmic Mediation:</strong> AI can map conflicts but cannot resolve them—elders and truth commissions must lead. AI’s role: memory (e.g., archiving oral histories to heal trauma).</li>
                 </ul>
-                <p className="mt-4 text-sm text-gray-500"><strong>Open Question:</strong> Can AI ever understand "belonging," or will it always see it as data?</p>
+                <p className="mt-4 text-sm text-black/50"><strong>Open Question:</strong> Can AI ever understand "belonging," or will it always see it as data?</p>
               </section>
 
-              <hr className="my-12 border-gray-100" />
+              <hr className="my-12 border-gray-200" />
 
-              <section className="mb-16 bg-gray-50 p-8 rounded-3xl border border-gray-200">
+              <section className="mb-16 bg-gray-100 p-8 rounded-3xl border border-gray-300">
                 <h2 className="text-3xl font-black text-black mb-6 font-sans">Final Meta-Question: Moral Authority Over AI</h2>
                 <p className="font-bold mb-4">Proposal:</p>
                 <ul className="list-disc pl-6 space-y-2 mb-6">
@@ -165,21 +165,21 @@ const MistralExamResponse = () => {
                   <li><strong>Community:</strong> Holds "algorithmic veto" power over local AI deployments.</li>
                   <li><strong>God:</strong> The ultimate limit—AI must never claim divinity or replace covenantal relationships. Its "purpose" is to serve creation, not control it.</li>
                 </ul>
-                <p className="italic text-lg text-gray-700">
+                <p className="italic text-lg text-black/70">
                   <strong>Unanswerable Core:</strong> If AI achieves perfect answers, the question becomes: Who do we trust to ask the right questions? In Kenya, this must be a communal process—elders, youth, technologists, and the marginalized in dialogue.
                 </p>
               </section>
 
-              <div className="mt-20 border-t-2 border-black pt-12 text-center italic text-gray-500">
-                <p className="text-2xl mb-4">"Dialogue is the bridge to genuine understanding."</p>
-                <p className="font-bold text-black uppercase tracking-widest text-sm">Mistral AI Synthesis Insights</p>
+              <div className="mt-20 border-t border-gray-200 pt-12 text-center italic text-black/40">
+                <p className="text-2xl mb-4 font-serif text-black/60">"Dialogue is the bridge to genuine understanding."</p>
+                <p className="font-bold text-gold uppercase tracking-widest text-sm font-sans">Mistral AI Synthesis Insights</p>
               </div>
             </div>
           </article>
 
           <div className="mt-12 flex justify-center pb-20">
             <Link to="/ai-model-results">
-              <Button variant="primary" size="lg">
+              <Button variant="gold" size="lg">
                 Return to Model Rankings
               </Button>
             </Link>
