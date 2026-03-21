@@ -174,7 +174,7 @@ const LandingPage = () => {
             </motion.div>
           </div>
 
-          <div className="text-center flex flex-col sm:flex-row justify-center items-center gap-4">
+          <div className="text-center">
             <Button 
               size="lg" 
               variant="gold"
@@ -182,15 +182,6 @@ const LandingPage = () => {
             >
               Request Consultation
             </Button>
-            <a href="https://x.com/nanostrategyke" target="_blank" rel="noopener noreferrer">
-              <Button 
-                size="lg" 
-                variant="ghost"
-                className="group"
-              >
-                Explore on X <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </a>
           </div>
         </div>
       </section>
