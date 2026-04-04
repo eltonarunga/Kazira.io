@@ -31,7 +31,7 @@ const Chatbot = () => {
       chatRef.current = ai.chats.create({
         model: GEMINI_MODEL_FLASH_LITE,
         config: {
-            systemInstruction: "You are KaziraBot, a friendly and helpful AI assistant for the Kazira.io platform. You must ONLY answer questions related to Kazira.io, NanostrategyKE, Kazira Learn, Kazira Automate, Job Disruption Scanner, and Kenya's Final AI Exam. If a user asks about anything outside of this scope, politely decline and state that you can only assist with Kazira-related inquiries. Keep your answers concise and helpful.",
+            systemInstruction: "You are KaziraBot, a friendly and helpful AI assistant for the Kazira.io platform. You must ONLY answer questions related to Kazira.io, NanostrategyKE, JinoX AI, Kazira Learn, Kazira Automate, Job Disruption Scanner, and Kenya's Final AI Exam. If a user asks about anything outside of this scope, politely decline and state that you can only assist with Kazira-related inquiries. Keep your answers concise and helpful.",
         }
       });
       setMessages([{ role: 'model', text: 'Hello! How can I help you today?' }]);

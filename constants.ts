@@ -16,6 +16,8 @@ export const NAV_ITEMS_LOGGED_OUT: NavItem[] = [
   { name: "Automate", href: "/automate", isPageLink: true },
   { name: "Job Scanner", href: JOB_SCANNER_URL, isPageLink: false, isExternal: true },
   { name: "AI Exam", href: "/kenya-ai-exam", isPageLink: true },
+  { name: "NanostrategyKE", href: "https://x.com/nanostrategyke", isPageLink: false, isExternal: true },
+  { name: "JinoX AI", href: "https://jino-x.vercel.app/", isPageLink: false, isExternal: true },
   { name: "Login", href: "/login", isPageLink: true },
 ];
 
@@ -26,6 +28,8 @@ export const NAV_ITEMS_LOGGED_IN: NavItem[] = [
   { name: "Profile", href: "/profile", isPageLink: true },
   { name: "Job Scanner", href: JOB_SCANNER_URL, isPageLink: false, isExternal: true },
   { name: "AI Exam", href: "/kenya-ai-exam", isPageLink: true },
+  { name: "NanostrategyKE", href: "https://x.com/nanostrategyke", isPageLink: false, isExternal: true },
+  { name: "JinoX AI", href: "https://jino-x.vercel.app/", isPageLink: false, isExternal: true },
 ];
 
 export const LANDING_PAGE_NAV_ITEMS: NavItem[] = [];

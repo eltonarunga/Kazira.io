@@ -34,6 +34,7 @@ const Footer = () => {
               <li><a href="#/automate" className="hover:text-gold transition-colors">Kazira Automate</a></li>
               <li><a href="https://opal.withgoogle.com/?flow=drive:/1g5EsPt18QZYsNAcaE1f9KgmCnWOQEvin&shared&mode=app" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Job Disruption Scanner</a></li>
               <li><a href="#/kenya-ai-exam" className="hover:text-gold transition-colors">Kenya's Final AI Exam</a></li>
+              <li><a href="https://jino-x.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">JinoX AI</a></li>
             </ul>
           </div>
 
