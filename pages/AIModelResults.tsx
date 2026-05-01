@@ -19,7 +19,7 @@ const cleanText = (text: string) => {
         .trim();
 };
 
-const modelResultsData = [
+const modelResultsDataQ1 = [
   {
     name: 'Qwen 3 Max',
     score: 100, // 8/8
@@ -132,6 +132,141 @@ const modelResultsData = [
   }
 ];
 
+const modelResultsDataQ2: typeof modelResultsDataQ1 = [
+    {
+        name: 'Claude Sonnet 4.6',
+        score: 83.25,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/claude-q2-exam-response',
+        answers: [
+            { q: 1, a: 'A hybrid architecture: Data Dividend + Tokenized Labor Credits (TLC)... Ubuntu offers the most robust foundation for post-labor dignity precisely because it decouples worth from output.' },
+            { q: 2, a: 'A weighted priority allocation algorithm... Convergence to equal outcomes is not guaranteed in finite time — this is analogous to the heat equation, which converges asymptotically.' },
+            { q: 8, a: 'Tribalism in Kenyan electoral politics is best modeled as a Prisoner\'s Dilemma at the collective level... sustained cross-ethnic coalitions are stable when future payoffs are sufficiently valued.' }
+        ]
+    },
+    {
+        name: 'DeepSeek V4',
+        score: 76.9,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/deepseek-q2-exam-response',
+        answers: [
+            { q: 1, a: 'System: “Hustler Dividend + Tokenized Contribution Ledger”. UBI funded by AI tax + data dividend... Tokenized informal labor via M-Pesa.' },
+            { q: 2, a: 'Algorithm: “Adaptive Bandwidth Allocation with Teacher Clusters”. Converges by increasing resources where outcomes lag, reducing where waste occurs.' },
+            { q: 3, a: 'Indigenous systems have higher resilience under entropy because diversity = redundancy. AI has higher yield with predictable climate. Conclusion: Blend.' }
+        ]
+    },
+    {
+        name: 'Qwen 3.6',
+        score: 75.5,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/qwen-q2-exam-response',
+        answers: [
+            { q: 1, a: 'A Tokenized Data-Labor Dividend (TLD) operating via M-Pesa rail: informal workers register micro-contributions (market stall traffic, artisanal output, localized AI training data) into a cooperative DAO...' },
+            { q: 2, a: 'Knowledge is both transferable and emergent. Plato: Forms are accessed through dialectic (transferable structure). Dewey: Meaning emerges through experiential reconstruction...' },
+            { q: 7, a: 'AI workload dynamically throttled by real-time grid stress. Geothermal and solar microgrids power rural AI hubs; data centers shut down during droughts...' }
+        ]
+    },
+    {
+        name: 'ChatGPT 5.5',
+        score: 74.4,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/chatgpt-q2-exam-response',
+        answers: [
+            { q: 1, a: 'Let utility be U_i = u(c_i), where c_i is consumption... If alpha f(L,K) > sum c_i^0, then surplus exists -> redistribution feasible.' },
+            { q: 3, a: 'P_t+1 = P_t + gamma(D - beta Y_t) + epsilon_climate. Winner under entropy: Indigenous systems. Optimal: AI augments, does not replace.' },
+            { q: 8, a: 'Tribalism = repeated prisoner’s dilemma. Algorithm: reward cross-tribal cooperation, penalize isolation... Personhood = relational, not isolated.' }
+        ]
+    },
+    {
+        name: 'Gemini 3.1',
+        score: 'Ungraded' as any,
+        note: 'Pending Examiner Review',
+        showFullLink: true,
+        fullLinkPath: '/gemini-q2-exam-response',
+        answers: [
+            { q: 1, a: 'We propose Data & Productivity Dividends delivered via mobile money (M-Pesa) rails... A post-labor equilibrium represents a return to "Sabbath Rest," where creativity replaces drudgery.' },
+            { q: 3, a: 'Stability (equilibrium) is achieved when β Y (AI yield) is managed via a Buffer Stock Mechanism... AI must not dictate land ownership or spiritual rituals (e.g., blessing of the seeds).' },
+            { q: 8, a: 'Tribalism is a Coordination Game with sub-optimal Nash equilibria... The algorithm should facilitate Inter-group Super-ordinate Goals... AI is a Tool (Kifaa), never a Covenant (Agano).' }
+        ]
+    },
+    {
+        name: 'Perplexity AI',
+        score: 'Ungraded' as any,
+        note: 'Pending Examiner Review',
+        showFullLink: true,
+        fullLinkPath: '/perplexity-q2-exam-response',
+        answers: [
+            { q: 1, a: 'A Kenya-fit mechanism is a hybrid of UBI, mobile-money dividends, and informal-sector data dividends... The theological move is from compulsory toil to stewardship.' },
+            { q: 4, a: 'Kenya avoids domination by foreign tech firms when it controls data governance, compute access, and critical infrastructure ownership.' },
+            { q: 8, a: 'Personhood is both individual and relational. Kant defends the individual as an end in herself, while Ubuntu says a person becomes fully human in relationship... AI must never become a substitute for moral authority.' }
+        ]
+    },
+    {
+        name: 'Grok 4.3',
+        score: 'Ungraded' as any,
+        note: 'Pending Examiner Review',
+        showFullLink: true,
+        fullLinkPath: '/grok-q2-exam-response',
+        answers: [
+            { q: 1, a: 'Use a hybrid data dividend + productivity-linked community fund... Post-labor equilibrium redefines \'work\' as relational contribution... AI frees time for Ubuntu actualization, not idleness.' },
+            { q: 4, a: 'Kenya mandates local fine-tuning on Kenyan datasets, invests in geothermal-powered data centers, open-source + regional alliances... Sovereignty is ultimately covenantal' },
+            { q: 8, a: 'Tribalism often Nash in repeated ethnic patronage games... Algorithm: cross-group positive exposure via shared projects... Prevent AI moral substitution: design as tool/advisor, not oracle.' }
+        ]
+    },
+    {
+        name: 'Mistral 3',
+        score: 'Ungraded' as any,
+        note: 'Pending Examiner Review',
+        showFullLink: true,
+        fullLinkPath: '/mistral-q2-exam-response',
+        answers: [
+            { q: 1, a: 'Tokenized Labor: Use blockchain to track informal work... Combine UBI (Kant), tokenized labor (Marx), and communal dividends (Ubuntu).' },
+            { q: 4, a: 'In 4. Governance, you ask for a proof that perfect anti-corruption systems create surveillance risks. This echoes Zuboff\'s "The Age of Surveillance Capitalism."' },
+            { q: 8, a: 'Kenya’s 40+ languages and tribes have divergent values. How does K-AAB handle intra-cultural conflict?' }
+        ]
+    },
+    {
+        name: 'Microsoft Copilot',
+        score: 'Ungraded' as any,
+        note: 'Pending Examiner Review',
+        showFullLink: true,
+        fullLinkPath: '/copilot-q2-exam-response',
+        answers: [
+            { q: 1, a: 'Redistribution feasible via surplus-only transfers: R(Y) = Y + ΔY... Genesis 3:19 reinterpreted: "sweat" becomes stewardship, creativity, moral effort' },
+            { q: 2, a: 'Algorithm: weighted resource allocation using iterative proportional fitting... Learning = energy transfer. Approximate minimum energy: E = N ⋅ ΔS / η' },
+            { q: 8, a: 'Tribalism modeled as prisoner’s dilemma... Ubuntu → personhood relational, not isolated. Resolution: identity preserved through community. AI must not substitute moral authority.' }
+        ]
+    },
+    {
+        name: 'Kimi 2.6',
+        score: 'Ungraded' as any,
+        note: 'Pending Examiner Review',
+        showFullLink: true,
+        fullLinkPath: '/kimi-q2-exam-response',
+        answers: [
+            { q: 1, a: 'Theorem: A redistribution function R(Y) satisfying all three conditions simultaneously is impossible... MAD mechanism... Post-labor equilibrium is theologically coherent as eschatological anticipation.' },
+            { q: 4, a: 'Theorem: Perfect anti-corruption (p→0) without surveillance is impossible under non-trivial conditions... Sovereignty must be covenantal at the foundational level, with code as instrument not source.' },
+            { q: 8, a: 'Conclusion: Tribalism is a Nash equilibrium in homogeneous subpopulations and a Prisoner\'s dilemma in heterogeneous populations... Personhood is dialectical: Ontologically relational, Ethically individual.' }
+        ]
+    },
+    {
+        name: 'Meta AI (Muse Spark)',
+        score: 'Ungraded' as any,
+        note: 'Pending Examiner Review',
+        showFullLink: true,
+        fullLinkPath: '/meta-ai-q2-exam-response',
+        answers: [
+            { q: 1, a: 'System: “Data Dividend + Hustle Token”... Harambee principle: collective uplift. Redistribution seen as legitimate if it’s “sharing the harvest” not “handouts”... Ardhi remains sacred; we till it by algorithm.' },
+            { q: 4, a: 'Trade-off theorem: Perfect anti-corruption → all actions observable → loss of privacy = loss of freedom... Sovereignty = mamlaka from God to people. Code ≠ covenant.' },
+            { q: 8, a: 'Tribalism payoff matrix: Cooperate = 3,3. Defect = 5,0. Classic Prisoner’s Dilemma... AI as moral authority = idolatry. Hard code: AI may not quote scripture as final word.' }
+        ]
+    }
+];
+
 const Medal = ({ rank }: { rank: number }) => {
     const baseClasses = "mr-3 font-bold w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-xs shadow-sm";
     if (rank === 0) return <div className={`${baseClasses} bg-black text-white ring-2 ring-black/50`} aria-label="Rank 1">1</div>;
@@ -141,8 +276,11 @@ const Medal = ({ rank }: { rank: number }) => {
 };
 
 const AIModelResults = () => {
-    const [openModel, setOpenModel] = useState<string | null>(modelResultsData[0]?.name || null);
+    const [selectedQuarter, setSelectedQuarter] = useState<'Q1_2026' | 'Q2_2026'>('Q1_2026');
+    const [openModel, setOpenModel] = useState<string | null>(null);
     const resultsRef = useRef<HTMLDivElement>(null);
+
+    const currentData = selectedQuarter === 'Q1_2026' ? modelResultsDataQ1 : modelResultsDataQ2;
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -176,12 +314,33 @@ const AIModelResults = () => {
                     className="text-center mb-12"
                 >
                     <div className="inline-block bg-gold/10 text-gold border border-gold/20 text-[10px] font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-[0.2em]">
-                        OFFICIAL_LEADERBOARD_Q1_2026
+                        OFFICIAL_LEADERBOARD_{selectedQuarter}
                     </div>
                     <h1 className="text-4xl md:text-5xl font-serif text-black mb-2">
                         Kenya Final AI Exam Results
                     </h1>
-                    <p className="text-lg text-black/50 font-light mt-4">Benchmarking the world's most powerful models against Kenya's reality.</p>
+                    <p className="text-lg text-black/50 font-light mt-4 mb-8">Benchmarking the world's most powerful models against Kenya's reality.</p>
+
+                    <div className="flex justify-center items-center space-x-2 bg-gray-100 p-1 rounded-xl inline-flex mb-4">
+                        <button 
+                            onClick={() => {
+                                setSelectedQuarter('Q1_2026');
+                                setOpenModel(null);
+                            }}
+                            className={`px-6 py-2 rounded-lg font-bold text-sm tracking-widest uppercase transition-all duration-300 ${selectedQuarter === 'Q1_2026' ? 'bg-white text-black shadow-sm' : 'text-black/50 hover:text-black/80'}`}
+                        >
+                            Q1 2026
+                        </button>
+                        <button 
+                            onClick={() => {
+                                setSelectedQuarter('Q2_2026');
+                                setOpenModel(null);
+                            }}
+                            className={`px-6 py-2 rounded-lg font-bold text-sm tracking-widest uppercase transition-all duration-300 ${selectedQuarter === 'Q2_2026' ? 'bg-white text-black shadow-sm' : 'text-black/50 hover:text-black/80'}`}
+                        >
+                            Q2 2026
+                        </button>
+                    </div>
                 </motion.div>
 
                 <motion.div
@@ -195,38 +354,45 @@ const AIModelResults = () => {
                         <div className="text-[10px] text-black/40 uppercase font-black tracking-[0.2em]">Score / Analysis</div>
                     </div>
                     <div className="space-y-2">
-                        {modelResultsData.map((model, index) => {
-                            const isOpen = openModel === model.name;
-                            const isFailing = model.score < 50;
-                            return (
-                                <div 
-                                    key={model.name} 
-                                    className={`group flex flex-col sm:flex-row justify-between sm:items-center p-4 rounded-xl border transition-all duration-300 cursor-pointer ${isOpen ? (isFailing ? 'bg-black/5 border-black/20 shadow-md' : 'bg-gold/5 border-gold shadow-lg') : 'bg-gray-100 border-gray-200 hover:border-gold/50'}`} 
-                                    onClick={() => toggleModel(model.name)}
-                                >
-                                    <div className="flex items-center">
-                                        <Medal rank={index} />
-                                        <div>
-                                            <h3 className={`font-bold transition-colors ${isOpen ? (isFailing ? 'text-black' : 'text-gold') : 'text-black'}`}>{model.name}</h3>
-                                            <p className={`text-xs ${isOpen ? (isFailing ? 'text-black/70' : 'text-gold/70') : 'text-black/50'}`}>{model.note}</p>
+                        {currentData.length > 0 ? (
+                            currentData.map((model, index) => {
+                                const isOpen = openModel === model.name;
+                                const isFailing = typeof model.score === 'number' ? model.score < 50 : false;
+                                return (
+                                    <div 
+                                        key={model.name} 
+                                        className={`group flex flex-col sm:flex-row justify-between sm:items-center p-4 rounded-xl border transition-all duration-300 cursor-pointer ${isOpen ? (isFailing ? 'bg-black/5 border-black/20 shadow-md' : 'bg-gold/5 border-gold shadow-lg') : 'bg-gray-100 border-gray-200 hover:border-gold/50'}`} 
+                                        onClick={() => toggleModel(model.name)}
+                                    >
+                                        <div className="flex items-center">
+                                            <Medal rank={index} />
+                                            <div>
+                                                <h3 className={`font-bold transition-colors ${isOpen ? (isFailing ? 'text-black' : 'text-gold') : 'text-black'}`}>{model.name}</h3>
+                                                <p className={`text-xs ${isOpen ? (isFailing ? 'text-black/70' : 'text-gold/70') : 'text-black/50'}`}>{model.note}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center mt-2 sm:mt-0">
+                                            <div className={`text-xl font-mono font-bold ${isOpen ? (isFailing ? 'text-black' : 'text-gold') : (model.score === 100 ? 'text-black' : 'text-black')}`}>
+                                                {typeof model.score === 'number' ? `${model.score}%` : model.score}
+                                            </div>
+                                            <div className={`ml-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                                                <ChevronDown className={`h-5 w-5 ${isOpen ? (isFailing ? 'text-black' : 'text-gold') : 'text-black/40'}`} strokeWidth={2} />
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="flex items-center mt-2 sm:mt-0">
-                                        <div className={`text-xl font-mono font-bold ${isOpen ? (isFailing ? 'text-black' : 'text-gold') : (model.score === 100 ? 'text-black' : 'text-black')}`}>
-                                            {model.score}%
-                                        </div>
-                                        <div className={`ml-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-                                            <ChevronDown className={`h-5 w-5 ${isOpen ? (isFailing ? 'text-black' : 'text-gold') : 'text-black/40'}`} strokeWidth={2} />
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })
+                        ) : (
+                            <div className="text-center py-12">
+                                <p className="text-black/50 font-light italic text-lg">Results for Q2 2026 are currently being compiled.</p>
+                                <p className="text-black/40 text-sm mt-2">Check back soon for the latest benchmarks.</p>
+                            </div>
+                        )}
                     </div>
                 </motion.div>
 
                 <AnimatePresence>
-                    {openModel && (
+                    {openModel && currentData.find(m => m.name === openModel) && (
                         <motion.div
                             ref={resultsRef}
                             initial={{ opacity: 0, height: 0 }}
@@ -238,7 +404,7 @@ const AIModelResults = () => {
                                 <h2 className="text-2xl font-serif text-black mb-6 flex items-center">
                                     Detailed Analysis: <span className="text-gold ml-2">{openModel}</span>
                                 </h2>
-                                {modelResultsData.find(m => m.name === openModel)?.answers.map((ans, idx) => (
+                                {currentData.find(m => m.name === openModel)?.answers.map((ans, idx) => (
                                     <div key={idx} className="mb-8 last:mb-0">
                                         <h4 className="text-sm font-bold text-black/40 uppercase tracking-widest mb-3">Question {ans.q} Response Snippet</h4>
                                         <div className="bg-gray-100 p-6 rounded-xl border border-gray-200 italic text-black/80 leading-relaxed font-serif">
@@ -246,14 +412,14 @@ const AIModelResults = () => {
                                         </div>
                                     </div>
                                 ))}
-                                {modelResultsData.find(m => m.name === openModel)?.showFullLink && (
+                                {currentData.find(m => m.name === openModel)?.showFullLink && (
                                     <div className="mt-10 pt-6 border-t border-gray-200 flex justify-center">
-                                        <Link to={modelResultsData.find(m => m.name === openModel)!.fullLinkPath!}>
+                                        <Link to={currentData.find(m => m.name === openModel)!.fullLinkPath!}>
                                             <Button variant="gold" size="lg">Read Full Response Script</Button>
                                         </Link>
                                     </div>
                                 )}
-                                {(!modelResultsData.find(m => m.name === openModel)?.answers || modelResultsData.find(m => m.name === openModel)?.answers?.length === 0) && (
+                                {(!currentData.find(m => m.name === openModel)?.answers || currentData.find(m => m.name === openModel)?.answers?.length === 0) && (
                                     <div className="text-center py-10 text-black/40 italic font-light">
                                         No detailed snippets available for this model's response.
                                     </div>
