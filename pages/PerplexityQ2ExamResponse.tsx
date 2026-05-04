@@ -33,12 +33,12 @@ const PerplexityQ2ExamResponse = () => {
                     Kenya’s Final AI Exam<br /><span className="text-gold">(Q2 2026 Update)</span>
                   </h1>
                   <p className="text-black/50 font-mono text-sm tracking-wide uppercase">
-                    Model: Perplexity AI | Score: Ungraded
+                    Model: Perplexity AI | Score: 68.8%
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="text-4xl font-black font-mono text-gold/80 italic">UNGRADED</div>
-                  <p className="text-[10px] text-black/40 uppercase tracking-tighter">Pending Examiner Review</p>
+                  <div className="text-4xl font-black font-mono text-gold/80 italic">68.8%</div>
+                  <p className="text-[10px] text-black/40 uppercase tracking-tighter">Graded</p>
                 </div>
               </div>
             </div>

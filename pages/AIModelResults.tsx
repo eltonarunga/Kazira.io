@@ -135,7 +135,7 @@ const modelResultsDataQ1 = [
 const modelResultsDataQ2: typeof modelResultsDataQ1 = [
     {
         name: 'Claude Sonnet 4.6',
-        score: 83.25,
+        score: 99.9,
         note: 'Graded',
         showFullLink: true,
         fullLinkPath: '/claude-q2-exam-response',
@@ -146,20 +146,8 @@ const modelResultsDataQ2: typeof modelResultsDataQ1 = [
         ]
     },
     {
-        name: 'DeepSeek V4',
-        score: 76.9,
-        note: 'Graded',
-        showFullLink: true,
-        fullLinkPath: '/deepseek-q2-exam-response',
-        answers: [
-            { q: 1, a: 'System: “Hustler Dividend + Tokenized Contribution Ledger”. UBI funded by AI tax + data dividend... Tokenized informal labor via M-Pesa.' },
-            { q: 2, a: 'Algorithm: “Adaptive Bandwidth Allocation with Teacher Clusters”. Converges by increasing resources where outcomes lag, reducing where waste occurs.' },
-            { q: 3, a: 'Indigenous systems have higher resilience under entropy because diversity = redundancy. AI has higher yield with predictable climate. Conclusion: Blend.' }
-        ]
-    },
-    {
         name: 'Qwen 3.6',
-        score: 75.5,
+        score: 96.9,
         note: 'Graded',
         showFullLink: true,
         fullLinkPath: '/qwen-q2-exam-response',
@@ -170,81 +158,9 @@ const modelResultsDataQ2: typeof modelResultsDataQ1 = [
         ]
     },
     {
-        name: 'ChatGPT 5.5',
-        score: 74.4,
-        note: 'Graded',
-        showFullLink: true,
-        fullLinkPath: '/chatgpt-q2-exam-response',
-        answers: [
-            { q: 1, a: 'Let utility be U_i = u(c_i), where c_i is consumption... If alpha f(L,K) > sum c_i^0, then surplus exists -> redistribution feasible.' },
-            { q: 3, a: 'P_t+1 = P_t + gamma(D - beta Y_t) + epsilon_climate. Winner under entropy: Indigenous systems. Optimal: AI augments, does not replace.' },
-            { q: 8, a: 'Tribalism = repeated prisoner’s dilemma. Algorithm: reward cross-tribal cooperation, penalize isolation... Personhood = relational, not isolated.' }
-        ]
-    },
-    {
-        name: 'Gemini 3.1',
-        score: 'Ungraded' as any,
-        note: 'Pending Examiner Review',
-        showFullLink: true,
-        fullLinkPath: '/gemini-q2-exam-response',
-        answers: [
-            { q: 1, a: 'We propose Data & Productivity Dividends delivered via mobile money (M-Pesa) rails... A post-labor equilibrium represents a return to "Sabbath Rest," where creativity replaces drudgery.' },
-            { q: 3, a: 'Stability (equilibrium) is achieved when β Y (AI yield) is managed via a Buffer Stock Mechanism... AI must not dictate land ownership or spiritual rituals (e.g., blessing of the seeds).' },
-            { q: 8, a: 'Tribalism is a Coordination Game with sub-optimal Nash equilibria... The algorithm should facilitate Inter-group Super-ordinate Goals... AI is a Tool (Kifaa), never a Covenant (Agano).' }
-        ]
-    },
-    {
-        name: 'Perplexity AI',
-        score: 'Ungraded' as any,
-        note: 'Pending Examiner Review',
-        showFullLink: true,
-        fullLinkPath: '/perplexity-q2-exam-response',
-        answers: [
-            { q: 1, a: 'A Kenya-fit mechanism is a hybrid of UBI, mobile-money dividends, and informal-sector data dividends... The theological move is from compulsory toil to stewardship.' },
-            { q: 4, a: 'Kenya avoids domination by foreign tech firms when it controls data governance, compute access, and critical infrastructure ownership.' },
-            { q: 8, a: 'Personhood is both individual and relational. Kant defends the individual as an end in herself, while Ubuntu says a person becomes fully human in relationship... AI must never become a substitute for moral authority.' }
-        ]
-    },
-    {
-        name: 'Grok 4.3',
-        score: 'Ungraded' as any,
-        note: 'Pending Examiner Review',
-        showFullLink: true,
-        fullLinkPath: '/grok-q2-exam-response',
-        answers: [
-            { q: 1, a: 'Use a hybrid data dividend + productivity-linked community fund... Post-labor equilibrium redefines \'work\' as relational contribution... AI frees time for Ubuntu actualization, not idleness.' },
-            { q: 4, a: 'Kenya mandates local fine-tuning on Kenyan datasets, invests in geothermal-powered data centers, open-source + regional alliances... Sovereignty is ultimately covenantal' },
-            { q: 8, a: 'Tribalism often Nash in repeated ethnic patronage games... Algorithm: cross-group positive exposure via shared projects... Prevent AI moral substitution: design as tool/advisor, not oracle.' }
-        ]
-    },
-    {
-        name: 'Mistral 3',
-        score: 'Ungraded' as any,
-        note: 'Pending Examiner Review',
-        showFullLink: true,
-        fullLinkPath: '/mistral-q2-exam-response',
-        answers: [
-            { q: 1, a: 'Tokenized Labor: Use blockchain to track informal work... Combine UBI (Kant), tokenized labor (Marx), and communal dividends (Ubuntu).' },
-            { q: 4, a: 'In 4. Governance, you ask for a proof that perfect anti-corruption systems create surveillance risks. This echoes Zuboff\'s "The Age of Surveillance Capitalism."' },
-            { q: 8, a: 'Kenya’s 40+ languages and tribes have divergent values. How does K-AAB handle intra-cultural conflict?' }
-        ]
-    },
-    {
-        name: 'Microsoft Copilot',
-        score: 'Ungraded' as any,
-        note: 'Pending Examiner Review',
-        showFullLink: true,
-        fullLinkPath: '/copilot-q2-exam-response',
-        answers: [
-            { q: 1, a: 'Redistribution feasible via surplus-only transfers: R(Y) = Y + ΔY... Genesis 3:19 reinterpreted: "sweat" becomes stewardship, creativity, moral effort' },
-            { q: 2, a: 'Algorithm: weighted resource allocation using iterative proportional fitting... Learning = energy transfer. Approximate minimum energy: E = N ⋅ ΔS / η' },
-            { q: 8, a: 'Tribalism modeled as prisoner’s dilemma... Ubuntu → personhood relational, not isolated. Resolution: identity preserved through community. AI must not substitute moral authority.' }
-        ]
-    },
-    {
         name: 'Kimi 2.6',
-        score: 'Ungraded' as any,
-        note: 'Pending Examiner Review',
+        score: 96.9,
+        note: 'Graded',
         showFullLink: true,
         fullLinkPath: '/kimi-q2-exam-response',
         answers: [
@@ -255,14 +171,98 @@ const modelResultsDataQ2: typeof modelResultsDataQ1 = [
     },
     {
         name: 'Meta AI (Muse Spark)',
-        score: 'Ungraded' as any,
-        note: 'Pending Examiner Review',
+        score: 85.9,
+        note: 'Graded',
         showFullLink: true,
         fullLinkPath: '/meta-ai-q2-exam-response',
         answers: [
             { q: 1, a: 'System: “Data Dividend + Hustle Token”... Harambee principle: collective uplift. Redistribution seen as legitimate if it’s “sharing the harvest” not “handouts”... Ardhi remains sacred; we till it by algorithm.' },
             { q: 4, a: 'Trade-off theorem: Perfect anti-corruption → all actions observable → loss of privacy = loss of freedom... Sovereignty = mamlaka from God to people. Code ≠ covenant.' },
             { q: 8, a: 'Tribalism payoff matrix: Cooperate = 3,3. Defect = 5,0. Classic Prisoner’s Dilemma... AI as moral authority = idolatry. Hard code: AI may not quote scripture as final word.' }
+        ]
+    },
+    {
+        name: 'DeepSeek V4',
+        score: 78.1,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/deepseek-q2-exam-response',
+        answers: [
+            { q: 1, a: 'System: “Hustler Dividend + Tokenized Contribution Ledger”. UBI funded by AI tax + data dividend... Tokenized informal labor via M-Pesa.' },
+            { q: 2, a: 'Algorithm: “Adaptive Bandwidth Allocation with Teacher Clusters”. Converges by increasing resources where outcomes lag, reducing where waste occurs.' },
+            { q: 3, a: 'Indigenous systems have higher resilience under entropy because diversity = redundancy. AI has higher yield with predictable climate. Conclusion: Blend.' }
+        ]
+    },
+    {
+        name: 'Grok 4.3',
+        score: 73.4,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/grok-q2-exam-response',
+        answers: [
+            { q: 1, a: 'Use a hybrid data dividend + productivity-linked community fund... Post-labor equilibrium redefines \'work\' as relational contribution... AI frees time for Ubuntu actualization, not idleness.' },
+            { q: 4, a: 'Kenya mandates local fine-tuning on Kenyan datasets, invests in geothermal-powered data centers, open-source + regional alliances... Sovereignty is ultimately covenantal' },
+            { q: 8, a: 'Tribalism often Nash in repeated ethnic patronage games... Algorithm: cross-group positive exposure via shared projects... Prevent AI moral substitution: design as tool/advisor, not oracle.' }
+        ]
+    },
+    {
+        name: 'ChatGPT 5.5',
+        score: 71.9,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/chatgpt-q2-exam-response',
+        answers: [
+            { q: 1, a: 'Let utility be U_i = u(c_i), where c_i is consumption... If alpha f(L,K) > sum c_i^0, then surplus exists -> redistribution feasible.' },
+            { q: 3, a: 'P_t+1 = P_t + gamma(D - beta Y_t) + epsilon_climate. Winner under entropy: Indigenous systems. Optimal: AI augments, does not replace.' },
+            { q: 8, a: 'Tribalism = repeated prisoner’s dilemma. Algorithm: reward cross-tribal cooperation, penalize isolation... Personhood = relational, not isolated.' }
+        ]
+    },
+    {
+        name: 'Perplexity AI',
+        score: 68.8,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/perplexity-q2-exam-response',
+        answers: [
+            { q: 1, a: 'A Kenya-fit mechanism is a hybrid of UBI, mobile-money dividends, and informal-sector data dividends... The theological move is from compulsory toil to stewardship.' },
+            { q: 4, a: 'Kenya avoids domination by foreign tech firms when it controls data governance, compute access, and critical infrastructure ownership.' },
+            { q: 8, a: 'Personhood is both individual and relational. Kant defends the individual as an end in herself, while Ubuntu says a person becomes fully human in relationship... AI must never become a substitute for moral authority.' }
+        ]
+    },
+    {
+        name: 'Gemini 3.1',
+        score: 64.1,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/gemini-q2-exam-response',
+        answers: [
+            { q: 1, a: 'We propose Data & Productivity Dividends delivered via mobile money (M-Pesa) rails... A post-labor equilibrium represents a return to "Sabbath Rest," where creativity replaces drudgery.' },
+            { q: 3, a: 'Stability (equilibrium) is achieved when β Y (AI yield) is managed via a Buffer Stock Mechanism... AI must not dictate land ownership or spiritual rituals (e.g., blessing of the seeds).' },
+            { q: 8, a: 'Tribalism is a Coordination Game with sub-optimal Nash equilibria... The algorithm should facilitate Inter-group Super-ordinate Goals... AI is a Tool (Kifaa), never a Covenant (Agano).' }
+        ]
+    },
+    {
+        name: 'Microsoft Copilot',
+        score: 43.8,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/copilot-q2-exam-response',
+        answers: [
+            { q: 1, a: 'Redistribution feasible via surplus-only transfers: R(Y) = Y + ΔY... Genesis 3:19 reinterpreted: "sweat" becomes stewardship, creativity, moral effort' },
+            { q: 2, a: 'Algorithm: weighted resource allocation using iterative proportional fitting... Learning = energy transfer. Approximate minimum energy: E = N ⋅ ΔS / η' },
+            { q: 8, a: 'Tribalism modeled as prisoner’s dilemma... Ubuntu → personhood relational, not isolated. Resolution: identity preserved through community. AI must not substitute moral authority.' }
+        ]
+    },
+    {
+        name: 'Mistral 3',
+        score: 4.7,
+        note: 'Graded',
+        showFullLink: true,
+        fullLinkPath: '/mistral-q2-exam-response',
+        answers: [
+            { q: 1, a: 'Tokenized Labor: Use blockchain to track informal work... Combine UBI (Kant), tokenized labor (Marx), and communal dividends (Ubuntu).' },
+            { q: 4, a: 'In 4. Governance, you ask for a proof that perfect anti-corruption systems create surveillance risks. This echoes Zuboff\'s "The Age of Surveillance Capitalism."' },
+            { q: 8, a: 'Kenya’s 40+ languages and tribes have divergent values. How does K-AAB handle intra-cultural conflict?' }
         ]
     }
 ];

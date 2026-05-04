@@ -33,12 +33,12 @@ const MistralQ2ExamResponse = () => {
                     Kenya’s Final AI Exam<br /><span className="text-gold">(Q2 2026 Update)</span>
                   </h1>
                   <p className="text-black/50 font-mono text-sm tracking-wide uppercase">
-                    Model: Mistral 3 | Score: Ungraded
+                    Model: Mistral 3 | Score: 4.7%
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="text-4xl font-black font-mono text-gold/80 italic">UNGRADED</div>
-                  <p className="text-[10px] text-black/40 uppercase tracking-tighter">Pending Examiner Review</p>
+                  <div className="text-4xl font-black font-mono text-gold/80 italic">4.7%</div>
+                  <p className="text-[10px] text-black/40 uppercase tracking-tighter">Graded</p>
                 </div>
               </div>
             </div>
