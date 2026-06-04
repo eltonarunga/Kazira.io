@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../hooks/useAuth';
 import Button from '../components/common/Button';
 import Modal from '../components/common/Modal';
+import Logo from '../components/common/Logo';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -32,11 +33,9 @@ const LoginPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="text-center">
-          <h2 className="text-4xl font-serif text-black tracking-tight">
-            Welcome to Kazira
-          </h2>
-          <p className="mt-4 text-black/50 text-lg font-light">
+        <div className="text-center flex flex-col items-center justify-center">
+          <Logo height={44} className="text-black mb-6" />
+          <p className="mt-2 text-black/50 text-lg font-light">
             Experience the future of AI automation and learning.
           </p>
         </div>

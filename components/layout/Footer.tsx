@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Twitter } from 'lucide-react';
-import { Cpu } from 'lucide-react';
+import Logo from '../common/Logo';
 
 const Footer = () => {
   return (
@@ -12,10 +12,7 @@ const Footer = () => {
           {/* Column 1: Brand, Address, Social */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3 group mb-8">
-              <div className="bg-gold/10 p-2 rounded-none border border-gold/30">
-                <Cpu className="w-5 h-5 text-gold" strokeWidth={1.5} />
-              </div>
-              <span className="text-xl font-serif font-semibold text-black tracking-wide uppercase">Kazira</span>
+              <Logo height={21} className="text-black" />
             </div>
             
             <div className="pt-4 flex space-x-4">

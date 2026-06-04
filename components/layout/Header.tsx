@@ -2,18 +2,16 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Cpu, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { NAV_ITEMS_LOGGED_IN, NAV_ITEMS_LOGGED_OUT, LANDING_PAGE_NAV_ITEMS } from '../../constants';
 import { NavItem } from '../../types';
 import Button from '../common/Button';
+import Logo from '../common/Logo';
 
 const KaziraLogo = () => (
   <Link to="/home" className="flex items-center space-x-3 group">
-    <div className="bg-gold/10 p-2 rounded-none border border-gold/30 group-hover:bg-gold/20 transition-colors">
-      <Cpu className="w-5 h-5 text-gold" strokeWidth={1.5} />
-    </div>
-    <span className="text-xl font-serif font-semibold text-black tracking-wide uppercase">Kazira</span>
+    <Logo height={21} className="text-black group-hover:text-gold" />
   </Link>
 );
 
