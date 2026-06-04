@@ -52,7 +52,7 @@ const LoginPage = () => {
               isLoading={isLoading}
               disabled={isLoading}
             >
-              Explore App Features
+              explore KAZIRA
             </Button>
             <p className="text-center text-xs text-black/40 mt-3 pb-2 font-mono">
               Instant access to all modules. No registration required.
