@@ -96,15 +96,7 @@ const Header = () => {
           <KaziraLogo />
           <nav className="hidden md:flex space-x-8 items-center">
             {currentNavItems.map((item) => renderNavItem(item, false))}
-            {isAuthenticated ? (
-              <Button
-                onClick={handleLogout}
-                variant="outline"
-                size="sm"
-              >
-                Logout
-              </Button>
-            ) : (
+            {!isAuthenticated && (
               <Button
                 onClick={() => navigate('/login')}
                 variant="gold"
@@ -139,15 +131,7 @@ const Header = () => {
           >
             <nav className="px-4 py-4 space-y-2">
               {currentNavItems.map((item) => renderNavItem(item, true))}
-              {isAuthenticated ? (
-                <Button
-                  onClick={handleLogout}
-                  variant="outline"
-                  className="w-full mt-4"
-                >
-                  Logout
-                </Button>
-              ) : (
+              {!isAuthenticated && (
                 <Button
                   onClick={() => {
                     setIsMobileMenuOpen(false);

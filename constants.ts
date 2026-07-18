@@ -16,14 +16,12 @@ export const NAV_ITEMS_LOGGED_OUT: NavItem[] = [
   { name: "Automate", href: "/automate", isPageLink: true },
   { name: "Job Scanner", href: JOB_SCANNER_URL, isPageLink: false, isExternal: true },
   { name: "AI Exam", href: "/kenya-ai-exam", isPageLink: true },
-  { name: "Login", href: "/login", isPageLink: true },
 ];
 
 export const NAV_ITEMS_LOGGED_IN: NavItem[] = [
   { name: "Home", href: "/home", isPageLink: true },
   { name: "Learn", href: "https://opal.google/app/1RS_gONM_N73fAQy3u_mtelYIjJHNtfN8", isPageLink: false, isExternal: true },
   { name: "Automate", href: "/automate", isPageLink: true },
-  { name: "Profile", href: "/profile", isPageLink: true },
   { name: "Job Scanner", href: JOB_SCANNER_URL, isPageLink: false, isExternal: true },
   { name: "AI Exam", href: "/kenya-ai-exam", isPageLink: true },
 ];
