@@ -32,7 +32,7 @@ const Footer = () => {
               <li><a href="https://opal.withgoogle.com/?flow=drive:/1g5EsPt18QZYsNAcaE1f9KgmCnWOQEvin&shared&mode=app" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Job Disruption Scanner</a></li>
               <li><a href="#/kenya-ai-exam" className="hover:text-gold transition-colors">Kenya's Final AI Exam</a></li>
               <li><a href="https://jino-x.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">JinoX AI</a></li>
-              <li><a href="https://dent-side-remote.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">DentSide Remote</a></li>
+              <li><a href="https://dentside-remote.onrender.com/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">DentSide Remote</a></li>
               <li><a href="https://kazixfrontend.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">KaziX</a></li>
             </ul>
           </div>
