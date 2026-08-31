@@ -4,7 +4,7 @@ import { motion, HTMLMotionProps } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 
 type ButtonProps = HTMLMotionProps<'button'> & {
-  variant?: 'primary' | 'gold' | 'outline' | 'ghost';
+  variant?: 'primary' | 'gold' | 'outline' | 'ghost' | 'secondary';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
   isLoading?: boolean;
@@ -32,6 +32,7 @@ const Button = ({
     primary: `bg-black text-white hover:bg-gray-800 border border-black`,
     gold: `bg-gold text-white hover:bg-gray-800 border border-gold`,
     outline: `border border-black/30 text-black hover:bg-black hover:text-white`,
+    secondary: `bg-gray-100 text-black hover:bg-gray-200 border border-gray-300`,
     ghost: `bg-transparent text-black hover:text-gray-600 underline-offset-4 hover:underline`,
   };
   
