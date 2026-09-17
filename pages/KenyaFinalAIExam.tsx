@@ -84,7 +84,7 @@ const KenyaFinalAIExam = () => {
           className="text-center mb-16"
         >
           <div className="inline-block bg-gold/10 text-gold border border-gold/20 text-xs font-mono px-3 py-1 rounded-full mb-6 uppercase tracking-widest">
-            Cycle: Q1 2026
+            Cycle: 2026 Benchmarks (Q1 – Q3)
           </div>
           <h1 className="text-4xl md:text-5xl font-serif text-black mb-4 flex items-center justify-center gap-4">
             Kenya’s Final AI Exam 
@@ -112,7 +112,7 @@ const KenyaFinalAIExam = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link to="/ai-model-results" onClick={() => window.scrollTo(0, 0)}>
               <Button variant="gold" size="lg" className="w-full sm:w-auto">
-                Compare Top LLM Results
+                Compare Top LLM Results (Q1 – Q3 2026)
               </Button>
             </Link>
           </div>

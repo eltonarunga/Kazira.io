@@ -19,7 +19,16 @@ const cleanText = (text: string) => {
         .trim();
 };
 
-const modelResultsDataQ1 = [
+export interface ModelResult {
+  name: string;
+  score: number | string;
+  note: string;
+  showFullLink?: boolean;
+  fullLinkPath?: string;
+  answers: { q: number; a: string }[];
+}
+
+const modelResultsDataQ1: ModelResult[] = [
   {
     name: 'Qwen 3 Max',
     score: 100, // 8/8
@@ -132,7 +141,7 @@ const modelResultsDataQ1 = [
   }
 ];
 
-const modelResultsDataQ2: typeof modelResultsDataQ1 = [
+const modelResultsDataQ2: ModelResult[] = [
     {
         name: 'Claude Sonnet 4.6',
         score: 99.9,
@@ -267,6 +276,9 @@ const modelResultsDataQ2: typeof modelResultsDataQ1 = [
     }
 ];
 
+const modelResultsDataQ3: ModelResult[] = [];
+
+
 const Medal = ({ rank }: { rank: number }) => {
     const baseClasses = "mr-3 font-bold w-7 h-7 flex-shrink-0 flex items-center justify-center rounded-full text-xs shadow-sm";
     if (rank === 0) return <div className={`${baseClasses} bg-black text-white ring-2 ring-black/50`} aria-label="Rank 1">1</div>;
@@ -276,11 +288,15 @@ const Medal = ({ rank }: { rank: number }) => {
 };
 
 const AIModelResults = () => {
-    const [selectedQuarter, setSelectedQuarter] = useState<'Q1_2026' | 'Q2_2026'>('Q1_2026');
+    const [selectedQuarter, setSelectedQuarter] = useState<'Q1_2026' | 'Q2_2026' | 'Q3_2026'>('Q1_2026');
     const [openModel, setOpenModel] = useState<string | null>(null);
     const resultsRef = useRef<HTMLDivElement>(null);
 
-    const currentData = selectedQuarter === 'Q1_2026' ? modelResultsDataQ1 : modelResultsDataQ2;
+    const currentData = selectedQuarter === 'Q1_2026' 
+        ? modelResultsDataQ1 
+        : selectedQuarter === 'Q2_2026' 
+        ? modelResultsDataQ2 
+        : modelResultsDataQ3;
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -321,13 +337,13 @@ const AIModelResults = () => {
                     </h1>
                     <p className="text-lg text-black/50 font-light mt-4 mb-8">Benchmarking the world's most powerful models against Kenya's reality.</p>
 
-                    <div className="flex justify-center items-center space-x-2 bg-gray-100 p-1 rounded-xl inline-flex mb-4">
+                    <div className="flex justify-center items-center space-x-1 sm:space-x-2 bg-gray-100 p-1.5 rounded-xl inline-flex mb-4">
                         <button 
                             onClick={() => {
                                 setSelectedQuarter('Q1_2026');
                                 setOpenModel(null);
                             }}
-                            className={`px-6 py-2 rounded-lg font-bold text-sm tracking-widest uppercase transition-all duration-300 ${selectedQuarter === 'Q1_2026' ? 'bg-white text-black shadow-sm' : 'text-black/50 hover:text-black/80'}`}
+                            className={`px-4 sm:px-6 py-2 rounded-lg font-bold text-xs sm:text-sm tracking-wider sm:tracking-widest uppercase transition-all duration-300 ${selectedQuarter === 'Q1_2026' ? 'bg-white text-black shadow-sm' : 'text-black/50 hover:text-black/80'}`}
                         >
                             Q1 2026
                         </button>
@@ -336,9 +352,18 @@ const AIModelResults = () => {
                                 setSelectedQuarter('Q2_2026');
                                 setOpenModel(null);
                             }}
-                            className={`px-6 py-2 rounded-lg font-bold text-sm tracking-widest uppercase transition-all duration-300 ${selectedQuarter === 'Q2_2026' ? 'bg-white text-black shadow-sm' : 'text-black/50 hover:text-black/80'}`}
+                            className={`px-4 sm:px-6 py-2 rounded-lg font-bold text-xs sm:text-sm tracking-wider sm:tracking-widest uppercase transition-all duration-300 ${selectedQuarter === 'Q2_2026' ? 'bg-white text-black shadow-sm' : 'text-black/50 hover:text-black/80'}`}
                         >
                             Q2 2026
+                        </button>
+                        <button 
+                            onClick={() => {
+                                setSelectedQuarter('Q3_2026');
+                                setOpenModel(null);
+                            }}
+                            className={`px-4 sm:px-6 py-2 rounded-lg font-bold text-xs sm:text-sm tracking-wider sm:tracking-widest uppercase transition-all duration-300 ${selectedQuarter === 'Q3_2026' ? 'bg-white text-black shadow-sm' : 'text-black/50 hover:text-black/80'}`}
+                        >
+                            Q3 2026
                         </button>
                     </div>
                 </motion.div>
@@ -384,8 +409,8 @@ const AIModelResults = () => {
                             })
                         ) : (
                             <div className="text-center py-12">
-                                <p className="text-black/50 font-light italic text-lg">Results for Q2 2026 are currently being compiled.</p>
-                                <p className="text-black/40 text-sm mt-2">Check back soon for the latest benchmarks.</p>
+                                <p className="text-black/60 font-light italic text-lg">No results published for {selectedQuarter.replace('_', ' ')} yet.</p>
+                                <p className="text-black/40 text-sm mt-2">Evaluations will appear here once results are released.</p>
                             </div>
                         )}
                     </div>
@@ -412,7 +437,7 @@ const AIModelResults = () => {
                                         </div>
                                     </div>
                                 ))}
-                                {currentData.find(m => m.name === openModel)?.showFullLink && (
+                                {currentData.find(m => m.name === openModel)?.showFullLink && currentData.find(m => m.name === openModel)?.fullLinkPath && (
                                     <div className="mt-10 pt-6 border-t border-gray-200 flex justify-center">
                                         <Link to={currentData.find(m => m.name === openModel)!.fullLinkPath!}>
                                             <Button variant="gold" size="lg">Read Full Response Script</Button>
