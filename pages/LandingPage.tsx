@@ -81,7 +81,7 @@ const LandingPage = () => {
                   variant="ghost"
                   className="group"
                 >
-                  Kenya's Final AI Exam <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  KAARB (Kenya's Final AI Exam) <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </motion.div>

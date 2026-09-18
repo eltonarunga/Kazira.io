@@ -333,9 +333,16 @@ const AIModelResults = () => {
                         OFFICIAL_LEADERBOARD_{selectedQuarter}
                     </div>
                     <h1 className="text-4xl md:text-5xl font-serif text-black mb-2">
-                        Kenya Final AI Exam Results
+                        KAARB (Kenya's Final AI Exam) Results
                     </h1>
-                    <p className="text-lg text-black/50 font-light mt-4 mb-8">Benchmarking the world's most powerful models against Kenya's reality.</p>
+                    <p className="text-lg text-black/50 font-light mt-3 mb-6">Benchmarking the world's most powerful models against Kenya's reality.</p>
+                    <div className="mb-8">
+                        <Link to="/kenya-ai-exam">
+                            <Button variant="outline" size="sm" className="border-black/20 text-black hover:border-black">
+                                ← View Benchmark Questions (K-AARB v2.0 & Previous)
+                            </Button>
+                        </Link>
+                    </div>
 
                     <div className="flex justify-center items-center space-x-1 sm:space-x-2 bg-gray-100 p-1.5 rounded-xl inline-flex mb-4">
                         <button 
