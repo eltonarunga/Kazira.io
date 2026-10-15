@@ -22,8 +22,7 @@ const Header: React.FC = () => {
     <header className="sticky top-0 z-50 border-b border-neutral-200/80 bg-white/90 backdrop-blur-xl">
       <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-6 md:px-10">
         <Link to="/" aria-label="Kazira home" className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-950 text-sm font-bold tracking-tight text-white">K</span>
-          <span className="font-display text-xl font-semibold tracking-tight text-neutral-950">kazira<span className="text-amber-600">.</span></span>
+          <Logo height={28} className="h-7 w-auto text-neutral-950" />
         </Link>
         <nav className="hidden items-center gap-9 md:flex" aria-label="Main navigation">
           <button className={linkClass} onClick={() => scrollTo('work')}>Our work</button>
