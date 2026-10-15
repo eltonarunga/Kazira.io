@@ -1,152 +1,37 @@
-
 import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { useAuth } from '../../hooks/useAuth';
-import { NAV_ITEMS_LOGGED_IN, NAV_ITEMS_LOGGED_OUT, LANDING_PAGE_NAV_ITEMS } from '../../constants';
-import { NavItem } from '../../types';
-import Button from '../common/Button';
+import { Link } from 'react-router-dom';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import Logo from '../common/Logo';
 
-const KaziraLogo = () => (
-  <Link to="/home" className="flex items-center space-x-3 group">
-    <Logo height={21} className="text-black group-hover:text-gold" />
-  </Link>
-);
-
-const Header = () => {
-  const { isAuthenticated, logout } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
+const Header: React.FC = () => {
+  const [open, setOpen] = useState(false);
+  const scrollTo = (id: string) => {
+    setOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
-
-  const baseNavItems = isAuthenticated ? NAV_ITEMS_LOGGED_IN : NAV_ITEMS_LOGGED_OUT;
-  const currentNavItems = location.pathname === '/home' ? [...baseNavItems.filter(item => item.isPageLink || item.isExternal), ...LANDING_PAGE_NAV_ITEMS] : baseNavItems;
-
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isPageLink?: boolean) => {
-    setIsMobileMenuOpen(false);
-    if (!isPageLink && href.startsWith('#')) {
-      e.preventDefault();
-      // Ensure we are on the landing page before trying to scroll
-      if (location.pathname !== '/home') {
-        navigate('/home', { state: { scrollTo: href.substring(1) } });
-      } else {
-        document.getElementById(href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
-      }
-    } else if (isPageLink) {
-      // Standard navigation handled by Link component
-    }
-  };
-
-  const renderNavItem = (item: NavItem, isMobile: boolean) => {
-    const desktopClass = `text-black/70 hover:text-gold transition-colors duration-200 font-sans text-xs tracking-widest uppercase`;
-    const mobileClass = `block px-4 py-3 text-sm font-sans tracking-widest uppercase text-black/80 hover:text-gold hover:bg-black/5 transition-colors`;
-    const className = isMobile ? mobileClass : desktopClass;
-
-    if (item.isExternal) {
-      return (
-        <a
-          key={item.name}
-          href={item.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={className}
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          {item.name}
-        </a>
-      );
-    }
-    
-    if (item.isPageLink) {
-      return (
-        <Link
-          key={item.name}
-          to={item.href}
-          onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
-          className={className}
-        >
-          {item.name}
-        </Link>
-      );
-    }
-
-    return (
-      <a
-        key={item.name}
-        href={item.href}
-        onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
-        className={className}
-      >
-        {item.name}
-      </a>
-    );
-  };
+  const linkClass = 'text-sm font-medium text-neutral-600 transition hover:text-neutral-950';
 
   return (
-    <header className="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <KaziraLogo />
-          <nav className="hidden md:flex space-x-8 items-center">
-            {currentNavItems.map((item) => renderNavItem(item, false))}
-            {!isAuthenticated && (
-              <Button
-                onClick={() => navigate('/login')}
-                variant="gold"
-                size="sm"
-              >
-                Get Started
-              </Button>
-            )}
-          </nav>
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-black/70 hover:text-gold focus:outline-none p-2 transition-colors"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
-        </div>
+    <header className="sticky top-0 z-50 border-b border-neutral-200/80 bg-white/90 backdrop-blur-xl">
+      <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-6 md:px-10">
+        <Link to="/" aria-label="Kazira home" className="flex items-center gap-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-950 text-sm font-bold tracking-tight text-white">K</span>
+          <span className="font-display text-xl font-semibold tracking-tight text-neutral-950">kazira<span className="text-amber-600">.</span></span>
+        </Link>
+        <nav className="hidden items-center gap-9 md:flex" aria-label="Main navigation">
+          <button className={linkClass} onClick={() => scrollTo('work')}>Our work</button>
+          <button className={linkClass} onClick={() => scrollTo('contact')}>About & contact</button>
+          <a className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-700" href="https://x.com/nanostrategyke" target="_blank" rel="noreferrer">Get in touch <ArrowUpRight size={15} /></a>
+        </nav>
+        <button type="button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} className="rounded-lg p-2 text-neutral-800 md:hidden" onClick={() => setOpen(v => !v)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
       </div>
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden bg-gray-50 border-t border-gray-200 overflow-hidden"
-          >
-            <nav className="px-4 py-4 space-y-2">
-              {currentNavItems.map((item) => renderNavItem(item, true))}
-              {!isAuthenticated && (
-                <Button
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    navigate('/login');
-                  }}
-                  variant="gold"
-                  className="w-full mt-4"
-                >
-                  Get Started
-                </Button>
-              )}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {open && <nav className="border-t border-neutral-200 bg-white px-6 py-5 md:hidden" aria-label="Mobile navigation">
+        <div className="mx-auto flex max-w-7xl flex-col gap-5">
+          <button className={linkClass + ' text-left'} onClick={() => scrollTo('work')}>Our work</button>
+          <button className={linkClass + ' text-left'} onClick={() => scrollTo('contact')}>About & contact</button>
+          <a className="inline-flex items-center gap-2 font-semibold" href="https://x.com/nanostrategyke" target="_blank" rel="noreferrer">Get in touch <ArrowUpRight size={15} /></a>
+        </div>
+      </nav>}
     </header>
   );
 };
