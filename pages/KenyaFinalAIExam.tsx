@@ -215,10 +215,60 @@ const KenyaFinalAIExam: React.FC = () => {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
                 <Link to="/ai-model-results" onClick={() => window.scrollTo(0, 0)}>
                   <Button variant="gold" size="md" className="w-full sm:w-auto">
                     Compare Top LLM Results (Q1 – Q3 2026)
+                  </Button>
+                </Link>
+                <Link to="/claude-sonnet-5-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
+                  <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
+                    Claude AI (Sonnet 5) • 88.8%
+                  </Button>
+                </Link>
+                <Link to="/perplexity-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
+                  <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
+                    Perplexity AI • 87.4%
+                  </Button>
+                </Link>
+                <Link to="/qwen-3-8-max-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
+                  <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
+                    Qwen 3.8 Max • 86.8%
+                  </Button>
+                </Link>
+                <Link to="/chatgpt-gpt5-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
+                  <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
+                    ChatGPT (GPT-5) • 86.4%
+                  </Button>
+                </Link>
+                <Link to="/mistral-medium-3-5-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
+                  <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
+                    Mistral medium 3.5 • 84.3%
+                  </Button>
+                </Link>
+                <Link to="/gemini-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
+                  <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
+                    Google Gemini (Gemini 3.6) • 84.1%
+                  </Button>
+                </Link>
+                <Link to="/copilot-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
+                  <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
+                    Microsoft Copilot • 83.65%
+                  </Button>
+                </Link>
+                <Link to="/meta-ai-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
+                  <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
+                    Meta AI (Muse Spark 1.1) • 83.3%
+                  </Button>
+                </Link>
+                <Link to="/grok-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
+                  <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
+                    Grok AI (Grok 4.5) • 81.85%
+                  </Button>
+                </Link>
+                <Link to="/deepseek-v4-1-flash-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
+                  <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
+                    DeepSeek v4.1 Flash • 76.9%
                   </Button>
                 </Link>
                 <button
