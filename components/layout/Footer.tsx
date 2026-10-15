@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Logo from '../common/Logo';
 
 const Footer: React.FC = () => (
   <footer className="border-t border-neutral-200 bg-white">
@@ -8,8 +9,7 @@ const Footer: React.FC = () => (
       <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
         <div>
           <Link to="/" className="inline-flex items-center gap-3" aria-label="Kazira home">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-neutral-950 text-sm font-bold text-white">K</span>
-            <span className="font-display text-xl font-semibold tracking-tight text-neutral-950">kazira<span className="text-amber-600">.</span></span>
+            <Logo height={28} className="h-7 w-auto text-neutral-950" />
           </Link>
           <p className="mt-4 max-w-md text-sm leading-6 text-neutral-500">Strategy, digital products, and practical systems for real-world challenges.</p>
         </div>
