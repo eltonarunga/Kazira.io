@@ -1,213 +1,164 @@
+import React from 'react';
+import { ArrowUpRight, Compass, Layers3, Workflow, Code2, ShieldCheck, Globe2, ArrowRight } from 'lucide-react';
 
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
-import { Star, ArrowRight, Lightbulb, Settings, ClipboardCheck } from 'lucide-react';
-import Button from '../components/common/Button';
-import Modal from '../components/common/Modal';
+const ventures = [
+  {
+    number: '01',
+    name: 'NanoStrategyKE',
+    category: 'Strategy & advisory',
+    description: 'Technology strategy, AI readiness, and practical guidance for organisations navigating digital change.',
+    href: 'https://x.com/nanostrategyke',
+    label: 'Explore advisory',
+    icon: Compass,
+  },
+  {
+    number: '02',
+    name: 'Digital products',
+    category: 'Product ecosystem',
+    description: 'A growing portfolio of digital products and experiments built around useful, real-world problems.',
+    href: 'https://kazixfrontend.vercel.app/',
+    label: 'Explore KaziX',
+    icon: Layers3,
+  },
+  {
+    number: '03',
+    name: 'Automation & systems',
+    category: 'Operations',
+    description: 'Helping teams identify repeatable processes, improve workflows, and build more effective digital operations.',
+    href: 'https://kazira-io-clinical-intelligence-mvp.vercel.app/',
+    label: 'View a product',
+    icon: Workflow,
+  },
+];
 
-const LandingPage = () => {
-  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
-  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
-  const location = useLocation();
+const principles = [
+  { icon: Compass, title: 'Strategy before tools', text: 'Start with the business problem, then choose the technology that makes sense.' },
+  { icon: Code2, title: 'Useful by design', text: 'Build clear, focused digital experiences around real user and operational needs.' },
+  { icon: ShieldCheck, title: 'Responsible implementation', text: 'Consider security, privacy, maintainability, and long-term ownership from the start.' },
+];
 
-  useEffect(() => {
-    if (location.state?.scrollTo) {
-      const element = document.getElementById(location.state.scrollTo);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [location.state]);
+const LandingPage: React.FC = () => {
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
   return (
-    <div className="bg-white text-black min-h-screen font-sans selection:bg-gold selection:text-black">
-      
-      {/* Hero Banner */}
-      <section id="hero" className="relative min-h-[85vh] flex items-center pt-20 overflow-hidden">
-        {/* Abstract Background Elements */}
-        <div className="absolute inset-0 z-0 opacity-20">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold rounded-full mix-blend-multiply filter blur-[128px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-gray-400 rounded-full mix-blend-multiply filter blur-[128px] opacity-30" />
+    <div className="overflow-hidden bg-white text-neutral-950">
+      <section className="relative border-b border-neutral-200">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div className="absolute right-[-8rem] top-[-7rem] h-[28rem] w-[28rem] rounded-full bg-amber-100/70 blur-3xl" />
+          <div className="absolute bottom-[-8rem] left-[18%] h-[20rem] w-[20rem] rounded-full bg-neutral-100 blur-3xl" />
+          <div className="absolute inset-0 opacity-[0.24] [background-image:linear-gradient(to_right,#d4d4d4_1px,transparent_1px),linear-gradient(to_bottom,#d4d4d4_1px,transparent_1px)] [background-size:64px_64px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" />
         </div>
+        <div className="relative mx-auto grid min-h-[660px] max-w-7xl items-center gap-16 px-6 py-24 md:px-10 lg:grid-cols-[1.2fr_0.8fr] lg:py-32">
+          <div>
+            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-neutral-200 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-neutral-600 shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-amber-500" />
+              Independent technology company
+            </div>
+            <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[1.04] tracking-[-0.055em] sm:text-6xl md:text-7xl lg:text-[5.4rem]">
+              Make technology work for <span className="text-neutral-500">real life.</span>
+            </h1>
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-neutral-600 sm:text-xl">
+              Kazira brings together technology strategy, digital products, and practical systems to help businesses and people move from ideas to useful outcomes.
+            </p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <button onClick={() => scrollTo('work')} className="inline-flex items-center justify-center gap-3 rounded-full bg-neutral-950 px-7 py-4 text-sm font-semibold text-white transition hover:bg-neutral-700">
+                Explore our work <ArrowRight size={17} />
+              </button>
+              <a href="https://x.com/nanostrategyke" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white/80 px-7 py-4 text-sm font-semibold transition hover:border-neutral-950">
+                Talk to NanoStrategyKE <ArrowUpRight size={16} />
+              </a>
+            </div>
+            <div className="mt-14 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-neutral-200 pt-6 text-xs font-medium uppercase tracking-[0.15em] text-neutral-500">
+              <span>Strategy</span><span className="text-amber-500">/</span><span>Digital products</span><span className="text-amber-500">/</span><span>Systems</span>
+            </div>
+          </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="inline-flex items-center space-x-2 mb-8"
-            >
-              <span className="h-px w-8 bg-gold"></span>
-              <span className="font-mono text-gold text-xs uppercase tracking-widest">The Future of Intelligence</span>
-            </motion.div>
-            
-            <motion.h1 
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif leading-[1.1] mb-8 font-light tracking-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            >
-              Unlock Your <br/>
-              <span className="italic text-black/70">Potential</span> with Kazira.
-            </motion.h1>
-            
-            <motion.p 
-              className="text-lg sm:text-xl text-black/60 mb-12 max-w-2xl font-light leading-relaxed"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            >
-              AI-Powered Automation and Future-Skills Learning, tailored for the modern enterprise and ambitious professionals.
-            </motion.p>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col sm:flex-row items-start gap-6"
-            >
-              <Button 
-                size="lg" 
-                variant="gold"
-                onClick={() => setIsUpdateModalOpen(true)}
-              >
-                Get Updates
-              </Button>
-              <Link to="/kenya-ai-exam">
-                <Button
-                  size="lg"
-                  variant="ghost"
-                  className="group"
-                >
-                  KAARB (Kenya's Final AI Exam) <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-            </motion.div>
+          <div className="relative mx-auto w-full max-w-md">
+            <div className="absolute -inset-4 rounded-[2rem] border border-neutral-200/80 rotate-3" />
+            <div className="relative rounded-[1.7rem] border border-neutral-200 bg-white p-6 shadow-[0_30px_90px_-45px_rgba(0,0,0,0.3)] sm:p-8">
+              <div className="flex items-start justify-between border-b border-neutral-100 pb-7">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">The Kazira approach</p>
+                  <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight">From complexity to clarity.</h2>
+                </div>
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-950 text-white"><Globe2 size={21} /></div>
+              </div>
+              <div className="space-y-3 py-6">
+                {[
+                  ['01', 'Understand the challenge', 'Define the outcome that matters.'],
+                  ['02', 'Design the right system', 'Choose a practical, maintainable path.'],
+                  ['03', 'Build and improve', 'Deliver, learn, and iterate.'],
+                ].map(([n, title, body]) => (
+                  <div key={n} className="flex gap-4 rounded-2xl p-4 transition hover:bg-neutral-50">
+                    <span className="pt-1 font-display text-sm font-semibold text-amber-600">{n}</span>
+                    <div><h3 className="font-semibold">{title}</h3><p className="mt-1 text-sm leading-6 text-neutral-500">{body}</p></div>
+                  </div>
+                ))}
+              </div>
+              <div className="rounded-xl bg-neutral-950 px-5 py-4 text-white">
+                <p className="text-xs uppercase tracking-[0.16em] text-neutral-400">Our focus</p>
+                <p className="mt-2 text-sm leading-6">Clear thinking. Useful technology. Better systems.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* AI Consultation & Strategy Section */}
-      <section id="consultation" className="py-24 bg-white border-t border-gray-100">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center space-x-2 mb-6"
-            >
-              <span className="h-px w-8 bg-gold"></span>
-              <span className="font-mono text-gold text-xs uppercase tracking-widest">Expert Guidance</span>
-              <span className="h-px w-8 bg-gold"></span>
-            </motion.div>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-serif font-light mb-6"
-            >
-              NanostrategyKE
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-lg text-black/60 font-light"
-            >
-              A new solution by Kazira.io for consultancy. Navigate the complexities of artificial intelligence with our expert consultants. We help you identify opportunities, mitigate risks, and implement AI solutions that drive real business value.
-            </motion.p>
+      <section id="work" className="scroll-mt-24 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">What we do</p>
+              <h2 className="mt-4 max-w-2xl font-display text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">A practical portfolio of ideas and services.</h2>
+            </div>
+            <p className="max-w-md text-base leading-7 text-neutral-600">One company, connected capabilities: strategic advice, digital experiences, and systems designed around real needs.</p>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="p-8 border border-gray-100 bg-gray-50/50 rounded-2xl hover:border-gold/30 transition-colors"
-            >
-              <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6 text-gold">
-                <Lightbulb className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-serif mb-4">Custom AI Solutions</h3>
-              <p className="text-black/60 font-light leading-relaxed">
-                Tailored artificial intelligence models and applications designed specifically for your unique business challenges and data ecosystem.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="p-8 border border-gray-100 bg-gray-50/50 rounded-2xl hover:border-gold/30 transition-colors"
-            >
-              <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6 text-gold">
-                <Settings className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-serif mb-4">Workflow Automation</h3>
-              <p className="text-black/60 font-light leading-relaxed">
-                Streamline operations by integrating intelligent automation into your existing processes, reducing manual effort and increasing efficiency.
-              </p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="p-8 border border-gray-100 bg-gray-50/50 rounded-2xl hover:border-gold/30 transition-colors"
-            >
-              <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6 text-gold">
-                <ClipboardCheck className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-serif mb-4">AI Readiness Assessments</h3>
-              <p className="text-black/60 font-light leading-relaxed">
-                Comprehensive evaluation of your organization's data infrastructure, team capabilities, and operational readiness for AI adoption.
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="text-center">
-            <Button 
-              size="lg" 
-              variant="gold"
-              onClick={() => setIsConsultationModalOpen(true)}
-            >
-              Request Consultation
-            </Button>
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
+            {ventures.map((item) => {
+              const Icon = item.icon;
+              return <article key={item.number} className="group flex min-h-[330px] flex-col rounded-3xl border border-neutral-200 bg-white p-7 transition duration-300 hover:-translate-y-1 hover:border-neutral-400 hover:shadow-xl hover:shadow-neutral-200/50 sm:p-8">
+                <div className="flex items-center justify-between"><span className="font-display text-sm text-neutral-400">{item.number}</span><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-neutral-900"><Icon size={21} /></span></div>
+                <p className="mt-8 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">{item.category}</p>
+                <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">{item.name}</h3>
+                <p className="mt-4 flex-1 text-sm leading-7 text-neutral-600">{item.description}</p>
+                <a href={item.href} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-neutral-950 transition group-hover:gap-3">{item.label}<ArrowUpRight size={16} /></a>
+              </article>;
+            })}
           </div>
         </div>
       </section>
 
-      <Modal isOpen={isUpdateModalOpen} onClose={() => setIsUpdateModalOpen(false)} title="Get Updates">
-        <div className="w-full min-h-[450px] overflow-hidden rounded-lg">
-          <iframe 
-            src="https://form.jotform.com/260052273727050" 
-            title="Get Updates" 
-            className="w-full h-[500px] border-none"
-            allow="geolocation; microphone; camera"
-          ></iframe>
+      <section className="border-y border-neutral-200 bg-neutral-50 py-24 sm:py-28">
+        <div className="mx-auto grid max-w-7xl gap-14 px-6 md:px-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">How we think</p>
+            <h2 className="mt-4 font-display text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl">Technology should serve the goal.</h2>
+            <p className="mt-6 max-w-lg leading-7 text-neutral-600">The best solution is one people can understand, use, and maintain. We focus on clarity and sound execution over complexity for its own sake.</p>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-3">
+            {principles.map(({ icon: Icon, title, text }) => <article key={title} className="rounded-2xl border border-neutral-200 bg-white p-6">
+              <Icon size={22} className="text-amber-700" />
+              <h3 className="mt-6 font-display text-lg font-semibold">{title}</h3>
+              <p className="mt-3 text-sm leading-6 text-neutral-600">{text}</p>
+            </article>)}
+          </div>
         </div>
-      </Modal>
+      </section>
 
-      <Modal isOpen={isConsultationModalOpen} onClose={() => setIsConsultationModalOpen(false)} title="Request Consultation">
-        <div className="w-full min-h-[450px] overflow-hidden rounded-lg">
-          <iframe 
-            src="https://form.jotform.com/260052273727050" 
-            title="Request Consultation" 
-            className="w-full h-[500px] border-none"
-            allow="geolocation; microphone; camera"
-          ></iframe>
+      <section id="contact" className="scroll-mt-24 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          <div className="relative overflow-hidden rounded-[2rem] bg-neutral-950 px-7 py-14 text-white sm:px-12 sm:py-20 lg:px-16">
+            <div aria-hidden="true" className="absolute right-[-4rem] top-[-8rem] h-80 w-80 rounded-full border border-white/10" />
+            <div aria-hidden="true" className="absolute right-8 top-8 h-52 w-52 rounded-full border border-white/10" />
+            <div className="relative max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">Start a conversation</p>
+              <h2 className="mt-5 font-display text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">Have a problem worth solving?</h2>
+              <p className="mt-6 max-w-2xl text-base leading-7 text-neutral-300">Tell us what you are working on. We can explore the challenge, identify opportunities, and determine a sensible next step.</p>
+              <a href="https://x.com/nanostrategyke" target="_blank" rel="noreferrer" className="mt-9 inline-flex items-center gap-3 rounded-full bg-white px-6 py-4 text-sm font-semibold text-neutral-950 transition hover:bg-amber-100">Connect with NanoStrategyKE <ArrowUpRight size={17} /></a>
+            </div>
+          </div>
         </div>
-      </Modal>
-
+      </section>
     </div>
   );
 };
