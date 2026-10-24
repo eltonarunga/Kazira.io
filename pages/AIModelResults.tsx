@@ -2,8 +2,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Bell } from 'lucide-react';
 import Button from '../components/common/Button';
+import JotformModal from '../components/common/JotformModal';
 
 /**
  * Utility to clean up LLM output for human reading.
@@ -862,6 +863,7 @@ const Medal = ({ rank, isUngraded }: { rank: number; isUngraded?: boolean }) => 
 const AIModelResults = () => {
     const [selectedQuarter, setSelectedQuarter] = useState<'Q1_2026' | 'Q2_2026' | 'Q3_2026'>('Q3_2026');
     const [openModel, setOpenModel] = useState<string | null>(null);
+    const [isUpdatesModalOpen, setIsUpdatesModalOpen] = useState(false);
     const resultsRef = useRef<HTMLDivElement>(null);
 
     const currentData = selectedQuarter === 'Q1_2026' 
@@ -901,19 +903,27 @@ const AIModelResults = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-12"
                 >
-                    <div className="inline-block bg-gold/10 text-gold border border-gold/20 text-[10px] font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-[0.2em]">
+                    <div className="inline-block bg-black/5 text-black border border-black/10 text-[10px] font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-[0.2em]">
                         OFFICIAL_LEADERBOARD_{selectedQuarter}
                     </div>
                     <h1 className="text-4xl md:text-5xl font-serif text-black mb-2">
                         KAARB (Kenya's Final AI Exam) Results
                     </h1>
                     <p className="text-lg text-black/50 font-light mt-3 mb-6">Benchmarking the world's most powerful models against Kenya's reality.</p>
-                    <div className="mb-8">
+                    <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
                         <Link to="/kenya-ai-exam">
                             <Button variant="outline" size="sm" className="border-black/20 text-black hover:border-black">
-                                ← View Benchmark Questions (K-AARB v2.0 & Previous)
+                                ← View Benchmark Questions
                             </Button>
                         </Link>
+                        <button
+                            type="button"
+                            onClick={() => setIsUpdatesModalOpen(true)}
+                            className="group inline-flex items-center gap-2 px-4 py-2.5 bg-black text-white hover:bg-gray-800 rounded-lg font-mono text-xs uppercase tracking-wider transition-all shadow-sm active:scale-95"
+                        >
+                            <Bell className="w-3.5 h-3.5 opacity-80 group-hover:rotate-12 transition-transform" />
+                            <span>Get Updates on New Models</span>
+                        </button>
                     </div>
 
                     <div className="flex justify-center items-center space-x-1 sm:space-x-2 bg-gray-100 p-1.5 rounded-xl inline-flex mb-4">
@@ -1039,6 +1049,13 @@ const AIModelResults = () => {
                     <p className="mt-1">AUTHORITY: Kazira Research Labs</p>
                 </div>
             </div>
+
+            <JotformModal
+                isOpen={isUpdatesModalOpen}
+                onClose={() => setIsUpdatesModalOpen(false)}
+                title="Subscribe to K-AARB Benchmark Drops"
+                initialType="benchmark"
+            />
         </div>
     );
 };

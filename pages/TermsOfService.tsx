@@ -1,21 +1,71 @@
 import React from 'react';
-import { Scale } from 'lucide-react';
+import { ShieldAlert, Scale } from 'lucide-react';
 
-const TermsOfService: React.FC = () => (
-  <article className="mx-auto min-h-[65vh] max-w-4xl px-6 py-20 md:px-10">
-    <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 text-amber-700"><Scale size={24} /></div>
-    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Kazira / Legal</p>
-    <h1 className="mt-4 font-display text-4xl font-semibold tracking-tight sm:text-5xl">Website terms</h1>
-    <p className="mt-4 text-sm text-neutral-500">Last updated: October 2026</p>
-    <div className="mt-10 space-y-8 text-base leading-7 text-neutral-600">
-      <section><h2 className="font-display text-xl font-semibold text-neutral-950">Using this website</h2><p className="mt-3">This website provides general information about Kazira, its work, and selected external projects. By using it, you agree to use the website lawfully and not to interfere with its normal operation.</p></section>
-      <section><h2 className="font-display text-xl font-semibold text-neutral-950">Information is general</h2><p className="mt-3">Website content is provided for general informational purposes. It is not a promise that a particular product, service, feature, or outcome will be available. Specific engagements should be governed by their own agreed scope and terms.</p></section>
-      <section><h2 className="font-display text-xl font-semibold text-neutral-950">External websites</h2><p className="mt-3">Links to third-party websites are provided for convenience. Kazira does not control those websites and is not responsible for their content, availability, or terms. Visiting them is your choice and is subject to their own conditions.</p></section>
-      <section><h2 className="font-display text-xl font-semibold text-neutral-950">Intellectual property</h2><p className="mt-3">Unless otherwise stated, Kazira branding and original website content belong to their respective rights holders. Please obtain permission before reproducing content in a way that requires permission under applicable law.</p></section>
-      <section><h2 className="font-display text-xl font-semibold text-neutral-950">Changes</h2><p className="mt-3">The website and these terms may be updated as the company and its online presence evolve. Applicable law may provide rights or remedies that cannot be excluded by these terms.</p></section>
-      <p className="rounded-2xl border border-neutral-200 bg-neutral-50 p-5 text-sm leading-6">These are concise website terms, not a substitute for legal review. Obtain advice appropriate to the business and applicable Kenyan law before relying on them as a formal legal document.</p>
+const TermsOfService = () => {
+  return (
+    <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto bg-gray-50 rounded-2xl shadow-xl border border-gray-200 p-8 md:p-12">
+        <div className="flex items-center space-x-4 mb-8">
+          <Scale className="w-10 h-10 text-gold" />
+          <h1 className="text-3xl md:text-4xl font-serif text-black">Terms of Service</h1>
+        </div>
+        
+        <div className="prose  max-w-none text-black/70 space-y-6 font-light">
+          <p className="text-sm text-black/40 font-mono tracking-wider uppercase">Last Updated: March 2026</p>
+          
+          <section>
+            <h2 className="text-2xl font-serif text-black mt-8 mb-4">1. Acceptance of Terms</h2>
+            <p>
+              By accessing and using Kazira ("the Platform"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-serif text-black mt-8 mb-4">2. Description of Service</h2>
+            <p>
+              Kazira provides AI-powered automation, learning tools, and clinical intelligence solutions. We reserve the right to modify, suspend, or discontinue any part of the service at any time without notice.
+            </p>
+          </section>
+
+          <section className="bg-black/5 border-l-4 border-black/20 p-6 rounded-r-lg my-8 shadow-sm">
+            <div className="flex items-center space-x-3 mb-4">
+              <ShieldAlert className="w-6 h-6 text-black" />
+              <h2 className="text-xl font-serif text-black m-0">3. Prohibited Conduct & Security</h2>
+            </div>
+            <p className="text-black/80 font-medium mb-4">
+              The security and integrity of Kazira are of utmost importance. You strictly agree NOT to engage in any of the following activities:
+            </p>
+            <ul className="list-disc list-inside space-y-3 text-black/70">
+              <li><strong className="text-black">Unauthorized Scraping & Data Extraction:</strong> Using automated systems, bots, spiders, or scrapers to extract data, content, or information from the Platform without explicit written permission.</li>
+              <li><strong className="text-black">Vulnerability Testing:</strong> Conducting unauthorized penetration testing, vulnerability scanning, load testing, or any other action designed to probe, scan, or test the vulnerability of our systems or networks.</li>
+              <li><strong className="text-black">Security Circumvention:</strong> Attempting to bypass, exploit, defeat, or disable any security measures, authentication mechanisms, or access controls implemented by Kazira.</li>
+              <li><strong className="text-black">Reverse Engineering:</strong> Decompiling, reverse engineering, or disassembling any software, AI models, or underlying infrastructure of the Platform.</li>
+            </ul>
+            <div className="mt-6 p-4 bg-black/5 rounded-md border border-black/10">
+              <p className="text-black font-mono text-sm uppercase tracking-wider mb-2">Legal Repercussions</p>
+              <p className="text-black/70 text-sm leading-relaxed">
+                Any violation of these security provisions will result in immediate termination of your access. Kazira actively monitors for such activities and will pursue all available legal remedies, including civil damages and reporting to relevant law enforcement authorities for criminal prosecution under applicable cybercrime laws.
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-serif text-black mt-8 mb-4">4. Intellectual Property</h2>
+            <p>
+              All content, features, and functionality on the Platform, including but not limited to text, graphics, logos, and AI models, are owned by Kazira and are protected by international copyright, trademark, and other intellectual property laws.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-serif text-black mt-8 mb-4">5. Limitation of Liability</h2>
+            <p>
+              Kazira and its affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the service.
+            </p>
+          </section>
+        </div>
+      </div>
     </div>
-  </article>
-);
+  );
+};
 
 export default TermsOfService;

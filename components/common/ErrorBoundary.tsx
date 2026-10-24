@@ -1,4 +1,3 @@
-
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import Button from './Button';
 
@@ -8,52 +7,64 @@ interface Props {
 
 interface State {
   hasError: boolean;
-  error?: Error;
 }
 
 /**
  * ErrorBoundary component to catch rendering errors in the component tree.
+ * Protects users from internal stack/exception exposure.
  */
 class ErrorBoundary extends Component<Props, State> {
-  override state: State = { hasError: false, error: undefined };
+  override state: State = { hasError: false };
 
   constructor(props: Props) {
     super(props);
   }
 
-  static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error };
+  static getDerivedStateFromError(_: Error): State {
+    return { hasError: true };
   }
 
   override componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("Uncaught error captured by boundary:", error, errorInfo);
+    // Capture to console for developer diagnostics without displaying to end users
+    console.error("Application error captured by boundary:", error, errorInfo);
   }
 
   handleRefresh = () => {
     window.location.reload();
   };
 
+  handleGoHome = () => {
+    window.location.href = '/#/';
+  };
+
   override render(): ReactNode {
     if (this.state.hasError) {
       return (
-        <div className="container mx-auto px-4 py-16 text-center" role="alert">
-          <div className="bg-gray-100 border border-gray-400 text-gray-700 px-4 py-8 rounded-lg relative max-w-lg mx-auto shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">We've Hit a Snag!</h2>
-            <p className="mb-6">An unexpected error occurred. A quick refresh of the page often fixes the issue.</p>
-            <details className="text-left text-sm bg-gray-200 p-3 rounded-md mb-6 max-w-full overflow-auto">
-              <summary className="cursor-pointer font-semibold">Error Details</summary>
-              <pre className="mt-2 whitespace-pre-wrap break-all font-mono text-xs">
-                <code>
-                  {this.state.error?.toString()}
-                </code>
-              </pre>
-            </details>
-            <Button
-              onClick={this.handleRefresh}
-              variant="primary"
-            >
-              Refresh Page
-            </Button>
+        <div className="container mx-auto px-4 py-20 text-center" role="alert">
+          <div className="bg-white border border-gray-200 text-black px-6 py-10 rounded-2xl max-w-lg mx-auto shadow-xl">
+            <div className="w-12 h-12 bg-gold/10 text-gold rounded-full flex items-center justify-center mx-auto mb-6">
+              <span className="font-serif text-2xl font-bold">!</span>
+            </div>
+            <h2 className="text-2xl font-serif font-bold mb-3">Something Went Wrong</h2>
+            <p className="text-black/60 font-light mb-8 leading-relaxed text-sm">
+              An unexpected error occurred while loading this view. You can reload the page or return to the main platform.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button
+                onClick={this.handleRefresh}
+                variant="gold"
+                size="md"
+              >
+                Reload Page
+              </Button>
+              <Button
+                onClick={this.handleGoHome}
+                variant="outline"
+                size="md"
+              >
+                Return to Home
+              </Button>
+            </div>
           </div>
         </div>
       );

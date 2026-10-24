@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Bot, Flag, Scale, AlertTriangle, CheckCircle2, ChevronDown, ChevronUp, BookOpen, Layers } from 'lucide-react';
+import { Bot, Flag, Scale, AlertTriangle, CheckCircle2, ChevronDown, ChevronUp, BookOpen, Layers, Bell } from 'lucide-react';
 import Button from '../components/common/Button';
+import JotformModal from '../components/common/JotformModal';
 import {
   KAARB_Q3_2026_QUESTIONS,
   KAARB_SCORING_FRAMEWORK,
@@ -96,6 +97,7 @@ const PreviousExamCard: React.FC<{ question: PreviousExamQuestion }> = ({ questi
 const KenyaFinalAIExam: React.FC = () => {
   const [selectedVersion, setSelectedVersion] = useState<'q3_2026' | 'previous'>('q3_2026');
   const [showFramework, setShowFramework] = useState(false);
+  const [isUpdatesModalOpen, setIsUpdatesModalOpen] = useState(false);
 
   return (
     <div className="bg-white py-16 min-h-screen">
@@ -221,6 +223,14 @@ const KenyaFinalAIExam: React.FC = () => {
                     Compare Top LLM Results (Q1 – Q3 2026)
                   </Button>
                 </Link>
+                <button
+                  type="button"
+                  onClick={() => setIsUpdatesModalOpen(true)}
+                  className="group inline-flex items-center justify-center gap-2 px-5 py-3 bg-black text-white hover:bg-gray-800 rounded-none font-mono text-xs uppercase tracking-wider transition-all shadow-sm active:scale-95"
+                >
+                  <Bell className="w-3.5 h-3.5 opacity-80 group-hover:rotate-12 transition-transform" />
+                  <span>Get Benchmark Updates</span>
+                </button>
                 <Link to="/claude-sonnet-5-q3-exam-response" onClick={() => window.scrollTo(0, 0)}>
                   <Button variant="outline" size="md" className="w-full sm:w-auto border-black/20 text-black hover:border-black text-xs">
                     Claude AI (Sonnet 5) • 88.8%
@@ -463,6 +473,13 @@ const KenyaFinalAIExam: React.FC = () => {
         </div>
 
       </div>
+
+      <JotformModal
+        isOpen={isUpdatesModalOpen}
+        onClose={() => setIsUpdatesModalOpen(false)}
+        title="Subscribe to K-AARB Benchmark Drops"
+        initialType="benchmark"
+      />
     </div>
   );
 };

@@ -1,17 +1,8 @@
 {
   "name": "Kazira.io",
-  "description": "A modern SaaS platform by Kazira.io providing AI-powered automation (Kazira Automate) and future-skills learning (Kazira Learn). SECURITY NOTE: This is a prototype and should not be used for production data.",
-  "requestFramePermissions": [
-    "camera",
-    "microphone",
-    "geolocation"
-  ],
+  "description": "A modern platform by Kazira.io providing AI-powered automation (Kazira Clinical Intelligence) and the Kenya AI Alignment & Reasoning Benchmark (K-AARB).",
+  "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ],
-  "securityPolicies": [
-    "Input Sanitization Layer (Active)",
-    "Secure Mock Session ID (Active)",
-    "Prompt Injection Redaction (Active)"
   ]
 }

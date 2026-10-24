@@ -1,43 +1,145 @@
 import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ExternalLink } from 'lucide-react';
+import { NAV_ITEMS, JOTFORM_UPDATES_URL } from '../../constants';
+import { NavItem } from '../../types';
+import Button from '../common/Button';
 import Logo from '../common/Logo';
+import JotformModal from '../common/JotformModal';
 
-const Header: React.FC = () => {
-  const [open, setOpen] = useState(false);
+const KaziraLogo = () => (
+  <Link to="/" className="flex items-center space-x-3 group">
+    <Logo height={21} className="text-black group-hover:text-gold" />
+  </Link>
+);
+
+const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const scrollTo = (id: string) => {
-    setOpen(false);
-    if (location.pathname !== '/') {
-      navigate('/');
-      window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-      return;
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isUpdatesModalOpen, setIsUpdatesModalOpen] = useState(false);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isPageLink?: boolean) => {
+    setIsMobileMenuOpen(false);
+    if (!isPageLink && href.startsWith('#')) {
+      e.preventDefault();
+      if (location.pathname !== '/' && location.pathname !== '/home') {
+        navigate('/', { state: { scrollTo: href.substring(1) } });
+      } else {
+        document.getElementById(href.substring(1))?.scrollIntoView({ behavior: 'smooth' });
+      }
     }
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
-  const linkClass = 'text-sm font-medium text-neutral-600 transition hover:text-neutral-950';
+
+  const renderNavItem = (item: NavItem, isMobile: boolean) => {
+    const desktopClass = `text-black/70 hover:text-gold transition-colors duration-200 font-sans text-xs tracking-widest uppercase inline-flex items-center gap-1`;
+    const mobileClass = `flex items-center justify-between px-4 py-3 text-sm font-sans tracking-widest uppercase text-black/80 hover:text-gold hover:bg-black/5 transition-colors`;
+    const className = isMobile ? mobileClass : desktopClass;
+
+    if (item.isExternal) {
+      return (
+        <a
+          key={item.name}
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={className}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <span>{item.name}</span>
+          <ExternalLink className="w-3 h-3 opacity-50" />
+        </a>
+      );
+    }
+    
+    if (item.isPageLink) {
+      return (
+        <Link
+          key={item.name}
+          to={item.href}
+          onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
+          className={className}
+        >
+          {item.name}
+        </Link>
+      );
+    }
+
+    return (
+      <a
+        key={item.name}
+        href={item.href}
+        onClick={(e) => handleNavClick(e, item.href, item.isPageLink)}
+        className={className}
+      >
+        {item.name}
+      </a>
+    );
+  };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-200/80 bg-white/90 backdrop-blur-xl">
-      <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-6 md:px-10">
-        <Link to="/" aria-label="Kazira home" className="flex items-center gap-3">
-          <Logo height={28} className="h-7 w-auto text-neutral-950" />
-        </Link>
-        <nav className="hidden items-center gap-9 md:flex" aria-label="Main navigation">
-          <button className={linkClass} onClick={() => scrollTo('work')}>Our work</button>
-          <button className={linkClass} onClick={() => scrollTo('contact')}>About & contact</button>
-          <a className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-700" href="https://x.com/nanostrategyke" target="_blank" rel="noreferrer">Get in touch <ArrowUpRight size={15} /></a>
-        </nav>
-        <button type="button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} className="rounded-lg p-2 text-neutral-800 md:hidden" onClick={() => setOpen(v => !v)}>{open ? <X size={22} /> : <Menu size={22} />}</button>
-      </div>
-      {open && <nav className="border-t border-neutral-200 bg-white px-6 py-5 md:hidden" aria-label="Mobile navigation">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5">
-          <button className={linkClass + ' text-left'} onClick={() => scrollTo('work')}>Our work</button>
-          <button className={linkClass + ' text-left'} onClick={() => scrollTo('contact')}>About & contact</button>
-          <a className="inline-flex items-center gap-2 font-semibold" href="https://x.com/nanostrategyke" target="_blank" rel="noreferrer">Get in touch <ArrowUpRight size={15} /></a>
+    <header className="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          <KaziraLogo />
+          <nav className="hidden md:flex space-x-8 items-center">
+            {NAV_ITEMS.map((item) => renderNavItem(item, false))}
+            <Button
+              onClick={() => setIsUpdatesModalOpen(true)}
+              variant="gold"
+              size="sm"
+            >
+              Get Updates
+            </Button>
+          </nav>
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-black/70 hover:text-gold focus:outline-none p-2 transition-colors"
+              aria-label="Toggle navigation menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
-      </nav>}
+      </div>
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-gray-50 border-t border-gray-200 overflow-hidden"
+          >
+            <nav className="px-4 py-4 space-y-2">
+              {NAV_ITEMS.map((item) => renderNavItem(item, true))}
+              <Button
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsUpdatesModalOpen(true);
+                }}
+                variant="gold"
+                className="w-full mt-4"
+              >
+                Get Updates
+              </Button>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <JotformModal 
+        isOpen={isUpdatesModalOpen} 
+        onClose={() => setIsUpdatesModalOpen(false)} 
+        title="Stay Connected"
+        subtitle="Subscribe for platform updates, benchmark releases, and research from Kazira.io."
+      />
     </header>
   );
 };
