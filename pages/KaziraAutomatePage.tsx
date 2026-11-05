@@ -1,17 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Workflow, BarChart3, BrainCircuit, ShieldCheck, Stethoscope, Building2, Database, Settings2, MessagesSquare } from 'lucide-react';
+import { ArrowRight, Workflow, BarChart3, Stethoscope, Building2, MessagesSquare } from 'lucide-react';
 import Button from '../components/common/Button';
 import Card from '../components/common/Card';
 
 const KaziraAutomatePage = () => {
-  const capabilities = [
-    { icon: Workflow, title: 'Workflow automation', body: 'Automate repeatable tasks, reminders, approvals, hand-offs and follow-ups. Reduce avoidable manual work while keeping people in control of important decisions.' },
-    { icon: BarChart3, title: 'Business intelligence', body: 'Bring information from disconnected tools into useful dashboards, management reports and performance indicators.' },
-    { icon: BrainCircuit, title: 'AI assistants and agents', body: 'Use AI to support document processing, knowledge retrieval, customer enquiries, internal support and exception monitoring, with defined permissions and human oversight.' },
-    { icon: Settings2, title: 'Systems integration', body: 'Connect forms, spreadsheets, communication channels and existing business software so information moves more consistently across teams.' },
-    { icon: Database, title: 'Data and process improvement', body: 'Structure operational information, clarify process ownership and improve the quality of the data used for decisions.' },
-    { icon: ShieldCheck, title: 'Governance and oversight', body: 'Design access controls, approval steps, auditability and escalation paths appropriate to the workflow and sensitivity of the information.' },
+  const deliverables = [
+    { icon: Workflow, title: 'AI workflow automation & systems integration', body: 'We map and improve repetitive processes, connect the software and communication tools your team already uses, and automate routine tasks such as enquiry handling, approvals, reminders, document movement and follow-up. Each workflow is designed with clear permissions and human review where needed.' },
+    { icon: BarChart3, title: 'Business intelligence & performance dashboards', body: 'We organise operational data into useful dashboards, reports and performance indicators. Leaders gain a clearer view of sales, service delivery, workload, costs and operational bottlenecks so they can act on evidence rather than guesswork.' },
   ];
 
   return (
@@ -37,11 +33,11 @@ const KaziraAutomatePage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="font-mono text-gold text-xs uppercase tracking-widest">Our capabilities</span>
-            <h2 className="text-3xl md:text-4xl font-serif text-black mt-4 mb-6">A practical automation partner, not just another software vendor.</h2>
-            <p className="text-lg text-black/55 font-light">We combine process understanding, data, integration and AI to solve operational problems from end to end.</p>
+            <h2 className="text-3xl md:text-4xl font-serif text-black mt-4 mb-6">Two services. Clear business outcomes.</h2>
+            <p className="text-lg text-black/55 font-light">Our delivery is concentrated on two high-value services: improving how work moves through your organisation and improving how you understand its performance.</p>
           </div>
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-7">
-            {capabilities.map(({ icon: Icon, title, body }) => <Card key={title} className="p-8"><div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-7 border border-gold/20"><Icon className="w-7 h-7 text-gold" /></div><h3 className="text-2xl font-serif text-black mb-4">{title}</h3><p className="text-black/55 font-light leading-relaxed">{body}</p></Card>)}
+          <div className="grid md:grid-cols-2 gap-7">
+            {deliverables.map(({ icon: Icon, title, body }) => <Card key={title} className="p-8 md:p-10"><div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-7 border border-gold/20"><Icon className="w-7 h-7 text-gold" /></div><h3 className="text-2xl font-serif text-black mb-4">{title}</h3><p className="text-black/55 font-light leading-relaxed">{body}</p></Card>)}
           </div>
         </div>
       </section>
