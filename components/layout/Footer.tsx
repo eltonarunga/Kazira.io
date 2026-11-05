@@ -26,7 +26,7 @@ const Footer = () => (
         <div>
           <h3 className="font-mono text-xs text-black uppercase tracking-widest mb-8">Solutions & initiatives</h3>
           <ul className="space-y-4 text-sm font-light">
-            <li><a href="https://kazixfrontend.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">KaziX automation platform</a></li>
+            <li><a href="https://kazixfrontend.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">KaziX blue-collar skills marketplace</a></li>
             <li><a href="https://dentside-remote.onrender.com/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">DentSide Remote</a></li>
             <li><a href="https://jino-x.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">JinoX AI</a></li>
             <li><a href={JOB_SCANNER_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Job Disruption Scanner</a></li>
