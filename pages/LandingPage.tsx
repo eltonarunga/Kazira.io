@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import {
   ArrowRight, Workflow, BarChart3, GraduationCap, Stethoscope, Building2,
-  Compass, Database, BriefcaseBusiness, ExternalLink, Lightbulb
+  Compass, Database, ExternalLink
 } from 'lucide-react';
 import Button from '../components/common/Button';
 import JotformModal from '../components/common/JotformModal';
