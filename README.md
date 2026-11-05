@@ -1,89 +1,79 @@
-# Kazira.io - AI-Powered Automation & Research Benchmark
+# Kazira.io
 
-Kazira.io is a modern platform providing AI-powered clinical intelligence (Kazira Automate), the Kenya AI Alignment & Reasoning Benchmark (K-AARB), and future-skills learning resources. Built with modern frontend technologies, it serves as an authoritative hub for frontier AI capability analysis and enterprise intelligence.
+Kazira is an emerging-market business intelligence and workflow automation company, starting in Kenya. The corporate website presents Kazira's services, advisory work and connected products. Product applications are deployed independently and linked from this site.
 
----
+## Strategic focus
 
-## Table of Contents
+Kazira helps clinics, healthcare organizations, consultancies and growing businesses improve operational visibility and performance through:
 
-- [About The Project](#about-the-project)
-- [Key Modules & Platforms](#key-modules--platforms)
-- [Tech Stack](#tech-stack)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [License](#license)
+- Business intelligence and performance analysis
+- Operational workflow assessment and automation strategy
+- AI readiness and implementation advisory
+- NanoStrategyKE consulting as part of Kazira's advisory offering
 
----
+The long-term product direction is the KaziX automation system: a governed workflow layer that can monitor operations, surface exceptions, recommend actions and, where authorized, execute defined tasks.
 
-## About The Project
+## Independent products and resources
 
-Kazira.io bridges research, healthcare technology, and artificial intelligence capabilities:
+- **K-AARB:** the Kenya AI Alignment & Reasoning Benchmark is a separate product and codebase: https://kaarb.vercel.app/
+- **Kazira Learn:** learning resources are hosted externally.
+- **Job Disruption Scanner:** an external research tool.
+- **Clinical Intelligence prototype:** a separately deployed prototype linked from the Business Intelligence & Performance page.
 
--   **Kazira Automate (Flagship Product):** Featuring *Kazira Clinical Intelligence*, an advanced platform for clinical data analysis designed to streamline healthcare decision-making through synthesized insights.
--   **Kenya AI Alignment & Reasoning Benchmark (K-AARB):** Complete longitudinal benchmarking and transcripts evaluating the world's frontier AI models against contextual, sovereign, and thermodynamic realities in Kenya across Q1, Q2, and Q3 cohorts.
--   **Kazira Learn:** Future-skills educational journeys powered by Google Opal.
--   **NanostrategyKE & Consultation:** Enterprise advisory, AI readiness assessments, and workflow automation.
+The Kazira corporate website does not host K-AARB exam logic, model transcripts or benchmark datasets. It does not run model inference in the browser.
 
----
+## Technology
 
-## Key Modules & Platforms
+- React 19
+- TypeScript
+- Vite
+- React Router with hash-based routing
+- Tailwind CSS 4
+- Framer Motion
+- Lucide React
 
--   **Clinical Intelligence MVP:** Dedicated portal for healthcare data synthesis ([Kazira Clinical Intelligence](https://kazira-io-clinical-intelligence-mvp.vercel.app/)).
--   **K-AARB Benchmark Hub & Leaderboard:** Official results and full examination transcripts for Claude, GPT-5, Qwen, Gemini, Perplexity, Copilot, Mistral, Meta AI, Grok, and DeepSeek.
--   **Jotform Community & Consultation Hub:** Seamless, secure form integration for updates and enterprise consultations without requiring intrusive device permissions.
+The corporate site intentionally does not include a browser-side generative-AI SDK. Any future AI integrations that require credentials or sensitive data must be implemented behind a server-side API boundary. Do not place API keys or secrets in frontend code or `VITE_*` environment variables.
 
----
+## Local development
 
-## Tech Stack
+Use Node.js 22 or later.
 
-This project is built using a secure, zero-attack-surface modern frontend stack:
+```bash
+npm ci
+npm run dev
+```
 
--   **Core Framework:** [React 19](https://react.dev/)
--   **Build Tool:** [Vite](https://vitejs.dev/)
--   **Language:** [TypeScript](https://www.typescriptlang.org/)
--   **Routing:** [React Router DOM](https://reactrouter.com/)
--   **UI/Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
--   **Animations:** [Framer Motion](https://www.framer.com/motion/)
--   **Icons:** [Lucide React](https://lucide.dev/)
+Production validation:
 
----
+```bash
+npm run typecheck
+npm run build
+npm audit --audit-level=high
+```
 
-## Getting Started
-
-### Installation & Setup
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/eltonarunga/Kazira.io.git
-    ```
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-3.  **Run the development server:**
-    ```bash
-    npm run dev
-    ```
-4.  **Build for production:**
-    ```bash
-    npm run build
-    ```
-
----
-
-## Project Structure
+## Project structure
 
 ```text
-/
-├── components/           # Reusable React components
-│   ├── common/           # Generic UI components (Button, Card, Modal, ErrorBoundary, Logo, ScrollToTop)
-│   └── layout/           # Page structure (Header, Footer)
-├── pages/                # Top-level page components (LandingPage, Automate, Legal, Benchmark Transcripts)
-├── data/                 # Benchmark questions and datasets
-├── App.tsx               # Main application component with routing
-├── constants.ts          # Platform links and navigation constants
-├── index.css             # Global Tailwind CSS entry
-├── index.html            # HTML entry point
-├── index.tsx             # React root mount
-└── vite.config.ts        # Vite configuration
+components/
+  common/       Reusable UI primitives and modal/error handling
+  layout/       Corporate header and footer
+pages/          Landing, service and legal pages
+App.tsx         Route composition and lazy loading
+constants.ts    Navigation and external product URLs
+index.css       Global design tokens and styles
+index.tsx       React application entry point
+vite.config.ts  Vite development/build configuration
 ```
+
+## Engineering safeguards
+
+- Use `npm ci` for reproducible dependency installation.
+- Keep secrets out of source control and client-side bundles.
+- Keep external product applications isolated from the corporate shell.
+- Use lazy-loaded route components to reduce initial JavaScript.
+- Run type-check, production build and dependency audit in CI.
+- Review legal pages whenever data collection, products or integrations change.
+
+## Release review items
+
+The Privacy Policy and Terms of Service contain legacy descriptions of accounts, AI tools and data processing. Review them against the actual live services and the organization's real data practices before treating them as final legal statements.

@@ -23,10 +23,10 @@ const KaziraAutomatePage = () => {
                 FLAGSHIP PRODUCT
               </span>
               <h1 className="text-4xl md:text-6xl font-serif tracking-tight mb-6 text-black">
-                Kazira Clinical Intelligence
+                Business Intelligence & Performance Analysis
               </h1>
               <p className="text-xl md:text-2xl text-black/50 mb-10 font-light leading-relaxed">
-                An advanced AI-powered platform for clinical data analysis and intelligence. Designed to streamline healthcare decision-making through synthesized insights.
+                We help clinics, healthcare organizations and consultancies turn fragmented operational data into clear performance insights, identify workflow gaps and prioritize practical improvements.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="https://kazira-io-clinical-intelligence-mvp.vercel.app/" target="_blank" rel="noopener noreferrer">
@@ -44,9 +44,9 @@ const KaziraAutomatePage = () => {
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-4xl font-serif text-black mb-6">Transforming Healthcare with AI</h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-black mb-6">Turning Operational Data Into Better Decisions</h2>
             <p className="text-lg text-black/50 font-light">
-              Our clinical intelligence platform leverages cutting-edge machine learning to process complex medical data, providing actionable insights for healthcare professionals.
+              Kazira combines structured analysis, operational intelligence and AI-enabled workflow design to help teams improve visibility, consistency and performance.
             </p>
           </div>
 
@@ -55,9 +55,9 @@ const KaziraAutomatePage = () => {
               <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-8 border border-gold/20">
                 <Database className="w-7 h-7 text-gold" />
               </div>
-              <h3 className="text-2xl font-serif text-black mb-4">Data Synthesis</h3>
+              <h3 className="text-2xl font-serif text-black mb-4">Operational Data Synthesis</h3>
               <p className="text-black/50 font-light leading-relaxed">
-                Automatically aggregate and synthesize vast amounts of clinical data from multiple sources into a unified, coherent view.
+                Bring fragmented operational information into a clearer view so teams can understand activity, performance and bottlenecks.
               </p>
             </Card>
 
@@ -65,9 +65,9 @@ const KaziraAutomatePage = () => {
               <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-8 border border-gold/20">
                 <Brain className="w-7 h-7 text-gold" />
               </div>
-              <h3 className="text-2xl font-serif text-black mb-4">Intelligent Analysis</h3>
+              <h3 className="text-2xl font-serif text-black mb-4">Performance Analysis</h3>
               <p className="text-black/50 font-light leading-relaxed">
-                Utilize advanced AI models to identify patterns, anomalies, and critical insights that might be missed by manual review.
+                Surface trends, exceptions and performance gaps that are difficult to identify through disconnected spreadsheets and manual reporting.
               </p>
             </Card>
 
@@ -75,9 +75,9 @@ const KaziraAutomatePage = () => {
               <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-8 border border-gold/20">
                 <Stethoscope className="w-7 h-7 text-gold" />
               </div>
-              <h3 className="text-2xl font-serif text-black mb-4">Clinical Support</h3>
+              <h3 className="text-2xl font-serif text-black mb-4">Workflow Improvement</h3>
               <p className="text-black/50 font-light leading-relaxed">
-                Empower healthcare providers with evidence-based recommendations to streamline decision-making and improve patient outcomes.
+                Translate findings into prioritized process improvements, automation opportunities and measurable operating goals.
               </p>
             </Card>
           </div>
@@ -87,13 +87,13 @@ const KaziraAutomatePage = () => {
       {/* CTA Section */}
       <section className="py-24 bg-gray-50 border-t border-gray-200">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif text-black mb-6">Ready to experience the future of clinical intelligence?</h2>
+          <h2 className="text-3xl md:text-4xl font-serif text-black mb-6">Ready to improve operational visibility and performance?</h2>
           <p className="text-xl text-black/50 font-light mb-10 max-w-2xl mx-auto">
-            Explore the Kazira Clinical Intelligence MVP and see how AI can revolutionize your clinical workflows.
+            Explore the current prototype and discuss how business intelligence and workflow analysis can support your organization.
           </p>
           <a href="https://kazira-io-clinical-intelligence-mvp.vercel.app/" target="_blank" rel="noopener noreferrer">
             <Button size="lg" variant="gold" className="px-8 py-4 text-lg">
-              Try the MVP Now
+              Explore the Prototype
             </Button>
           </a>
         </div>

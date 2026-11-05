@@ -95,6 +95,9 @@ const Header = () => {
           </nav>
           <div className="md:hidden flex items-center">
             <button
+              type="button"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-navigation"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-black/70 hover:text-gold focus:outline-none p-2 transition-colors"
               aria-label="Toggle navigation menu"
@@ -117,7 +120,7 @@ const Header = () => {
             transition={{ duration: 0.2 }}
             className="md:hidden bg-gray-50 border-t border-gray-200 overflow-hidden"
           >
-            <nav className="px-4 py-4 space-y-2">
+            <nav id="mobile-navigation" className="px-4 py-4 space-y-2">
               {NAV_ITEMS.map((item) => renderNavItem(item, true))}
               <Button
                 onClick={() => {

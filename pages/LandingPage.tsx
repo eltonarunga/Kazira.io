@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Star, ArrowRight, Lightbulb, Settings, ClipboardCheck, ExternalLink } from 'lucide-react';
 import Button from '../components/common/Button';
 import JotformModal from '../components/common/JotformModal';
-import { JOTFORM_UPDATES_URL } from '../constants';
+import { JOTFORM_UPDATES_URL, KAARB_URL } from '../constants';
 
 const LandingPage = () => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
@@ -50,8 +50,8 @@ const LandingPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              Unlock Your <br/>
-              <span className="italic text-black/70">Potential</span> with Kazira.
+              Make Your Operations <br/>
+              <span className="italic text-black/70">Work Smarter.</span>
             </motion.h1>
             
             <motion.p 
@@ -60,7 +60,7 @@ const LandingPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             >
-              AI-Powered Automation and Future-Skills Learning, tailored for the modern enterprise and ambitious professionals.
+              Business intelligence, performance analysis and AI-enabled workflow strategy for clinics, healthcare organizations and growing businesses.
             </motion.p>
             
             <motion.div
@@ -76,15 +76,9 @@ const LandingPage = () => {
               >
                 Get Updates
               </Button>
-              <Link to="/kenya-ai-exam">
-                <Button
-                  size="lg"
-                  variant="ghost"
-                  className="group"
-                >
-                  KAARB (Kenya's Final AI Exam) <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
+              <a href={KAARB_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 py-3 text-sm font-mono uppercase tracking-widest text-black/70 transition-colors hover:text-black">
+                Explore the K-AARB benchmark <ArrowRight className="h-4 w-4" />
+              </a>
             </motion.div>
           </div>
         </div>

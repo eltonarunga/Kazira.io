@@ -36,7 +36,7 @@ export const JotformModal: React.FC<JotformModalProps> = ({
       ? "Receive direct alerts when new benchmark results, cohort evaluations, and model transcripts are published."
       : initialType === 'consultation'
       ? "Connect with our team to discuss custom AI strategy, workflow automation, and enterprise deployment."
-      : "Subscribe for platform updates, benchmark releases, and research from Kazira.io."
+      : "Subscribe for company updates, research, and new product releases from Kazira.io."
   );
 
   return (

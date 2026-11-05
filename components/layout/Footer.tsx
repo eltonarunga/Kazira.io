@@ -1,5 +1,7 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { KAARB_URL } from '../../constants';
 import { Twitter } from 'lucide-react';
 import Logo from '../common/Logo';
 
@@ -26,11 +28,11 @@ const Footer = () => {
           <div>
             <h3 className="font-mono text-xs text-black uppercase tracking-widest mb-8">Solutions</h3>
             <ul className="space-y-4 text-sm font-light">
-              <li><a href="https://x.com/nanostrategyke" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">NanostrategyKE</a></li>
+              <li><Link to="/" state={{ scrollTo: "consultation" }} className="hover:text-gold transition-colors">NanoStrategyKE Advisory</Link></li>
               <li><a href="https://opal.google/app/1RS_gONM_N73fAQy3u_mtelYIjJHNtfN8" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Kazira Learn</a></li>
-              <li><a href="#/automate" className="hover:text-gold transition-colors">Kazira Automate</a></li>
+              <li><Link to="/automate" className="hover:text-gold transition-colors">Business Intelligence & Performance</Link></li>
               <li><a href="https://opal.withgoogle.com/?flow=drive:/1g5EsPt18QZYsNAcaE1f9KgmCnWOQEvin&shared&mode=app" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Job Disruption Scanner</a></li>
-              <li><a href="#/kenya-ai-exam" className="hover:text-gold transition-colors">Kenya's Final AI Exam</a></li>
+              <li><a href={KAARB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">K-AARB Benchmark</a></li>
               <li><a href="https://jino-x.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">JinoX AI</a></li>
               <li><a href="https://dentside-remote.onrender.com/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">DentSide Remote</a></li>
               <li><a href="https://kazixfrontend.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">KaziX</a></li>
@@ -41,11 +43,11 @@ const Footer = () => {
           <div>
             <h3 className="font-mono text-xs text-black uppercase tracking-widest mb-8">Company</h3>
             <ul className="space-y-4 text-sm font-light">
-              <li><a href="#/" className="hover:text-gold transition-colors">Home</a></li>
+              <li><Link to="/" className="hover:text-gold transition-colors">Home</Link></li>
               <li><a href="https://form.jotform.com/260052273727050" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Get Updates</a></li>
               <li><a href="https://form.jotform.com/260052273727050" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Request Consultation</a></li>
-              <li><a href="#/terms" className="hover:text-gold transition-colors">Terms of Service</a></li>
-              <li><a href="#/privacy" className="hover:text-gold transition-colors">Privacy Policy</a></li>
+              <li><Link to="/terms" className="hover:text-gold transition-colors">Terms of Service</Link></li>
+              <li><Link to="/privacy" className="hover:text-gold transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
           
