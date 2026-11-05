@@ -1,26 +1,47 @@
 # Kazira.io
 
-Kazira is an emerging-market business intelligence and workflow automation company, starting in Kenya. The corporate website presents Kazira's services, advisory work and connected products. Product applications are deployed independently and linked from this site.
+Kazira is an AI workflow automation and business solutions company serving SMEs and healthcare organisations, starting in Kenya. We help teams improve the way work gets done through process redesign, connected systems, business intelligence and responsible AI-enabled automation.
 
-## Strategic focus
+## Positioning
 
-Kazira helps clinics, healthcare organizations, consultancies and growing businesses improve operational visibility and performance through:
+**Core promise:** Better systems. Smarter work.
 
-- Business intelligence and performance analysis
-- Operational workflow assessment and automation strategy
-- AI readiness and implementation advisory
-- NanoStrategyKE consulting as part of Kazira's advisory offering
+Kazira helps organisations reduce repetitive manual work, connect fragmented tools, improve operational visibility and make better decisions. We begin with the workflow and the business problem, then recommend an appropriate solution rather than introducing AI for its own sake.
 
-The long-term product direction is the KaziX automation system: a governed workflow layer that can monitor operations, surface exceptions, recommend actions and, where authorized, execute defined tasks.
+## Three connected arms
 
-## Independent products and resources
+### 1. Kazira Solutions
+The core delivery business: AI-enabled workflow automation, systems integration, business intelligence, operational reporting, data and process improvement, and governed AI assistants or agents.
 
-- **K-AARB:** the Kenya AI Alignment & Reasoning Benchmark is a separate product and codebase: https://kaarb.vercel.app/
-- **Kazira Learn:** learning resources are hosted externally.
-- **Job Disruption Scanner:** an external research tool.
-- **Clinical Intelligence prototype:** a separately deployed prototype linked from the Business Intelligence & Performance page.
+Priority markets:
+- SMEs and growing businesses: lead handling, customer communication, quotations, invoicing administration, task routing, inventory visibility, internal knowledge and management reporting.
+- Clinics and healthcare organisations: appointment and recall coordination, patient communication, administrative documentation, stock monitoring, service reporting and operational coordination. Clinical judgement remains with qualified healthcare professionals.
 
-The Kazira corporate website does not host K-AARB exam logic, model transcripts or benchmark datasets. It does not run model inference in the browser.
+### 2. Kazira Advisory
+The consultancy arm, including NanoStrategyKE. Services include business and operational strategy, business intelligence and performance analysis, AI readiness and opportunity assessments, digital transformation planning, workflow audits, automation roadmaps and implementation support.
+
+### 3. Kazira Academy
+The learning and skills arm. It develops practical AI literacy and digital capabilities through learning resources, workshops and role-relevant pathways in AI use, workflow design, data interpretation, no-code automation and responsible adoption.
+
+## Wider solution ecosystem
+
+These initiatives extend the Kazira ecosystem but are not all the same kind of offering or at the same stage of maturity:
+
+- **KaziX:** the longer-term workflow automation platform. Its intended direction is to monitor approved processes, detect exceptions, recommend actions and execute defined tasks where explicitly authorised.
+- **DentSide Remote:** a healthcare-focused remote support initiative.
+- **JinoX AI:** an AI-focused product in the wider ecosystem.
+- **Job Disruption Scanner:** a research tool exploring how AI and automation may affect roles, tasks and skills.
+- **K-AARB:** the Kenya AI Alignment & Reasoning Benchmark, an independent research and evaluation project with its own repository and deployment: https://kaarb.vercel.app/. It is not a Kazira service line.
+
+The corporate website links to independently deployed tools and products. Their capabilities, availability and maturity should be described accurately and reviewed individually.
+
+## Delivery approach
+
+1. Discover the current workflow, systems, users, constraints and desired outcome.
+2. Identify bottlenecks, repetitive tasks, data gaps and risks.
+3. Design a fit-for-purpose workflow, integration or intelligence solution.
+4. Implement and test with users, permissions and human review appropriate to the task.
+5. Measure adoption and operational outcomes, then improve.
 
 ## Technology
 
@@ -32,11 +53,11 @@ The Kazira corporate website does not host K-AARB exam logic, model transcripts 
 - Framer Motion
 - Lucide React
 
-The corporate site intentionally does not include a browser-side generative-AI SDK. Any future AI integrations that require credentials or sensitive data must be implemented behind a server-side API boundary. Do not place API keys or secrets in frontend code or `VITE_*` environment variables.
+The corporate site does not run model inference in the browser. Future AI integrations that require credentials or sensitive data must be implemented behind a server-side API boundary. Never place API keys or secrets in frontend code or `VITE_*` environment variables.
 
 ## Local development
 
-Use Node.js 22 or later (the repository pins the major version in `.nvmrc`, CI runs on Node 22, and the Vercel project runtime is aligned to Node 22).
+Use Node.js 22 or later.
 
 ```bash
 npm ci
@@ -51,29 +72,6 @@ npm run build
 npm audit --audit-level=high
 ```
 
-## Project structure
-
-```text
-components/
-  common/       Reusable UI primitives and modal/error handling
-  layout/       Corporate header and footer
-pages/          Landing, service and legal pages
-App.tsx         Route composition and lazy loading
-constants.ts    Navigation and external product URLs
-index.css       Global design tokens and styles
-index.tsx       React application entry point
-vite.config.ts  Vite development/build configuration
-```
-
-## Engineering safeguards
-
-- Use `npm ci` for reproducible dependency installation.
-- Keep secrets out of source control and client-side bundles.
-- Keep external product applications isolated from the corporate shell.
-- Use lazy-loaded route components to reduce initial JavaScript.
-- Run type-check, production build and dependency audit in CI.
-- Review legal pages whenever data collection, products or integrations change.
-
 ## Release review items
 
-The Privacy Policy and Terms of Service contain legacy descriptions of accounts, AI tools and data processing. Review them against the actual live services and the organization's real data practices before treating them as final legal statements.
+The Privacy Policy and Terms of Service contain legacy descriptions of accounts, AI tools and data processing. Review them against the actual live services and the organisation's real data practices before treating them as final legal statements.
