@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import {
-  ArrowRight, Workflow, BarChart3, BrainCircuit, ShieldCheck, GraduationCap,
-  Stethoscope, Building2, Compass, Database, Bot, BookOpen, BriefcaseBusiness,
-  ExternalLink, Lightbulb
+  ArrowRight, Workflow, BarChart3, GraduationCap, Stethoscope, Building2,
+  Compass, Database, BriefcaseBusiness, ExternalLink, Lightbulb
 } from 'lucide-react';
 import Button from '../components/common/Button';
 import JotformModal from '../components/common/JotformModal';
@@ -21,11 +20,9 @@ const LandingPage = () => {
     }
   }, [location.state]);
 
-  const capabilities = [
-    { icon: Workflow, title: 'Workflow automation', body: 'Map repetitive processes, connect the tools teams already use and automate routine hand-offs, reminders, reporting and follow-up.' },
-    { icon: BarChart3, title: 'Business intelligence', body: 'Turn operational data into dashboards, performance reports and practical insights that help leaders see what is happening and what needs attention.' },
-    { icon: BrainCircuit, title: 'AI-enabled operations', body: 'Apply AI assistants and governed agents to information-heavy tasks, document workflows, knowledge retrieval and operational support.' },
-    { icon: ShieldCheck, title: 'Systems integration', body: 'Design connected workflows across forms, spreadsheets, communication channels and business applications, with appropriate access and oversight.' },
+  const solutionDeliverables = [
+    { icon: Workflow, title: 'AI workflow automation & systems integration', body: 'We redesign repetitive business processes and connect the tools teams already use. From customer enquiries and approvals to administration and follow-up, we build reliable workflows with appropriate human oversight.' },
+    { icon: BarChart3, title: 'Business intelligence & performance dashboards', body: 'We turn fragmented operational data into clear dashboards and management reports, helping leaders track performance, identify bottlenecks and make evidence-informed decisions.' },
   ];
 
   const sectors = [
@@ -34,7 +31,7 @@ const LandingPage = () => {
   ];
 
   const ecosystem = [
-    { name: 'KaziX', category: 'Automation platform', description: 'The longer-term workflow engine for monitoring processes, detecting exceptions, recommending next steps and executing approved actions.', href: 'https://kazixfrontend.vercel.app/' },
+    { name: 'KaziX', category: 'Blue-collar skills marketplace', description: 'A marketplace connecting customers and organisations with skilled blue-collar workers.', href: 'https://kazixfrontend.vercel.app/' },
     { name: 'DentSide Remote', category: 'Healthcare solution', description: 'A remote-support initiative focused on extending access to dental and oral-health expertise.', href: 'https://dentside-remote.onrender.com/' },
     { name: 'JinoX AI', category: 'AI tool', description: 'An AI-focused product in the wider Kazira ecosystem.', href: 'https://jino-x.vercel.app/' },
     { name: 'Job Disruption Scanner', category: 'Research tool', description: 'Explore how AI and automation may affect roles, tasks and skills, and where workforce adaptation may be needed.', href: JOB_SCANNER_URL },
@@ -72,11 +69,11 @@ const LandingPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
             <span className="font-mono text-gold text-xs uppercase tracking-widest">What we do</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">From manual processes to intelligent operations.</h2>
-            <p className="text-lg text-black/60 font-light leading-relaxed">We start with the way your organisation actually works. Then we identify friction, design a better process and implement the right combination of automation, data and AI—without adding technology for its own sake.</p>
+            <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">Two focused solutions. Measurable operational value.</h2>
+            <p className="text-lg text-black/60 font-light leading-relaxed">Kazira Solutions concentrates on two high-value outcomes: making everyday work flow more efficiently, and giving leaders better visibility into business performance.</p>
           </div>
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {capabilities.map(({ icon: Icon, title, body }) => (
+          <div className="grid md:grid-cols-2 gap-6">
+            {solutionDeliverables.map(({ icon: Icon, title, body }) => (
               <div key={title} className="p-7 border border-gray-100 bg-gray-50/50 rounded-2xl">
                 <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6 text-gold"><Icon className="w-6 h-6" /></div>
                 <h3 className="text-xl font-serif mb-3">{title}</h3>
@@ -110,15 +107,13 @@ const LandingPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
-              <span className="font-mono text-gold text-xs uppercase tracking-widest">01 · Consultancy arm</span>
+              <span className="font-mono text-gold text-xs uppercase tracking-widest">02 · Consultancy arm</span>
               <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">Kazira Advisory</h2>
-              <p className="text-lg text-black/60 font-light leading-relaxed mb-6">Through our consultancy arm, including NanoStrategyKE, we help organisations make sound decisions about business performance, digital systems and AI adoption. We bring strategy closer to implementation: from understanding the problem to prioritising improvements and planning delivery.</p>
-              <ul className="space-y-3 text-black/65 font-light mb-8">
-                <li className="flex gap-3"><Compass className="w-5 h-5 text-gold shrink-0" /> Business and operational strategy</li>
-                <li className="flex gap-3"><BarChart3 className="w-5 h-5 text-gold shrink-0" /> Business intelligence and performance analysis</li>
-                <li className="flex gap-3"><Lightbulb className="w-5 h-5 text-gold shrink-0" /> AI readiness, opportunity and risk assessments</li>
-                <li className="flex gap-3"><Workflow className="w-5 h-5 text-gold shrink-0" /> Digital transformation and automation roadmaps</li>
-              </ul>
+              <p className="text-lg text-black/60 font-light leading-relaxed mb-6">Through Kazira Advisory, including NanoStrategyKE, we help leaders understand organisational performance and make sound decisions about technology, AI and transformation. Our work is focused on two advisory outcomes.</p>
+              <div className="space-y-5 mb-8">
+                <div className="flex gap-4"><BarChart3 className="w-6 h-6 text-gold shrink-0 mt-1" /><div><h3 className="font-serif text-xl mb-1">Business performance diagnostics & intelligence</h3><p className="text-sm text-black/55 font-light leading-relaxed">Assess operations, interpret performance data and identify the constraints, opportunities and priorities that matter most to the organisation.</p></div></div>
+                <div className="flex gap-4"><Compass className="w-6 h-6 text-gold shrink-0 mt-1" /><div><h3 className="font-serif text-xl mb-1">AI & digital transformation strategy</h3><p className="text-sm text-black/55 font-light leading-relaxed">Evaluate AI opportunities and readiness, prioritise use cases, and develop practical adoption roadmaps with governance and implementation priorities.</p></div></div>
+              </div>
               <Button size="lg" variant="gold" onClick={() => setIsConsultationModalOpen(true)}>Request advisory support</Button>
             </div>
             <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8 md:p-10">
@@ -140,18 +135,16 @@ const LandingPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-gold">02 · Learning and skills arm</span>
+              <span className="font-mono text-xs uppercase tracking-widest text-gold">03 · Learning and skills arm</span>
               <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">Kazira Academy</h2>
-              <p className="text-lg text-white/65 font-light leading-relaxed mb-6">Technology creates value when people know how to use it. Kazira Academy is our learning and capability-building arm, designed to help individuals and teams develop practical skills in AI, automation, data and digital work.</p>
-              <p className="text-white/55 font-light leading-relaxed mb-8">Learning pathways can include AI literacy, prompt and workflow design, data interpretation, no-code automation, responsible AI use and role-specific digital skills.</p>
+              <p className="text-lg text-white/65 font-light leading-relaxed mb-6">Kazira Academy helps individuals and organisations build practical capabilities for an AI-enabled workplace. We focus on applied learning that can be used immediately in professional and business settings.</p>
+              <p className="text-white/55 font-light leading-relaxed mb-8">Our two learning offers combine practical AI use with the data and digital skills needed to work productively and confidently.</p>
               <a href={KAZIRA_LEARN_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-gold hover:text-white">Explore learning resources <ArrowRight className="w-4 h-4" /></a>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {[
-                { icon: GraduationCap, title: 'AI literacy', body: 'Understand what AI can and cannot do.' },
-                { icon: Bot, title: 'Automation skills', body: 'Design repeatable workflows and useful assistants.' },
-                { icon: Database, title: 'Data confidence', body: 'Interpret information and use it to make decisions.' },
-                { icon: BriefcaseBusiness, title: 'Workplace readiness', body: 'Apply digital capabilities to real work contexts.' },
+                { icon: GraduationCap, title: 'Applied AI & automation training', body: 'Hands-on training in practical AI tools, prompt and workflow design, no-code automation and responsible use for real work tasks.' },
+                { icon: Database, title: 'Data & digital productivity skills', body: 'Build confidence in spreadsheets, data interpretation, digital collaboration and reporting to improve everyday workplace productivity.' },
               ].map(({ icon: Icon, title, body }) => <div key={title} className="border border-white/15 rounded-xl p-6"><Icon className="w-6 h-6 text-gold mb-4" /><h3 className="font-serif text-xl mb-2">{title}</h3><p className="text-sm text-white/55 font-light leading-relaxed">{body}</p></div>)}
             </div>
           </div>
