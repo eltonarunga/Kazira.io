@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import Button from '../components/common/Button';
 import JotformModal from '../components/common/JotformModal';
-import { JOTFORM_UPDATES_URL, KAARB_URL, KAZIRA_LEARN_URL, JOB_SCANNER_URL } from '../constants';
+import { KAARB_URL, KAZIRA_LEARN_URL, JOB_SCANNER_URL } from '../constants';
 
 const LandingPage = () => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
@@ -148,11 +148,11 @@ const LandingPage = () => {
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {[
-                [GraduationCap, 'AI literacy', 'Understand what AI can and cannot do.'],
-                [Bot, 'Automation skills', 'Design repeatable workflows and useful assistants.'],
-                [Database, 'Data confidence', 'Interpret information and use it to make decisions.'],
-                [BriefcaseBusiness, 'Workplace readiness', 'Apply digital capabilities to real work contexts.'],
-              ].map(([Icon, title, body]) => <div key={title} className="border border-white/15 rounded-xl p-6"><Icon className="w-6 h-6 text-gold mb-4" /><h3 className="font-serif text-xl mb-2">{title}</h3><p className="text-sm text-white/55 font-light leading-relaxed">{body}</p></div>)}
+                { icon: GraduationCap, title: 'AI literacy', body: 'Understand what AI can and cannot do.' },
+                { icon: Bot, title: 'Automation skills', body: 'Design repeatable workflows and useful assistants.' },
+                { icon: Database, title: 'Data confidence', body: 'Interpret information and use it to make decisions.' },
+                { icon: BriefcaseBusiness, title: 'Workplace readiness', body: 'Apply digital capabilities to real work contexts.' },
+              ].map(({ icon: Icon, title, body }) => <div key={title} className="border border-white/15 rounded-xl p-6"><Icon className="w-6 h-6 text-gold mb-4" /><h3 className="font-serif text-xl mb-2">{title}</h3><p className="text-sm text-white/55 font-light leading-relaxed">{body}</p></div>)}
             </div>
           </div>
         </div>
