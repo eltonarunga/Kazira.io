@@ -36,7 +36,7 @@ The corporate site intentionally does not include a browser-side generative-AI S
 
 ## Local development
 
-Use Node.js 22 or later (the repository pins the major version in `.nvmrc`).
+Use Node.js 22 or later (the repository pins the major version in `.nvmrc`, CI runs on Node 22, and the Vercel project runtime is aligned to Node 22).
 
 ```bash
 npm ci
