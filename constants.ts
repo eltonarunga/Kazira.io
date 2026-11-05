@@ -7,10 +7,10 @@ export const KAARB_URL = "https://kaarb.vercel.app/";
 
 export const NAV_ITEMS: NavItem[] = [
   { name: "Home", href: "/", isPageLink: true },
-  { name: "Learn", href: KAZIRA_LEARN_URL, isPageLink: false, isExternal: true },
-  { name: "Automate", href: "/automate", isPageLink: true },
-  { name: "Job Scanner", href: JOB_SCANNER_URL, isPageLink: false, isExternal: true },
-  { name: "K-AARB Benchmark", href: KAARB_URL, isPageLink: false, isExternal: true },
+  { name: "Solutions", href: "/automate", isPageLink: true },
+  { name: "Advisory", href: "/#advisory", isPageLink: false },
+  { name: "Academy", href: KAZIRA_LEARN_URL, isPageLink: false, isExternal: true },
+  { name: "Ecosystem", href: "/#ecosystem", isPageLink: false },
 ];
 
 // Kept for backward compatibility with components importing either name
