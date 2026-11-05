@@ -18,7 +18,7 @@ const Footer = () => (
           <h3 className="font-mono text-xs text-black uppercase tracking-widest mb-8">Kazira arms</h3>
           <ul className="space-y-4 text-sm font-light">
             <li><Link to="/automate" className="hover:text-gold transition-colors">Kazira Solutions</Link></li>
-            <li><Link to="/#advisory" className="hover:text-gold transition-colors">Kazira Advisory</Link></li>
+            <li><Link to="/" state={{ scrollTo: "advisory" }} className="hover:text-gold transition-colors">Kazira Advisory</Link></li>
             <li><a href={KAZIRA_LEARN_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Kazira Academy <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
           </ul>
         </div>
