@@ -1,47 +1,70 @@
 # Kazira.io
 
-Kazira is an AI workflow automation and business solutions company serving SMEs and healthcare organisations, starting in Kenya. We help teams improve the way work gets done through process redesign, connected systems, business intelligence and responsible AI-enabled automation.
+Kazira is an AI workflow automation and business solutions company serving SMEs and healthcare organisations, starting in Kenya.
 
-## Positioning
+**Positioning:** Better Systems. Smarter Work.
 
-**Core promise:** Better systems. Smarter work.
+Kazira helps organisations improve how work gets done through practical AI workflow automation, business intelligence, strategic consultancy and workforce capability development.
 
-Kazira helps organisations reduce repetitive manual work, connect fragmented tools, improve operational visibility and make better decisions. We begin with the workflow and the business problem, then recommend an appropriate solution rather than introducing AI for its own sake.
+## Business structure
 
-## Three connected arms
+Kazira operates through three connected arms. Each arm has two high-value deliverables, keeping the offer focused and commercially clear.
 
-### 1. Kazira Solutions
-The core delivery business: AI-enabled workflow automation, systems integration, business intelligence, operational reporting, data and process improvement, and governed AI assistants or agents.
+### 1. Kazira Solutions — automate and improve operations
 
-Priority markets:
-- SMEs and growing businesses: lead handling, customer communication, quotations, invoicing administration, task routing, inventory visibility, internal knowledge and management reporting.
-- Clinics and healthcare organisations: appointment and recall coordination, patient communication, administrative documentation, stock monitoring, service reporting and operational coordination. Clinical judgement remains with qualified healthcare professionals.
+**Deliverable 1: AI workflow automation and systems integration**
 
-### 2. Kazira Advisory
-The consultancy arm, including NanoStrategyKE. Services include business and operational strategy, business intelligence and performance analysis, AI readiness and opportunity assessments, digital transformation planning, workflow audits, automation roadmaps and implementation support.
+We assess, redesign and automate repeatable business processes, connecting the tools organisations already use. Typical workflows include enquiry handling, customer follow-up, approvals, reminders, document movement and administrative coordination. Integrations, access controls and human review are designed into delivery where appropriate.
 
-### 3. Kazira Academy
-The learning and skills arm. It develops practical AI literacy and digital capabilities through learning resources, workshops and role-relevant pathways in AI use, workflow design, data interpretation, no-code automation and responsible adoption.
+**Deliverable 2: Business intelligence and performance dashboards**
 
-## Wider solution ecosystem
+We organise operational data into useful dashboards, management reports and performance indicators. The goal is to give leaders visibility into business activity, service delivery, sales, workload and bottlenecks so they can make better-informed decisions.
 
-These initiatives extend the Kazira ecosystem but are not all the same kind of offering or at the same stage of maturity:
+Primary customers: SMEs, clinics and healthcare organisations.
 
-- **KaziX:** the longer-term workflow automation platform. Its intended direction is to monitor approved processes, detect exceptions, recommend actions and execute defined tasks where explicitly authorised.
+Healthcare examples focus on administration and operations, including appointment and recall coordination, patient communication workflows, service reporting and stock visibility. Clinical judgement remains with qualified healthcare professionals.
+
+### 2. Kazira Advisory — diagnose and plan transformation
+
+NanoStrategyKE is part of this consultancy arm.
+
+**Deliverable 1: Business performance diagnostics and intelligence**
+
+Review operating performance, interpret available business data, identify bottlenecks and surface practical opportunities to improve efficiency, service delivery and decision-making.
+
+**Deliverable 2: AI and digital transformation strategy**
+
+Assess organisational readiness, identify and prioritise appropriate AI and digital opportunities, and develop actionable transformation roadmaps that account for business objectives, governance, resources and implementation.
+
+### 3. Kazira Academy — develop practical capabilities
+
+**Deliverable 1: Applied AI and automation training**
+
+Practical learning in AI literacy, effective use of AI tools, prompt and workflow design, no-code automation and responsible AI adoption for real workplace tasks.
+
+**Deliverable 2: Data and digital productivity skills training**
+
+Practical development of spreadsheet capability, data interpretation, reporting, digital collaboration and productivity skills for individuals and organisational teams.
+
+## Wider ecosystem
+
+Kazira has a wider portfolio of specialised initiatives. These are distinct from the six core commercial deliverables above and should not distract from the primary business positioning.
+
+- **KaziX:** a marketplace for blue-collar skills, connecting customers and organisations with skilled workers.
 - **DentSide Remote:** a healthcare-focused remote support initiative.
-- **JinoX AI:** an AI-focused product in the wider ecosystem.
+- **JinoX AI:** an AI-focused digital product in the wider ecosystem.
 - **Job Disruption Scanner:** a research tool exploring how AI and automation may affect roles, tasks and skills.
-- **K-AARB:** the Kenya AI Alignment & Reasoning Benchmark, an independent research and evaluation project with its own repository and deployment: https://kaarb.vercel.app/. It is not a Kazira service line.
+- **K-AARB:** the Kenya AI Alignment & Reasoning Benchmark, an independent research and evaluation project: https://kaarb.vercel.app/. It is not a Kazira service line.
 
-The corporate website links to independently deployed tools and products. Their capabilities, availability and maturity should be described accurately and reviewed individually.
+Describe each initiative according to its actual maturity and availability. Do not imply that a prototype or research initiative is a fully established commercial service.
 
 ## Delivery approach
 
-1. Discover the current workflow, systems, users, constraints and desired outcome.
-2. Identify bottlenecks, repetitive tasks, data gaps and risks.
-3. Design a fit-for-purpose workflow, integration or intelligence solution.
-4. Implement and test with users, permissions and human review appropriate to the task.
-5. Measure adoption and operational outcomes, then improve.
+1. Understand the organisation, current process, data and intended outcome.
+2. Diagnose the operational issue and define a measurable scope.
+3. Design the workflow, analysis or roadmap with appropriate safeguards.
+4. Implement or deliver with stakeholder involvement.
+5. Review adoption, performance and opportunities for improvement.
 
 ## Technology
 
