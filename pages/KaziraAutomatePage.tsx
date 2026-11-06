@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Workflow, BarChart3, Stethoscope, Building2, MessagesSquare } from 'lucide-react';
 import Button from '../components/common/Button';
@@ -20,9 +21,7 @@ const KaziraAutomatePage = () => {
               <span className="inline-block py-1 px-3 rounded-full bg-gold/10 text-gold border border-gold/20 font-mono text-xs uppercase tracking-widest mb-6">Kazira Solutions</span>
               <h1 className="text-4xl md:text-6xl font-serif tracking-tight mb-6 text-black">AI workflow automation for better-run organisations.</h1>
               <p className="text-xl md:text-2xl text-black/55 mb-10 font-light leading-relaxed">We help SMEs and healthcare organisations connect their systems, automate routine work and turn operational information into decisions and measurable improvements.</p>
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://form.jotform.com/260052273727050" target="_blank" rel="noopener noreferrer"><Button size="lg" variant="gold" className="w-full sm:w-auto text-lg px-8 py-4">Discuss your workflow <ArrowRight className="ml-2 w-5 h-5 inline" /></Button></a>
-              </div>
+              <a href="https://form.jotform.com/260052273727050" target="_blank" rel="noopener noreferrer"><Button size="lg" variant="gold" className="w-full sm:w-auto text-lg px-8 py-4">Discuss your workflow <ArrowRight className="ml-2 w-5 h-5 inline" /></Button></a>
               <p className="text-xs text-black/40 mt-5">We assess the process first, then recommend the right level of automation.</p>
             </motion.div>
           </div>
@@ -44,10 +43,10 @@ const KaziraAutomatePage = () => {
 
       <section className="py-24 bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-14"><span className="font-mono text-gold text-xs uppercase tracking-widest">Sector applications</span><h2 className="text-3xl md:text-4xl font-serif mt-4 mb-5">Built around real operating environments.</h2><p className="text-lg text-black/55 font-light">We tailor implementation to the people, workflows, regulations and systems in each organisation.</p></div>
+          <div className="max-w-3xl mx-auto text-center mb-14"><span className="font-mono text-gold text-xs uppercase tracking-widest">Sector applications</span><h2 className="text-3xl md:text-4xl font-serif mt-4 mb-5">Built around real operating environments.</h2><p className="text-lg text-black/55 font-light">Choose your operating environment to explore relevant workflows and outcomes.</p></div>
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="p-8 md:p-10"><Building2 className="w-8 h-8 text-gold mb-6" /><h3 className="text-2xl font-serif mb-4">SMEs and growing businesses</h3><p className="text-black/55 font-light leading-relaxed mb-5">Lead capture, customer relationship workflows, quotations, invoicing administration, task routing, inventory visibility, internal knowledge and management reporting.</p><p className="text-sm text-black/45 font-light">Outcome: fewer disconnected tasks, clearer accountability and better operational visibility.</p></Card>
-            <Card className="p-8 md:p-10"><Stethoscope className="w-8 h-8 text-gold mb-6" /><h3 className="text-2xl font-serif mb-4">Clinics and healthcare organisations</h3><p className="text-black/55 font-light leading-relaxed mb-5">Appointment and recall coordination, patient communication, administrative documentation, stock monitoring, service reporting and workflow coordination.</p><p className="text-sm text-black/45 font-light">Outcome: more consistent administration and stronger operational oversight. Clinical judgement stays with qualified healthcare professionals.</p></Card>
+            <Link to="/automate/sme" className="group block rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><Card className="p-8 md:p-10 h-full transition-colors group-hover:border-gold/50"><Building2 className="w-8 h-8 text-gold mb-6" /><h3 className="text-2xl font-serif mb-4">SMEs and growing businesses</h3><p className="text-black/55 font-light leading-relaxed mb-5">Explore lead capture, customer workflows, quotations, invoicing administration, task routing, inventory visibility and management reporting.</p><span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gold">Explore SME solutions <ArrowRight className="w-4 h-4" /></span></Card></Link>
+            <Link to="/automate/healthcare" className="group block rounded-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"><Card className="p-8 md:p-10 h-full transition-colors group-hover:border-gold/50"><Stethoscope className="w-8 h-8 text-gold mb-6" /><h3 className="text-2xl font-serif mb-4">Clinics and healthcare organisations</h3><p className="text-black/55 font-light leading-relaxed mb-5">Explore appointment and recall coordination, patient communication, administrative documentation, stock monitoring and service reporting.</p><span className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gold">Explore healthcare solutions <ArrowRight className="w-4 h-4" /></span></Card></Link>
           </div>
         </div>
       </section>
