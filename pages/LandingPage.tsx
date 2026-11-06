@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import {
-  ArrowRight, Workflow, BarChart3, GraduationCap, Stethoscope, Building2,
-  Compass, Database, ExternalLink
+  ArrowRight, Workflow, BarChart3, Stethoscope, Building2, Compass,
+  Database, GraduationCap, ExternalLink, Layers3, BriefcaseBusiness, Rocket
 } from 'lucide-react';
 import Button from '../components/common/Button';
 import JotformModal from '../components/common/JotformModal';
 import { KAARB_URL, KAZIRA_LEARN_URL, JOB_SCANNER_URL } from '../constants';
 
 const LandingPage = () => {
-  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
   const location = useLocation();
 
@@ -20,22 +19,29 @@ const LandingPage = () => {
     }
   }, [location.state]);
 
-  const solutionDeliverables = [
-    { icon: Workflow, title: 'AI workflow automation & systems integration', body: 'We redesign repetitive business processes and connect the tools teams already use. From customer enquiries and approvals to administration and follow-up, we build reliable workflows with appropriate human oversight.' },
-    { icon: BarChart3, title: 'Business intelligence & performance dashboards', body: 'We turn fragmented operational data into clear dashboards and management reports, helping leaders track performance, identify bottlenecks and make evidence-informed decisions.' },
+  const platformCapabilities = [
+    { icon: Workflow, title: 'AI systems & workflow automation', body: 'KarizaX is the core platform direction for connecting business systems, coordinating AI agents and orchestrating authorised workflows. Capabilities are developed and deployed according to validated customer needs.' },
+    { icon: BarChart3, title: 'Business & domain intelligence', body: 'Turn operational information into dashboards, reports and actionable insights. Healthcare is the initial domain, with clinical intelligence developed under appropriate validation and governance.' },
+    { icon: Database, title: 'Data & AI research', body: 'Develop reliable data pipelines, domain knowledge, model evaluation and research capabilities that improve the quality and usefulness of intelligent systems.' },
   ];
 
   const sectors = [
-    { icon: Building2, title: 'SMEs and growing businesses', body: 'Improve lead handling, customer communication, sales administration, invoicing workflows, task coordination, inventory visibility and management reporting.' },
-    { icon: Stethoscope, title: 'Healthcare organisations', body: 'Support clinic administration, appointment and recall workflows, patient communication, service performance reporting, stock visibility and operational coordination. Clinical decisions remain with qualified professionals.' },
+    { icon: Stethoscope, title: 'Healthcare — initial focus', body: 'Start with clinic business intelligence and administrative workflows: appointment coordination, recalls, reporting, revenue visibility and stock monitoring. Clinical judgement remains with qualified professionals.' },
+    { icon: Building2, title: 'Professional services & SMEs', body: 'Extend validated capabilities into consulting, accounting, legal, retail, logistics and other organisations with recurring needs for connected workflows and operational insight.' },
   ];
 
-  const ecosystem = [
-    { name: 'KaziX', category: 'Blue-collar skills marketplace', description: 'A marketplace connecting customers and organisations with skilled blue-collar workers.', href: 'https://kazixfrontend.vercel.app/' },
-    { name: 'DentSide Remote', category: 'Healthcare solution', description: 'A remote-support initiative focused on extending access to dental and oral-health expertise.', href: 'https://dentside-remote.onrender.com/' },
-    { name: 'JinoX AI', category: 'AI tool', description: 'An AI-focused product in the wider Kazira ecosystem.', href: 'https://jino-x.vercel.app/' },
-    { name: 'Job Disruption Scanner', category: 'Research tool', description: 'Explore how AI and automation may affect roles, tasks and skills, and where workforce adaptation may be needed.', href: JOB_SCANNER_URL },
-    { name: 'K-AARB', category: 'Independent benchmark', description: 'The Kenya AI Alignment & Reasoning Benchmark evaluates model reasoning and reliability on Kenya-relevant tasks. It is an independent project, not a Kazira service line.', href: KAARB_URL },
+  const ventures = [
+    { name: 'KaziX', category: 'Blue-collar skilled labour marketplace', description: 'A marketplace connecting customers and organisations with skilled workers.', href: 'https://kazixfrontend.vercel.app/', status: 'Marketplace' },
+    { name: 'Dentside Remote', category: 'Remote dental care', description: 'A dental remote-care product connecting patients and dental professionals through remote support and consultation.', href: 'https://dentside-remote.onrender.com/', status: 'Product' },
+    { name: 'JinoX AI', category: 'Healthcare AI', description: 'A healthcare AI product initiative within the wider Kazira venture portfolio.', href: 'https://jino-x.vercel.app/', status: 'Product initiative' },
+    { name: 'DentMatch KE', category: 'Dental talent marketplace', description: 'A specialised talent marketplace concept for connecting dental professionals and opportunities.', href: null, status: 'Venture initiative' },
+  ];
+
+  const deliverySteps = [
+    ['01', 'Diagnose', 'Understand the organisation, its processes, systems, data and intended outcomes.'],
+    ['02', 'Design', 'Define the right intelligence, workflow, integration and governance requirements.'],
+    ['03', 'Implement', 'Deploy a proportionate solution with clear permissions and appropriate human review.'],
+    ['04', 'Measure', 'Track adoption, reliability and business outcomes before expanding the scope.'],
   ];
 
   return (
@@ -49,31 +55,31 @@ const LandingPage = () => {
           <div className="max-w-5xl">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="inline-flex items-center space-x-2 mb-8">
               <span className="h-px w-8 bg-gold" />
-              <span className="font-mono text-gold text-xs uppercase tracking-widest">AI workflow automation · Business systems · Practical skills</span>
+              <span className="font-mono text-gold text-xs uppercase tracking-widest">AI infrastructure · Intelligence · Venture building</span>
             </motion.div>
             <motion.h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif leading-[1.08] mb-8 font-light tracking-tight" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-              Better systems.<br /><span className="italic text-black/70">Smarter work.</span>
+              Intelligence.<br /><span className="italic text-black/70">Infrastructure. Innovation.</span>
             </motion.h1>
             <motion.p className="text-lg sm:text-xl text-black/60 mb-10 max-w-3xl font-light leading-relaxed" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
-              Kazira helps SMEs and healthcare organisations simplify operations with AI-enabled workflow automation, connected business systems and actionable intelligence. We also advise organisations on their transformation journey and equip people with the skills to work confidently with AI.
+              Kazira builds intelligent systems, domain-specific applications and automation technologies that help businesses understand their operations, make better decisions and improve how work gets done. We are building from Kenya, with healthcare as our initial commercial focus.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} className="flex flex-col sm:flex-row items-start gap-4">
-              <Button size="lg" variant="gold" onClick={() => setIsConsultationModalOpen(true)}>Discuss a workflow</Button>
-              <a href="#solutions" className="inline-flex items-center gap-2 py-3 text-sm font-mono uppercase tracking-widest text-black/70 hover:text-black">Explore our solutions <ArrowRight className="h-4 w-4" /></a>
+              <Button size="lg" variant="gold" onClick={() => setIsConsultationModalOpen(true)}>Talk to Kazira</Button>
+              <a href="#systems-intelligence" className="inline-flex items-center gap-2 py-3 text-sm font-mono uppercase tracking-widest text-black/70 hover:text-black">Explore the ecosystem <ArrowRight className="h-4 w-4" /></a>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section id="solutions" className="py-24 border-t border-gray-100">
+      <section id="systems-intelligence" className="py-24 border-t border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
-            <span className="font-mono text-gold text-xs uppercase tracking-widest">What we do</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">Two focused solutions. Measurable operational value.</h2>
-            <p className="text-lg text-black/60 font-light leading-relaxed">Kazira Solutions concentrates on two high-value outcomes: making everyday work flow more efficiently, and giving leaders better visibility into business performance.</p>
+            <span className="font-mono text-gold text-xs uppercase tracking-widest">01 · Systems & intelligence</span>
+            <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">KarizaX: the technology foundation.</h2>
+            <p className="text-lg text-black/60 font-light leading-relaxed">KarizaX is Kazira's core AI workflow automation and intelligence system. It brings together orchestration, integrations, data, AI models and domain-specific capabilities. The platform is developed progressively; we distinguish the long-term architecture from capabilities currently available in customer deployments.</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {solutionDeliverables.map(({ icon: Icon, title, body }) => (
+          <div className="grid md:grid-cols-3 gap-6">
+            {platformCapabilities.map(({ icon: Icon, title, body }) => (
               <div key={title} className="p-7 border border-gray-100 bg-gray-50/50 rounded-2xl">
                 <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mb-6 text-gold"><Icon className="w-6 h-6" /></div>
                 <h3 className="text-xl font-serif mb-3">{title}</h3>
@@ -81,15 +87,19 @@ const LandingPage = () => {
               </div>
             ))}
           </div>
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 items-start">
+            <Button size="lg" variant="gold" onClick={() => setIsConsultationModalOpen(true)}>Discuss an AI systems project</Button>
+            <a href="/#/automate" className="inline-flex items-center gap-2 py-3 text-sm font-mono uppercase tracking-widest text-black/70 hover:text-gold">Explore capabilities <ArrowRight className="w-4 h-4" /></a>
+          </div>
         </div>
       </section>
 
       <section className="py-24 bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
-            <span className="font-mono text-gold text-xs uppercase tracking-widest">Who we work with</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">Solutions shaped around your sector.</h2>
-            <p className="text-lg text-black/60 font-light leading-relaxed">Different organisations have different constraints. Our approach is tailored to the workflows, teams, systems and responsibilities of each environment.</p>
+            <span className="font-mono text-gold text-xs uppercase tracking-widest">Market entry strategy</span>
+            <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">Start with healthcare. Build for wider application.</h2>
+            <p className="text-lg text-black/60 font-light leading-relaxed">Kazira will establish a focused healthcare offer, learn from real operating environments and reuse proven infrastructure as it expands into other sectors.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
             {sectors.map(({ icon: Icon, title, body }) => (
@@ -107,23 +117,23 @@ const LandingPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
-              <span className="font-mono text-gold text-xs uppercase tracking-widest">02 · Consultancy arm</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">Kazira Advisory</h2>
-              <p className="text-lg text-black/60 font-light leading-relaxed mb-6">Through Kazira Advisory, including NanoStrategyKE, we help leaders understand organisational performance and make sound decisions about technology, AI and transformation. Our work is focused on two advisory outcomes.</p>
+              <span className="font-mono text-gold text-xs uppercase tracking-widest">02 · Advisory</span>
+              <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">NanoStrategyKE, within Kazira Advisory.</h2>
+              <p className="text-lg text-black/60 font-light leading-relaxed mb-6">Kazira Advisory helps organisations understand performance, identify operational constraints and make sound decisions about AI, technology and transformation.</p>
               <div className="space-y-5 mb-8">
-                <div className="flex gap-4"><BarChart3 className="w-6 h-6 text-gold shrink-0 mt-1" /><div><h3 className="font-serif text-xl mb-1">Business performance diagnostics & intelligence</h3><p className="text-sm text-black/55 font-light leading-relaxed">Assess operations, interpret performance data and identify the constraints, opportunities and priorities that matter most to the organisation.</p></div></div>
-                <div className="flex gap-4"><Compass className="w-6 h-6 text-gold shrink-0 mt-1" /><div><h3 className="font-serif text-xl mb-1">AI & digital transformation strategy</h3><p className="text-sm text-black/55 font-light leading-relaxed">Evaluate AI opportunities and readiness, prioritise use cases, and develop practical adoption roadmaps with governance and implementation priorities.</p></div></div>
+                <div className="flex gap-4"><BarChart3 className="w-6 h-6 text-gold shrink-0 mt-1" /><div><h3 className="font-serif text-xl mb-1">Business performance diagnostics & intelligence</h3><p className="text-sm text-black/55 font-light leading-relaxed">Assess operations, interpret available data and identify the constraints and opportunities that matter most.</p></div></div>
+                <div className="flex gap-4"><Compass className="w-6 h-6 text-gold shrink-0 mt-1" /><div><h3 className="font-serif text-xl mb-1">AI & digital transformation strategy</h3><p className="text-sm text-black/55 font-light leading-relaxed">Evaluate readiness, prioritise use cases and develop practical adoption roadmaps with governance and implementation priorities.</p></div></div>
               </div>
               <Button size="lg" variant="gold" onClick={() => setIsConsultationModalOpen(true)}>Request advisory support</Button>
             </div>
             <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8 md:p-10">
-              <div className="font-mono text-xs uppercase tracking-widest text-gold mb-5">Our approach</div>
+              <div className="font-mono text-xs uppercase tracking-widest text-gold mb-5">Consulting-to-product approach</div>
               <div className="space-y-6">
                 {[
-                  ['Understand', 'Review the current operating model, workflows, data and business priorities.'],
-                  ['Identify', 'Find bottlenecks, duplicated effort, risks and opportunities for improvement.'],
-                  ['Design', 'Develop a practical roadmap with clear priorities, ownership and success measures.'],
-                  ['Implement', 'Support delivery through automation, systems integration, training and ongoing review.'],
+                  ['Understand', 'Review the operating model, workflows, data and priorities.'],
+                  ['Diagnose', 'Identify bottlenecks, risks and opportunities for improvement.'],
+                  ['Implement', 'Support practical changes through strategy, systems and automation.'],
+                  ['Productise', 'Turn repeatable, validated solutions into scalable products.'],
                 ].map(([title, body], index) => <div key={title} className="flex gap-4"><span className="font-mono text-gold text-sm">0{index + 1}</span><div><h3 className="font-serif text-xl mb-1">{title}</h3><p className="text-sm text-black/55 font-light leading-relaxed">{body}</p></div></div>)}
               </div>
             </div>
@@ -131,35 +141,51 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section id="academy" className="py-24 bg-black text-white">
+      <section id="ventures-learn" className="py-24 bg-black text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl mb-14">
+            <span className="font-mono text-xs uppercase tracking-widest text-gold">03 · Ventures & learn</span>
+            <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">Specialised products. Practical capabilities.</h2>
+            <p className="text-lg text-white/65 font-light leading-relaxed">Kazira Ventures develops focused products and marketplaces. Kazira Learn builds practical AI, data and digital capabilities through training and education.</p>
+          </div>
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            {ventures.map((item) => (
+              <article key={item.name} className="border border-white/15 rounded-2xl p-7">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-gold">{item.category}</span>
+                <h3 className="text-xl font-serif mt-3 mb-3">{item.name}</h3>
+                <p className="text-sm text-white/60 font-light leading-relaxed mb-5">{item.description}</p>
+                {item.href ? <a href={item.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-gold hover:text-white">Visit product <ExternalLink className="w-3 h-3" /></a> : <span className="text-xs font-mono uppercase tracking-widest text-white/40">{item.status}</span>}
+              </article>
+            ))}
+          </div>
+          <div className="mt-12 grid lg:grid-cols-2 gap-8 items-center border-t border-white/15 pt-12">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-gold">03 · Learning and skills arm</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">Kazira Academy</h2>
-              <p className="text-lg text-white/65 font-light leading-relaxed mb-6">Kazira Academy helps individuals and organisations build practical capabilities for an AI-enabled workplace. We focus on applied learning that can be used immediately in professional and business settings.</p>
-              <p className="text-white/55 font-light leading-relaxed mb-8">Our two learning offers combine practical AI use with the data and digital skills needed to work productively and confidently.</p>
-              <a href={KAZIRA_LEARN_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-gold hover:text-white">Explore learning resources <ArrowRight className="w-4 h-4" /></a>
+              <div className="flex items-center gap-3 mb-4"><GraduationCap className="w-7 h-7 text-gold" /><span className="font-mono text-xs uppercase tracking-widest text-gold">Kazira Learn</span></div>
+              <h3 className="text-3xl font-serif mb-4">Build practical AI and digital capabilities.</h3>
+              <p className="text-white/60 font-light leading-relaxed">Workshops and programmes in applied AI, workflow automation, business intelligence, data skills and responsible technology adoption.</p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {[
-                { icon: GraduationCap, title: 'Applied AI & automation training', body: 'Hands-on training in practical AI tools, prompt and workflow design, no-code automation and responsible use for real work tasks.' },
-                { icon: Database, title: 'Data & digital productivity skills', body: 'Build confidence in spreadsheets, data interpretation, digital collaboration and reporting to improve everyday workplace productivity.' },
-              ].map(({ icon: Icon, title, body }) => <div key={title} className="border border-white/15 rounded-xl p-6"><Icon className="w-6 h-6 text-gold mb-4" /><h3 className="font-serif text-xl mb-2">{title}</h3><p className="text-sm text-white/55 font-light leading-relaxed">{body}</p></div>)}
+            <div className="lg:text-right">
+              <a href={KAZIRA_LEARN_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-gold hover:text-white">Explore learning resources <ExternalLink className="w-4 h-4" /></a>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="ecosystem" className="py-24">
+      <section className="py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
-            <span className="font-mono text-gold text-xs uppercase tracking-widest">The wider ecosystem</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">A growing portfolio of focused solutions.</h2>
-            <p className="text-lg text-black/60 font-light leading-relaxed">Alongside our core services, Kazira develops and connects specialised tools, platforms and research initiatives. Each addresses a distinct problem and may operate as a standalone product or partner resource.</p>
+          <div className="max-w-3xl mb-14"><span className="font-mono text-gold text-xs uppercase tracking-widest">How we work</span><h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">Understand first. Build what proves useful.</h2></div>
+          <div className="grid md:grid-cols-4 gap-8">
+            {deliverySteps.map(([number, title, body]) => <div key={number} className="border-t border-gold pt-5"><span className="font-mono text-gold text-sm">{number}</span><h3 className="text-xl font-serif mt-3 mb-2">{title}</h3><p className="text-sm text-black/55 font-light leading-relaxed">{body}</p></div>)}
           </div>
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-5">
-            {ecosystem.map((item) => <a key={item.name} href={item.href} target="_blank" rel="noopener noreferrer" className="group border border-gray-100 rounded-2xl p-7 hover:border-gold/50 transition-colors"><span className="font-mono text-[10px] uppercase tracking-widest text-gold">{item.category}</span><h3 className="flex items-center gap-2 text-xl font-serif mt-3 mb-3">{item.name}<ExternalLink className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100" /></h3><p className="text-sm text-black/60 font-light leading-relaxed">{item.description}</p></a>)}
+        </div>
+      </section>
+
+      <section id="independent-initiatives" className="py-16 bg-gray-50 border-y border-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-8"><span className="font-mono text-gold text-xs uppercase tracking-widest">Research & wider ecosystem</span><h2 className="text-2xl md:text-3xl font-serif mt-3 mb-4">Related initiatives</h2><p className="text-sm text-black/55 font-light leading-relaxed">These initiatives are not core Kazira service lines. K-AARB is an independent research and evaluation project.</p></div>
+          <div className="flex flex-wrap gap-6 text-sm">
+            <a href={JOB_SCANNER_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold">Job Disruption Scanner <ExternalLink className="w-3 h-3" /></a>
+            <a href={KAARB_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-gold">K-AARB (independent) <ExternalLink className="w-3 h-3" /></a>
           </div>
         </div>
       </section>
@@ -167,14 +193,13 @@ const LandingPage = () => {
       <section className="py-24 bg-gray-50 border-t border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="font-mono text-gold text-xs uppercase tracking-widest">Start with the problem</span>
-          <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">What could your organisation do better?</h2>
-          <p className="text-lg text-black/55 font-light mb-10 max-w-2xl mx-auto">Tell us where work gets stuck, what takes too much time or what you cannot currently measure. We will help you explore a practical next step.</p>
+          <h2 className="text-4xl md:text-5xl font-serif font-light mt-4 mb-6">What should work better in your organisation?</h2>
+          <p className="text-lg text-black/55 font-light mb-10 max-w-2xl mx-auto">Tell us where work gets stuck, what takes too much time or what you cannot currently measure. We will help identify a practical next step.</p>
           <Button size="lg" variant="gold" onClick={() => setIsConsultationModalOpen(true)}>Start a conversation</Button>
         </div>
       </section>
 
-      <JotformModal isOpen={isUpdateModalOpen} onClose={() => setIsUpdateModalOpen(false)} title="Stay connected" subtitle="Receive updates on Kazira solutions, practical AI learning resources and new tools." />
-      <JotformModal isOpen={isConsultationModalOpen} onClose={() => setIsConsultationModalOpen(false)} title="Talk to Kazira" subtitle="Tell us about your organisation, operational challenges and the workflows you would like to improve." />
+      <JotformModal isOpen={isConsultationModalOpen} onClose={() => setIsConsultationModalOpen(false)} title="Talk to Kazira" subtitle="Tell us about your organisation, operational challenges and the systems or workflows you would like to improve." />
     </div>
   );
 };
