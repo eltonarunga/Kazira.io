@@ -18,7 +18,7 @@ const KaziraAutomatePage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <span className="inline-block py-1 px-3 rounded-full bg-gold/10 text-gold border border-gold/20 font-mono text-xs uppercase tracking-widest mb-6">Kazira Systems & Intelligence</span>
+              <span className="inline-block py-1 px-3 rounded-full bg-gold/10 text-gold border border-gold/20 font-mono text-xs uppercase tracking-widest mb-6">Kazira Systems & Intelligence · KarizaX</span>
               <h1 className="text-4xl md:text-6xl font-serif tracking-tight mb-6 text-black">Intelligent systems for better-run organisations.</h1>
               <p className="text-xl md:text-2xl text-black/55 mb-10 font-light leading-relaxed">We help SMEs and healthcare organisations connect their systems, automate routine work and turn operational information into decisions and measurable improvements.</p>
               <a href="https://form.jotform.com/260052273727050" target="_blank" rel="noopener noreferrer"><Button size="lg" variant="gold" className="w-full sm:w-auto text-lg px-8 py-4">Discuss your workflow <ArrowRight className="ml-2 w-5 h-5 inline" /></Button></a>
