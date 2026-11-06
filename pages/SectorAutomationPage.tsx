@@ -52,7 +52,7 @@ const SectorAutomationPage = () => {
     return (
       <section className="min-h-[60vh] flex flex-col items-center justify-center px-6 text-center">
         <h1 className="text-3xl font-serif mb-4">Sector page not found</h1>
-        <Link to="/automate" className="text-sm underline underline-offset-4">Return to Kazira Solutions</Link>
+        <Link to="/automate" className="text-sm underline underline-offset-4">Return to KarizaX</Link>
       </section>
     );
   }
@@ -62,7 +62,7 @@ const SectorAutomationPage = () => {
       <section className="py-20 md:py-28 border-b border-gray-100 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none"><div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:24px_24px]" /></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <Link to="/automate" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-black/50 hover:text-gold mb-10"><ArrowLeft className="w-4 h-4" /> Kazira Solutions</Link>
+          <Link to="/automate" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-black/50 hover:text-gold mb-10"><ArrowLeft className="w-4 h-4" /> Kazira Systems & Intelligence</Link>
           <div className="max-w-4xl">
             <span className="font-mono text-xs uppercase tracking-widest text-gold">{content.eyebrow}</span>
             <h1 className="text-4xl md:text-6xl font-serif font-light tracking-tight leading-tight mt-5 mb-7">{content.title}</h1>
@@ -88,7 +88,7 @@ const SectorAutomationPage = () => {
 
       <section className="py-20 bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12"><span className="font-mono text-xs uppercase tracking-widest text-gold">The two Kazira Solutions deliverables</span><h2 className="text-3xl md:text-4xl font-serif font-light mt-4">One operating picture. Two ways to improve it.</h2></div>
+          <div className="max-w-3xl mb-12"><span className="font-mono text-xs uppercase tracking-widest text-gold">KarizaX platform capabilities</span><h2 className="text-3xl md:text-4xl font-serif font-light mt-4">One connected platform for operational intelligence and execution.</h2></div>
           <div className="grid md:grid-cols-2 gap-7">
             <article className="bg-white border border-gray-100 rounded-2xl p-8">
               <Workflow className="w-8 h-8 text-gold mb-6" />

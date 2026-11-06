@@ -18,8 +18,8 @@ const KaziraAutomatePage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <span className="inline-block py-1 px-3 rounded-full bg-gold/10 text-gold border border-gold/20 font-mono text-xs uppercase tracking-widest mb-6">Kazira Solutions</span>
-              <h1 className="text-4xl md:text-6xl font-serif tracking-tight mb-6 text-black">AI workflow automation for better-run organisations.</h1>
+              <span className="inline-block py-1 px-3 rounded-full bg-gold/10 text-gold border border-gold/20 font-mono text-xs uppercase tracking-widest mb-6">Kazira Systems & Intelligence · KarizaX</span>
+              <h1 className="text-4xl md:text-6xl font-serif tracking-tight mb-6 text-black">Intelligent systems for better-run organisations.</h1>
               <p className="text-xl md:text-2xl text-black/55 mb-10 font-light leading-relaxed">We help SMEs and healthcare organisations connect their systems, automate routine work and turn operational information into decisions and measurable improvements.</p>
               <a href="https://form.jotform.com/260052273727050" target="_blank" rel="noopener noreferrer"><Button size="lg" variant="gold" className="w-full sm:w-auto text-lg px-8 py-4">Discuss your workflow <ArrowRight className="ml-2 w-5 h-5 inline" /></Button></a>
               <p className="text-xs text-black/40 mt-5">We assess the process first, then recommend the right level of automation.</p>
@@ -32,8 +32,8 @@ const KaziraAutomatePage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="font-mono text-gold text-xs uppercase tracking-widest">Our capabilities</span>
-            <h2 className="text-3xl md:text-4xl font-serif text-black mt-4 mb-6">Two services. Clear business outcomes.</h2>
-            <p className="text-lg text-black/55 font-light">Our delivery is concentrated on two high-value services: improving how work moves through your organisation and improving how you understand its performance.</p>
+            <h2 className="text-3xl md:text-4xl font-serif text-black mt-4 mb-6">Integrated systems. Clear business outcomes.</h2>
+            <p className="text-lg text-black/55 font-light">Our delivery is concentrated on integrated capabilities: improving how work moves through your organisation and improving how you understand its performance.</p>
           </div>
           <div className="grid md:grid-cols-2 gap-7">
             {deliverables.map(({ icon: Icon, title, body }) => <Card key={title} className="p-8 md:p-10"><div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-7 border border-gold/20"><Icon className="w-7 h-7 text-gold" /></div><h3 className="text-2xl font-serif text-black mb-4">{title}</h3><p className="text-black/55 font-light leading-relaxed">{body}</p></Card>)}

@@ -1,73 +1,86 @@
 # Kazira.io
 
-Kazira is an AI workflow automation and business solutions company serving SMEs and healthcare organisations, starting in Kenya.
+**Intelligence. Infrastructure. Innovation.**
 
-**Positioning:** Better Systems. Smarter Work.
+Kazira is an African AI infrastructure and venture ecosystem building intelligent systems, domain-specific applications and automation technologies for businesses and industries. The initial commercial focus is healthcare in Kenya, with a deliberate path into professional services, SMEs and enterprise environments.
 
-Kazira helps organisations improve how work gets done through practical AI workflow automation, business intelligence, strategic consultancy and workforce capability development.
+## Strategic architecture
 
-## Business structure
+Kazira operates through three connected divisions:
 
-Kazira operates through three connected arms. Each arm has two high-value deliverables, keeping the offer focused and commercially clear.
+### 1. Kazira Systems & Intelligence
 
-### 1. Kazira Solutions — automate and improve operations
+**Core platform: KarizaX**
 
-**Deliverable 1: AI workflow automation and systems integration**
+KarizaX is the planned core AI workflow automation and intelligence system. It brings together workflow orchestration, AI model integrations, agent coordination, systems integration, business intelligence and domain-specific intelligence.
 
-We assess, redesign and automate repeatable business processes, connecting the tools organisations already use. Typical workflows include enquiry handling, customer follow-up, approvals, reminders, document movement and administrative coordination. Integrations, access controls and human review are designed into delivery where appropriate.
+Core capability areas:
+- AI infrastructure and model integration
+- Intelligent workflow automation and orchestration
+- Business intelligence and performance analytics
+- Domain-specific intelligence, beginning with healthcare
+- Data engineering, AI evaluation and research
 
-**Deliverable 2: Business intelligence and performance dashboards**
+**Commercial entry point: Healthcare Intelligence**
 
-We organise operational data into useful dashboards, management reports and performance indicators. The goal is to give leaders visibility into business activity, service delivery, sales, workload and bottlenecks so they can make better-informed decisions.
+The initial offer combines healthcare business intelligence and administrative workflow automation for clinics and healthcare organisations. Early delivery should focus on operational use cases such as appointment coordination, reporting, revenue visibility and stock monitoring. Clinical decision-support capabilities require separate clinical validation and governance.
 
-Primary customers: SMEs, clinics and healthcare organisations.
+KarizaX is the strategic platform direction; describe platform capabilities according to their actual implementation and maturity. Do not imply that planned capabilities are already generally available.
 
-Healthcare examples focus on administration and operations, including appointment and recall coordination, patient communication workflows, service reporting and stock visibility. Clinical judgement remains with qualified healthcare professionals.
+### 2. Kazira Advisory
 
-### 2. Kazira Advisory — diagnose and plan transformation
+**Consultancy solution: NanoStrategyKE**
 
-NanoStrategyKE is part of this consultancy arm.
+NanoStrategyKE is part of Kazira Advisory. It helps organisations understand performance, identify operational constraints, assess AI readiness and plan or implement digital transformation.
 
-**Deliverable 1: Business performance diagnostics and intelligence**
+Core services:
+- Business performance diagnostics and intelligence
+- AI and digital transformation strategy
+- Process assessment and optimisation
+- Data analytics and management reporting
+- Technology implementation advisory
 
-Review operating performance, interpret available business data, identify bottlenecks and surface practical opportunities to improve efficiency, service delivery and decision-making.
+The consulting-to-product model is: diagnose customer problems, recommend improvements, implement appropriate solutions, and productise repeatable workflows where demand is validated.
 
-**Deliverable 2: AI and digital transformation strategy**
+### 3. Kazira Ventures & Learn
 
-Assess organisational readiness, identify and prioritise appropriate AI and digital opportunities, and develop actionable transformation roadmaps that account for business objectives, governance, resources and implementation.
+This division develops specialised products, marketplaces, venture opportunities and education programmes.
 
-### 3. Kazira Academy — develop practical capabilities
+#### Product portfolio
+- **JinoX AI:** Healthcare AI product initiative.
+- **Dentside Remote:** Remote dental care and consultation product.
+- **DentMatch KE:** Dental talent marketplace.
+- **KaziX:** Blue-collar skilled labour marketplace connecting customers and organisations with skilled workers.
 
-**Deliverable 1: Applied AI and automation training**
+Each product has a distinct customer proposition and roadmap. Products may reuse shared Kazira infrastructure where appropriate, but they are not interchangeable with KarizaX.
 
-Practical learning in AI literacy, effective use of AI tools, prompt and workflow design, no-code automation and responsible AI adoption for real workplace tasks.
+#### Kazira Learn
+Practical AI, automation, data and digital productivity education for professionals, businesses and institutions. Begin with workshops and training programmes; expand delivery formats as demand is validated.
 
-**Deliverable 2: Data and digital productivity skills training**
+## Wider ecosystem and independent initiatives
 
-Practical development of spreadsheet capability, data interpretation, reporting, digital collaboration and productivity skills for individuals and organisational teams.
+- **Job Disruption Scanner:** Research tool exploring how AI and automation may affect roles, tasks and skills.
+- **K-AARB:** Kenya AI Alignment & Reasoning Benchmark, an independent research and evaluation project: https://kaarb.vercel.app/. It is not a Kazira service line.
 
-## Wider ecosystem
+Describe every initiative according to its actual maturity, availability and ownership. Do not present prototypes or research projects as fully established commercial services.
 
-Kazira has a wider portfolio of specialised initiatives. These are distinct from the six core commercial deliverables above and should not distract from the primary business positioning.
+## Commercial model
 
-- **KaziX:** a marketplace for blue-collar skills, connecting customers and organisations with skilled workers.
-- **DentSide Remote:** a healthcare-focused remote support initiative.
-- **JinoX AI:** an AI-focused digital product in the wider ecosystem.
-- **Job Disruption Scanner:** a research tool exploring how AI and automation may affect roles, tasks and skills.
-- **K-AARB:** the Kenya AI Alignment & Reasoning Benchmark, an independent research and evaluation project: https://kaarb.vercel.app/. It is not a Kazira service line.
+Kazira uses a hybrid model:
+1. Advisory and consulting fees.
+2. Implementation and integration fees.
+3. SaaS subscriptions.
+4. Enterprise contracts and licensing.
+5. Education and training fees.
+6. Governed research and data services where appropriate.
 
-Describe each initiative according to its actual maturity and availability. Do not imply that a prototype or research initiative is a fully established commercial service.
+## Initial go-to-market
 
-## Delivery approach
+Start with healthcare providers in Kenya. Validate a focused business intelligence and administrative automation offer through customer discovery and paid pilots. Expand into professional services and SMEs only after a repeatable healthcare offer and delivery model are demonstrated.
 
-1. Understand the organisation, current process, data and intended outcome.
-2. Diagnose the operational issue and define a measurable scope.
-3. Design the workflow, analysis or roadmap with appropriate safeguards.
-4. Implement or deliver with stakeholder involvement.
-5. Review adoption, performance and opportunities for improvement.
+## Technology principles
 
-## Technology
-
+The corporate website currently uses:
 - React 19
 - TypeScript
 - Vite
@@ -76,7 +89,9 @@ Describe each initiative according to its actual maturity and availability. Do n
 - Framer Motion
 - Lucide React
 
-The corporate site does not run model inference in the browser. Future AI integrations that require credentials or sensitive data must be implemented behind a server-side API boundary. Never place API keys or secrets in frontend code or `VITE_*` environment variables.
+The website is a public corporate site; it does not itself provide KarizaX workflow execution or run model inference in the browser. Future AI integrations that require credentials or sensitive data must be implemented behind a server-side API boundary. Never place API keys or secrets in frontend code or `VITE_*` environment variables.
+
+For product engineering, prefer modular architecture, tenant isolation, least-privilege access, auditability, model portability and human approval for sensitive actions. Healthcare information must be handled under applicable privacy, security and professional requirements.
 
 ## Local development
 
@@ -95,6 +110,6 @@ npm run build
 npm audit --audit-level=high
 ```
 
-## Release review items
+## Release review
 
-The Privacy Policy and Terms of Service contain legacy descriptions of accounts, AI tools and data processing. Review them against the actual live services and the organisation's real data practices before treating them as final legal statements.
+The Privacy Policy and Terms of Service contain legacy descriptions of accounts, AI tools, monitoring and data processing. Review them against the actual live services and real data practices before treating them as final legal statements.

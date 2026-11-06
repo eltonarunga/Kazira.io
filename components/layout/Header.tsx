@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ExternalLink } from 'lucide-react';
-import { NAV_ITEMS, JOTFORM_UPDATES_URL } from '../../constants';
+import { NAV_ITEMS } from '../../constants';
 import { NavItem } from '../../types';
 import Button from '../common/Button';
 import Logo from '../common/Logo';
