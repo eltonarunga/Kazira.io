@@ -7,6 +7,7 @@ import ScrollToTop from './components/common/ScrollToTop';
 
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const KaziraAutomatePage = lazy(() => import('./pages/KaziraAutomatePage'));
+const SectorAutomationPage = lazy(() => import('./pages/SectorAutomationPage'));
 const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 
@@ -28,6 +29,7 @@ const App = () => (
               <Route path="/" element={<LandingPage />} />
               <Route path="/home" element={<Navigate to="/" replace />} />
               <Route path="/automate" element={<KaziraAutomatePage />} />
+              <Route path="/automate/:sector" element={<SectorAutomationPage />} />
               <Route path="/terms" element={<TermsOfService />} />
               <Route path="/privacy" element={<PrivacyPolicy />} />
               <Route path="*" element={<Navigate to="/" replace />} />
