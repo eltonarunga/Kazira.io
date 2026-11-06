@@ -64,19 +64,7 @@ Practical AI, automation, data and digital productivity education for profession
 
 Describe every initiative according to its actual maturity, availability and ownership. Do not present prototypes or research projects as fully established commercial services.
 
-## Commercial model
 
-Kazira uses a hybrid model:
-1. Advisory and consulting fees.
-2. Implementation and integration fees.
-3. SaaS subscriptions.
-4. Enterprise contracts and licensing.
-5. Education and training fees.
-6. Governed research and data services where appropriate.
-
-## Initial go-to-market
-
-Start with healthcare providers in Kenya. Validate a focused business intelligence and administrative automation offer through customer discovery and paid pilots. Expand into professional services and SMEs only after a repeatable healthcare offer and delivery model are demonstrated.
 
 ## Technology principles
 
