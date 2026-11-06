@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   ArrowRight, Workflow, BarChart3, Stethoscope, Building2, Compass,
-  Database, GraduationCap, ExternalLink, Layers3, BriefcaseBusiness, Rocket
+  Database, GraduationCap, ExternalLink
 } from 'lucide-react';
 import Button from '../components/common/Button';
 import JotformModal from '../components/common/JotformModal';
@@ -89,7 +89,7 @@ const LandingPage = () => {
           </div>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 items-start">
             <Button size="lg" variant="gold" onClick={() => setIsConsultationModalOpen(true)}>Discuss an AI systems project</Button>
-            <a href="/#/automate" className="inline-flex items-center gap-2 py-3 text-sm font-mono uppercase tracking-widest text-black/70 hover:text-gold">Explore capabilities <ArrowRight className="w-4 h-4" /></a>
+            <Link to="/automate" className="inline-flex items-center gap-2 py-3 text-sm font-mono uppercase tracking-widest text-black/70 hover:text-gold">Explore capabilities <ArrowRight className="w-4 h-4" /></Link>
           </div>
         </div>
       </section>
