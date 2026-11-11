@@ -16,6 +16,7 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,13 +25,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - name: Refresh lockfile metadata
-        run: npm install --package-lock-only --ignore-scripts
-      - name: Install exact dependencies
+      - name: Install locked dependencies
         run: npm ci
       - name: Audit dependencies
         run: npm audit --audit-level=high
-      - name: Type-check
-        run: npm run typecheck
-      - name: Build production bundle
-        run: npm run build
+      - name: Type-check and build
+        run: npm run check
