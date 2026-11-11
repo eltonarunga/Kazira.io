@@ -29,6 +29,12 @@ dist-ssr
 !.env.example
 *.pem
 
+# Prompt-history exports and local AI conversation dumps
+migrated_prompt_history/
+prompt_history/
+**/*prompt-history*.json
+**/*prompt_history*.json
+
 # Test artifacts
 playwright-report/
 test-results/
