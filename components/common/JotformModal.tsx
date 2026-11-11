@@ -68,7 +68,7 @@ export const JotformModal: React.FC<JotformModalProps> = ({
         </div>
 
         <div className="mt-4 pt-2 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-black/50">
-          <span className="font-light">Safe & confidential submission via Jotform</span>
+          <span className="font-light">This form is hosted by Jotform.</span>
           <a
             href={formUrl}
             target="_blank"
