@@ -6,41 +6,41 @@ import Button from '../components/common/Button';
 const sectorContent = {
   sme: {
     eyebrow: 'For SMEs and growing businesses',
-    title: 'Make everyday business operations work better.',
-    intro: 'Kazira helps growing businesses reduce repetitive administration, connect the tools they rely on and get a clearer view of operational performance.',
-    challenge: 'As a business grows, enquiries, customer follow-up, quotations, invoicing administration, stock information and internal tasks can become scattered across spreadsheets, email and messaging apps.',
+    title: 'Spend less time on admin.',
+    intro: 'Kazira helps growing businesses cut repetitive admin, connect the tools they use and see how the business is performing.',
+    challenge: 'As a business grows, enquiries, follow-ups, quotations, invoices, stock records and tasks end up scattered across spreadsheets, email and chat apps.',
     workflows: [
-      'Capture and route customer enquiries to the right person.',
-      'Coordinate quotations, approvals, reminders and follow-up.',
-      'Connect existing business tools and reduce duplicate data entry.',
-      'Improve visibility across inventory, tasks and service delivery.'
+      'Capture customer enquiries and send them to the right person.',
+      'Manage quotations, approvals, reminders and follow-ups.',
+      'Connect the tools you already use so you stop typing the same data twice.',
+      'See stock, tasks and service delivery in one place.'
     ],
     intelligence: [
-      'Track enquiries, conversion and sales activity.',
-      'Monitor workload, delivery timelines and operational costs.',
-      'Bring key performance indicators into practical management dashboards.',
-      'Identify recurring bottlenecks and areas that need attention.'
+      'Track enquiries, sales and how many leads become customers.',
+      'Watch workload, delivery times and operating costs.',
+      'Put your key numbers on a simple dashboard.',
+      'Spot problems that keep coming back.'
     ],
-    guardrail: 'We begin by understanding your current process and systems. We recommend automation only where it is useful, maintainable and proportionate to the business.'
+    guardrail: 'We start by learning how you work today. We only recommend automation where it is useful, easy to maintain and fits the size of your business.'
   },
   healthcare: {
     eyebrow: 'For clinics and healthcare organisations',
-    title: 'Improve the operational systems behind better care.',
-    intro: 'Kazira supports healthcare teams with administrative workflow automation, connected systems and operational intelligence, designed around the realities of clinical environments.',
-    challenge: 'Clinic teams often coordinate appointments, recalls, patient communication, records administration, stock and reporting across disconnected tools. This can create avoidable administrative friction and limit management visibility.',
+    title: 'Fix the admin behind better care.',
+    intro: 'Kazira helps clinics automate admin work, connect their systems and see how the clinic is performing. We design for how clinics really work.',
+    challenge: 'Clinic teams often handle appointments, recalls, patient messages, records, stock and reports in separate tools. This wastes time and makes it hard for managers to see what is happening.',
     workflows: [
-      'Coordinate appointment enquiries, confirmations and reminders.',
-      'Support recall lists and administrative follow-up workflows.',
-      'Route administrative requests and documentation to appropriate staff.',
-      'Improve stock monitoring and routine operational coordination.'
+      'Handle appointment requests, confirmations and reminders.',
+      'Support recall lists and follow-up tasks.',
+      'Send admin requests and paperwork to the right staff.',
+      'Keep track of stock and daily operations.'
     ],
     intelligence: [
-      'Monitor appointment activity and service utilisation.',
-      'Review administrative workload and process delays.',
-      'Track stock visibility and operational performance indicators.',
-      'Create management reports that support planning and service improvement.'
+      'Monitor appointments and how busy each service is.',
+      'Review admin workload and where delays happen.',
+      'Track stock levels and key performance numbers.',
+      'Create reports that help with planning and improving services.'
     ],
-    guardrail: 'Solutions are designed for administrative and operational support. They do not replace clinical judgement, diagnosis, prescribing or decisions made by qualified healthcare professionals. Patient information must be handled according to applicable privacy, security and professional requirements.'
+    guardrail: 'Our tools support administration and operations only. They do not replace clinical judgement, diagnosis, prescribing or any decision made by a qualified health professional. Patient information must be handled in line with privacy, security and professional rules.'
   }
 };
 
@@ -75,7 +75,7 @@ const SectorAutomationPage = () => {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
           <div>
-            <span className="font-mono text-xs uppercase tracking-widest text-gold">The operating challenge</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-gold">The problem</span>
             <h2 className="text-3xl md:text-4xl font-serif font-light mt-4 mb-6">Understand the work before automating it.</h2>
             <p className="text-lg text-black/60 font-light leading-relaxed">{content.challenge}</p>
           </div>
@@ -88,16 +88,16 @@ const SectorAutomationPage = () => {
 
       <section className="py-20 bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12"><span className="font-mono text-xs uppercase tracking-widest text-gold">KarizaX platform capabilities</span><h2 className="text-3xl md:text-4xl font-serif font-light mt-4">One connected platform for operational intelligence and execution.</h2></div>
+          <div className="max-w-3xl mb-12"><span className="font-mono text-xs uppercase tracking-widest text-gold">What we can set up for you</span><h2 className="text-3xl md:text-4xl font-serif font-light mt-4">Automation and reporting that work together.</h2></div>
           <div className="grid md:grid-cols-2 gap-7">
             <article className="bg-white border border-gray-100 rounded-2xl p-8">
               <Workflow className="w-8 h-8 text-gold mb-6" />
-              <h3 className="text-2xl font-serif mb-5">AI workflow automation & systems integration</h3>
+              <h3 className="text-2xl font-serif mb-5">Workflow automation</h3>
               <ul className="space-y-3">{content.workflows.map(item => <li key={item} className="flex gap-3 text-sm text-black/65 font-light leading-relaxed"><CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />{item}</li>)}</ul>
             </article>
             <article className="bg-white border border-gray-100 rounded-2xl p-8">
               <BarChart3 className="w-8 h-8 text-gold mb-6" />
-              <h3 className="text-2xl font-serif mb-5">Business intelligence & performance dashboards</h3>
+              <h3 className="text-2xl font-serif mb-5">Dashboards and reports</h3>
               <ul className="space-y-3">{content.intelligence.map(item => <li key={item} className="flex gap-3 text-sm text-black/65 font-light leading-relaxed"><CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />{item}</li>)}</ul>
             </article>
           </div>
@@ -108,7 +108,7 @@ const SectorAutomationPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl">
           <span className="font-mono text-xs uppercase tracking-widest text-gold">Start with one workflow</span>
           <h2 className="text-3xl md:text-4xl font-serif font-light mt-4 mb-6">Tell us where work gets stuck.</h2>
-          <p className="text-white/60 font-light leading-relaxed mb-9">We can help assess the process, identify what should change and define a sensible first project.</p>
+          <p className="text-white/60 font-light leading-relaxed mb-9">We will review the process with you, decide what should change and plan a sensible first project.</p>
           <a href="https://form.jotform.com/260052273727050" target="_blank" rel="noopener noreferrer"><Button size="lg" variant="gold">Start a conversation <ArrowRight className="inline w-4 h-4 ml-2" /></Button></a>
         </div>
       </section>
