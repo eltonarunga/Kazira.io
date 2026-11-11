@@ -141,7 +141,7 @@ const Header = () => {
         isOpen={isUpdatesModalOpen} 
         onClose={() => setIsUpdatesModalOpen(false)} 
         title="Stay Connected"
-        subtitle="Get updates on Kazira automation solutions, advisory services and practical AI learning resources."
+        subtitle="Get updates on Kazira automation tools, advisory services and AI learning resources."
       />
     </header>
   );

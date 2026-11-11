@@ -10,7 +10,7 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
         <div className="space-y-6">
           <div className="flex items-center space-x-3 mb-6"><Logo height={21} className="text-black" /></div>
-          <p className="text-sm font-light leading-relaxed">An AI infrastructure and venture ecosystem building intelligent systems and specialised applications for businesses and industries.</p>
+          <p className="text-sm font-light leading-relaxed">Kazira builds AI tools and products that help businesses work better.</p>
           <a href="https://twitter.com/kazira_io" target="_blank" rel="noopener noreferrer" className="w-10 h-10 border border-gray-200 inline-flex items-center justify-center hover:border-gold hover:text-gold transition-colors" aria-label="Kazira.io on X"><Twitter className="w-4 h-4" strokeWidth={1.5} /></a>
         </div>
 
@@ -47,7 +47,7 @@ const Footer = () => (
       </div>
       <div className="mt-16 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-mono tracking-widest uppercase text-black/40">
         <p>&copy; {new Date().getFullYear()} Kazira.io. All rights reserved.</p>
-        <p className="mt-4 md:mt-0">Intelligence. Infrastructure. Innovation.</p>
+        <p className="mt-4 md:mt-0">Built in Kenya</p>
       </div>
     </div>
   </footer>
