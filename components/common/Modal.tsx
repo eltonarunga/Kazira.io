@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
@@ -12,7 +12,7 @@ export interface ModalProps {
 }
 
 const FOCUSABLE_SELECTOR =
-  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), iframe, [contenteditable="true"], [tabindex]:not([tabindex="-1"])';
 
 const Modal: React.FC<ModalProps> = ({
   isOpen,
@@ -22,6 +22,7 @@ const Modal: React.FC<ModalProps> = ({
   maxWidthClassName = 'max-w-2xl',
 }) => {
   const [mounted, setMounted] = useState(false);
+  const titleId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -129,7 +130,7 @@ const Modal: React.FC<ModalProps> = ({
               ref={dialogRef}
               role="dialog"
               aria-modal="true"
-              aria-labelledby="modal-title"
+              aria-labelledby={titleId}
               tabIndex={-1}
               className={`relative w-full ${maxWidthClassName} bg-white text-left align-middle shadow-2xl rounded-2xl border border-gray-200 overflow-hidden flex flex-col my-auto max-h-[92vh] focus:outline-none`}
               variants={modalVariants}
@@ -139,7 +140,7 @@ const Modal: React.FC<ModalProps> = ({
               onClick={(event) => event.stopPropagation()}
             >
               <div className="flex items-center justify-between px-6 py-4 sm:py-5 border-b border-gray-100 bg-white sticky top-0 z-10">
-                <h2 id="modal-title" className="text-xl sm:text-2xl font-serif text-black font-medium tracking-tight">
+                <h2 id={titleId} className="text-xl sm:text-2xl font-serif text-black font-medium tracking-tight">
                   {title}
                 </h2>
                 <button

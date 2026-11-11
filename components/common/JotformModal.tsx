@@ -61,6 +61,7 @@ export const JotformModal: React.FC<JotformModalProps> = ({
           <iframe
             src={formUrl}
             title={resolvedTitle}
+            referrerPolicy="strict-origin-when-cross-origin"
             className="w-full h-full border-none"
             onLoad={() => setIsLoading(false)}
           />
