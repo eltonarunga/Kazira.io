@@ -101,3 +101,13 @@ npm audit --audit-level=high
 ## Release review
 
 The Privacy Policy and Terms of Service contain legacy descriptions of accounts, AI tools, monitoring and data processing. Review them against the actual live services and real data practices before treating them as final legal statements.
+
+
+## Repository security and contribution safeguards
+
+- Do not commit exported prompt histories, chat transcripts, customer records, patient information, production logs or other operational data.
+- Keep credentials in approved secret stores or local environment files; never expose secrets through frontend source code or `VITE_*` variables.
+- Use the committed `package-lock.json` and `npm ci` for reproducible CI installs.
+- Submit dependency updates through pull requests and review the resulting changes before merging.
+- Treat the public corporate website as a presentation layer. Any future authenticated workflows, customer data processing or AI execution must use a separately reviewed server-side boundary.
+- Before release, verify the actual production response headers, run the repository quality workflow, and review changes to privacy notices against the real data-flow and processor inventory.
