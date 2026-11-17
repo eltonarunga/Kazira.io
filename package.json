@@ -14,19 +14,18 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.3.5",
     "framer-motion": "^14.13.0",
     "lucide-react": "^1.72.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
-    "react-router-dom": "^7.6.2",
-    "tailwindcss": "^4.2.1"
+    "react-router-dom": "^7.6.2"
   },
   "devDependencies": {
     "@babel/core": "^8.1.2",
     "@babel/eslint-parser": "^8.1.2",
     "@babel/plugin-syntax-typescript": "^8.0.3",
     "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.5",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
@@ -39,6 +38,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.14.0",
     "jsdom": "^31.0.1",
+    "tailwindcss": "^4.2.1",
     "typescript": "~7.0.2",
     "vite": "^8.3.8",
     "vitest": "^5.1.0"
