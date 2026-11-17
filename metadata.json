@@ -1,6 +1,6 @@
 {
   "name": "Kazira.io",
-  "description": "A modern platform by Kazira.io providing AI-powered automation (Kazira Clinical Intelligence) and the Kenya AI Alignment & Reasoning Benchmark (K-AARB).",
+  "description": "Kazira builds AI tools that automate routine work and turn business records into clear reports. We are based in Kenya and are starting with healthcare.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
