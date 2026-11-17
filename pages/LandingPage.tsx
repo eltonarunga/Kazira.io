@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import Button from '../components/common/Button';
 import JotformModal from '../components/common/JotformModal';
-import { KAARB_URL, KAZIRA_LEARN_URL, JOB_SCANNER_URL } from '../constants';
+import { KAARB_URL, KAZIRA_LEARN_URL, JOB_SCANNER_URL, CLINICAL_INTELLIGENCE_URL } from '../constants';
 
 const LandingPage = () => {
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
@@ -86,6 +86,14 @@ const LandingPage = () => {
                 <p className="text-sm text-black/60 font-light leading-relaxed">{body}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-12 border border-gray-200 rounded-2xl p-8 md:p-10 bg-white">
+            <div className="max-w-3xl">
+              <span className="font-mono text-gold text-xs uppercase tracking-widest">Clinical intelligence</span>
+              <h3 className="text-3xl font-serif font-light mt-3 mb-4">AI for clinical insight.</h3>
+              <p className="text-base text-black/60 font-light leading-relaxed mb-6">Explore Kazira Clinical Intelligence, a dedicated initiative focused on applying AI to clinical workflows and insight.</p>
+              <a href={CLINICAL_INTELLIGENCE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-black hover:text-gold">Explore Clinical Intelligence <ExternalLink className="w-3 h-3" /></a>
+            </div>
           </div>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 items-start">
             <Button size="lg" variant="gold" onClick={() => setIsConsultationModalOpen(true)}>Talk about your project</Button>

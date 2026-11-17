@@ -19,7 +19,7 @@ const Footer = () => (
         <div>
           <h3 className="font-mono text-xs text-black uppercase tracking-widest mb-8">Kazira divisions</h3>
           <ul className="space-y-4 text-sm font-light">
-            <li><Link to="/automate" className="hover:text-gold transition-colors">Systems & Intelligence · KarizaX</Link></li>
+            <li><Link to="/" state={{ scrollTo: "systems-intelligence" }} className="hover:text-gold transition-colors">Systems & Intelligence</Link></li>
             <li><Link to="/" state={{ scrollTo: "advisory" }} className="hover:text-gold transition-colors">Advisory · NanoStrategyKE</Link></li>
             <li><Link to="/" state={{ scrollTo: "ventures-learn" }} className="hover:text-gold transition-colors">Ventures & Learn</Link></li>
           </ul>

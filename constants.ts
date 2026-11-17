@@ -4,6 +4,7 @@ export const JOTFORM_UPDATES_URL = "https://form.jotform.com/260052273727050";
 export const JOB_SCANNER_URL = "https://opal.withgoogle.com/?flow=drive:/1g5EsPt18QZYsNAcaE1f9KgmCnWOQEvin&shared&mode=app";
 export const KAZIRA_LEARN_URL = "https://opal.google/app/1RS_gONM_N73fAQy3u_mtelYIjJHNtfN8";
 export const KAARB_URL = "https://kaarb.vercel.app/";
+export const CLINICAL_INTELLIGENCE_URL = "https://kazira-io-clinical-intelligence-mvp.vercel.app/";
 
 export const NAV_ITEMS: NavItem[] = [
   { name: "Home", href: "/", isPageLink: true },
