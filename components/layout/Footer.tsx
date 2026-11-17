@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { KAARB_URL, JOB_SCANNER_URL } from '../../constants';
+import { KAARB_URL, JOB_SCANNER_URL, DENTMATCH_KE_URL } from '../../constants';
 import { ExternalLink } from 'lucide-react';
 import Logo from '../common/Logo';
 
@@ -31,7 +31,7 @@ const Footer = () => (
             <li><a href="https://kazixfrontend.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">KaziX marketplace <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
             <li><a href="https://dentside-remote.onrender.com/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Dentside Remote <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
             <li><a href="https://jino-x.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">JinoX AI <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
-            <li><span className="text-black/70">DentMatch KE</span></li>
+            <li><a href={DENTMATCH_KE_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">DentMatch KE <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
             <li><a href={JOB_SCANNER_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Job Disruption Scanner <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
             <li><a href={KAARB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">K-AARB <span className="text-black/35">(independent)</span></a></li>
           </ul>
