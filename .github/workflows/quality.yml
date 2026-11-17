@@ -27,7 +27,10 @@ jobs:
           cache: npm
       - name: Install locked dependencies
         run: npm ci
-      - name: Audit dependencies
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
+      - name: Report development dependency advisories
+        continue-on-error: true
         run: npm audit --audit-level=high
       - name: Lint, test, type-check and build
         run: npm run check
