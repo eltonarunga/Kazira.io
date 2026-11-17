@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import Button from '../components/common/Button';
 import JotformModal from '../components/common/JotformModal';
-import { KAARB_URL, KAZIRA_LEARN_URL, JOB_SCANNER_URL } from '../constants';
+import { KAARB_URL, KAZIRA_LEARN_URL, JOB_SCANNER_URL, CLINICAL_INTELLIGENCE_URL } from '../constants';
 
 const LandingPage = () => {
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
@@ -31,6 +31,7 @@ const LandingPage = () => {
   ];
 
   const ventures = [
+    { name: 'Kazira Clinical Intelligence', category: 'Healthcare intelligence', description: 'A dedicated Kazira initiative focused on clinical intelligence.', href: CLINICAL_INTELLIGENCE_URL, status: 'Product' },
     { name: 'KaziX', category: 'Skilled labour marketplace', description: 'A marketplace that connects customers and businesses with skilled workers.', href: 'https://kazixfrontend.vercel.app/', status: 'Marketplace' },
     { name: 'Dentside Remote', category: 'Remote dental care', description: 'Remote dental care that connects patients with dentists for consultations and support.', href: 'https://dentside-remote.onrender.com/', status: 'Product' },
     { name: 'JinoX AI', category: 'Healthcare AI', description: 'A healthcare AI product we are developing.', href: 'https://jino-x.vercel.app/', status: 'Product initiative' },
