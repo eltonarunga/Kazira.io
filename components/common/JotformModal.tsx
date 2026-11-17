@@ -68,7 +68,7 @@ export const JotformModal: React.FC<JotformModalProps> = ({
         </div>
 
         <div className="mt-4 pt-2 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-black/50">
-          <span className="font-light">This form is hosted by Jotform.</span>
+          <span className="font-light">This form is hosted by Jotform. Please do not include patient details, health information, or other sensitive personal information.</span>
           <a
             href={formUrl}
             target="_blank"
@@ -78,6 +78,7 @@ export const JotformModal: React.FC<JotformModalProps> = ({
             Open in new tab <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>
+        <p className="mt-3 text-xs text-black/45 font-light">Read <a href="https://www.jotform.com/privacy/" target="_blank" rel="noopener noreferrer" className="underline hover:text-gold">Jotform Privacy Policy</a> before submitting the form.</p>
       </div>
     </Modal>
   );
