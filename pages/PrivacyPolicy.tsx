@@ -68,6 +68,15 @@ const PrivacyPolicy = () => {
               Depending on your location, you may have certain rights regarding your personal information, including the right to access, correct, or delete your data. Please contact us to exercise these rights.
             </p>
           </section>
+
+          <section>
+            <h2 className="text-2xl font-serif text-black mt-8 mb-4">6. Data Controller & Privacy Contact</h2>
+            <p>
+              Kazira LLC is the data controller for this website. The provisional privacy contact is{' '}
+              <a href="mailto:support@kazira.io" className="text-black underline hover:text-gold">support@kazira.io</a>.
+              The mailbox must be confirmed as active and monitored before it is relied on for privacy requests.
+            </p>
+          </section>
         </div>
       </div>
     </div>
