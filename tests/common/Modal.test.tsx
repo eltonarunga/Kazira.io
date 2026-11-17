@@ -44,4 +44,19 @@ describe('Modal', () => {
     expect(lastAction).toHaveFocus();
 
     fireEvent.keyDown(document, { key: 'Tab' });
-    expect(clo¶»§q«^
+    expect(closeButton).toHaveFocus();
+
+    fireEvent.keyDown(document, { key: 'Escape' });
+    expect(onClose).toHaveBeenCalledOnce();
+  });
+
+  it('restores focus to the opener when closed', async () => {
+    const onClose = vi.fn();
+    const view = render(<Modal isOpen onClose={onClose} title="Focus return" />);
+
+    await screen.findByRole('dialog', { name: 'Focus return' });
+    view.rerender(<Modal isOpen={false} onClose={onClose} title="Focus return" />);
+
+    expect(opener).toHaveFocus();
+  });
+});
