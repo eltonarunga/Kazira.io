@@ -31,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({
 
   // Keep keyboard focus inside the dialog and return it to the opener on close.
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || !mounted) return;
 
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -84,7 +84,7 @@ const Modal: React.FC<ModalProps> = ({
       document.body.style.overflow = originalOverflow;
       previouslyFocused?.focus();
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, mounted, onClose]);
 
   const backdropVariants = {
     visible: { opacity: 1 },

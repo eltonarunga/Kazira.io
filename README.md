@@ -90,13 +90,17 @@ npm ci
 npm run dev
 ```
 
-Production validation:
+Quality checks:
 
 ```bash
+npm run lint
+npm test
 npm run typecheck
 npm run build
 npm audit --audit-level=high
 ```
+
+Run `npm run check` to execute linting, component tests, type-checking and the production build in sequence. Tests use Vitest, jsdom and React Testing Library.
 
 ## Release review
 
