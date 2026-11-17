@@ -8,7 +8,7 @@ export const CLINICAL_INTELLIGENCE_URL = "https://kazira-io-clinical-intelligenc
 
 export const NAV_ITEMS: NavItem[] = [
   { name: "Home", href: "/", isPageLink: true },
-  { name: "Systems & Intelligence", href: "/automate", isPageLink: true },
+  { name: "Systems & Intelligence", href: "#systems-intelligence", isPageLink: false },
   { name: "Advisory", href: "#advisory", isPageLink: false },
   { name: "Ventures & Learn", href: "#ventures-learn", isPageLink: false },
 ];
