@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { KAARB_URL, JOB_SCANNER_URL, CLINICAL_INTELLIGENCE_URL } from '../../constants';
+import { KAARB_URL, JOB_SCANNER_URL } from '../../constants';
 import { ExternalLink } from 'lucide-react';
 import Logo from '../common/Logo';
 
@@ -19,7 +19,7 @@ const Footer = () => (
         <div>
           <h3 className="font-mono text-xs text-black uppercase tracking-widest mb-8">Kazira divisions</h3>
           <ul className="space-y-4 text-sm font-light">
-            <li><Link to="/automate" className="hover:text-gold transition-colors">Systems & Intelligence · KarizaX</Link></li>
+            <li><Link to="/" state={{ scrollTo: "systems-intelligence" }} className="hover:text-gold transition-colors">Systems & Intelligence</Link></li>
             <li><Link to="/" state={{ scrollTo: "advisory" }} className="hover:text-gold transition-colors">Advisory · NanoStrategyKE</Link></li>
             <li><Link to="/" state={{ scrollTo: "ventures-learn" }} className="hover:text-gold transition-colors">Ventures & Learn</Link></li>
           </ul>
@@ -31,7 +31,6 @@ const Footer = () => (
             <li><a href="https://kazixfrontend.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">KaziX marketplace <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
             <li><a href="https://dentside-remote.onrender.com/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Dentside Remote <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
             <li><a href="https://jino-x.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">JinoX AI <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
-            <li><a href={CLINICAL_INTELLIGENCE_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Kazira Clinical Intelligence <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
             <li><span className="text-black/70">DentMatch KE</span></li>
             <li><a href={JOB_SCANNER_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">Job Disruption Scanner <ExternalLink className="inline w-3 h-3 ml-1" /></a></li>
             <li><a href={KAARB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">K-AARB <span className="text-black/35">(independent)</span></a></li>
