@@ -1,6 +1,6 @@
 # Privacy data-flow inventory
 
-**Status:** repository-level source review and connected Jotform form-metadata review completed; service-owner and provider-console verification outstanding.  
+**Status:** repository-level source review and connected Jotform form-metadata review completed; Kazira LLC identified by the user as legal data controller; service-owner and provider-console verification outstanding.  
 **Reviewed:** 17 November 2026  
 **Scope:** the public Kazira corporate website in this repository, not separate products or external applications.
 
@@ -36,7 +36,7 @@ This document records what can be established from checked-in source and the con
 
 The following facts require confirmation by the relevant service owner or account administrator. Do not publish guesses:
 
-- The legal entity / person acting as data controller and its verified privacy contact.
+- The monitored privacy contact for Kazira LLC. The user identified Kazira LLC as the legal data controller on 17 November 2026; this is recorded as an owner-provided fact, not independently verified against corporate registration documents.
 - Jotform form owner, collaborators, submission recipients, integrations, export destinations, retention, deletion, backups, and hosting region.
 - Whether the free-text request field is intended to accept sensitive or health information, and what instructions or safeguards are shown to respondents.
 - Vercel project owner, production deployment configuration, logs and analytics settings, retention, regions, and subprocessors.
@@ -48,13 +48,15 @@ The following facts require confirmation by the relevant service owner or accoun
 
 ## Required owner verification
 
-- [ ] Confirm the controller, Jotform form owner, people and systems with access, integrations, notification recipients, export destinations, retention, deletion, backups, and data location.
+- [x] Record the user-provided controller identity: Kazira LLC (17 November 2026). Independent corporate-registration verification remains outside this repository review.
+- [ ] Confirm the monitored privacy contact for Kazira LLC.
+- [ ] Confirm the Jotform form owner, people and systems with access, integrations, notification recipients, export destinations, retention, deletion, backups, and data location.
 - [ ] Confirm whether the free-text field should invite or prohibit sensitive information, and add clear respondent guidance if needed.
 - [ ] Inspect Vercel production project settings for analytics, logs, deployment region, access, retention, and subprocessors.
 - [ ] Inspect production browser network requests and cookies to identify resources not represented in source.
 - [ ] Confirm the owner and privacy notice for each linked external product before describing it as a Kazira-operated service.
 - [ ] Confirm whether separate account, payment, AI inference, or customer-management systems exist and whether they are in scope of this website notice.
-- [ ] Verify the controller identity and monitored privacy contact.
+- [ ] Verify Kazira LLC's legal identity against corporate records and confirm the monitored privacy contact.
 - [ ] Have qualified Kenyan data-protection counsel review the final public notice and any cross-border processing disclosures.
 
 ## Interim implementation guidance
