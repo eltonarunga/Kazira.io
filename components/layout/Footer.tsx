@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { KAARB_URL, JOB_SCANNER_URL } from '../../constants';
-import { Twitter, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import Logo from '../common/Logo';
 
 const Footer = () => (
@@ -11,7 +11,9 @@ const Footer = () => (
         <div className="space-y-6">
           <div className="flex items-center space-x-3 mb-6"><Logo height={21} className="text-black" /></div>
           <p className="text-sm font-light leading-relaxed">Kazira builds AI tools and products that help businesses work better.</p>
-          <a href="https://twitter.com/kazira_io" target="_blank" rel="noopener noreferrer" className="w-10 h-10 border border-gray-200 inline-flex items-center justify-center hover:border-gold hover:text-gold transition-colors" aria-label="Kazira.io on X"><Twitter className="w-4 h-4" strokeWidth={1.5} /></a>
+          <a href="https://twitter.com/kazira_io" target="_blank" rel="noopener noreferrer" className="w-10 h-10 border border-gray-200 inline-flex items-center justify-center hover:border-gold hover:text-gold transition-colors" aria-label="Kazira.io on X">
+            <span aria-hidden="true" className="text-base font-semibold">𝕏</span>
+          </a>
         </div>
 
         <div>
