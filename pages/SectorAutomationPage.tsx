@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Workflow, BarChart3, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Workflow, BarChart3, CheckCircle2, ExternalLink } from 'lucide-react';
 import Button from '../components/common/Button';
+import { CLINICAL_INTELLIGENCE_URL } from '../constants';
 
 const sectorContent = {
   sme: {
@@ -67,7 +68,16 @@ const SectorAutomationPage = () => {
             <span className="font-mono text-xs uppercase tracking-widest text-gold">{content.eyebrow}</span>
             <h1 className="text-4xl md:text-6xl font-serif font-light tracking-tight leading-tight mt-5 mb-7">{content.title}</h1>
             <p className="text-xl text-black/60 font-light leading-relaxed max-w-3xl mb-9">{content.intro}</p>
-            <a href="https://form.jotform.com/260052273727050" target="_blank" rel="noopener noreferrer"><Button size="lg" variant="gold">Discuss your organisation <ArrowRight className="inline w-4 h-4 ml-2" /></Button></a>
+            <div className="flex flex-wrap gap-4">
+              <a href="https://form.jotform.com/260052273727050" target="_blank" rel="noopener noreferrer"><Button size="lg" variant="gold">Discuss your organisation <ArrowRight className="inline w-4 h-4 ml-2" /></Button></a>
+              {sector === 'healthcare' && (
+                <a href={CLINICAL_INTELLIGENCE_URL} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant="outline" className="border-gold text-gold hover:bg-gold/10">
+                    Launch Clinical Intelligence MVP <ExternalLink className="inline w-4 h-4 ml-2" />
+                  </Button>
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -79,9 +89,20 @@ const SectorAutomationPage = () => {
             <h2 className="text-3xl md:text-4xl font-serif font-light mt-4 mb-6">Understand the work before automating it.</h2>
             <p className="text-lg text-black/60 font-light leading-relaxed">{content.challenge}</p>
           </div>
-          <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8">
-            <h3 className="font-serif text-2xl mb-5">A practical starting point</h3>
-            <p className="text-sm text-black/60 font-light leading-relaxed">{content.guardrail}</p>
+          <div className="bg-gray-50 border border-gray-100 rounded-2xl p-8 flex flex-col justify-between">
+            <div>
+              <h3 className="font-serif text-2xl mb-5">A practical starting point</h3>
+              <p className="text-sm text-black/60 font-light leading-relaxed mb-6">{content.guardrail}</p>
+            </div>
+            {sector === 'healthcare' && (
+              <div className="pt-6 border-t border-gray-200">
+                <span className="text-xs font-mono uppercase tracking-widest text-gold block mb-2">Featured solution:</span>
+                <p className="text-sm text-black/70 mb-4 font-light leading-relaxed">Kazira Clinical Intelligence MVP synthesizes multi-source healthcare data to streamline clinical and administrative decision-making.</p>
+                <a href={CLINICAL_INTELLIGENCE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-black hover:text-gold font-medium">
+                  Launch Clinical Intelligence MVP <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </section>

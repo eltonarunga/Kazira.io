@@ -23,7 +23,9 @@ Core capability areas:
 
 **Commercial entry point: Healthcare Intelligence**
 
-The initial offer combines healthcare business intelligence and administrative workflow automation for clinics and healthcare organisations. Early delivery should focus on operational use cases such as appointment coordination, reporting, revenue visibility and stock monitoring. Clinical decision-support capabilities require separate clinical validation and governance.
+The initial offer combines healthcare business intelligence and administrative workflow automation for clinics and healthcare organisations. Early delivery focuses on operational use cases such as appointment coordination, reporting, revenue visibility and stock monitoring.
+
+- **Kazira Clinical Intelligence (Nested Flagship Solution):** Advanced healthcare data analysis and clinical intelligence platform nested within KarizaX: https://kazira-io-clinical-intelligence-mvp.vercel.app/
 
 KarizaX is the strategic platform direction; describe platform capabilities according to their actual implementation and maturity. Do not imply that planned capabilities are already generally available.
 
@@ -47,10 +49,10 @@ The consulting-to-product model is: diagnose customer problems, recommend improv
 This division develops specialised products, marketplaces, venture opportunities and education programmes.
 
 #### Product portfolio
-- **JinoX AI:** Healthcare AI product initiative.
-- **Dentside Remote:** Remote dental care and consultation product.
-- **DentMatch KE:** Dental talent marketplace.
-- **KaziX:** Blue-collar skilled labour marketplace connecting customers and organisations with skilled workers.
+- **DentMatch KE:** Dental talent marketplace connecting dental professionals and clinics: https://dent-match-ke.vercel.app/
+- **JinoX AI:** Healthcare AI product initiative: https://jino-x.vercel.app/
+- **Dentside Remote:** Remote dental care and consultation product: https://dentside-remote.onrender.com/
+- **KaziX:** Blue-collar skilled labour marketplace connecting customers and organisations with skilled workers: https://kazixfrontend.vercel.app/
 
 Each product has a distinct customer proposition and roadmap. Products may reuse shared Kazira infrastructure where appropriate, but they are not interchangeable with KarizaX.
 
@@ -59,7 +61,7 @@ Practical AI, automation, data and digital productivity education for profession
 
 ## Wider ecosystem and independent initiatives
 
-- **Job Disruption Scanner:** Research tool exploring how AI and automation may affect roles, tasks and skills.
+- **Kazira Job Disruption Scanner:** Research tool exploring how AI and automation may affect roles, tasks and skills: https://share.gemini.google/DZzb5JCWqmlS
 - **K-AARB:** Kenya AI Alignment & Reasoning Benchmark, an independent research and evaluation project: https://kaarb.vercel.app/. It is not a Kazira service line.
 
 Describe every initiative according to its actual maturity, availability and ownership. Do not present prototypes or research projects as fully established commercial services.
