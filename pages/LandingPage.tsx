@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   ArrowRight, Workflow, BarChart3, Stethoscope, Building2, Compass,
   Database, GraduationCap, ExternalLink
@@ -11,14 +11,6 @@ import { KAARB_URL, KAZIRA_LEARN_URL, JOB_SCANNER_URL, CLINICAL_INTELLIGENCE_URL
 
 const LandingPage = () => {
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.state?.scrollTo) {
-      document.getElementById(location.state.scrollTo)?.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [location.state]);
-
   const platformCapabilities = [
     { icon: Workflow, title: 'Workflow automation', body: 'KarizaX is the platform we are building. It connects the tools a business already uses and automates routine tasks, with a person approving anything important. We build each feature once customers show they need it.' },
     { icon: BarChart3, title: 'Business reports and dashboards', body: 'We turn your daily records into simple dashboards and reports that show how the business is doing and where to act. We are starting with clinics.' },
@@ -71,7 +63,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section id="systems-intelligence" className="py-24 border-t border-gray-100">
+      <section id="systems-intelligence" className="scroll-mt-24 py-24 border-t border-gray-100">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
             <span className="font-mono text-gold text-xs uppercase tracking-widest">01 · Systems & intelligence</span>
@@ -97,7 +89,7 @@ const LandingPage = () => {
           </div>
           <div className="mt-10 flex flex-col sm:flex-row gap-4 items-start">
             <Button size="lg" variant="gold" onClick={() => setIsConsultationModalOpen(true)}>Talk about your project</Button>
-            <Link to="/automate" className="inline-flex items-center gap-2 py-3 text-sm font-mono uppercase tracking-widest text-black/70 hover:text-gold">See what we offer <ArrowRight className="w-4 h-4" /></Link>
+            <Link to="/automate" className="inline-flex items-center gap-2 py-3 text-sm font-mono uppercase tracking-widest text-black/70 hover:text-gold">Explore detailed solutions <ArrowRight className="w-4 h-4" /></Link>
           </div>
         </div>
       </section>
@@ -121,7 +113,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section id="advisory" className="py-24">
+      <section id="advisory" className="scroll-mt-24 py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
@@ -149,7 +141,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <section id="ventures-learn" className="py-24 bg-black text-white">
+      <section id="ventures-learn" className="scroll-mt-24 py-24 bg-black text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
             <span className="font-mono text-xs uppercase tracking-widest text-gold">03 · Ventures & learn</span>
