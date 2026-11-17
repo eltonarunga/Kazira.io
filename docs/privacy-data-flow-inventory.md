@@ -1,6 +1,6 @@
 # Privacy data-flow inventory
 
-**Status:** repository-level source review and connected Jotform form-metadata review completed; Kazira LLC identified by the user as legal data controller; service-owner and provider-console verification outstanding.  
+**Status:** repository-level source review and connected Jotform form-metadata review completed; Kazira LLC identified by the user as legal data controller; provisional privacy contact supplied; service-owner and provider-console verification outstanding.  
 **Reviewed:** 17 November 2026  
 **Scope:** the public Kazira corporate website in this repository, not separate products or external applications.
 
@@ -16,7 +16,7 @@ This document records what can be established from checked-in source and the con
 | Form activity | The connected Jotform metadata reports the form is enabled and has 2 submissions as of the review. Submission contents were not opened or inspected. | This confirms the form is active and has received submissions, but says nothing about the contents or handling of those submissions. |
 | Form contexts | Landing-page modal uses `JotformModal`; the modal defaults to the shared Jotform URL unless a different `formUrl` is passed. Automation and sector pages link directly to the same Jotform URL. | Multiple calls to action lead to the same configured Jotform endpoint in the inspected source. |
 | Third-party fonts | `index.html` preconnects to and loads CSS/fonts from `fonts.googleapis.com` and `fonts.gstatic.com`. | A browser loading the site requests font resources from Google. The repository does not establish Google-side logging, retention, or applicable processing terms. |
-| External product links | `constants.ts` and page source link to Opal/Google, KAARB on Vercel, KaziX on Vercel, Dentside Remote on Render, JinoX AI, and Kazira Clinical Intelligence (`https://kazira-io-clinical-intelligence-mvp.vercel.app/`). | These are links to separate services. The repository does not establish their data collection, ownership, processors, or privacy practices. |
+| External product links | `constants.ts` and page source link to Opal/Google, KAARB on Vercel, KaziX on Vercel, Dentside Remote on Render, JinoX AI, and Kazira Clinical Intelligence (`https://kazira-io-clinical-intelligence-mvp.vercel.app/`), and DentMatch KE (`https://dent-match-ke.vercel.app/`). | These are links to separate services. The repository does not establish their data collection, ownership, processors, or privacy practices. |
 | First-party account / payment / AI backend | Recursive source tree contains a static React/Vite frontend and no checked-in API/server route, auth SDK, payment SDK, or model API integration in the reviewed files. | No such first-party processing flow was identified in this repository snapshot. This does not prove that no separate backend, provider integration, or external service exists. |
 
 ## Source locations and connected resource reviewed
@@ -36,7 +36,7 @@ This document records what can be established from checked-in source and the con
 
 The following facts require confirmation by the relevant service owner or account administrator. Do not publish guesses:
 
-- The monitored privacy contact for Kazira LLC. The user identified Kazira LLC as the legal data controller on 17 November 2026; this is recorded as an owner-provided fact, not independently verified against corporate registration documents.
+- Whether `support@kazira.io` is provisioned, monitored, and able to receive privacy requests. The user supplied it as a **placeholder privacy contact**, not as a verified operational mailbox. The user identified Kazira LLC as the legal data controller on 17 November 2026; this is recorded as an owner-provided fact, not independently verified against corporate registration documents.
 - Jotform form owner, collaborators, submission recipients, integrations, export destinations, retention, deletion, backups, and hosting region.
 - Whether the free-text request field is intended to accept sensitive or health information, and what instructions or safeguards are shown to respondents.
 - Vercel project owner, production deployment configuration, logs and analytics settings, retention, regions, and subprocessors.
@@ -49,7 +49,7 @@ The following facts require confirmation by the relevant service owner or accoun
 ## Required owner verification
 
 - [x] Record the user-provided controller identity: Kazira LLC (17 November 2026). Independent corporate-registration verification remains outside this repository review.
-- [ ] Confirm the monitored privacy contact for Kazira LLC.
+- [ ] Replace/confirm the placeholder privacy contact with a provisioned, monitored mailbox: `support@kazira.io`.
 - [ ] Confirm the Jotform form owner, people and systems with access, integrations, notification recipients, export destinations, retention, deletion, backups, and data location.
 - [ ] Confirm whether the free-text field should invite or prohibit sensitive information, and add clear respondent guidance if needed.
 - [ ] Inspect Vercel production project settings for analytics, logs, deployment region, access, retention, and subprocessors.
@@ -64,4 +64,5 @@ The following facts require confirmation by the relevant service owner or accoun
 - Keep the existing Jotform hand-off description factual: the form is hosted by Jotform.
 - Do not claim that the form is confidential, encrypted end-to-end, or covered by particular retention or deletion terms unless verified in the account and provider agreement.
 - Do not state that the corporate website itself runs AI inference, account authentication, or payment processing based only on planned capabilities or links to other products.
-- Do not update the public Privacy Policy or Terms with invented controller details, legal bases, retention periods, or processor lists.
+- Treat the displayed privacy email as provisional until the mailbox is provisioned and monitored.
+- Do not update the public Privacy Policy or Terms with invented legal bases, retention periods, or processor lists.
