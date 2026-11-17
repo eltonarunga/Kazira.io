@@ -1,86 +1,55 @@
 import React from 'react';
-import { Shield, Lock } from 'lucide-react';
+import { Shield } from 'lucide-react';
 
-const PrivacyPolicy = () => {
-  return (
-    <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto bg-gray-50 rounded-2xl shadow-xl border border-gray-200 p-8 md:p-12">
-        <div className="flex items-center space-x-4 mb-8">
-          <Shield className="w-10 h-10 text-gold" />
-          <h1 className="text-3xl md:text-4xl font-serif text-black">Privacy Policy</h1>
-        </div>
-        
-        <div className="prose  max-w-none text-black/70 space-y-6 font-light">
-          <p className="text-sm text-black/40 font-mono tracking-wider uppercase">Last Updated: November 2026</p>
-          
-          <section>
-            <h2 className="text-2xl font-serif text-black mt-8 mb-4">1. Information We Collect</h2>
-            <p>
-              We collect information you provide directly to us when you create an account, use our AI tools, or communicate with us. This may include:
-            </p>
-            <ul className="list-disc list-inside space-y-1 ml-4 text-black/60">
-              <li>Contact information (e.g., name, email address)</li>
-              <li>Authentication data</li>
-              <li>Usage data and interactions with our AI models</li>
-              <li>Device and browser information</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-serif text-black mt-8 mb-4">2. How We Use Your Information</h2>
-            <p>
-              We use the collected information to:
-            </p>
-            <ul className="list-disc list-inside space-y-1 ml-4 text-black/60">
-              <li>Provide, maintain, and improve our services</li>
-              <li>Personalize your experience and learning paths</li>
-              <li>Process transactions and send related information</li>
-              <li>Monitor and analyze trends, usage, and activities</li>
-              <li>Detect, investigate, and prevent fraudulent transactions and other illegal activities</li>
-            </ul>
-          </section>
-
-          <section className="bg-gray-100 border-l-4 border-gold/50 p-6 rounded-r-lg my-8 shadow-sm">
-            <div className="flex items-center space-x-3 mb-4">
-              <Lock className="w-6 h-6 text-gold" />
-              <h2 className="text-xl font-serif text-black m-0">3. Data Security & Anti-Scraping Measures</h2>
-            </div>
-            <p className="mb-4 text-black/80">
-              We implement robust security measures to protect your personal information. To maintain the integrity of our platform and protect user data:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-black/70">
-              <li>We employ advanced monitoring to detect and block unauthorized scraping, automated data extraction, and bot activity.</li>
-              <li>Any attempt to bypass our security measures, conduct unauthorized vulnerability testing, or access data you are not authorized to view is strictly prohibited.</li>
-              <li>Violations of these security policies will result in immediate account termination and potential legal action, as outlined in our Terms of Service.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-serif text-black mt-8 mb-4">4. Sharing of Information</h2>
-            <p>
-              We do not sell your personal information. We may share your information with third-party vendors, consultants, and other service providers who need access to such information to carry out work on our behalf, subject to strict confidentiality agreements.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-serif text-black mt-8 mb-4">5. Your Rights</h2>
-            <p>
-              Depending on your location, you may have certain rights regarding your personal information, including the right to access, correct, or delete your data. Please contact us to exercise these rights.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-serif text-black mt-8 mb-4">6. Data Controller & Privacy Contact</h2>
-            <p>
-              Kazira LLC is the data controller for this website. The provisional privacy contact is{' '}
-              <a href="mailto:support@kazira.io" className="text-black underline hover:text-gold">support@kazira.io</a>.
-              The mailbox must be confirmed as active and monitored before it is relied on for privacy requests.
-            </p>
-          </section>
-        </div>
+const PrivacyPolicy = () => (
+  <div className="min-h-screen bg-white py-16 px-4 sm:px-6 lg:px-8">
+    <div className="max-w-4xl mx-auto bg-gray-50 rounded-2xl shadow-xl border border-gray-200 p-8 md:p-12">
+      <div className="flex items-center space-x-4 mb-8">
+        <Shield className="w-10 h-10 text-gold" />
+        <h1 className="text-3xl md:text-4xl font-serif text-black">Privacy Policy</h1>
+      </div>
+      <div className="prose max-w-none text-black/70 space-y-6 font-light">
+        <p className="text-sm text-black/40 font-mono tracking-wider uppercase">Last reviewed: 17 November 2026</p>
+        <section>
+          <h2 className="text-2xl font-serif text-black mt-8 mb-4">1. Scope and data controller</h2>
+          <p>This notice covers the public Kazira.io corporate website and its enquiry form. Kazira LLC is the data controller, as identified by Kazira. This notice does not automatically cover separate products or services reached through links on this website; those services may have their own operators and privacy notices.</p>
+          <p>The website code reviewed for this notice does not include first-party account registration, payment processing, or AI-model interaction endpoints. Product capabilities on linked websites should not be assumed to be processing activities of this corporate website.</p>
+        </section>
+        <section>
+          <h2 className="text-2xl font-serif text-black mt-8 mb-4">2. Information submitted through our enquiry form</h2>
+          <p>Our enquiry and consultation form is hosted by Jotform and is embedded in, or linked from, this website. The form currently asks for your name, email address, primary purpose, a free-text description of your request, and a verification response. If you submit the form, the information is entered into Jotform's service and made available to the form owner according to the form and account configuration.</p>
+          <p>Please provide only information needed for your enquiry. Do not include patient details, health information, or other sensitive personal information in the free-text field.</p>
+          <p>Jotform publishes its own <a href="https://www.jotform.com/privacy/" target="_blank" rel="noopener noreferrer" className="text-black underline hover:text-gold">Privacy Policy</a>. Review it before submitting information through the form. Kazira's Jotform account access, integrations, retention settings, deletion process, and selected data region are still being verified.</p>
+        </section>
+        <section>
+          <h2 className="text-2xl font-serif text-black mt-8 mb-4">3. How enquiry information is used</h2>
+          <p>Information submitted through the enquiry form is intended to let Kazira review and respond to the request and continue the related business communication. Do not use the form to send information that is not necessary for that purpose.</p>
+        </section>
+        <section>
+          <h2 className="text-2xl font-serif text-black mt-8 mb-4">4. Website and external services</h2>
+          <p>This website is configured for hosting on Vercel and loads fonts from Google Fonts. Those providers may receive technical information when your browser requests website pages or font resources. The production hosting logs, analytics settings, retention periods, and applicable provider configuration have not yet been fully verified by Kazira.</p>
+          <p>Links to products and services such as KaziX, Dentside Remote, JinoX AI, Kazira Clinical Intelligence, DentMatch KE, and other external services take you to separate websites. Their collection and use of information is governed by the relevant service's own notices and settings, not by this website notice.</p>
+        </section>
+        <section>
+          <h2 className="text-2xl font-serif text-black mt-8 mb-4">5. Retention and deletion</h2>
+          <p>Kazira has not yet confirmed the retention period, deletion workflow, backups, or storage region configured for the Jotform enquiry form. We will update this notice when those settings have been checked. No specific retention period is promised in this notice.</p>
+        </section>
+        <section>
+          <h2 className="text-2xl font-serif text-black mt-8 mb-4">6. Your privacy requests</h2>
+          <p>You may have rights under applicable data-protection law to request access to, correction of, or deletion of personal information, or to raise a concern about how it is handled. The availability and scope of a right depend on the applicable law and circumstances.</p>
+          <p>Kazira has supplied <a href="mailto:support@kazira.io" className="text-black underline hover:text-gold">support@kazira.io</a> as a provisional privacy contact. The mailbox has not yet been confirmed as active and monitored, so do not rely on it as an operational privacy-request channel until Kazira confirms it.</p>
+        </section>
+        <section>
+          <h2 className="text-2xl font-serif text-black mt-8 mb-4">7. Security</h2>
+          <p>Please do not submit sensitive information through the enquiry form. No method of sending information over the internet can be guaranteed to be completely secure. Kazira is still verifying the provider-side access controls and security configuration relevant to this website.</p>
+        </section>
+        <section>
+          <h2 className="text-2xl font-serif text-black mt-8 mb-4">8. Changes to this notice</h2>
+          <p>This notice will be revised when Kazira confirms the remaining provider settings and operational privacy contact details. The review date above indicates when this version was prepared.</p>
+        </section>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default PrivacyPolicy;
